@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Logic</name>
+    </assembly>
+    <members>
+        <member name="T:Logic.IGameLogic`1">
+            <summary>
+            The interface for the game logic.
+            </summary>
+            <typeparam name="T"> A type of object the logic deals with. </typeparam>
+        </member>
+        <member name="E:Logic.IGameLogic`1.ScreenUpdate">
+            <summary>
+            Refreshes the screen to draw the map around the player.
+            </summary>
+        </member>
+        <member name="E:Logic.IGameLogic`1.ObjectHit">
+            <summary>
+            Triggers when an object is hit by either a player or a monster.
+            </summary>
+        </member>
+        <member name="E:Logic.IGameLogic`1.HealthUpdate">
+            <summary>
+            Triggers when any object's health points change.
+            </summary>
+        </member>
+        <member name="E:Logic.IGameLogic`1.ObjectFalling">
+            <summary>
+            Triggers when there is no ground under a player/monster.
+            </summary>
+        </member>
+    </members>
+</doc>
