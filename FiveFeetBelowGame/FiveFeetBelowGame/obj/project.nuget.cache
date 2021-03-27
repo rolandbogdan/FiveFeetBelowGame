@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "AGhYP8M3uBg2Mu5FctKU5bOXJ5TRDoNwJke203dINCIH6HbvWYYYjrQJscXJ/6VV74ALBNwPgguHgnfDdYP5Zg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Roli\\source\\repos\\FiveFeetBelowGame\\FiveFeetBelowGame\\FiveFeetBelowGame.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Roli\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
+  "logs": []
+}
