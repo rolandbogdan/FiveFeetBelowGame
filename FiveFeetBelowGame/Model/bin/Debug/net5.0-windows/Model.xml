@@ -4,28 +4,27 @@
         <name>Model</name>
     </assembly>
     <members>
-        <member name="T:Model.IGameModel`1">
+        <member name="T:Model.IGameModel">
             <summary>
             The interface for the game's model.
             </summary>
-            <typeparam name="T"> The type of the object the model applies to. </typeparam>
         </member>
-        <member name="P:Model.IGameModel`1.ID">
+        <member name="P:Model.IGameModel.ID">
             <summary>
             Gets or sets the ID of the entity.
             </summary>
         </member>
-        <member name="P:Model.IGameModel`1.DX">
+        <member name="P:Model.IGameModel.DX">
             <summary>
             Gets or sets the X coordinate of the entity.
             </summary>
         </member>
-        <member name="P:Model.IGameModel`1.DY">
+        <member name="P:Model.IGameModel.DY">
             <summary>
             Gets or sets the Y coordinate of the entity.
             </summary>
         </member>
-        <member name="P:Model.IGameModel`1.HealthPoints">
+        <member name="P:Model.IGameModel.HealthPoints">
             <summary>
             Gets or sets the HP coordinate of the entity.
             </summary>
