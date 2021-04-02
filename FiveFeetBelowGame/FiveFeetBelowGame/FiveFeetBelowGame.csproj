@@ -20,4 +20,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="Levels\" />
+    <Folder Include="BL\" />
+    <Folder Include="Data\" />
+    <Folder Include="UI\" />
+  </ItemGroup>
+
 </Project>
