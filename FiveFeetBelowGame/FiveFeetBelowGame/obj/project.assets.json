@@ -4,6 +4,19 @@
     "net5.0-windows7.0": {
       "StyleCop.Analyzers/1.1.118": {
         "type": "package"
+      },
+      "Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Model.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       }
     }
   },
@@ -32,10 +45,16 @@
         "tools/install.ps1",
         "tools/uninstall.ps1"
       ]
+    },
+    "Model/1.0.0": {
+      "type": "project",
+      "path": "../Model/Model.csproj",
+      "msbuildProject": "../Model/Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
+      "Model >= 1.0.0",
       "StyleCop.Analyzers >= 1.1.118"
     ]
   },
@@ -65,7 +84,11 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\BitbucketProjects\\oenik_prog4_2021_1_bwj4ao_uqh2aw\\FiveFeetBelowGame\\Model\\Model.csproj": {
+              "projectPath": "D:\\BitbucketProjects\\oenik_prog4_2021_1_bwj4ao_uqh2aw\\FiveFeetBelowGame\\Model\\Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -106,5 +129,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\BitbucketProjects\\oenik_prog4_2021_1_bwj4ao_uqh2aw\\FiveFeetBelowGame\\FiveFeetBelowGame\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

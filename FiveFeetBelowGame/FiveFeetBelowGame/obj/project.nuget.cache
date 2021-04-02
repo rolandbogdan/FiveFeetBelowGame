@@ -1,10 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "U5Fgtjh34eNBFc96eBPJo89Gr/jgXaQEjSbubsdSrvV6XncDthSiQ0Fd9O3somaQXw0TJeczwzF1gPwatvn8zQ==",
+  "dgSpecHash": "Q4/BJelBBVej1sDrSQdAY2YrLz7GuNmcl/XvWzLY9KsR29RumQwbWciyuyfRd/AwcZXoF4fM8OLiEjRTGf/ODQ==",
   "success": true,
   "projectFilePath": "D:\\BitbucketProjects\\oenik_prog4_2021_1_bwj4ao_uqh2aw\\FiveFeetBelowGame\\FiveFeetBelowGame\\FiveFeetBelowGame.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chees\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\BitbucketProjects\\oenik_prog4_2021_1_bwj4ao_uqh2aw\\FiveFeetBelowGame\\FiveFeetBelowGame\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
