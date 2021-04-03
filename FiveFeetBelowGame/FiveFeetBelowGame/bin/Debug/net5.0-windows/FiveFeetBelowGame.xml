@@ -22,6 +22,11 @@
             Application Entry Point.
             </summary>
         </member>
+        <member name="T:FiveFeetBelowGame.BL.LevelGenerator">
+            <summary>
+            This class generates the .lvl file for the game.
+            </summary>
+        </member>
         <member name="T:FiveFeetBelowGame.MainWindow">
             <summary>
             Interaction logic for MainWindow.xaml.
