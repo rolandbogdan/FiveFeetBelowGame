@@ -14,9 +14,7 @@ namespace Model
     /// <summary>
     /// The interface for the game's model.
     /// </summary>
-    /// <typeparam name="T"> The type of the object the model applies to. </typeparam>
-    public interface IGameModel<T>
-        where T : class
+    public interface IGameModel // <T> ???
     {
         /// <summary>
         /// Gets or sets the ID of the entity.
