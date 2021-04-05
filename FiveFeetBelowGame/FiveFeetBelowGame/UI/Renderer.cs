@@ -131,7 +131,7 @@ namespace FiveFeetBelowGame.UI
                         {
                               for (int y = 0; y < this.model.Rocks.GetLength(0); y++)
                               {
-                                    if (this.model.Rocks[x, y])
+                                    if (this.model.Rocks[x][y])
                                     {
                                           Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                                           g.Children.Add(box);

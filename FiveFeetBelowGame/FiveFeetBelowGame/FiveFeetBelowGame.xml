@@ -40,6 +40,25 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="M:FiveFeetBelowGame.UI.Renderer.Reset">
+            <summary>
+            This method help us to start new game or reset our game.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.UI.Renderer.GetBrush(System.String,System.Boolean)">
+            <summary>
+            This method draws our items.
+            </summary>
+            <param name="fname">Image name from file.</param>
+            <param name="isTiled">True if we have to use tiled brush.</param>
+            <returns>Return a Brush.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.UI.Renderer.BuildDrawing">
+            <summary>
+            This method fill our drawing context.
+            </summary>
+            <returns>Returns a Drawing.</returns>
+        </member>
         <member name="T:FiveFeetBelowGame.VM.DroppedItem">
             <summary>
             Items that entities drop.
@@ -130,7 +149,7 @@
             <param name="w">Double type parameter, it is the width of the gamearea.</param>
             <param name="h">Double type parameter, it is the height of the gamearea.</param>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.Rock">
+        <member name="P:FiveFeetBelowGame.VM.GameModel.Rocks">
             <summary>
             Gets or sets Rock prop represent the rocks of the map.
             </summary>
@@ -219,6 +238,11 @@
         <member name="M:FiveFeetBelowGame.VM.OnePickaxe.DamageCalc">
             <summary>
             Calculates the damage of the pickaxe.
+            </summary>
+        </member>
+        <member name="T:FiveFeetBelowGame.VM.OnePlayer">
+            <summary>
+            OnePlayer represent our player class.
             </summary>
         </member>
         <member name="T:FiveFeetBelowGame.VM.OneRock">
