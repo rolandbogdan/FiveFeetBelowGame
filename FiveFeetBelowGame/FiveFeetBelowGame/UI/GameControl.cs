@@ -10,6 +10,9 @@ namespace FiveFeetBelowGame.UI
       using System.Text;
       using System.Threading.Tasks;
       using System.Windows;
+      using System.Windows.Input;
+      using System.Windows.Media;
+      using FiveFeetBelowGame.BL;
       using FiveFeetBelowGame.VM;
 
       /// <summary>
@@ -17,7 +20,10 @@ namespace FiveFeetBelowGame.UI
       /// </summary>
       public class GameControl : FrameworkElement
       {
-            // GameLogic logic;
+            /// <summary>
+            /// An instance of the descendant class.
+            /// </summary>
+            private GameLogic logic;
 
             /// <summary>
             /// An instance of the descendant class.
@@ -38,6 +44,35 @@ namespace FiveFeetBelowGame.UI
             }
 
             private void GameControl_Loaded(object sender, RoutedEventArgs e)
+            {
+                  this.model = new GameModel(this.ActualWidth, this.ActualHeight);
+                  this.logic = new GameLogic(this.model, "This is the map of the game");
+                  this.renderer = new Renderer(this.model);
+
+                  Window win = Window.GetWindow(this);
+                  if (win != null)
+                  {
+                        win.KeyDown += this.Win_KeyDown;
+                        this.MouseDown += this.GameControl_MouseDown;
+                  }
+
+                  this.InvalidateVisual();
+            }
+
+            protected override void OnRender(DrawingContext drawingContext)
+            {
+                  if (this.renderer != null)
+                  {
+                        drawingContext.DrawDrawing(this.renderer.BuildDrawing());
+                  }
+            }
+
+            private void GameControl_MouseDown(object sender, MouseButtonEventArgs e)
+            {
+                  throw new NotImplementedException();
+            }
+
+            private void Win_KeyDown(object sender, KeyEventArgs e)
             {
                   throw new NotImplementedException();
             }
