@@ -63,7 +63,7 @@ namespace FiveFeetBelowGame.UI
             {
                   if (this.renderer != null)
                   {
-                        drawingContext.DrawDrawing(this.renderer.BuildDrawing());
+                        drawingContext?.DrawDrawing(this.renderer.BuildDrawing());
                   }
             }
 
@@ -74,7 +74,23 @@ namespace FiveFeetBelowGame.UI
 
             private void Win_KeyDown(object sender, KeyEventArgs e)
             {
-                  throw new NotImplementedException();
+                  bool finished = false;
+                  switch (e.Key)
+                  {
+                        /*
+                        case Key.W: finished = this.logic.Move(0, -1); break;
+                        case Key.S: finished = this.logic.Move(0, 1); break;
+                        case Key.A: finished = this.logic.Move(-1, 0); break;
+                        case Key.D: finished = this.logic.Move(1, 0); break;
+                        */
+                  }
+
+                  this.InvalidateVisual();
+
+                  if (finished)
+                  {
+                        MessageBox.Show("YAY!");
+                  }
             }
       }
 }
