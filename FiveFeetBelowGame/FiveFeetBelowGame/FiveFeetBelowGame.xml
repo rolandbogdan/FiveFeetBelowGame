@@ -22,6 +22,29 @@
             Application Entry Point.
             </summary>
         </member>
+        <member name="T:FiveFeetBelowGame.BL.GameLogic">
+            <summary>
+            GameLogic class for the logic of our game.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.BL.GameLogic.model">
+            <summary>
+            GameModel type model, an instance of the descendant class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.#ctor(FiveFeetBelowGame.VM.GameModel,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.GameLogic"/> class.
+            </summary>
+            <param name="model">GameModel type parameter</param>
+            <param name="fname">String type parameter.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.InitModel(System.String)">
+            <summary>
+            Initmodel method for initialize our model.
+            </summary>
+            <param name="fname">String type parameter.</param>
+        </member>
         <member name="T:FiveFeetBelowGame.MainWindow">
             <summary>
             Interaction logic for MainWindow.xaml.
@@ -38,6 +61,31 @@
         <member name="M:FiveFeetBelowGame.MainWindow.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:FiveFeetBelowGame.UI.GameControl">
+            <summary>
+            GameControl class for the game.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.UI.GameControl.logic">
+            <summary>
+            An instance of the descendant class.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.UI.GameControl.renderer">
+            <summary>
+            An instance of the descendant class.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.UI.GameControl.model">
+            <summary>
+            An instance of the descendant class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.UI.GameControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.UI.GameControl"/> class.
             </summary>
         </member>
         <member name="M:FiveFeetBelowGame.UI.Renderer.Reset">
@@ -318,6 +366,36 @@
         <member name="P:FiveFeetBelowGame.VM.Player.Inventory">
             <summary>
             Gets or sets the inventory of the player.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

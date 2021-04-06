@@ -31,13 +31,13 @@ namespace FiveFeetBelowGame.UI
                   this.model = model;
             }
 
-            public Brush PlayerBrush { get { return this.GetBrush(" ", false); } }
+            public Brush PlayerBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.player.bmp", false); } }
 
-            public Brush MonsterBrush { get { return this.GetBrush(" ", false); } }
+            public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.player.bmp", false); } }
 
-            public Brush RockBrush { get { return this.GetBrush(" ", false); } }
+            public Brush RockBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.wall.bmp", false); } }
 
-            public Brush OreBrush { get { return this.GetBrush(" ", false); } }
+            public Brush OreBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.exit.bmp", false); } }
 
             /// <summary>
             /// This method help us to start new game or reset our game.
@@ -62,7 +62,6 @@ namespace FiveFeetBelowGame.UI
                   // Maybe we can store Brush prop for each GameItem inherited class.
                   if (!this.brushes.ContainsKey(fname))
                   {
-                        // ImageBrush ib = new ImageBrush(new BitmapImage(new Uri(xxxxx)));
                         BitmapImage bmp = new BitmapImage();
                         bmp.BeginInit();
                         bmp.StreamSource = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
@@ -116,7 +115,7 @@ namespace FiveFeetBelowGame.UI
                   {
                         Geometry g = new RectangleGeometry(new Rect(this.model.Player.X * this.model.TileSize, this.model.Player.Y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                         this.oldPlayer = new GeometryDrawing(this.PlayerBrush, null, g);
-                        this.oldPlayerPosition = model.Player;
+                        this.oldPlayerPosition = this.model.Player;
                   }
 
                   return this.oldPlayer;
@@ -129,9 +128,9 @@ namespace FiveFeetBelowGame.UI
                         GeometryGroup g = new GeometryGroup();
                         for (int x = 0; x < this.model.Rocks.GetLength(0); x++)
                         {
-                              for (int y = 0; y < this.model.Rocks.GetLength(0); y++)
+                              for (int y = 0; y < this.model.Rocks.GetLength(1); y++)
                               {
-                                    if (this.model.Rocks[x][y])
+                                    if (this.model.Rocks[x, y])
                                     {
                                           Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                                           g.Children.Add(box);
