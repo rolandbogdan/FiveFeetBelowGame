@@ -30,7 +30,11 @@ namespace FiveFeetBelowGame.VM
             /// <summary>
             /// Gets or sets Rock prop represent the rocks of the map.
             /// </summary>
+<<<<<<< HEAD
             public bool[,] Rocks { get; set; }
+=======
+            public GameItem[,] Blocks { get; set; }
+>>>>>>> 3ce322fc8cbf046c377415ce0af2f0523e5178a3
 
             /// <summary>
             /// Gets or sets Player prop represent our player position.

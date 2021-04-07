@@ -21,7 +21,7 @@ namespace FiveFeetBelowGame.VM
         public OneOre()
         {
             this.ID = Guid.NewGuid().ToString();
-            this.Type = OreType.Rock;
+            this.Type = OreType.Iron;
             this.IsDead = false;
 
             // this.CX = x;
