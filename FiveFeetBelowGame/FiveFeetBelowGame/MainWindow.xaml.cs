@@ -32,10 +32,5 @@ namespace FiveFeetBelowGame
         {
             this.InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            LevelGenerator lg = new LevelGenerator("testlevel.txt");
-        }
     }
 }

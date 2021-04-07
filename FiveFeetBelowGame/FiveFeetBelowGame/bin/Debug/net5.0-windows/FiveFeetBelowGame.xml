@@ -39,11 +39,17 @@
             </summary>
             <param name="saveName">Filename.</param>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateNextSection(System.String)">
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateSection(System.String)">
             <summary>
             Generates the next 1000 depth.
             </summary>
             <param name="level"> The path of the lvl file. </param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateFirstSection(System.String)">
+            <summary>
+            Generates the first section of the map.
+            </summary>
+            <param name="level">The map's file path.</param>
         </member>
         <member name="M:FiveFeetBelowGame.BL.LevelGenerator.RowGenerator">
             <summary>
@@ -57,11 +63,6 @@
             </summary>
             <param name="a">A random integer.</param>
             <returns>A letter for the ore.</returns>
-        </member>
-        <member name="T:FiveFeetBelowGame.BL.LevelToGameitemConverter">
-            <summary>
-            Converts the level file to game objects.
-            </summary>
         </member>
         <member name="T:FiveFeetBelowGame.MainWindow">
             <summary>

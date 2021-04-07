@@ -17,7 +17,7 @@ namespace FiveFeetBelowGame.BL
     /// </summary>
     public class LevelGenerator
     {
-        int depth;
+        private int depth;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LevelGenerator"/> class.
@@ -25,7 +25,7 @@ namespace FiveFeetBelowGame.BL
         public LevelGenerator()
         {
             string path = "map.txt";
-            this.GenerateNextSection(path);
+            this.GenerateFirstSection(path);
         }
 
         /// <summary>
@@ -34,36 +34,14 @@ namespace FiveFeetBelowGame.BL
         /// <param name="saveName">Filename.</param>
         public LevelGenerator(string saveName)
         {
-            StreamWriter sw = new StreamWriter(saveName);
-
-            for (int i = 0; i < 1000; i++)
-            {
-                sw.WriteLine(this.RowGenerator());
-            }
-
-            sw.Close();
-        }
-
-        private void GenerateFirstSection(string level)
-        {
-            StreamWriter sw = new StreamWriter(level);
-
-            // air
-            for (int i = 0; i < 25; i++)
-            {
-                sw.WriteLine("                         ");
-            }
-
-            sw.WriteLine("Bsssssssssss   sssssssssB"); // top grass level
-            sw.Close();
-            this.GenerateNextSection(level);
+            this.GenerateFirstSection(saveName);
         }
 
         /// <summary>
         /// Generates the next 1000 depth.
         /// </summary>
         /// <param name="level"> The path of the lvl file. </param>
-        private void GenerateNextSection(string level)
+        public void GenerateSection(string level)
         {
             StreamWriter sw = new StreamWriter(level, true);
             for (int i = 0; i < 1000; i++)
@@ -72,6 +50,25 @@ namespace FiveFeetBelowGame.BL
             }
 
             sw.Close();
+        }
+
+        /// <summary>
+        /// Generates the first section of the map.
+        /// </summary>
+        /// <param name="level">The map's file path.</param>
+        private void GenerateFirstSection(string level)
+        {
+            StreamWriter sw = new StreamWriter(level);
+
+            for (int i = 0; i < 9; i++)
+            {
+                sw.WriteLine("                         "); // 9 air
+            }
+
+            sw.WriteLine("           P             "); // player
+            sw.WriteLine("Bsssssssssss   sssssssssB"); // top grass level with opening
+            sw.Close();
+            this.GenerateSection(level);
         }
 
         /// <summary>
@@ -107,7 +104,7 @@ namespace FiveFeetBelowGame.BL
                 }
             }
 
-            outp += $"  -- depth: {this.depth}";
+            // outp += $"  -- depth: {this.depth}";
             return outp;
         }
 

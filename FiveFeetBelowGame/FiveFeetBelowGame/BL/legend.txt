@@ -1,3 +1,4 @@
+P = player
 B = border
 s = grass
 r = rock
