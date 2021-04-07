@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Model</name>
+    </assembly>
+    <members>
+        <member name="T:Model.IGameModel">
+            <summary>
+            The interface for the game's model.
+            </summary>
+        </member>
+        <member name="P:Model.IGameModel.ID">
+            <summary>
+            Gets or sets the ID of the entity.
+            </summary>
+        </member>
+        <member name="P:Model.IGameModel.DX">
+            <summary>
+            Gets or sets the X coordinate of the entity.
+            </summary>
+        </member>
+        <member name="P:Model.IGameModel.DY">
+            <summary>
+            Gets or sets the Y coordinate of the entity.
+            </summary>
+        </member>
+        <member name="P:Model.IGameModel.HealthPoints">
+            <summary>
+            Gets or sets the HP coordinate of the entity.
+            </summary>
+        </member>
+    </members>
+</doc>
