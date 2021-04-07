@@ -104,7 +104,8 @@ namespace FiveFeetBelowGame.BL
         /// <returns>Returns a type of gameitem. </returns>
         private GameItem TextToItemConverter(char c)
         {
-            if (c == 'r')
+            // need sg for walls
+            if (c == 'r' || c == 'B')
             {
                 return new OneRock();
             }
