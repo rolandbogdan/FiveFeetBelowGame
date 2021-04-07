@@ -127,11 +127,11 @@ namespace FiveFeetBelowGame.UI
                   if (this.oldRocks == null)
                   {
                         GeometryGroup g = new GeometryGroup();
-                        for (int x = 0; x < this.model.Rocks.GetLength(0); x++)
+                        for (int x = 0; x < this.model.Blocks.GetLength(0); x++)
                         {
-                              for (int y = 0; y < this.model.Rocks.GetLength(0); y++)
+                              for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
                               {
-                                    if (this.model.Rocks[x, y])
+                                    if (this.model.Blocks[x, y])
                                     {
                                           Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                                           g.Children.Add(box);
