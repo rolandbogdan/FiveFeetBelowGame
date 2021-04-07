@@ -129,7 +129,7 @@ namespace FiveFeetBelowGame.UI
                         GeometryGroup g = new GeometryGroup();
                         for (int x = 0; x < this.model.Rocks.GetLength(0); x++)
                         {
-                              for (int y = 0; y < this.model.Rocks.GetLength(0); y++)
+                              for (int y = 0; y < this.model.Rocks.GetLength(1); y++)
                               {
                                     if (this.model.Rocks[x, y])
                                     {
