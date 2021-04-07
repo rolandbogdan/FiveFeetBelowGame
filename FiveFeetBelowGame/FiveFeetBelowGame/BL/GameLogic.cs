@@ -36,6 +36,40 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// Moves the player charecter.
+        /// </summary>
+        /// <param name="dx"> Horizontal speed. </param>
+        /// <param name="dy"> Vertical speed.</param>
+        public void Move(int dx, int dy) // [-1;1] double?? !!
+        {
+            int newX = (int)(this.model.Player.X + dx);
+            int newY = (int)(this.model.Player.Y + dy);
+            if (newX >= 0 && newY >= 0 && newX < this.model.Blocks.GetLength(0)
+                && this.model.Blocks[newX, newY].GetType().ToString() == "OneAir")
+            {
+                this.model.Player = new Point(newX, newY);
+            }
+        }
+
+        /// <summary>
+        /// Gets the coordinates of where we clicked.
+        /// </summary>
+        /// <param name="mousePos">The point where the mouse is.</param>
+        /// <returns>The point where we clicked as an object. </returns>
+        public Point GetTilePos(Point mousePos) // Pixel position => Tile position
+        {
+            return new Point((int)(mousePos.X / this.model.TileSize), (int)(mousePos.Y / this.model.TileSize));
+        }
+
+        /// <summary>
+        /// Gravity to be implemented.
+        /// </summary>
+        public void Gravity()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Initmodel method for initialize our model.
         /// </summary>
         /// <param name="fname">String type parameter.</param>
@@ -74,9 +108,13 @@ namespace FiveFeetBelowGame.BL
             {
                 return new OneRock();
             }
-            else
+            else if (c != ' ')
             {
                 return new OneOre(); // what ore
+            }
+            else
+            {
+                return null;
             }
         }
     }
