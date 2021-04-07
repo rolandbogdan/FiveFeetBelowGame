@@ -1,0 +1,8 @@
+B = border
+s = grass
+r = rock
+i = iron
+g = gold
+d = diamond
++ = gem
+* = rare gem

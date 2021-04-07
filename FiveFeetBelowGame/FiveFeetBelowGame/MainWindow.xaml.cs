@@ -18,6 +18,7 @@ namespace FiveFeetBelowGame
     using System.Windows.Media.Imaging;
     using System.Windows.Navigation;
     using System.Windows.Shapes;
+    using FiveFeetBelowGame.BL;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml.
@@ -30,6 +31,11 @@ namespace FiveFeetBelowGame
         public MainWindow()
         {
             this.InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LevelGenerator lg = new LevelGenerator("testlevel.txt");
         }
     }
 }

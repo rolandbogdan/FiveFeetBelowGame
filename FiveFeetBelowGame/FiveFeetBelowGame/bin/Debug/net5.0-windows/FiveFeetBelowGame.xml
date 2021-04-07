@@ -24,7 +24,43 @@
         </member>
         <member name="T:FiveFeetBelowGame.BL.LevelGenerator">
             <summary>
-            This class generates the .lvl file for the game.
+            This class generates the .lvl file for the game, for the renderer to draw later.
+            This generates the first 1000 blocks, and the procedural generator class will generate the rest.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.LevelGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.LevelGenerator"/> class.
+            </summary>
+            <param name="saveName">Filename.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateNextSection(System.String)">
+            <summary>
+            Generates the next 1000 depth.
+            </summary>
+            <param name="level"> The path of the lvl file. </param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.RowGenerator">
+            <summary>
+            Generates one row on the map.
+            </summary>
+            <returns>returns the certain row.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.OreChooser(System.Int32)">
+            <summary>
+            Decides what ore to insert depending on the depth.
+            </summary>
+            <param name="a">A random integer.</param>
+            <returns>A letter for the ore.</returns>
+        </member>
+        <member name="T:FiveFeetBelowGame.BL.LevelToGameitemConverter">
+            <summary>
+            Converts the level file to game objects.
             </summary>
         </member>
         <member name="T:FiveFeetBelowGame.MainWindow">

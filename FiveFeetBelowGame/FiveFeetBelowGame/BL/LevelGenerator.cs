@@ -17,7 +17,16 @@ namespace FiveFeetBelowGame.BL
     /// </summary>
     public class LevelGenerator
     {
-        private Random r = new Random();
+        int depth;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LevelGenerator"/> class.
+        /// </summary>
+        public LevelGenerator()
+        {
+            string path = "map.txt";
+            this.GenerateNextSection(path);
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LevelGenerator"/> class.
@@ -25,19 +34,142 @@ namespace FiveFeetBelowGame.BL
         /// <param name="saveName">Filename.</param>
         public LevelGenerator(string saveName)
         {
-            if (!saveName.EndsWith(".txt") || !saveName.EndsWith(".lvl"))
-            {
-                saveName += ".txt";
-            }
-
             StreamWriter sw = new StreamWriter(saveName);
-            ProceduralGenerator pg = new ProceduralGenerator();
 
             for (int i = 0; i < 1000; i++)
             {
-                sw.WriteLine(pg.RowGenerator());
+                sw.WriteLine(this.RowGenerator());
             }
+
+            sw.Close();
         }
 
+        private void GenerateFirstSection(string level)
+        {
+            StreamWriter sw = new StreamWriter(level);
+
+            // air
+            for (int i = 0; i < 25; i++)
+            {
+                sw.WriteLine("                         ");
+            }
+
+            sw.WriteLine("Bsssssssssss   sssssssssB"); // top grass level
+            sw.Close();
+            this.GenerateNextSection(level);
+        }
+
+        /// <summary>
+        /// Generates the next 1000 depth.
+        /// </summary>
+        /// <param name="level"> The path of the lvl file. </param>
+        private void GenerateNextSection(string level)
+        {
+            StreamWriter sw = new StreamWriter(level, true);
+            for (int i = 0; i < 1000; i++)
+            {
+                sw.WriteLine(this.RowGenerator());
+            }
+
+            sw.Close();
+        }
+
+        /// <summary>
+        /// Generates one row on the map.
+        /// </summary>
+        /// <returns>returns the certain row.</returns>
+        private string RowGenerator()
+        {
+            this.depth++;
+            Random r = new Random();
+            string outp = string.Empty;
+            for (int i = 0; i < 25; i++)
+            {
+                int a = r.Next(100);
+                if (i == 0 || i == 24)
+                {
+                    outp += "B";
+                }
+                else
+                {
+                    if (a < 94)
+                    {
+                        outp += "r"; // rock
+                    }
+                    else if (a >= 94 && a <= 96)
+                    {
+                        outp += this.OreChooser(a);
+                    }
+                    else
+                    {
+                        outp += " ";
+                    }
+                }
+            }
+
+            outp += $"  -- depth: {this.depth}";
+            return outp;
+        }
+
+        /// <summary>
+        /// Decides what ore to insert depending on the depth.
+        /// </summary>
+        /// <param name="a">A random integer.</param>
+        /// <returns>A letter for the ore.</returns>
+        private string OreChooser(int a)
+        {
+            if (this.depth <= 50)
+            {
+                return "i";
+            }
+            else if (this.depth <= 150)
+            {
+                if (a % 2 == 0)
+                {
+                    return "i";
+                }
+                else
+                {
+                    return "g";
+                }
+            }
+            else if (this.depth <= 250)
+            {
+                if (a % 2 == 0)
+                {
+                    return "g";
+                }
+                else
+                {
+                    return "d";
+                }
+            }
+            else if (this.depth <= 300)
+            {
+                if (a % 2 == 0)
+                {
+                    return "d";
+                }
+                else
+                {
+                    return "+";
+                }
+            }
+            else if (this.depth >= 301)
+            {
+                if (a % 2 == 0)
+                {
+                    return "+";
+                }
+                else
+                {
+                    return "*";
+                }
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
     }
 }
