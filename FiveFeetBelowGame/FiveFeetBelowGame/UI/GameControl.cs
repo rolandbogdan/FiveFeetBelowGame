@@ -46,7 +46,7 @@ namespace FiveFeetBelowGame.UI
             private void GameControl_Loaded(object sender, RoutedEventArgs e)
             {
                   this.model = new GameModel(this.ActualWidth, this.ActualHeight);
-                  this.logic = new GameLogic(this.model, "This is the map of the game");
+                  this.logic = new GameLogic(this.model, "FiveFeetBelowGame.Levels.L00.lvl");
                   this.renderer = new Renderer(this.model);
 
                   Window win = Window.GetWindow(this);
@@ -74,23 +74,25 @@ namespace FiveFeetBelowGame.UI
 
             private void Win_KeyDown(object sender, KeyEventArgs e)
             {
-                  bool finished = false;
                   switch (e.Key)
                   {
-                        /*
-                        case Key.W: finished = this.logic.Move(0, -1); break;
-                        case Key.S: finished = this.logic.Move(0, 1); break;
-                        case Key.A: finished = this.logic.Move(-1, 0); break;
-                        case Key.D: finished = this.logic.Move(1, 0); break;
-                        */
+                        case System.Windows.Input.Key.W:
+                              this.logic.Move(0, 5);
+                              break;
+                        case System.Windows.Input.Key.S:
+                              this.logic.Move(0, -5);
+                              break;
+                        case System.Windows.Input.Key.A:
+                              this.logic.Move(-5, 0);
+                              break;
+                        case System.Windows.Input.Key.D:
+                              this.logic.Move(5, 0);
+                              break;
+                        default:
+                              break;
                   }
 
                   this.InvalidateVisual();
-
-                  if (finished)
-                  {
-                        MessageBox.Show("YAY!");
-                  }
             }
       }
 }

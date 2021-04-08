@@ -5,7 +5,7 @@
     </assembly>
     <members>
         <member name="T:Repository.IStorageRepository`1">
-            <summary>
+            <summary>t checko
             The interface for the repository of the game.
             </summary>
             <typeparam name="T"> The type of the entity stored. </typeparam>

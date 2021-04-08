@@ -35,21 +35,33 @@ namespace FiveFeetBelowGame.BL
             this.InitModel(fname);
         }
 
-        /// <summary>
-        /// Moves the player charecter.
-        /// </summary>
-        /// <param name="dx"> Horizontal speed. </param>
-        /// <param name="dy"> Vertical speed.</param>
-        public void Move(int dx, int dy) // [-1;1] double?? !!
-        {
-            int newX = (int)(this.model.Player.X + dx);
-            int newY = (int)(this.model.Player.Y + dy);
-            if (newX >= 0 && newY >= 0 && newX < this.model.Blocks.GetLength(0)
-                && this.model.Blocks[newX, newY].GetType().ToString() == "OneAir")
+            /// <summary>
+            /// Moves the player charecter.
+            /// </summary>
+            /// <param name="horizontal"> Horizontal speed. </param>
+            /// <param name="vertical"> Vertical speed.</param>
+            public void Move(int horizontal, int vertical)
             {
-                this.model.Player = new Point(newX, newY);
+                  if (horizontal != 0)
+                  {
+                        // model.Player.DX += horizontal; // talán így kéne majd
+                  }
+
+                  if (vertical != 0)
+                  {
+                        // model.Player.Dy += vertical; // talán így kéne majd
+                  }
+
+                  /*
+                  int newX = (int)(this.model.Player.X + dx);
+                  int newY = (int)(this.model.Player.Y + dy);
+                  if (newX >= 0 && newY >= 0 && newX < this.model.Blocks.GetLength(0)
+                      && this.model.Blocks[newX, newY].GetType().ToString() == "OneAir")
+                  {
+                      this.model.Player = new Point(newX, newY);
+                  }
+                  */
             }
-        }
 
         /// <summary>
         /// Gets the coordinates of where we clicked.
