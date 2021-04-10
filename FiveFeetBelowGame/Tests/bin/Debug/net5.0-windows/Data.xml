@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Data</name>
+    </assembly>
+    <members>
+        <member name="T:Data.HighscoreContext">
+            <summary>
+            The context class for the highscores.
+            </summary>
+        </member>
+        <member name="M:Data.HighscoreContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Data.HighscoreContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Data.HighscoreContext"/> class.
+            </summary>
+            <param name="opt">The db context options. </param>
+        </member>
+        <member name="M:Data.HighscoreContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Data.HighscoreContext"/> class.
+            </summary>
+        </member>
+        <member name="P:Data.HighscoreContext.Highscores">
+            <summary>
+            Gets or sets the dbset of highscores.
+            </summary>
+        </member>
+        <member name="M:Data.HighscoreContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Configures the database.
+            </summary>
+            <param name="optionsBuilder">Requires a dbcontext option builder by default.</param>
+        </member>
+        <member name="M:Data.HighscoreContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Configures the database.
+            </summary>
+            <param name="modelBuilder">Requires a dbcontext model builder by default.</param>
+        </member>
+    </members>
+</doc>
