@@ -9,6 +9,21 @@
             The repository class for the highscores.
             </summary>
         </member>
+        <member name="M:Repository.HighscoreRepo.Save">
+            <inheritdoc/>
+        </member>
+        <member name="M:Repository.HighscoreRepo.Insert(Model.Highscore)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Repository.HighscoreRepo.Delete(Model.Highscore)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Repository.HighscoreRepo.GetOne(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Repository.HighscoreRepo.GetAll">
+            <inheritdoc/>
+        </member>
         <member name="T:Repository.IStorageRepository`1">
             <summary>t checko
             The interface for the repository of the game.
@@ -40,7 +55,7 @@
             </summary>
             <param name="toDelete">The entity to be deleted.</param>
         </member>
-        <member name="M:Repository.IStorageRepository`1.SaveChanges">
+        <member name="M:Repository.IStorageRepository`1.Save">
             <summary>
             Saves all changes in the repository.
             </summary>

@@ -4,6 +4,47 @@
         <name>Logic</name>
     </assembly>
     <members>
+        <member name="T:Logic.HighscoreLogic">
+            <summary>
+            This class is represent the logc of the highscore.
+            </summary>
+        </member>
+        <member name="M:Logic.HighscoreLogic.#ctor(Repository.IStorageRepository{Model.Highscore})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Logic.HighscoreLogic"/> class.
+            </summary>
+            <param name="highscoreRepo">IStorageRepository Highscore type parameter.</param>
+        </member>
+        <member name="M:Logic.HighscoreLogic.Save">
+            <summary>
+            Save method to save a highscore.
+            </summary>
+        </member>
+        <member name="M:Logic.HighscoreLogic.Insert(Model.Highscore)">
+            <summary>
+            Insert method to add a new highscore.
+            </summary>
+            <param name="hs">Highscore type parameter what we want to save.</param>
+        </member>
+        <member name="M:Logic.HighscoreLogic.Delete(Model.Highscore)">
+            <summary>
+            Delete method to delete a highscore.
+            </summary>
+            <param name="hs">Highscore type parameter what we want to delete.</param>
+        </member>
+        <member name="M:Logic.HighscoreLogic.GetOneHighscore(System.String)">
+            <summary>
+            GetOneHighscore method to find one highscore by id.
+            </summary>
+            <param name="id">String type parameter what we want to find.</param>
+            <returns>Return a highscore.</returns>
+        </member>
+        <member name="M:Logic.HighscoreLogic.GetAllHighscore">
+            <summary>
+            GetAllHighscore to list all of the highscores.
+            </summary>
+            <returns>Returns an IQueryable Highscore type.</returns>
+        </member>
         <member name="T:Logic.IGameLogic`1">
             <summary>
             The interface for the game logic.

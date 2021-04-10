@@ -17,6 +17,11 @@
             <param name="deepestpoint"> The deepest point the player has reached. </param>
             <param name="pickaxelvl"> The level of the player's pickaxe. </param>
         </member>
+        <member name="M:Model.Highscore.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Model.Highscore"/> class.
+            </summary>
+        </member>
         <member name="P:Model.Highscore.HsID">
             <summary>
             Gets or sets the id of the highscore save.
