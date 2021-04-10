@@ -6,6 +6,6 @@
         xmlns:local="clr-namespace:FiveFeetBelowGame"
         xmlns:ui="clr-namespace:FiveFeetBelowGame.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="500">
-    <ui:GameControl />
+        Title="MainWindow" Height="809" Width="433">
+    <ui:GameControl/>
 </Window>

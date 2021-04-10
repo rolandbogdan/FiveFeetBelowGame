@@ -4,6 +4,8 @@
 
 namespace FiveFeetBelowGame
 {
+    using FiveFeetBelowGame.BL;
+    using FiveFeetBelowGame.UI;
     using System;
     using System.Collections.Generic;
     using System.Linq;

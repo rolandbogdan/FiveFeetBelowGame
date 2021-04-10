@@ -131,7 +131,7 @@ namespace FiveFeetBelowGame.BL
             {
                 return new OneRock();
             }
-            else if (c != ' ')
+            else if (c == 'i')
             {
                 return new OneOre(); // TODO what ore
             }

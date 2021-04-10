@@ -51,28 +51,28 @@ namespace FiveFeetBelowGame.BL
 
         private char BlockToCharConverter(GameItem gi)
         {
-            string type = gi.GetType().ToString();
-            if (type == typeof(OneAir).ToString())
+            string type = gi.GetType().Name;
+            if (type == typeof(OneAir).Name)
             {
                 return ' ';
             }
-            else if (type == typeof(OneRock).ToString())
+            else if (type == typeof(OneRock).Name)
             {
                 return 'r';
             }
-            else if (type == typeof(OneWall).ToString())
+            else if (type == typeof(OneWall).Name)
             {
                 return 'B';
             }
-            else if (type == typeof(OneOre).ToString())
+            else if (type == typeof(OneOre).Name)
             {
                 this.OreSelector(gi as OneOre);
             }
-            else if (type == typeof(OnePlayer).ToString())
+            else if (type == typeof(OnePlayer).Name)
             {
                 return 'P';
             }
-            else if (type == typeof(OneMonster).ToString())
+            else if (type == typeof(OneMonster).Name)
             {
                 return 'M';
             }

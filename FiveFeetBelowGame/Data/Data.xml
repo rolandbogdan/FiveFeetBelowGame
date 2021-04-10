@@ -25,5 +25,17 @@
             Gets or sets the dbset of highscores.
             </summary>
         </member>
+        <member name="M:Data.HighscoreContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Configures the database.
+            </summary>
+            <param name="optionsBuilder">Requires a dbcontext option builder by default.</param>
+        </member>
+        <member name="M:Data.HighscoreContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Configures the database.
+            </summary>
+            <param name="modelBuilder">Requires a dbcontext model builder by default.</param>
+        </member>
     </members>
 </doc>
