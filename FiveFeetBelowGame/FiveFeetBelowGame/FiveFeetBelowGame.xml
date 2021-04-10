@@ -365,6 +365,13 @@
             OnePlayer represent our player class.
             </summary>
         </member>
+        <member name="M:FiveFeetBelowGame.VM.OnePlayer.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OnePlayer"/> class.
+            </summary>
+            <param name="cx">X coordinate. </param>
+            <param name="cy">Y coordinate. </param>
+        </member>
         <member name="T:FiveFeetBelowGame.VM.OneRock">
             <summary>
             A rock entity in the game.
