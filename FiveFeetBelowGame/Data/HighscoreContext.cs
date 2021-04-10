@@ -39,5 +39,6 @@ namespace Data
         /// Gets or sets the dbset of highscores.
         /// </summary>
         public DbSet<Highscore> Highscores { get; set; }
+
     }
 }

@@ -9,5 +9,21 @@
             The context class for the highscores.
             </summary>
         </member>
+        <member name="M:Data.HighscoreContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Data.HighscoreContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Data.HighscoreContext"/> class.
+            </summary>
+            <param name="opt">The db context options. </param>
+        </member>
+        <member name="M:Data.HighscoreContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Data.HighscoreContext"/> class.
+            </summary>
+        </member>
+        <member name="P:Data.HighscoreContext.Highscores">
+            <summary>
+            Gets or sets the dbset of highscores.
+            </summary>
+        </member>
     </members>
 </doc>
