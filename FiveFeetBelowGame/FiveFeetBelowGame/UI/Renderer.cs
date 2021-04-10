@@ -21,7 +21,6 @@ namespace FiveFeetBelowGame.UI
 
             Drawing oldBackground;
             Drawing oldRocks;
-            Drawing oldExit;
             Drawing oldPlayer;
             Point oldPlayerPosition;
             Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
@@ -91,8 +90,8 @@ namespace FiveFeetBelowGame.UI
                   dg.Children.Add(this.GetBackground());
                   dg.Children.Add(this.GetRocks());
                   dg.Children.Add(this.GetPlayer());
-                  dg.Children.Add(this.GetOres());
-                  dg.Children.Add(this.GetMonsters());
+                  // dg.Children.Add(this.GetOres());
+                  // dg.Children.Add(this.GetMonsters());
 
                   return dg;
             }

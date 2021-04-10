@@ -16,3 +16,5 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Performance", "CA1814:Prefer jagged arrays over multidimensional", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.BL.GameLogic.InitModel(System.String)")]
 [assembly: SuppressMessage("Performance", "CA1814:Prefer jagged arrays over multidimensional", Justification = "Unnecessary", Scope = "member", Target = "~P:FiveFeetBelowGame.VM.GameModel.Blocks")]
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.BL.GameLogic.TextToItemConverter(System.Char)~FiveFeetBelowGame.VM.GameItem")]
+[assembly: SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.BL.LevelGenerator.RowGenerator~System.String")]
+[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.BL.GameLogic.Move(System.Int32,System.Int32)")]
