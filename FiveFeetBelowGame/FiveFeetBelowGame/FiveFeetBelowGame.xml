@@ -234,6 +234,16 @@
             Gets or sets the damage this entity can deal.
             </summary>
         </member>
+        <member name="P:FiveFeetBelowGame.VM.GameItem.Breakable">
+            <summary>
+            Gets or sets a value indicating whether the block is breakable or not.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameItem.IsSolid">
+            <summary>
+            Gets or sets a value indicating whether the block is solid or not.
+            </summary>
+        </member>
         <member name="M:FiveFeetBelowGame.VM.GameItem.IsCollision(FiveFeetBelowGame.VM.GameItem)">
             <summary>
             Decides if the element is colliding with another element or not.
@@ -292,6 +302,11 @@
         <member name="T:FiveFeetBelowGame.VM.OneAir">
             <summary>
             Air entity.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.VM.OneAir.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OneAir"/> class.
             </summary>
         </member>
         <member name="T:FiveFeetBelowGame.VM.OneMonster">
@@ -390,6 +405,16 @@
         <member name="P:FiveFeetBelowGame.VM.OneRock.Hardness">
             <summary>
             Gets or sets the hardness of the block.
+            </summary>
+        </member>
+        <member name="T:FiveFeetBelowGame.VM.OneWall">
+            <summary>
+            The boundaries of the map.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.VM.OneWall.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OneWall"/> class.
             </summary>
         </member>
         <member name="T:FiveFeetBelowGame.VM.OreType">
