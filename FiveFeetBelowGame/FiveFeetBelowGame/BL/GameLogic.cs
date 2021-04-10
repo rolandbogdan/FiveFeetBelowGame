@@ -89,7 +89,7 @@ namespace FiveFeetBelowGame.BL
         {
             // Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
             // StreamReader sr = new StreamReader(stream);
-            StreamReader sr = new StreamReader("map.txt");
+            StreamReader sr = new StreamReader("..\\..\\..\\Levels\\map.lvl");
             List<string> lines = new List<string>();
             while (!sr.EndOfStream)
             {
