@@ -9,6 +9,7 @@ namespace Repository
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Data;
     using Model;
 
     /// <summary>
@@ -16,30 +17,38 @@ namespace Repository
     /// </summary>
     public class HighscoreRepo : IStorageRepository<Highscore>
     {
-        // private
-        public void Delete(Highscore toDelete)
+        private HighscoreContext ctx = new HighscoreContext();
+
+        /// <inheritdoc/>
+        public void Save()
         {
-            throw new NotImplementedException();
+            this.ctx.SaveChanges();
         }
 
-        public IQueryable<Highscore> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Highscore GetOne(string id)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <inheritdoc/>
         public void Insert(Highscore toInsert)
         {
-            throw new NotImplementedException();
+            this.ctx.Add(toInsert);
+            this.Save();
         }
 
-        public void SaveChanges()
+        /// <inheritdoc/>
+        public void Delete(Highscore toDelete)
         {
-            throw new NotImplementedException();
+            this.ctx.Highscores.Remove(toDelete);
+            this.Save();
+        }
+
+        /// <inheritdoc/>
+        public Highscore GetOne(string id)
+        {
+            return this.ctx.Highscores.FirstOrDefault(x => x.HsID == id);
+        }
+
+        /// <inheritdoc/>
+        public IQueryable<Highscore> GetAll()
+        {
+            return this.ctx.Highscores.AsQueryable();
         }
     }
 }

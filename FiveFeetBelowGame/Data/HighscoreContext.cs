@@ -40,5 +40,37 @@ namespace Data
         /// </summary>
         public DbSet<Highscore> Highscores { get; set; }
 
+        /// <summary>
+        /// Configures the database.
+        /// </summary>
+        /// <param name="optionsBuilder">Requires a dbcontext option builder by default.</param>
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (optionsBuilder is null)
+            {
+                throw new ArgumentNullException(nameof(optionsBuilder));
+            }
+
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.
+                    UseLazyLoadingProxies().
+                    UseSqlServer(@"data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\HighscoreDB.mdf;integrated security=True;MultipleActiveResultSets=True");
+            }
+        }
+
+        /// <summary>
+        /// Configures the database.
+        /// </summary>
+        /// <param name="modelBuilder">Requires a dbcontext model builder by default.</param>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            if (modelBuilder is null)
+            {
+                throw new ArgumentNullException(nameof(modelBuilder));
+            }
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

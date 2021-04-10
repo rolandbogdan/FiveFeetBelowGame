@@ -46,6 +46,6 @@ namespace Repository
         /// <summary>
         /// Saves all changes in the repository.
         /// </summary>
-        void SaveChanges();
+        void Save();
     }
 }
