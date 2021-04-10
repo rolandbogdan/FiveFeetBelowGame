@@ -63,6 +63,16 @@ namespace FiveFeetBelowGame.VM
         public int Damage { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the block is breakable or not.
+        /// </summary>
+        public bool Breakable { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the block is solid or not.
+        /// </summary>
+        public bool IsSolid { get; set; }
+
+        /// <summary>
         /// Decides if the element is colliding with another element or not.
         /// </summary>
         /// <param name="other"> The other element this one might collide with. </param>

@@ -23,7 +23,8 @@ namespace FiveFeetBelowGame.VM
             this.ID = Guid.NewGuid().ToString();
             this.Type = OreType.Iron;
             this.IsDead = false;
-
+            this.Breakable = true;
+            this.IsSolid = true;
             // this.CX = x;
             // this.CY = y;
             // this.area = new Geometry();

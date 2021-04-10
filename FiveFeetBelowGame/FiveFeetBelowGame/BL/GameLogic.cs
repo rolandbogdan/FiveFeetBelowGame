@@ -100,9 +100,7 @@ namespace FiveFeetBelowGame.BL
 
             int height = lines.Count;
             int width = lines[0].Length;
-            this.model.Blocks = new GameItem[lines.Count, lines[0].Length];
-            
-            // this.model.TileSize = Math.Min(this.model.GameWidth / width, this.model.GameHeight / height);
+            this.model.Blocks = new GameItem[height, width];
             this.model.TileSize = this.model.GameWidth / 25;
             int x = 0;
             foreach (string item in lines)
