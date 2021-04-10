@@ -4,6 +4,11 @@
         <name>Repository</name>
     </assembly>
     <members>
+        <member name="T:Repository.HighscoreRepo">
+            <summary>
+            The repository class for the highscores.
+            </summary>
+        </member>
         <member name="T:Repository.IStorageRepository`1">
             <summary>t checko
             The interface for the repository of the game.

@@ -25,9 +25,9 @@ namespace FiveFeetBelowGame.VM
             this.IsDead = false;
             this.Breakable = true;
             this.IsSolid = true;
-            // this.CX = x;
-            // this.CY = y;
-            // this.area = new Geometry();
+            /* this.CX = x;
+             * this.CY = y;
+             * this.area = new Geometry(); */
         }
 
         /// <summary>
