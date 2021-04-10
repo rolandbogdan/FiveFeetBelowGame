@@ -4,6 +4,7 @@
 
 namespace FiveFeetBelowGame
 {
+    using FiveFeetBelowGame.BL;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -30,6 +31,11 @@ namespace FiveFeetBelowGame
         public MainWindow()
         {
             this.InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LevelGenerator lg = new LevelGenerator();
         }
     }
 }

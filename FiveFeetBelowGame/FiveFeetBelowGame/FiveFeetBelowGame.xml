@@ -22,6 +22,96 @@
             Application Entry Point.
             </summary>
         </member>
+        <member name="T:FiveFeetBelowGame.BL.GameLogic">
+            <summary>
+            GameLogic class for the logic of our game.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.BL.GameLogic.model">
+            <summary>
+            GameModel type model, an instance of the descendant class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.#ctor(FiveFeetBelowGame.VM.GameModel,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.GameLogic"/> class.
+            </summary>
+            <param name="model">GameModel type parameter.</param>
+            <param name="fname">String type parameter.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.Move(System.Int32,System.Int32)">
+            <summary>
+            Moves the player charecter.
+            </summary>
+            <param name="dx"> Horizontal speed. </param>
+            <param name="dy"> Vertical speed.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.GetTilePos(System.Windows.Point)">
+            <summary>
+            Gets the coordinates of where we clicked.
+            </summary>
+            <param name="mousePos">The point where the mouse is.</param>
+            <returns>The point where we clicked as an object. </returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.Gravity">
+            <summary>
+            Gravity to be implemented.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.InitModel(System.String)">
+            <summary>
+            Initmodel method for initialize our model.
+            </summary>
+            <param name="fname">String type parameter.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.TextToItemConverter(System.Char)">
+            <summary>
+            Converts from the letters in the txt file to game items.
+            </summary>
+            <returns>Returns a type of gameitem. </returns>
+        </member>
+        <member name="T:FiveFeetBelowGame.BL.LevelGenerator">
+            <summary>
+            This class generates the .lvl file for the game, for the renderer to draw later.
+            This generates the first 1000 blocks, and the procedural generator class will generate the rest.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.LevelGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.LevelGenerator"/> class.
+            </summary>
+            <param name="saveName">Filename.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateSection(System.String)">
+            <summary>
+            Generates the next 1000 depth.
+            </summary>
+            <param name="level"> The path of the lvl file. </param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateFirstSection(System.String)">
+            <summary>
+            Generates the first section of the map.
+            </summary>
+            <param name="level">The map's file path.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.RowGenerator">
+            <summary>
+            Generates one row on the map.
+            </summary>
+            <returns>returns the certain row.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.OreChooser(System.Int32)">
+            <summary>
+            Decides what ore to insert depending on the depth.
+            </summary>
+            <param name="a">A random integer.</param>
+            <returns>A letter for the ore.</returns>
+        </member>
         <member name="T:FiveFeetBelowGame.MainWindow">
             <summary>
             Interaction logic for MainWindow.xaml.
@@ -39,6 +129,25 @@
             <summary>
             InitializeComponent
             </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.UI.Renderer.Reset">
+            <summary>
+            This method help us to start new game or reset our game.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.UI.Renderer.GetBrush(System.String,System.Boolean)">
+            <summary>
+            This method draws our items.
+            </summary>
+            <param name="fname">Image name from file.</param>
+            <param name="isTiled">True if we have to use tiled brush.</param>
+            <returns>Return a Brush.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.UI.Renderer.BuildDrawing">
+            <summary>
+            This method fill our drawing context.
+            </summary>
+            <returns>Returns a Drawing.</returns>
         </member>
         <member name="T:FiveFeetBelowGame.VM.DroppedItem">
             <summary>
@@ -130,7 +239,7 @@
             <param name="w">Double type parameter, it is the width of the gamearea.</param>
             <param name="h">Double type parameter, it is the height of the gamearea.</param>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.Rock">
+        <member name="P:FiveFeetBelowGame.VM.GameModel.Blocks">
             <summary>
             Gets or sets Rock prop represent the rocks of the map.
             </summary>
@@ -153,6 +262,11 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.TileSize">
             <summary>
             Gets or sets TileSize represent the tile size in pixels.
+            </summary>
+        </member>
+        <member name="T:FiveFeetBelowGame.VM.OneAir">
+            <summary>
+            Air entity.
             </summary>
         </member>
         <member name="T:FiveFeetBelowGame.VM.OneMonster">
@@ -219,6 +333,11 @@
         <member name="M:FiveFeetBelowGame.VM.OnePickaxe.DamageCalc">
             <summary>
             Calculates the damage of the pickaxe.
+            </summary>
+        </member>
+        <member name="T:FiveFeetBelowGame.VM.OnePlayer">
+            <summary>
+            OnePlayer represent our player class.
             </summary>
         </member>
         <member name="T:FiveFeetBelowGame.VM.OneRock">
@@ -294,6 +413,36 @@
         <member name="P:FiveFeetBelowGame.VM.Player.Inventory">
             <summary>
             Gets or sets the inventory of the player.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>
