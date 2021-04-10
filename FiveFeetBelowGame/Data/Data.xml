@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Data</name>
+    </assembly>
+    <members>
+        <member name="T:Data.HighscoreContext">
+            <summary>
+            The context class for the highscores.
+            </summary>
+        </member>
+    </members>
+</doc>
