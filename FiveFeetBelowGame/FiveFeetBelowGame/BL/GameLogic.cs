@@ -87,8 +87,9 @@ namespace FiveFeetBelowGame.BL
         /// <param name="fname">String type parameter.</param>
         private void InitModel(string fname)
         {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
-            StreamReader sr = new StreamReader(stream);
+            // Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
+            // StreamReader sr = new StreamReader(stream);
+            StreamReader sr = new StreamReader("map.txt");
             List<string> lines = new List<string>();
             while (!sr.EndOfStream)
             {
@@ -97,34 +98,24 @@ namespace FiveFeetBelowGame.BL
 
             sr.Close();
 
-            int width = lines[0].Length;
             int height = lines.Count;
-            this.model.Blocks = new GameItem[width, height];
-            this.model.TileSize = Math.Min(this.model.GameWidth / width, this.model.GameHeight / height);
-            /*
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    char current = lines[y][x];
-                    this.model.Blocks[x, y] = this.TextToItemConverter(current);
-                    if (current == 'S')
-                    {
-                        this.model.Player = new Point(x, y);
-                    }
-                }
-            } */
+            int width = lines[0].Length;
+            this.model.Blocks = new GameItem[lines.Count, lines[0].Length];
+            
+            // this.model.TileSize = Math.Min(this.model.GameWidth / width, this.model.GameHeight / height);
+            this.model.TileSize = this.model.GameWidth / 25;
             int x = 0;
             foreach (string item in lines)
             {
                 int z = item.Length;
                 for (int y = 0; y < z; y++)
                 {
-                    this.model.Blocks[x, y] = this.TextToItemConverter(item[y]);
-                    if (item[y] == 'S')
+                    if (item[y] == 'P')
                     {
                         this.model.Player = new Point(x, y);
                     }
+
+                    this.model.Blocks[x, y] = this.TextToItemConverter(item[y]);
                 }
 
                 x++;
@@ -144,11 +135,11 @@ namespace FiveFeetBelowGame.BL
             }
             else if (c != ' ')
             {
-                return new OneOre(); // what ore
+                return new OneOre(); // TODO what ore
             }
             else
             {
-                return null;
+                return new OneAir();
             }
         }
     }

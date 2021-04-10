@@ -46,7 +46,7 @@ namespace FiveFeetBelowGame.UI
             private void GameControl_Loaded(object sender, RoutedEventArgs e)
             {
                   this.model = new GameModel(this.ActualWidth, this.ActualHeight);
-                  this.logic = new GameLogic(this.model, "FiveFeetBelowGame.Levels.L00.lvl");
+                  this.logic = new GameLogic(this.model, "FiveFeetBelowGame.Levels.map.lvl");
                   this.renderer = new Renderer(this.model);
 
                   Window win = Window.GetWindow(this);

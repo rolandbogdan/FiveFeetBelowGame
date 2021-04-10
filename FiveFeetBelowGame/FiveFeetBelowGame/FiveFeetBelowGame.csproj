@@ -29,10 +29,6 @@
     <EmbeddedResource Include="Images\player.bmp" />
     <EmbeddedResource Include="Images\wall.bmp" />
     <EmbeddedResource Include="Levels\L00.lvl" />
-    <EmbeddedResource Include="Levels\L01.lvl" />
-    <EmbeddedResource Include="Levels\L02.lvl" />
-    <EmbeddedResource Include="Levels\L03.lvl" />
-    <EmbeddedResource Include="Levels\L04.lvl" />
   </ItemGroup>
 
   <ItemGroup>
