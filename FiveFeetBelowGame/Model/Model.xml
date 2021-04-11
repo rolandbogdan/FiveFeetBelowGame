@@ -4,28 +4,65 @@
         <name>Model</name>
     </assembly>
     <members>
-        <member name="T:Model.IGameModel`1">
+        <member name="T:Model.Highscore">
+            <summary>
+            The highscores of the game.
+            </summary>
+        </member>
+        <member name="M:Model.Highscore.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Model.Highscore"/> class.
+            </summary>
+            <param name="playername"> The name of the player. </param>
+            <param name="deepestpoint"> The deepest point the player has reached. </param>
+            <param name="pickaxelvl"> The level of the player's pickaxe. </param>
+        </member>
+        <member name="M:Model.Highscore.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Model.Highscore"/> class.
+            </summary>
+        </member>
+        <member name="P:Model.Highscore.HsID">
+            <summary>
+            Gets or sets the id of the highscore save.
+            </summary>
+        </member>
+        <member name="P:Model.Highscore.PlayerName">
+            <summary>
+            Gets or sets the name of the player.
+            </summary>
+        </member>
+        <member name="P:Model.Highscore.DeepestPoint">
+            <summary>
+            Gets or sets the deepest point the player has reached.
+            </summary>
+        </member>
+        <member name="P:Model.Highscore.PickaxeLvl">
+            <summary>
+            Gets or sets the level of the player's pickaxe.
+            </summary>
+        </member>
+        <member name="T:Model.IGameModel">
             <summary>
             The interface for the game's model.
             </summary>
-            <typeparam name="T"> The type of the object the model applies to. </typeparam>
         </member>
-        <member name="P:Model.IGameModel`1.ID">
+        <member name="P:Model.IGameModel.ID">
             <summary>
             Gets or sets the ID of the entity.
             </summary>
         </member>
-        <member name="P:Model.IGameModel`1.DX">
+        <member name="P:Model.IGameModel.DX">
             <summary>
             Gets or sets the X coordinate of the entity.
             </summary>
         </member>
-        <member name="P:Model.IGameModel`1.DY">
+        <member name="P:Model.IGameModel.DY">
             <summary>
             Gets or sets the Y coordinate of the entity.
             </summary>
         </member>
-        <member name="P:Model.IGameModel`1.HealthPoints">
+        <member name="P:Model.IGameModel.HealthPoints">
             <summary>
             Gets or sets the HP coordinate of the entity.
             </summary>

@@ -11,7 +11,7 @@ namespace Repository
     using System.Text;
     using System.Threading.Tasks;
 
-    /// <summary>
+    /// <summary>t checko
     /// The interface for the repository of the game.
     /// </summary>
     /// <typeparam name="T"> The type of the entity stored. </typeparam>
@@ -46,6 +46,6 @@ namespace Repository
         /// <summary>
         /// Saves all changes in the repository.
         /// </summary>
-        void SaveChanges();
+        void Save();
     }
 }

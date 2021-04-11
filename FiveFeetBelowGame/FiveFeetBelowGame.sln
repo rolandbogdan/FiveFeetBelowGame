@@ -3,13 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveFeetBelowGame", "FiveFeetBelowGame\FiveFeetBelowGame.csproj", "{D969E77A-CB56-46C2-9CBC-EADBD58526E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiveFeetBelowGame", "FiveFeetBelowGame\FiveFeetBelowGame.csproj", "{D969E77A-CB56-46C2-9CBC-EADBD58526E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{E7E69C99-9506-4869-8BE1-623EC873DD38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{E7E69C99-9506-4869-8BE1-623EC873DD38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{3EF031D8-8BA0-4B76-855C-AF883243F8EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "Logic\Logic.csproj", "{3EF031D8-8BA0-4B76-855C-AF883243F8EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{8BBE85E2-D2A6-4FBB-98FF-0C56E07B3729}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{8BBE85E2-D2A6-4FBB-98FF-0C56E07B3729}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{CEA0D33A-50F8-40EE-936C-44727CE1A288}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{8018CF88-AED4-4E8A-ABD0-E25D06ABC67E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CEA0D33A-50F8-40EE-936C-44727CE1A288} = {CEA0D33A-50F8-40EE-936C-44727CE1A288}
+		{3EF031D8-8BA0-4B76-855C-AF883243F8EF} = {3EF031D8-8BA0-4B76-855C-AF883243F8EF}
+		{8BBE85E2-D2A6-4FBB-98FF-0C56E07B3729} = {8BBE85E2-D2A6-4FBB-98FF-0C56E07B3729}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +42,14 @@ Global
 		{8BBE85E2-D2A6-4FBB-98FF-0C56E07B3729}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BBE85E2-D2A6-4FBB-98FF-0C56E07B3729}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BBE85E2-D2A6-4FBB-98FF-0C56E07B3729}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEA0D33A-50F8-40EE-936C-44727CE1A288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA0D33A-50F8-40EE-936C-44727CE1A288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA0D33A-50F8-40EE-936C-44727CE1A288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA0D33A-50F8-40EE-936C-44727CE1A288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8018CF88-AED4-4E8A-ABD0-E25D06ABC67E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8018CF88-AED4-4E8A-ABD0-E25D06ABC67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8018CF88-AED4-4E8A-ABD0-E25D06ABC67E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8018CF88-AED4-4E8A-ABD0-E25D06ABC67E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

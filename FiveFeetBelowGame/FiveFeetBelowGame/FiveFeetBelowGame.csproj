@@ -14,10 +14,36 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\exit.bmp" />
+    <None Remove="Images\player.bmp" />
+    <None Remove="Images\wall.bmp" />
+    <None Remove="Levels\L00.lvl" />
+    <None Remove="Levels\L01.lvl" />
+    <None Remove="Levels\L02.lvl" />
+    <None Remove="Levels\L03.lvl" />
+    <None Remove="Levels\L04.lvl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\exit.bmp" />
+    <EmbeddedResource Include="Images\player.bmp" />
+    <EmbeddedResource Include="Images\wall.bmp" />
+    <EmbeddedResource Include="Levels\L00.lvl" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
 
 </Project>
