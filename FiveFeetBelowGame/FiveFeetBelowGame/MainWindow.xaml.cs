@@ -35,7 +35,7 @@ namespace FiveFeetBelowGame
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LevelGenerator lg = new LevelGenerator();
+            LevelGenerator lg = new LevelGenerator(true);
         }
     }
 }

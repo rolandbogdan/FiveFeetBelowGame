@@ -10,6 +10,8 @@ namespace FiveFeetBelowGame.BL
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using FiveFeetBelowGame.VM;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// This class generates the .lvl file for the game, for the renderer to draw later.
@@ -18,6 +20,7 @@ namespace FiveFeetBelowGame.BL
     public class LevelGenerator
     {
         private int depth;
+        private GameModel model;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LevelGenerator"/> class.
@@ -35,6 +38,48 @@ namespace FiveFeetBelowGame.BL
         public LevelGenerator(string saveName)
         {
             this.GenerateFirstSection(saveName);
+        }
+
+        public LevelGenerator(bool j)
+        {
+            // this.model = model;
+            GameItem[,] items = new GameItem[1011, 25];
+            for (int x = 0; x < items.GetLength(0); x++)
+            {
+                for (int y = 0; y < items.GetLength(1); y++)
+                {
+                    if (x < 11)
+                    {
+                        items[x, y] = new OneAir();
+                    }
+
+                    char[] row = this.RowGenerator().ToCharArray();
+                    for (int i = 0; i < row.Length; i++)
+                    {
+                        if (row[i] == 'B')
+                        {
+                            items[x, y] = new OneWall();
+                        }
+                        else if (row[i] == 'r')
+                        {
+                            items[x, y] = new OneRock();
+                        }
+                        else if (row[i] == ' ')
+                        {
+                            items[x, y] = new OneAir();
+                        }
+                        else
+                        {
+                            items[x, y] = new OneOre();
+                        }
+                    }
+                }
+            }
+
+            string json = JsonConvert.SerializeObject(items);
+            StreamWriter sw = new StreamWriter("map.json");
+            sw.Write(json);
+            sw.Close();
         }
 
         /// <summary>
@@ -167,6 +212,11 @@ namespace FiveFeetBelowGame.BL
             {
                 return string.Empty;
             }
+        }
+
+        private void JsonGenerator()
+        {
+            
         }
     }
 }
