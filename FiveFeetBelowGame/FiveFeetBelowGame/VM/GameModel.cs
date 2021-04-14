@@ -35,7 +35,7 @@ namespace FiveFeetBelowGame.VM
             /// <summary>
             /// Gets or sets Player prop represent our player position.
             /// </summary>
-            public Point Player { get; set; }
+            public OnePlayer Player { get; set; }
 
             /// <summary>
             /// Gets Gamewidth represent the width of the map.

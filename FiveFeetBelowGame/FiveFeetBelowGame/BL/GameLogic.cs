@@ -44,13 +44,16 @@ namespace FiveFeetBelowGame.BL
         {
             if (horizontal != 0)
             {
-                // model.Player.DX += horizontal; // talán így kéne majd
+                this.model.Player.DX += horizontal; // talán így kéne majd
             }
 
             if (vertical != 0)
             {
-                // model.Player.Dy += vertical; // talán így kéne majd
+                this.model.Player.DY += vertical; // talán így kéne majd
             }
+
+            this.model.Player.CX += this.model.Player.DX;
+            this.model.Player.CY += this.model.Player.DY;
 
             /*
             int newX = (int)(this.model.Player.X + dx);
@@ -61,6 +64,10 @@ namespace FiveFeetBelowGame.BL
                 this.model.Player = new Point(newX, newY);
             }
             */
+            if (!this.SolidBlockUnderPlayer())
+            {
+                this.Gravity();
+            }
         }
 
         /// <summary>
@@ -76,9 +83,9 @@ namespace FiveFeetBelowGame.BL
         /// <summary>
         /// Gravity to be implemented.
         /// </summary>
-        public void Gravity()
+        private void Gravity()
         {
-            throw new NotImplementedException();
+            this.model.Player.DY += 5; // balance?
         }
 
         /// <summary>
@@ -101,7 +108,7 @@ namespace FiveFeetBelowGame.BL
             int height = lines.Count;
             int width = lines[0].Length;
             this.model.Blocks = new GameItem[height, width];
-            this.model.TileSize = this.model.GameWidth / 25;
+            this.model.TileSize = (double)(this.model.GameWidth / 25);
             int x = 0;
             foreach (string item in lines)
             {
@@ -110,10 +117,10 @@ namespace FiveFeetBelowGame.BL
                 {
                     if (item[y] == 'P')
                     {
-                        this.model.Player = new Point(x, y);
+                        this.model.Player = new OnePlayer(new Point(x, y));
                     }
 
-                    this.model.Blocks[x, y] = this.TextToItemConverter(item[y]);
+                    this.model.Blocks[x, y] = this.TextToItemConverter(item[y], x, y);
                 }
 
                 x++;
@@ -124,20 +131,47 @@ namespace FiveFeetBelowGame.BL
         /// Converts from the letters in the txt file to game items.
         /// </summary>
         /// <returns>Returns a type of gameitem. </returns>
-        private GameItem TextToItemConverter(char c)
+        private GameItem TextToItemConverter(char c, int x, int y)
         {
             // need sg for walls
             if (c == 'r' || c == 'B')
             {
-                return new OneRock();
+                return new OneRock(x, y);
             }
             else if (c != ' ')
             {
-                return new OneOre(); // TODO what ore
+                return new OneOre(x, y, this.OreTypeSelecter(c)); // TODO what ore
             }
             else
             {
                 return new OneAir();
+            }
+        }
+
+        private OreType OreTypeSelecter(char c)
+        {
+            switch (c)
+            {
+                case 'i': return OreType.Iron;
+                case 'g': return OreType.Gold;
+                case 'd': return OreType.Diamond;
+                case '+': return OreType.Gem;
+                case '*': return OreType.RareGem;
+                default: return OreType.Rock;
+            }
+        }
+
+        private bool SolidBlockUnderPlayer()
+        {
+            int x = (int)Math.Round(this.model.Player.CX);
+            int y = (int)Math.Round(this.model.Player.CY);
+            if (this.model.Blocks[x, y - 1].IsSolid)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

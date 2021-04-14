@@ -64,7 +64,7 @@
             </summary>
             <param name="fname">String type parameter.</param>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.TextToItemConverter(System.Char)">
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.TextToItemConverter(System.Char,System.Int32,System.Int32)">
             <summary>
             Converts from the letters in the txt file to game items.
             </summary>
@@ -341,7 +341,7 @@
             An ore block element.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.VM.OneOre.#ctor">
+        <member name="M:FiveFeetBelowGame.VM.OneOre.#ctor(System.Double,System.Double,FiveFeetBelowGame.VM.OreType)">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OneOre"/> class.
             </summary>
@@ -397,19 +397,17 @@
             OnePlayer represent our player class.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.VM.OnePlayer.#ctor(System.Double,System.Double)">
+        <member name="M:FiveFeetBelowGame.VM.OnePlayer.#ctor(System.Windows.Point)">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OnePlayer"/> class.
             </summary>
-            <param name="cx">X coordinate. </param>
-            <param name="cy">Y coordinate. </param>
         </member>
         <member name="T:FiveFeetBelowGame.VM.OneRock">
             <summary>
             A rock entity in the game.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.VM.OneRock.#ctor">
+        <member name="M:FiveFeetBelowGame.VM.OneRock.#ctor(System.Double,System.Double)">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OneRock"/> class.
             </summary>
@@ -487,6 +485,36 @@
         <member name="P:FiveFeetBelowGame.VM.Player.Inventory">
             <summary>
             Gets or sets the inventory of the player.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

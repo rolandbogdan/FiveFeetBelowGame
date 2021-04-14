@@ -20,15 +20,13 @@ namespace FiveFeetBelowGame.VM
         /// <summary>
         /// Initializes a new instance of the <see cref="OnePlayer"/> class.
         /// </summary>
-        /// <param name="cx">X coordinate. </param>
-        /// <param name="cy">Y coordinate. </param>
-        public OnePlayer(double cx, double cy)
+        public OnePlayer(Point p)
         {
             this.ID = Guid.NewGuid().ToString();
             this.IsDead = false;
 
-            this.CX = cx;
-            this.CY = cy;
+            this.CX = p.X;
+            this.CY = p.Y;
 
             // this.DX = 10;
         }

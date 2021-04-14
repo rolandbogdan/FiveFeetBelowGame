@@ -18,16 +18,16 @@ namespace FiveFeetBelowGame.VM
         /// <summary>
         /// Initializes a new instance of the <see cref="OneOre"/> class.
         /// </summary>
-        public OneOre()
+        public OneOre(double cx, double xy, OreType type)
         {
             this.ID = Guid.NewGuid().ToString();
-            this.Type = OreType.Iron;
+            this.Type = type;
             this.IsDead = false;
             this.Breakable = true;
             this.IsSolid = true;
-            /* this.CX = x;
-             * this.CY = y;
-             * this.area = new Geometry(); */
+            this.CX = cx;
+            this.CY = xy;
+            /* this.area = new Geometry(); */
         }
 
         /// <summary>

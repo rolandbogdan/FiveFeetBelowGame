@@ -18,16 +18,16 @@ namespace FiveFeetBelowGame.VM
         /// <summary>
         /// Initializes a new instance of the <see cref="OneRock"/> class.
         /// </summary>
-        public OneRock()
+        public OneRock(double cx, double xy)
         {
             this.ID = Guid.NewGuid().ToString();
             this.Type = OreType.Rock;
             this.IsDead = false;
             this.Breakable = true;
             this.IsSolid = true;
-            /* this.CX = x;
-             * this.CY = y;
-             * this.area = new Geometry(); */
+            this.CX = cx;
+            this.CY = xy;
+             /* this.area = new Geometry(); */
         }
 
         /// <summary>
