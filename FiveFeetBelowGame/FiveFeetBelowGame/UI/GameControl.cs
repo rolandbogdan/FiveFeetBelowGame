@@ -77,16 +77,16 @@ namespace FiveFeetBelowGame.UI
                   switch (e.Key)
                   {
                         case System.Windows.Input.Key.W:
-                              this.logic.Move(0, 5);
+                              this.logic.Move(0, (int)this.model.TileSize);
                               break;
                         case System.Windows.Input.Key.S:
-                              this.logic.Move(0, -5);
+                              this.logic.Move(0, -(int)this.model.TileSize);
                               break;
                         case System.Windows.Input.Key.A:
-                              this.logic.Move(-5, 0);
+                              this.logic.Move(-(int)this.model.TileSize, 0);
                               break;
                         case System.Windows.Input.Key.D:
-                              this.logic.Move(5, 0);
+                              this.logic.Move((int)this.model.TileSize, 0);
                               break;
                         default:
                               break;

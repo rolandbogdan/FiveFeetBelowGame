@@ -42,32 +42,21 @@ namespace FiveFeetBelowGame.BL
         /// <param name="vertical"> Vertical speed.</param>
         public void Move(int horizontal, int vertical)
         {
+            // valid move?!
             if (horizontal != 0)
             {
-                this.model.Player.DX += horizontal; // talán így kéne majd
+                this.model.Player.DX += horizontal;
             }
 
             if (vertical != 0)
             {
-                this.model.Player.DY += vertical; // talán így kéne majd
+                this.model.Player.DY += vertical;
             }
 
             this.model.Player.CX += this.model.Player.DX;
             this.model.Player.CY += this.model.Player.DY;
 
-            /*
-            int newX = (int)(this.model.Player.X + dx);
-            int newY = (int)(this.model.Player.Y + dy);
-            if (newX >= 0 && newY >= 0 && newX < this.model.Blocks.GetLength(0)
-                && this.model.Blocks[newX, newY].GetType().ToString() == "OneAir")
-            {
-                this.model.Player = new Point(newX, newY);
-            }
-            */
-            if (!this.SolidBlockUnderPlayer())
-            {
-                this.Gravity();
-            }
+            // this.Gravity();
         }
 
         /// <summary>
@@ -85,7 +74,10 @@ namespace FiveFeetBelowGame.BL
         /// </summary>
         private void Gravity()
         {
-            this.model.Player.DY += 5; // balance?
+            while (!this.SolidBlockUnderPlayer())
+            {
+                this.model.Player.DY += 5; // balance?
+            }
         }
 
         /// <summary>
@@ -165,7 +157,8 @@ namespace FiveFeetBelowGame.BL
         {
             int x = (int)Math.Round(this.model.Player.CX);
             int y = (int)Math.Round(this.model.Player.CY);
-            if (this.model.Blocks[x, y - 1].IsSolid)
+            if (!(y + 1 > this.model.Blocks.GetLength(1)) &&
+                this.model.Blocks[x, y + 1].IsSolid)
             {
                 return true;
             }

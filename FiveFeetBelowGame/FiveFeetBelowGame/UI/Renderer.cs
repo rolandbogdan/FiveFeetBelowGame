@@ -40,9 +40,11 @@ namespace FiveFeetBelowGame.UI
 
         public Brush OreBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false); } }
 
-        public Brush Bgbrush { get { return this.GetBrush("FiveFeetBelowGame.Images.back.png", false); } }
+        // public Brush Bgbrush { get { return this.GetBrush("FiveFeetBelowGame.Images.back.png", false); } }
+        public Brush Bgbrush { get { return Brushes.Cyan; } }
 
-        public Brush Middlebrush { get { return this.GetBrush("FiveFeetBelowGame.Images.middle.png", false); } }
+        // public Brush Middlebrush { get { return this.GetBrush("FiveFeetBelowGame.Images.middle.png", false); } }
+        public Brush Middlebrush { get { return Brushes.White; } }
 
         /// <summary>
         /// This method help us to start new game or reset our game.
@@ -94,6 +96,8 @@ namespace FiveFeetBelowGame.UI
         public Drawing BuildDrawing()
         {
             DrawingGroup dg = new DrawingGroup();
+
+            // get only around player!
             dg.Children.Add(this.GetBackground());
             dg.Children.Add(this.GetMiddle());
             dg.Children.Add(this.GetRocks());
@@ -132,6 +136,7 @@ namespace FiveFeetBelowGame.UI
                 this.oldPlayerPosition.X = this.model.Player.CX;
                 this.oldPlayerPosition.Y = this.model.Player.CY;
             }
+
             return this.oldPlayer;
         }
 
@@ -144,9 +149,17 @@ namespace FiveFeetBelowGame.UI
                 {
                     for (int y = 0; y < this.model.Blocks.GetLength(1); y++)
                     {
-                        // if (this.model.Blocks[x,y])
-                        Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
-                        g.Children.Add(box);
+                        if (this.model.Blocks[x, y].GetType().Name ==
+                            typeof(OneRock).Name)
+                        {
+                            Geometry box = new RectangleGeometry(
+                                new Rect(
+                                    x * this.model.TileSize,
+                                    y * this.model.TileSize,
+                                    this.model.TileSize,
+                                    this.model.TileSize));
+                            g.Children.Add(box);
+                        }
                     }
                 }
 
