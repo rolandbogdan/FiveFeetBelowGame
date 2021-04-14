@@ -59,18 +59,30 @@ namespace FiveFeetBelowGame.BL
                         if (row[i] == 'B')
                         {
                             items[x, y] = new OneWall();
+                            items[x, y].CX = x;
+                            items[x, y].CY = y;
+                            items[x, y].HealthPoints = 1000;
                         }
                         else if (row[i] == 'r')
                         {
                             items[x, y] = new OneRock();
+                            items[x, y].CX = x;
+                            items[x, y].CY = y;
+                            items[x, y].HealthPoints = 3;
                         }
                         else if (row[i] == ' ')
                         {
                             items[x, y] = new OneAir();
+                            items[x, y].CX = x;
+                            items[x, y].CY = y;
                         }
                         else
                         {
                             items[x, y] = new OneOre();
+                            items[x, y].CX = x;
+                            items[x, y].CY = y;
+                            items[x, y].HealthPoints = 5;
+                            (items[x, y] as OneOre).Type = OreType.Iron;
                         }
                     }
                 }
