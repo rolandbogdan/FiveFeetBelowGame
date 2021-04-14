@@ -84,13 +84,12 @@ namespace FiveFeetBelowGame.BL
         {
             switch (ore.Type)
             {
-                case OreType.Rock: return 'r';
                 case OreType.Iron: return 'i';
                 case OreType.Gold: return 'g';
                 case OreType.Diamond: return 'd';
                 case OreType.Gem: return '+';
                 case OreType.RareGem: return '*';
-                default: return ' ';
+                default: return 'r';
             }
         }
     }
