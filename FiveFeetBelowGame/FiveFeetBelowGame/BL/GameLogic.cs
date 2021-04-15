@@ -89,38 +89,20 @@ namespace FiveFeetBelowGame.BL
         {
             // Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
             // StreamReader sr = new StreamReader(stream);
-            StreamReader sr = new StreamReader("..\\..\\..\\Levels\\map.lvl");
-            List<string> lines = new List<string>();
-            while (!sr.EndOfStream)
-            {
-                lines.Add(sr.ReadLine());
-            }
 
-            sr.Close();
-
-            int height = lines.Count;
-            int width = lines[0].Length;
-            this.model.Blocks = new IGameObject[height, width];
+            JsonHandler jh = new JsonHandler();
+            this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
             this.model.TileSize = this.model.GameWidth / 25;
-            int x = 0;
-            foreach (string item in lines)
-            {
-                int z = item.Length;
-                for (int y = 0; y < z; y++)
-                {
-                    if (item[y] == 'P')
-                    {
-                        this.model.Player = new Point(x, y);
-                        this.model.Blocks[x, y] = new OnePlayer(x, y);
-                    }
-                    else
-                    {
-                        this.model.Blocks[x, y] = this.TextToItemConverter(x, y, item[y]);
-                    }
-                }
 
-                x++;
+            /*
+            foreach (var item in this.model.Blocks)
+            {
+                if (item.GetType() is OnePlayer)
+                {
+                    this.model.Player = new Point(item.CX, item.CY);
+                }
             }
+            */
         }
 
         /// <summary>
@@ -140,7 +122,7 @@ namespace FiveFeetBelowGame.BL
             }
             else if (c == 'B')
             {
-                return new OneBlock(x,y,BlockType.Wall);
+                return new OneBlock(x, y, BlockType.Wall);
             }
             else
             {

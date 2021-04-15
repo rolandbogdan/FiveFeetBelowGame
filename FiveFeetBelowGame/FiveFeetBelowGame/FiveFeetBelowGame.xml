@@ -70,55 +70,47 @@
             </summary>
             <returns>Returns a type of gameitem. </returns>
         </member>
-        <member name="T:FiveFeetBelowGame.BL.LevelGenerator">
+        <member name="T:FiveFeetBelowGame.JsonHandler">
             <summary>
-            This class generates the .lvl file for the game, for the renderer to draw later.
-            This generates the first 1000 blocks, and the procedural generator class will generate the rest.
+            This class is responsible for reading and writing json files.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.#ctor">
+        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.LevelGenerator"/> class.
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.#ctor(System.String)">
+        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.LevelGenerator"/> class.
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
             <param name="saveName">Filename.</param>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateFirstSectionJson">
+        <member name="M:FiveFeetBelowGame.JsonHandler.SaveMap(FiveFeetBelowGame.IGameObject[0:,0:],System.String)">
+            <summary>
+            Saves the game state to a json file.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.LoadMap(System.String)">
+            <summary>
+            Loads the json save file to a playable array.
+            </summary>
+            <param name="filePath">The path for the game file.</param>
+            <returns>A playable IGameObject array, if the file exists. </returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.GenerateFirstSection">
             <summary>
             Generates the first section of the map for the json converter.
             </summary>
             <returns>Returns an object array of game items.</returns>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.OreToGameItem(System.Char)">
-            <summary>
-            Determines the ore, based on the character.
-            </summary>
-            <param name="c">The character.</param>
-            <returns>The oretype.</returns>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateSection(System.String)">
-            <summary>
-            Generates the next 1000 depth.
-            </summary>
-            <param name="level"> The path of the lvl file. </param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateFirstSection(System.String)">
-            <summary>
-            Generates the first section of the map.
-            </summary>
-            <param name="level">The map's file path.</param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.RowGenerator">
+        <member name="M:FiveFeetBelowGame.JsonHandler.RowGenerator(FiveFeetBelowGame.IGameObject[0:,0:]@,System.Int32)">
             <summary>
             Generates one row on the map.
             </summary>
             <returns>returns the certain row.</returns>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.OreChooser(System.Int32)">
+        <member name="M:FiveFeetBelowGame.JsonHandler.OreChooser(System.Int32)">
             <summary>
             Decides what ore to insert depending on the depth.
             </summary>
@@ -376,36 +368,6 @@
         </member>
         <member name="M:FiveFeetBelowGame.OnePlayer.IsDestroyed">
             <inheritdoc/>
-        </member>
-        <member name="T:FiveFeetBelowGame.JsonHandler">
-            <summary>
-            This class is responsible for reading and writing json files.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
-            </summary>
-            <param name="saveName">Filename.</param>
-        </member>
-        <member name="M:FiveFeetBelowGame.JsonHandler.GenerateFirstSection">
-            <summary>
-            Generates the first section of the map for the json converter.
-            </summary>
-            <returns>Returns an object array of game items.</returns>
-        </member>
-        <member name="M:FiveFeetBelowGame.JsonHandler.RowGenerator(FiveFeetBelowGame.IGameObject[0:,0:]@,System.Int32)">
-            <summary>
-            Generates one row on the map.
-            </summary>
-            <returns>returns the certain row.</returns>
-        </member>
-        <member name="M:FiveFeetBelowGame.JsonHandler.OreChooser(System.Int32)">
-            <summary>
-            Decides what ore to insert depending on the depth.
-            </summary>
-            <param name="a">A random integer.</param>
-            <returns>A letter for the ore.</returns>
         </member>
         <member name="T:FiveFeetBelowGame.MainWindow">
             <summary>

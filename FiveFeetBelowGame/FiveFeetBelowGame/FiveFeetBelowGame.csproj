@@ -54,10 +54,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
 

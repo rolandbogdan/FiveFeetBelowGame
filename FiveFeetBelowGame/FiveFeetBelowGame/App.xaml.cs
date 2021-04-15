@@ -18,6 +18,5 @@ namespace FiveFeetBelowGame
     /// </summary>
     public partial class App : Application
     {
-        JsonHandler jh = new JsonHandler("testingmap");
     }
 }

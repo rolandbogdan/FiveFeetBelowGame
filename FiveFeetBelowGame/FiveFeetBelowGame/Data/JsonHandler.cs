@@ -22,6 +22,13 @@ namespace FiveFeetBelowGame
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonHandler"/> class.
         /// </summary>
+        public JsonHandler()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JsonHandler"/> class.
+        /// </summary>
         /// <param name="saveName">Filename.</param>
         public JsonHandler(string saveName)
         {
@@ -63,6 +70,29 @@ namespace FiveFeetBelowGame
         }
 
         /// <summary>
+        /// Loads the json save file to a playable array.
+        /// </summary>
+        /// <param name="filePath">The path for the game file.</param>
+        /// <returns>A playable IGameObject array, if the file exists. </returns>
+        public IGameObject[,] LoadMap(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                IGameObject[,] output = JsonConvert.DeserializeObject<IGameObject[,]>(filePath);
+                return output;
+            }
+            else if (File.Exists(filePath + ".json"))
+            {
+                IGameObject[,] output = JsonConvert.DeserializeObject<IGameObject[,]>(filePath + ".json");
+                return output;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Generates the first section of the map for the json converter.
         /// </summary>
         /// <returns>Returns an object array of game items.</returns>
@@ -92,7 +122,7 @@ namespace FiveFeetBelowGame
         /// Generates one row on the map.
         /// </summary>
         /// <returns>returns the certain row.</returns>
-        private void RowGenerator(ref IGameObject[,] items, int row) // rewrite maybe for json version?
+        private void RowGenerator(ref IGameObject[,] items, int row)
         {
             this.depth++;
             Random r = new Random();
