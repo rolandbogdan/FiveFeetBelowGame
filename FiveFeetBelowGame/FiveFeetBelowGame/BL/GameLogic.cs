@@ -91,7 +91,9 @@ namespace FiveFeetBelowGame.BL
             // StreamReader sr = new StreamReader(stream);
 
             JsonHandler jh = new JsonHandler();
-            this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
+
+            // this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
+            this.model.Blocks = jh.LoadMap("testfile.json");
             this.model.TileSize = this.model.GameWidth / 25;
 
             /*

@@ -117,6 +117,12 @@
             <param name="a">A random integer.</param>
             <returns>A letter for the ore.</returns>
         </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.GenerateTestSection">
+            <summary>
+            For testing purposes.
+            </summary>
+            <returns>A 20*25 IGameObject array. </returns>
+        </member>
         <member name="T:FiveFeetBelowGame.BlockType">
             <summary>
             The ore types.
@@ -217,6 +223,11 @@
             <param name="x">X coordinate of the block.</param>
             <param name="y">Y coordinate of the block.</param>
             <param name="type">The type of the block.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneBlock.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OneBlock"/> class.
+            </summary>
         </member>
         <member name="P:FiveFeetBelowGame.OneBlock.Type">
             <summary>
@@ -326,6 +337,11 @@
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OnePlayer"/> class.
             </summary>
             <param name="other">An object from which the properties will be copied.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.OnePlayer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OnePlayer"/> class.
+            </summary>
         </member>
         <member name="P:FiveFeetBelowGame.OnePlayer.Area">
             <inheritdoc/>

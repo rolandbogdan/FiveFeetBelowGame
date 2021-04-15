@@ -53,6 +53,14 @@ namespace FiveFeetBelowGame
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OnePlayer"/> class.
+        /// </summary>
+        public OnePlayer()
+        {
+
+        }
+
         /// <inheritdoc/>
         public Geometry Area { get; set; }
 

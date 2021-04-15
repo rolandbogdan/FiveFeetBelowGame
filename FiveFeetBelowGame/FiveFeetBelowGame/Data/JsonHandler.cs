@@ -32,7 +32,10 @@ namespace FiveFeetBelowGame
         /// <param name="saveName">Filename.</param>
         public JsonHandler(string saveName)
         {
-            string json = JsonConvert.SerializeObject(this.GenerateFirstSection());
+            var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Objects;
+
+            string json = JsonConvert.SerializeObject(this.GenerateFirstSection(), Formatting.Indented, settings);
 
             if (saveName.EndsWith(".json"))
             {
@@ -46,6 +49,8 @@ namespace FiveFeetBelowGame
                 sw.Write(json);
                 sw.Close();
             }
+
+            // TODO: use Savemap() here
         }
 
         /// <summary>
@@ -76,20 +81,14 @@ namespace FiveFeetBelowGame
         /// <returns>A playable IGameObject array, if the file exists. </returns>
         public IGameObject[,] LoadMap(string filePath)
         {
-            if (File.Exists(filePath))
-            {
-                IGameObject[,] output = JsonConvert.DeserializeObject<IGameObject[,]>(filePath);
-                return output;
-            }
-            else if (File.Exists(filePath + ".json"))
-            {
-                IGameObject[,] output = JsonConvert.DeserializeObject<IGameObject[,]>(filePath + ".json");
-                return output;
-            }
-            else
-            {
-                return null;
-            }
+            StreamReader sr = new StreamReader(filePath);
+            string json = sr.ReadToEnd();
+            sr.Close();
+
+            var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Objects;
+            IGameObject[,] output = JsonConvert.DeserializeObject<IGameObject[,]>(json, settings);
+            return output;
         }
 
         /// <summary>
@@ -210,6 +209,32 @@ namespace FiveFeetBelowGame
             {
                 return BlockType.Air;
             }
+        }
+
+        /// <summary>
+        /// For testing purposes.
+        /// </summary>
+        /// <returns>A 20*25 IGameObject array. </returns>
+        private IGameObject[,] GenerateTestSection()
+        {
+            IGameObject[,] items = new IGameObject[20, 25];
+            for (int x = 0; x < items.GetLength(0); x++)
+            {
+                for (int y = 0; y < items.GetLength(1); y++)
+                {
+                    if (x < 11)
+                    {
+                        items[x, y] = new OneBlock(x, y, BlockType.Air);
+                    }
+                    else
+                    {
+                        this.RowGenerator(ref items, x);
+                    }
+                }
+            }
+
+            //items[11, 11] = new OnePlayer(11, 11);
+            return items;
         }
 
     }

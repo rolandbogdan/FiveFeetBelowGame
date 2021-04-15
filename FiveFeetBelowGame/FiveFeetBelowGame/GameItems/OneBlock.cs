@@ -33,6 +33,14 @@ namespace FiveFeetBelowGame
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="OneBlock"/> class.
+        /// </summary>
+        public OneBlock()
+        {
+
+        }
+
+        /// <summary>
         /// Gets or sets the type of the block.
         /// </summary>
         public BlockType Type { get; set; }
