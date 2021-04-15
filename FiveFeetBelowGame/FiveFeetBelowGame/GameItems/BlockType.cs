@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace FiveFeetBelowGame.VM
+namespace FiveFeetBelowGame
 {
     using System;
     using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace FiveFeetBelowGame.VM
     /// <summary>
     /// The ore types.
     /// </summary>
-    public enum OreType
+    public enum BlockType
     {
         /// <summary>
         /// Most common thing underground.
@@ -44,5 +44,15 @@ namespace FiveFeetBelowGame.VM
         /// Final ore.
         /// </summary>
         RareGem,
+
+        /// <summary>
+        /// Undestructible borders of the map.
+        /// </summary>
+        Wall,
+
+        /// <summary>
+        /// Empty blocks.
+        /// </summary>
+        Air,
     }
 }

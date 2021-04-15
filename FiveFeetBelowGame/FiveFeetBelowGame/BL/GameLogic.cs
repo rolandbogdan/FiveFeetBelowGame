@@ -89,55 +89,46 @@ namespace FiveFeetBelowGame.BL
         {
             // Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
             // StreamReader sr = new StreamReader(stream);
-            StreamReader sr = new StreamReader("..\\..\\..\\Levels\\map.lvl");
-            List<string> lines = new List<string>();
-            while (!sr.EndOfStream)
-            {
-                lines.Add(sr.ReadLine());
-            }
 
-            sr.Close();
+            JsonHandler jh = new JsonHandler();
 
-            int height = lines.Count;
-            int width = lines[0].Length;
-            this.model.Blocks = new GameItem[height, width];
+            // this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
+            this.model.Blocks = jh.LoadMap("testfile.json");
             this.model.TileSize = this.model.GameWidth / 25;
-            int x = 0;
-            foreach (string item in lines)
+
+            /*
+            foreach (var item in this.model.Blocks)
             {
-                int z = item.Length;
-                for (int y = 0; y < z; y++)
+                if (item.GetType() is OnePlayer)
                 {
-                    if (item[y] == 'P')
-                    {
-                        this.model.Player = new Point(x, y);
-                    }
-
-                    this.model.Blocks[x, y] = this.TextToItemConverter(item[y]);
+                    this.model.Player = new Point(item.CX, item.CY);
                 }
-
-                x++;
             }
+            */
         }
 
         /// <summary>
         /// Converts from the letters in the txt file to game items.
         /// </summary>
         /// <returns>Returns a type of gameitem. </returns>
-        private GameItem TextToItemConverter(char c)
+        private IGameObject TextToItemConverter(int x, int y, char c)
         {
             // need sg for walls
-            if (c == 'r' || c == 'B')
+            if (c == 'r')
             {
-                return new OneRock();
+                return new OneBlock(x, y, BlockType.Rock);
             }
-            else if (c != ' ')
+            else if (c == ' ')
             {
-                return new OneOre(); // TODO what ore
+                return new OneBlock(x, y, BlockType.Air);
+            }
+            else if (c == 'B')
+            {
+                return new OneBlock(x, y, BlockType.Wall);
             }
             else
             {
-                return new OneAir();
+                return new OneBlock(x, y, BlockType.Iron);
             }
         }
     }
