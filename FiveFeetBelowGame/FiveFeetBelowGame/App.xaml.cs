@@ -4,6 +4,7 @@
 
 namespace FiveFeetBelowGame
 {
+    using FiveFeetBelowGame.BL;
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -17,5 +18,6 @@ namespace FiveFeetBelowGame
     /// </summary>
     public partial class App : Application
     {
+        LevelGenerator lg = new LevelGenerator("testmap.json");
     }
 }

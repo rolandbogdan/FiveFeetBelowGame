@@ -104,6 +104,26 @@
             </summary>
             <param name="saveName">Filename.</param>
         </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateFirstSectionJson">
+            <summary>
+            Generates the first section of the map for the json converter.
+            </summary>
+            <returns>Returns an object array of game items.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateSectionJson(FiveFeetBelowGame.VM.GameItem[0:,0:])">
+            <summary>
+            Generates 1000 additional rows for the map.
+            </summary>
+            <param name="items">The map so far.</param>
+            <returns>The new extended map.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.OreToGameItem(System.Char)">
+            <summary>
+            Determines the ore, based on the character.
+            </summary>
+            <param name="c">The character.</param>
+            <returns>The oretype.</returns>
+        </member>
         <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateSection(System.String)">
             <summary>
             Generates the next 1000 depth.
@@ -487,6 +507,36 @@
         <member name="P:FiveFeetBelowGame.VM.Player.Inventory">
             <summary>
             Gets or sets the inventory of the player.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>
