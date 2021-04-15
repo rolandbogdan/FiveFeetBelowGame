@@ -4,7 +4,6 @@
 
 namespace FiveFeetBelowGame
 {
-    using FiveFeetBelowGame.BL;
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -12,6 +11,7 @@ namespace FiveFeetBelowGame
     using System.Linq;
     using System.Threading.Tasks;
     using System.Windows;
+    using FiveFeetBelowGame.BL;
 
     /// <summary>
     /// Interaction logic for App.xaml.

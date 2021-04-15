@@ -56,110 +56,42 @@ namespace FiveFeetBelowGame.BL
         /// Generates the first section of the map for the json converter.
         /// </summary>
         /// <returns>Returns an object array of game items.</returns>
-        private GameItem[,] GenerateFirstSectionJson()
+        private IGameObject[,] GenerateFirstSectionJson()
         {
-            GameItem[,] items = new GameItem[1011, 25];
+            IGameObject[,] items = new IGameObject[1011, 25];
             for (int x = 0; x < items.GetLength(0); x++)
             {
                 for (int y = 0; y < items.GetLength(1); y++)
                 {
                     if (x < 11)
                     {
-                        items[x, y] = new OneAir() { ID = "air" };
+                        items[x, y] = new OneBlock(x, y, BlockType.Air);
                     }
                     else
                     {
                         char[] row = this.RowGenerator().ToCharArray();
+                        BlockType tp = BlockType.Air;
                         if (row[y] == 'B')
                         {
-                            items[x, y] = new OneWall() { ID = "wall" };
-                            items[x, y].CX = x;
-                            items[x, y].CY = y;
+                            tp = BlockType.Wall;
                         }
                         else if (row[y] == 'r')
                         {
-                            items[x, y] = new OneRock() { ID = "rock" };
-                            items[x, y].CX = x;
-                            items[x, y].CY = y;
-                            items[x, y].HealthPoints = 3;
+                            tp = BlockType.Rock;
+
                         }
-                        else if (row[y] == ' ')
+                        else if (row[y] != ' ')
                         {
-                            items[x, y] = new OneAir() { ID = "air" };
-                            items[x, y].CX = x;
-                            items[x, y].CY = y;
+                            tp = this.OreToGameItem(row[y]);
                         }
-                        else
-                        {
-                            items[x, y] = new OneOre() { ID = "ore" };
-                            items[x, y].CX = x;
-                            items[x, y].CY = y;
-                            items[x, y].HealthPoints = 5;
-                            (items[x, y] as OneOre).Type = this.OreToGameItem(row[y]);
-                        }
+
+                        items[x, y] = new OneBlock(x, y, tp);
                     }
                 }
             }
 
+            items[11, 11] = new OnePlayer(11, 11);
             return items;
-        }
-
-        /// <summary>
-        /// Generates 1000 additional rows for the map.
-        /// </summary>
-        /// <param name="items">The map so far.</param>
-        /// <returns>The new extended map.</returns>
-        private GameItem[,] GenerateSectionJson(GameItem[,] items)
-        {
-            GameItem[,] output = new GameItem[items.GetLength(0) + 1000, items.GetLength(1)];
-
-            for (int i = 0; i < items.GetLength(0); i++)
-            {
-                for (int j = 0; j < items.GetLength(1); j++)
-                {
-                    output[i, j] = items[i, j]; // reference problems maybe?
-                }
-            }
-
-            for (int x = 0; x < items.GetLength(0); x++)
-            {
-                for (int y = 0; y < items.GetLength(1); y++)
-                {
-                    char[] row = this.RowGenerator().ToCharArray();
-                    for (int i = 0; i < row.Length; i++)
-                    {
-                        if (row[i] == 'r')
-                        {
-                            items[x, y] = new OneRock();
-                            items[x, y].CX = x;
-                            items[x, y].CY = y;
-                            items[x, y].HealthPoints = 3;
-                        }
-                        else if (row[i] == ' ')
-                        {
-                            items[x, y] = new OneAir();
-                            items[x, y].CX = x;
-                            items[x, y].CY = y;
-                        }
-                        else if (row[i] == 'B')
-                        {
-                            items[x, y] = new OneWall();
-                            items[x, y].CX = x;
-                            items[x, y].CY = y;
-                        }
-                        else
-                        {
-                            items[x, y] = new OneOre();
-                            items[x, y].CX = x;
-                            items[x, y].CY = y;
-                            items[x, y].HealthPoints = 5;
-                            (items[x, y] as OneOre).Type = this.OreToGameItem(row[i]);
-                        }
-                    }
-                }
-            }
-
-            return output;
         }
 
         /// <summary>
@@ -167,16 +99,16 @@ namespace FiveFeetBelowGame.BL
         /// </summary>
         /// <param name="c">The character.</param>
         /// <returns>The oretype.</returns>
-        private OreType OreToGameItem(char c)
+        private BlockType OreToGameItem(char c)
         {
             switch (c)
             {
-                case 'i': return OreType.Iron;
-                case 'g': return OreType.Gold;
-                case 'd': return OreType.Diamond;
-                case '+': return OreType.Gem;
-                case '*': return OreType.RareGem;
-                default: return OreType.Rock;
+                case 'i': return BlockType.Iron;
+                case 'g': return BlockType.Gold;
+                case 'd': return BlockType.Diamond;
+                case '+': return BlockType.Gem;
+                case '*': return BlockType.RareGem;
+                default: return BlockType.Rock;
             }
         }
 

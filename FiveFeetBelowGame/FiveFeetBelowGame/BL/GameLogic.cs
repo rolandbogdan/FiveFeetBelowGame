@@ -100,7 +100,7 @@ namespace FiveFeetBelowGame.BL
 
             int height = lines.Count;
             int width = lines[0].Length;
-            this.model.Blocks = new GameItem[height, width];
+            this.model.Blocks = new IGameObject[height, width];
             this.model.TileSize = this.model.GameWidth / 25;
             int x = 0;
             foreach (string item in lines)
@@ -111,9 +111,12 @@ namespace FiveFeetBelowGame.BL
                     if (item[y] == 'P')
                     {
                         this.model.Player = new Point(x, y);
+                        this.model.Blocks[x, y] = new OnePlayer(x, y);
                     }
-
-                    this.model.Blocks[x, y] = this.TextToItemConverter(item[y]);
+                    else
+                    {
+                        this.model.Blocks[x, y] = this.TextToItemConverter(x, y, item[y]);
+                    }
                 }
 
                 x++;
@@ -124,20 +127,24 @@ namespace FiveFeetBelowGame.BL
         /// Converts from the letters in the txt file to game items.
         /// </summary>
         /// <returns>Returns a type of gameitem. </returns>
-        private GameItem TextToItemConverter(char c)
+        private IGameObject TextToItemConverter(int x, int y, char c)
         {
             // need sg for walls
-            if (c == 'r' || c == 'B')
+            if (c == 'r')
             {
-                return new OneRock();
+                return new OneBlock(x, y, BlockType.Rock);
             }
-            else if (c != ' ')
+            else if (c == ' ')
             {
-                return new OneOre(); // TODO what ore
+                return new OneBlock(x, y, BlockType.Air);
+            }
+            else if (c == 'B')
+            {
+                return new OneBlock(x,y,BlockType.Wall);
             }
             else
             {
-                return new OneAir();
+                return new OneBlock(x, y, BlockType.Iron);
             }
         }
     }
