@@ -18,6 +18,6 @@ namespace FiveFeetBelowGame
     /// </summary>
     public partial class App : Application
     {
-        LevelGenerator lg = new LevelGenerator("testmap.json");
+        JsonHandler jh = new JsonHandler("testingmap");
     }
 }
