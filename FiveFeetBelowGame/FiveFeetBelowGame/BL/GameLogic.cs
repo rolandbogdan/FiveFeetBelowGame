@@ -96,6 +96,17 @@ namespace FiveFeetBelowGame.BL
             this.model.Blocks = jh.LoadMap("testfile.json");
             this.model.TileSize = this.model.GameWidth / 25;
 
+            IGameObject[,] arr = new IGameObject[this.model.Blocks.GetLength(1), this.model.Blocks.GetLength(0)];
+            for (int i = 0; i < this.model.Blocks.GetLength(0); i++)
+            {
+                for (int j = 0; j < this.model.Blocks.GetLength(1); j++)
+                {
+                    arr[j, i] = this.model.Blocks[i, j];
+                }
+            }
+
+            this.model.Blocks = arr;
+
             foreach (var item in this.model.Blocks)
             {
                 if ((item as OnePlayer) != null)
