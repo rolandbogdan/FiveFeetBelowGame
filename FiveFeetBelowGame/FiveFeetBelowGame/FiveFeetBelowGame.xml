@@ -39,7 +39,7 @@
             <param name="model">GameModel type parameter.</param>
             <param name="fname">String type parameter.</param>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.Move(System.Int32,System.Int32)">
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.Move(System.Double,System.Double)">
             <summary>
             Moves the player charecter.
             </summary>
@@ -64,70 +64,337 @@
             </summary>
             <param name="fname">String type parameter.</param>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.TextToItemConverter(System.Char)">
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.UpdatePlayer(System.Double,System.Double)">
             <summary>
-            Converts from the letters in the txt file to game items.
+            Updates the player in the blocks array, and the player's point in the model.
             </summary>
-            <returns>Returns a type of gameitem. </returns>
+            <param name="newX"> New x coordinate of the player. </param>
+            <param name="newY"> new y coordinate of the player. </param>
         </member>
-        <member name="T:FiveFeetBelowGame.BL.GameToLvl">
+        <member name="T:FiveFeetBelowGame.JsonHandler">
             <summary>
-            Converts the game state to a .lvl file.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameToLvl.#ctor(FiveFeetBelowGame.VM.GameModel)">
-            <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.GameToLvl"/> class.
-            </summary>
-            <param name="model">The game model.</param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameToLvl.SaveToLvl(System.String)">
-            <summary>
-            Saves the game state to a .lvl file.
-            </summary>
-            <param name="path">The path of the file you want to save to.</param>
-        </member>
-        <member name="T:FiveFeetBelowGame.BL.LevelGenerator">
-            <summary>
-            This class generates the .lvl file for the game, for the renderer to draw later.
-            This generates the first 1000 blocks, and the procedural generator class will generate the rest.
+            This class is responsible for reading and writing json files.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.#ctor">
+        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.LevelGenerator"/> class.
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.#ctor(System.String)">
+        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.LevelGenerator"/> class.
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
             <param name="saveName">Filename.</param>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateSection(System.String)">
+        <member name="M:FiveFeetBelowGame.JsonHandler.SaveMap(FiveFeetBelowGame.IGameObject[0:,0:],System.String)">
             <summary>
-            Generates the next 1000 depth.
+            Saves the game state to a json file.
             </summary>
-            <param name="level"> The path of the lvl file. </param>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.GenerateFirstSection(System.String)">
+        <member name="M:FiveFeetBelowGame.JsonHandler.LoadMap(System.String)">
             <summary>
-            Generates the first section of the map.
+            Loads the json save file to a playable array.
             </summary>
-            <param name="level">The map's file path.</param>
+            <param name="filePath">The path for the game file.</param>
+            <returns>A playable IGameObject array, if the file exists. </returns>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.RowGenerator">
+        <member name="M:FiveFeetBelowGame.JsonHandler.GenerateFirstSection">
+            <summary>
+            Generates the first section of the map for the json converter.
+            </summary>
+            <returns>Returns an object array of game items.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.RowGenerator(FiveFeetBelowGame.IGameObject[0:,0:]@,System.Int32)">
             <summary>
             Generates one row on the map.
             </summary>
             <returns>returns the certain row.</returns>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.LevelGenerator.OreChooser(System.Int32)">
+        <member name="M:FiveFeetBelowGame.JsonHandler.OreChooser(System.Int32)">
             <summary>
             Decides what ore to insert depending on the depth.
             </summary>
             <param name="a">A random integer.</param>
             <returns>A letter for the ore.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.GenerateTestSection">
+            <summary>
+            For testing purposes.
+            </summary>
+            <returns>A 20*25 IGameObject array. </returns>
+        </member>
+        <member name="T:FiveFeetBelowGame.BlockType">
+            <summary>
+            The ore types.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.BlockType.Rock">
+            <summary>
+            Most common thing underground.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.BlockType.Iron">
+            <summary>
+            First ore.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.BlockType.Gold">
+            <summary>
+            Second ore.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.BlockType.Diamond">
+            <summary>
+            Third ore.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.BlockType.Gem">
+            <summary>
+            Forth ore.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.BlockType.RareGem">
+            <summary>
+            Final ore.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.BlockType.Wall">
+            <summary>
+            Undestructible borders of the map.
+            </summary>
+        </member>
+        <member name="F:FiveFeetBelowGame.BlockType.Air">
+            <summary>
+            Empty blocks.
+            </summary>
+        </member>
+        <member name="T:FiveFeetBelowGame.IGameObject">
+            <summary>
+            An interface for the objects in the game.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.IGameObject.Area">
+            <summary>
+            Gets or sets the area of the element.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.IGameObject.CX">
+            <summary>
+            Gets or sets the central X coordinate of the element.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.IGameObject.CY">
+            <summary>
+            Gets or sets the central Y coordinate of the element.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.IGameObject.HealthPoints">
+            <summary>
+            Gets or sets the HP of the element.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.IGameObject.IsCollision(FiveFeetBelowGame.IGameObject)">
+            <summary>
+            Decides if the element is colliding with another element or not.
+            </summary>
+            <param name="other"> The other element this one might collide with. </param>
+            <returns> True if they collide. </returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.IGameObject.DamageTaken(System.Int32)">
+            <summary>
+            Subtracts damage from the health.
+            </summary>
+            <param name="dmg"> The damage the entity takes. </param>
+        </member>
+        <member name="M:FiveFeetBelowGame.IGameObject.IsDestroyed">
+            <summary>
+            Kills the entity if hp is 0.
+            </summary>
+        </member>
+        <member name="T:FiveFeetBelowGame.OneBlock">
+            <summary>
+            An ore block element.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneBlock.#ctor(System.Double,System.Double,FiveFeetBelowGame.BlockType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OneBlock"/> class.
+            </summary>
+            <param name="x">X coordinate of the block.</param>
+            <param name="y">Y coordinate of the block.</param>
+            <param name="type">The type of the block.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneBlock.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OneBlock"/> class.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneBlock.Type">
+            <summary>
+            Gets or sets the type of the block.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneBlock.Hardness">
+            <summary>
+            Gets or sets the hardness of the block.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneBlock.Area">
+            <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneBlock.CX">
+            <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneBlock.CY">
+            <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneBlock.HealthPoints">
+            <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneBlock.Breakable">
+            <summary>
+            Gets or sets a value indicating whether the block is breakable or not.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneBlock.IsSolid">
+            <summary>
+            Gets or sets a value indicating whether the block is solid or not.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneBlock.DamageTaken(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneBlock.IsCollision(FiveFeetBelowGame.IGameObject)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneBlock.IsDestroyed">
+            <inheritdoc/>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneBlock.PropertySetter">
+            <summary>
+            Sets the properties of the object based on the type.
+            </summary>
+        </member>
+        <member name="T:FiveFeetBelowGame.OneMonster">
+            <summary>
+            A monster element.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneMonster.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OneMonster"/> class.
+            </summary>
+            <param name="cx">X coordinate. </param>
+            <param name="cy">Y coordinate. </param>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneMonster.#ctor(FiveFeetBelowGame.OneMonster)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OneMonster"/> class.
+            </summary>
+            <param name="other">An object from which the properties will be copied.</param>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneMonster.Area">
+            <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneMonster.CX">
+            <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneMonster.CY">
+            <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OneMonster.HealthPoints">
+            <inheritdoc/>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneMonster.InflictDamage">
+            <summary>
+            Calculates the damage to be inflicted based on the pickaxe level.
+            </summary>
+            <returns>Returns the damage to be infliced.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneMonster.DamageTaken(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneMonster.IsCollision(FiveFeetBelowGame.IGameObject)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneMonster.IsDestroyed">
+            <inheritdoc/>
+        </member>
+        <member name="T:FiveFeetBelowGame.OnePlayer">
+            <summary>
+            OnePlayer represent our player class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.OnePlayer.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OnePlayer"/> class.
+            </summary>
+            <param name="cx">X coordinate. </param>
+            <param name="cy">Y coordinate. </param>
+        </member>
+        <member name="M:FiveFeetBelowGame.OnePlayer.#ctor(FiveFeetBelowGame.OnePlayer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OnePlayer"/> class.
+            </summary>
+            <param name="other">An object from which the properties will be copied.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.OnePlayer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OnePlayer"/> class.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.OnePlayer.Area">
+            <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OnePlayer.CX">
+            <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OnePlayer.CY">
+            <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OnePlayer.DX">
+            <summary>
+            Gets or sets the horizontal speed of the player.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.OnePlayer.DY">
+            <summary>
+            Gets or sets the vertical speed of the player.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.OnePlayer.HealthPoints">
+            <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OnePlayer.PickaxeLvl">
+            <summary>
+            Gets or sets the lvl of the player's pickaxe.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.OnePlayer.Balance">
+            <summary>
+            Gets or sets the lvl of the player's pickaxe.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.OnePlayer.DeepestPointReached">
+            <summary>
+            Gets or sets the lvl of the player's pickaxe.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.OnePlayer.InflictDamage">
+            <summary>
+            Calculates the damage to be inflicted based on the pickaxe level.
+            </summary>
+            <returns>Returns the damage to be infliced.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.OnePlayer.DamageTaken(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FiveFeetBelowGame.OnePlayer.IsCollision(FiveFeetBelowGame.IGameObject)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FiveFeetBelowGame.OnePlayer.IsDestroyed">
+            <inheritdoc/>
         </member>
         <member name="T:FiveFeetBelowGame.MainWindow">
             <summary>
@@ -191,94 +458,6 @@
             </summary>
             <returns>Returns a Drawing.</returns>
         </member>
-        <member name="T:FiveFeetBelowGame.VM.DroppedItem">
-            <summary>
-            Items that entities drop.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.DroppedItem.ItemType">
-            <summary>
-            Gets or sets the dropped item.
-            </summary>
-        </member>
-        <member name="T:FiveFeetBelowGame.VM.GameItem">
-            <summary>
-            Base of the game elements.
-            </summary>
-        </member>
-        <member name="F:FiveFeetBelowGame.VM.GameItem.area">
-            <summary>
-            The area of the element.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameItem.ID">
-            <summary>
-            Gets or sets the ID of the element.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameItem.CX">
-            <summary>
-            Gets or sets the central X coordinate of the element.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameItem.CY">
-            <summary>
-            Gets or sets the central Y coordinate of the element.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameItem.DX">
-            <summary>
-            Gets or sets the X directional speed of the element.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameItem.DY">
-            <summary>
-            Gets or sets the Y directional speed of the element.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameItem.HealthPoints">
-            <summary>
-            Gets or sets the HP of the element.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameItem.IsDead">
-            <summary>
-            Gets or sets a value indicating whether the entity is dead or not.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameItem.Damage">
-            <summary>
-            Gets or sets the damage this entity can deal.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameItem.Breakable">
-            <summary>
-            Gets or sets a value indicating whether the block is breakable or not.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameItem.IsSolid">
-            <summary>
-            Gets or sets a value indicating whether the block is solid or not.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.GameItem.IsCollision(FiveFeetBelowGame.VM.GameItem)">
-            <summary>
-            Decides if the element is colliding with another element or not.
-            </summary>
-            <param name="other"> The other element this one might collide with. </param>
-            <returns> True if they collide. </returns>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.GameItem.DamageInflicted(System.Int32)">
-            <summary>
-            Subtracts damage from the health.
-            </summary>
-            <param name="dmg"> The damage the entity takes. </param>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.GameItem.IsDestroyed">
-            <summary>
-            Kills the entity if hp is 0.
-            </summary>
-        </member>
         <member name="T:FiveFeetBelowGame.VM.GameModel">
             <summary>
             Gamemodel class.
@@ -314,179 +493,6 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.TileSize">
             <summary>
             Gets or sets TileSize represent the tile size in pixels.
-            </summary>
-        </member>
-        <member name="T:FiveFeetBelowGame.VM.OneAir">
-            <summary>
-            Air entity.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.OneAir.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OneAir"/> class.
-            </summary>
-        </member>
-        <member name="T:FiveFeetBelowGame.VM.OneMonster">
-            <summary>
-            A monster element.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.OneMonster.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OneMonster"/> class.
-            </summary>
-        </member>
-        <member name="T:FiveFeetBelowGame.VM.OneOre">
-            <summary>
-            An ore block element.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.OneOre.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OneOre"/> class.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.OneOre.Type">
-            <summary>
-            Gets or sets the type of the block.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.OneOre.Hardness">
-            <summary>
-            Gets or sets the hardness of the block.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.OneOre.IsDestroyed">
-            <summary>
-            Occurs when entity is destroyed.
-            </summary>
-        </member>
-        <member name="T:FiveFeetBelowGame.VM.OnePickaxe">
-            <summary>
-            The pickaxe game element.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.OnePickaxe.#ctor(System.Int32)">
-            <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OnePickaxe"/> class.
-            </summary>
-            <param name="lvl">The level of the pickaxe.</param>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.OnePickaxe.Material">
-            <summary>
-            Gets or sets the material the pickaxe is made from.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.OnePickaxe.Damage">
-            <summary>
-            Gets or sets the damage it deals.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.OnePickaxe.PickaxeLvl">
-            <summary>
-            Gets or sets the lvl of the pickaxe.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.OnePickaxe.DamageCalc">
-            <summary>
-            Calculates the damage of the pickaxe.
-            </summary>
-        </member>
-        <member name="T:FiveFeetBelowGame.VM.OnePlayer">
-            <summary>
-            OnePlayer represent our player class.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.OnePlayer.#ctor(System.Double,System.Double)">
-            <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OnePlayer"/> class.
-            </summary>
-            <param name="cx">X coordinate. </param>
-            <param name="cy">Y coordinate. </param>
-        </member>
-        <member name="T:FiveFeetBelowGame.VM.OneRock">
-            <summary>
-            A rock entity in the game.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.OneRock.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OneRock"/> class.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.OneRock.Type">
-            <summary>
-            Gets or sets the type of the block.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.OneRock.Hardness">
-            <summary>
-            Gets or sets the hardness of the block.
-            </summary>
-        </member>
-        <member name="T:FiveFeetBelowGame.VM.OneWall">
-            <summary>
-            The boundaries of the map.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.OneWall.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.OneWall"/> class.
-            </summary>
-        </member>
-        <member name="T:FiveFeetBelowGame.VM.OreType">
-            <summary>
-            The ore types.
-            </summary>
-        </member>
-        <member name="F:FiveFeetBelowGame.VM.OreType.Rock">
-            <summary>
-            Most common thing underground.
-            </summary>
-        </member>
-        <member name="F:FiveFeetBelowGame.VM.OreType.Iron">
-            <summary>
-            First ore.
-            </summary>
-        </member>
-        <member name="F:FiveFeetBelowGame.VM.OreType.Gold">
-            <summary>
-            Second ore.
-            </summary>
-        </member>
-        <member name="F:FiveFeetBelowGame.VM.OreType.Diamond">
-            <summary>
-            Third ore.
-            </summary>
-        </member>
-        <member name="F:FiveFeetBelowGame.VM.OreType.Gem">
-            <summary>
-            Forth ore.
-            </summary>
-        </member>
-        <member name="F:FiveFeetBelowGame.VM.OreType.RareGem">
-            <summary>
-            Final ore.
-            </summary>
-        </member>
-        <member name="T:FiveFeetBelowGame.VM.Player">
-            <summary>
-            A player entity in the game.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.VM.Player.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.Player"/> class.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.Player.Pickaxe">
-            <summary>
-            Gets or sets the pickaxe of the player.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.Player.Inventory">
-            <summary>
-            Gets or sets the inventory of the player.
             </summary>
         </member>
     </members>
