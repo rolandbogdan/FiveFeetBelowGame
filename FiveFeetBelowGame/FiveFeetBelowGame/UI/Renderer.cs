@@ -140,7 +140,7 @@ namespace FiveFeetBelowGame.UI
                             (this.model.Blocks[x, y] as OnePlayer) == null &&
                             (this.model.Blocks[x, y] as OneBlock).Type == BlockType.Rock)
                         {
-                            Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                             g.Children.Add(box);
                         }
                     }

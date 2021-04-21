@@ -70,6 +70,16 @@ namespace FiveFeetBelowGame
         /// <inheritdoc/>
         public double CY { get; set; }
 
+        /// <summary>
+        /// Gets or sets the horizontal speed of the player.
+        /// </summary>
+        public double DX { get; set; }
+
+        /// <summary>
+        /// Gets or sets the vertical speed of the player.
+        /// </summary>
+        public double DY { get; set; }
+
         /// <inheritdoc/>
         public int HealthPoints { get; set; }
 
