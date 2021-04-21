@@ -113,7 +113,7 @@ namespace FiveFeetBelowGame
                 }
             }
 
-            items[11, 11] = new OnePlayer(11, 11);
+            items[10, 10] = new OnePlayer(10, 10);
             return items;
         }
 

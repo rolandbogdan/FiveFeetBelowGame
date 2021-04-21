@@ -114,9 +114,18 @@ namespace FiveFeetBelowGame.BL
         {
             double oldX = this.model.Player.X;
             double oldY = this.model.Player.Y;
-            this.model.Blocks[(int)newX, (int)newY] = new OnePlayer(this.model.Blocks[(int)oldX, (int)oldY] as OnePlayer);
-            this.model.Blocks[(int)oldX, (int)oldY] = new OneBlock(oldX, oldY, BlockType.Air);
-            this.model.Player = new Point(newX, newY);
+            if (newX >= 0 && newX < this.model.Blocks.GetLength(0) &&
+                newY >= 0 && newY < this.model.Blocks.GetLength(1) &&
+                this.model.Blocks[(int)newX, (int)newY] as OneBlock != null &&
+                !(this.model.Blocks[(int)newX, (int)newY] as OneBlock).IsSolid)
+            {
+                this.model.Blocks[(int)newX, (int)newY] =
+                    new OnePlayer(
+                        this.model.Blocks[(int)oldX, (int)oldY] as OnePlayer)
+                        { CX = newX, CY = newY };
+                this.model.Blocks[(int)oldX, (int)oldY] = new OneBlock(oldX, oldY, BlockType.Air);
+                this.model.Player = new Point(newX, newY);
+            }
         }
     }
 }
