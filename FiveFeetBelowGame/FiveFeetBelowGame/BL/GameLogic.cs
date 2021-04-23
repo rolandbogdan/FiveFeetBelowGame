@@ -79,7 +79,15 @@ namespace FiveFeetBelowGame.BL
         /// </summary>
         public void Gravity()
         {
-            throw new NotImplementedException();
+            int px = (int)this.model.Player.X;
+            int py = (int)this.model.Player.Y;
+
+            // while?
+            if ((this.model.Blocks[px, py - 1] as OneBlock) != null &&
+                !(this.model.Blocks[px, py - 1] as OneBlock).IsSolid)
+            {
+                this.Move(0, 1);
+            }
         }
 
         /// <summary>

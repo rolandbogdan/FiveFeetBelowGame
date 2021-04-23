@@ -88,6 +88,7 @@ namespace FiveFeetBelowGame.UI
                 }
             }
 
+            this.logic.Gravity();
             this.InvalidateVisual();
         }
 
@@ -97,15 +98,19 @@ namespace FiveFeetBelowGame.UI
             {
                 case System.Windows.Input.Key.W:
                     this.logic.Move(0, -1);
+                    this.logic.Gravity();
                     break;
                 case System.Windows.Input.Key.S:
                     this.logic.Move(0, 1);
+                    this.logic.Gravity();
                     break;
                 case System.Windows.Input.Key.A:
                     this.logic.Move(-1, 0);
+                    this.logic.Gravity();
                     break;
                 case System.Windows.Input.Key.D:
                     this.logic.Move(1, 0);
+                    this.logic.Gravity();
                     break;
                 default:
                     break;
