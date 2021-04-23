@@ -58,7 +58,6 @@ namespace FiveFeetBelowGame
         /// </summary>
         public OnePlayer()
         {
-
         }
 
         /// <inheritdoc/>
@@ -145,8 +144,7 @@ namespace FiveFeetBelowGame
         /// <inheritdoc/>
         public void IsDestroyed()
         {
-            this.Area = null;
-
+            // this.Area = null;
             // drop item, or add balance to player
         }
     }

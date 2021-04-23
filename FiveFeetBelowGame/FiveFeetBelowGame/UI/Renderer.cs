@@ -37,6 +37,8 @@ namespace FiveFeetBelowGame.UI
 
         public Brush RockBrush { get { return Brushes.Brown; } }
 
+        public Brush AirBrush { get { return Brushes.Transparent; } }
+
         public Brush OreBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false); } }
 
         public Brush Bgbrush { get { return this.GetBrush("FiveFeetBelowGame.Images.back.png", false); } }
@@ -92,6 +94,7 @@ namespace FiveFeetBelowGame.UI
         /// <returns>Returns a Drawing.</returns>
         public Drawing BuildDrawing()
         {
+            this.Reset(); // optimize?
             DrawingGroup dg = new DrawingGroup();
             dg.Children.Add(this.GetBackground());
             dg.Children.Add(this.GetMiddle());

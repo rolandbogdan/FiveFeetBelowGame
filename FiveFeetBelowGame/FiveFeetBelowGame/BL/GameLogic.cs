@@ -71,7 +71,7 @@ namespace FiveFeetBelowGame.BL
         /// <returns>The point where we clicked as an object. </returns>
         public Point GetTilePos(Point mousePos) // Pixel position => Tile position
         {
-            return new Point((int)(mousePos.X / this.model.TileSize), (int)(mousePos.Y / this.model.TileSize));
+            return new Point(mousePos.X / this.model.TileSize, mousePos.Y / this.model.TileSize);
         }
 
         /// <summary>

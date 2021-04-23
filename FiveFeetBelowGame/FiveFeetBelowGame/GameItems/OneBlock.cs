@@ -102,7 +102,7 @@ namespace FiveFeetBelowGame
         /// <inheritdoc/>
         public void IsDestroyed()
         {
-            this.Type = BlockType.Air;
+            // this.Type = BlockType.Air;
 
             // drop item, or add balance to player
         }
