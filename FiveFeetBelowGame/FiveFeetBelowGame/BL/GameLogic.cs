@@ -4,132 +4,134 @@
 
 namespace FiveFeetBelowGame.BL
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Reflection;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Windows;
-    using FiveFeetBelowGame.VM;
+      using System;
+      using System.Collections.Generic;
+      using System.IO;
+      using System.Linq;
+      using System.Reflection;
+      using System.Text;
+      using System.Threading.Tasks;
+      using System.Windows;
+      using FiveFeetBelowGame.VM;
 
-    /// <summary>
-    /// GameLogic class for the logic of our game.
-    /// </summary>
-    public class GameLogic
-    {
-        /// <summary>
-        /// GameModel type model, an instance of the descendant class.
-        /// </summary>
-        private GameModel model;
+      /// <summary>
+      /// GameLogic class for the logic of our game.
+      /// </summary>
+      public class GameLogic
+      {
+            /// <summary>
+            /// GameModel type model, an instance of the descendant class.
+            /// </summary>
+            private GameModel model;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GameLogic"/> class.
-        /// </summary>
-        /// <param name="model">GameModel type parameter.</param>
-        /// <param name="fname">String type parameter.</param>
-        public GameLogic(GameModel model, string fname)
-        {
-            this.model = model;
-            this.InitModel(fname);
-        }
-
-        /// <summary>
-        /// Moves the player charecter.
-        /// </summary>
-        /// <param name="horizontal"> Horizontal speed. </param>
-        /// <param name="vertical"> Vertical speed.</param>
-        public void Move(int horizontal, int vertical)
-        {
-            if (horizontal != 0)
+            /// <summary>
+            /// Initializes a new instance of the <see cref="GameLogic"/> class.
+            /// </summary>
+            /// <param name="model">GameModel type parameter.</param>
+            /// <param name="fname">String type parameter.</param>
+            public GameLogic(GameModel model, string fname)
             {
-                // model.Player.DX += horizontal; // talán így kéne majd
+                  this.model = model;
+                  this.InitModel(fname);
             }
 
-            if (vertical != 0)
+            /// <summary>
+            /// Moves the player charecter.
+            /// </summary>
+            /// <param name="horizontal"> Horizontal speed. </param>
+            /// <param name="vertical"> Vertical speed.</param>
+            public void Move(int horizontal, int vertical)
             {
-                // model.Player.Dy += vertical; // talán így kéne majd
+                  if (horizontal != 0)
+                  {
+                        // model.Player.DX += horizontal; // talán így kéne majd
+                  }
+
+                  if (vertical != 0)
+                  {
+                        // model.Player.Dy += vertical; // talán így kéne majd
+                  }
+
+                  /*
+                  int newX = (int)(this.model.Player.X + dx);
+                  int newY = (int)(this.model.Player.Y + dy);
+                  if (newX >= 0 && newY >= 0 && newX < this.model.Blocks.GetLength(0)
+                      && this.model.Blocks[newX, newY].GetType().ToString() == "OneAir")
+                  {
+                      this.model.Player = new Point(newX, newY);
+                  }
+                  */
             }
 
-            /*
-            int newX = (int)(this.model.Player.X + dx);
-            int newY = (int)(this.model.Player.Y + dy);
-            if (newX >= 0 && newY >= 0 && newX < this.model.Blocks.GetLength(0)
-                && this.model.Blocks[newX, newY].GetType().ToString() == "OneAir")
+            /// <summary>
+            /// Gets the coordinates of where we clicked.
+            /// </summary>
+            /// <param name="mousePos">The point where the mouse is.</param>
+            /// <returns>The point where we clicked as an object. </returns>
+            public Point GetTilePos(Point mousePos) // Pixel position => Tile position
             {
-                this.model.Player = new Point(newX, newY);
+                  return new Point((int)(mousePos.X / this.model.TileSize), (int)(mousePos.Y / this.model.TileSize));
             }
-            */
-        }
 
-        /// <summary>
-        /// Gets the coordinates of where we clicked.
-        /// </summary>
-        /// <param name="mousePos">The point where the mouse is.</param>
-        /// <returns>The point where we clicked as an object. </returns>
-        public Point GetTilePos(Point mousePos) // Pixel position => Tile position
-        {
-            return new Point((int)(mousePos.X / this.model.TileSize), (int)(mousePos.Y / this.model.TileSize));
-        }
-
-        /// <summary>
-        /// Gravity to be implemented.
-        /// </summary>
-        public void Gravity()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Initmodel method for initialize our model.
-        /// </summary>
-        /// <param name="fname">String type parameter.</param>
-        private void InitModel(string fname)
-        {
-            // Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
-            // StreamReader sr = new StreamReader(stream);
-
-            JsonHandler jh = new JsonHandler();
-
-            // this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
-            this.model.Blocks = jh.LoadMap("testfile.json");
-            this.model.TileSize = this.model.GameWidth / 25;
-
-            /*
-            foreach (var item in this.model.Blocks)
+            /// <summary>
+            /// Gravity to be implemented.
+            /// </summary>
+            public void Gravity()
             {
-                if (item.GetType() is OnePlayer)
-                {
-                    this.model.Player = new Point(item.CX, item.CY);
-                }
+                  throw new NotImplementedException();
             }
-            */
-        }
 
-        /// <summary>
-        /// Converts from the letters in the txt file to game items.
-        /// </summary>
-        /// <returns>Returns a type of gameitem. </returns>
-        private IGameObject TextToItemConverter(int x, int y, char c)
-        {
-            // need sg for walls
-            if (c == 'r')
+            /// <summary>
+            /// Initmodel method for initialize our model.
+            /// </summary>
+            /// <param name="fname">String type parameter.</param>
+            private void InitModel(string fname)
             {
-                return new OneBlock(x, y, BlockType.Rock);
+                  // Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
+                  // StreamReader sr = new StreamReader(stream);
+
+                  JsonHandler jh = new JsonHandler();
+
+                  // this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
+                  this.model.Blocks = jh.LoadMap("testfile.json");
+
+                  // this.model.TileSize = this.model.GameWidth / 25;
+                  this.model.TileSize = model.GameWidth/25;
+
+                  /*
+                  foreach (var item in this.model.Blocks)
+                  {
+                      if (item.GetType() is OnePlayer)
+                      {
+                          this.model.Player = new Point(item.CX, item.CY);
+                      }
+                  }
+                  */
             }
-            else if (c == ' ')
+
+            /// <summary>
+            /// Converts from the letters in the txt file to game items.
+            /// </summary>
+            /// <returns>Returns a type of gameitem. </returns>
+            private IGameObject TextToItemConverter(int x, int y, char c)
             {
-                return new OneBlock(x, y, BlockType.Air);
+                  // need sg for walls
+                  if (c == 'r')
+                  {
+                        return new OneBlock(x, y, BlockType.Rock);
+                  }
+                  else if (c == ' ')
+                  {
+                        return new OneBlock(x, y, BlockType.Air);
+                  }
+                  else if (c == 'B')
+                  {
+                        return new OneBlock(x, y, BlockType.Wall);
+                  }
+                  else
+                  {
+                        return new OneBlock(x, y, BlockType.Iron);
+                  }
             }
-            else if (c == 'B')
-            {
-                return new OneBlock(x, y, BlockType.Wall);
-            }
-            else
-            {
-                return new OneBlock(x, y, BlockType.Iron);
-            }
-        }
-    }
+      }
 }
