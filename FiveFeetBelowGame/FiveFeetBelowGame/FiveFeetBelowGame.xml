@@ -39,7 +39,7 @@
             <param name="model">GameModel type parameter.</param>
             <param name="fname">String type parameter.</param>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.Move(System.Int32,System.Int32)">
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.Move(System.Double,System.Double)">
             <summary>
             Moves the player charecter.
             </summary>
@@ -64,11 +64,12 @@
             </summary>
             <param name="fname">String type parameter.</param>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.TextToItemConverter(System.Int32,System.Int32,System.Char)">
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.UpdatePlayer(System.Double,System.Double)">
             <summary>
-            Converts from the letters in the txt file to game items.
+            Updates the player in the blocks array, and the player's point in the model.
             </summary>
-            <returns>Returns a type of gameitem. </returns>
+            <param name="newX"> New x coordinate of the player. </param>
+            <param name="newY"> new y coordinate of the player. </param>
         </member>
         <member name="T:FiveFeetBelowGame.JsonHandler">
             <summary>
@@ -351,6 +352,16 @@
         </member>
         <member name="P:FiveFeetBelowGame.OnePlayer.CY">
             <inheritdoc/>
+        </member>
+        <member name="P:FiveFeetBelowGame.OnePlayer.DX">
+            <summary>
+            Gets or sets the horizontal speed of the player.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.OnePlayer.DY">
+            <summary>
+            Gets or sets the vertical speed of the player.
+            </summary>
         </member>
         <member name="P:FiveFeetBelowGame.OnePlayer.HealthPoints">
             <inheritdoc/>

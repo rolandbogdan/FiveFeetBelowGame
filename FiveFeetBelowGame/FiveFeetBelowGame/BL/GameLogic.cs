@@ -35,33 +35,34 @@ namespace FiveFeetBelowGame.BL
                   this.InitModel(fname);
             }
 
-            /// <summary>
-            /// Moves the player charecter.
-            /// </summary>
-            /// <param name="horizontal"> Horizontal speed. </param>
-            /// <param name="vertical"> Vertical speed.</param>
-            public void Move(int horizontal, int vertical)
+        /// <summary>
+        /// Moves the player charecter.
+        /// </summary>
+        /// <param name="horizontal"> Horizontal speed. </param>
+        /// <param name="vertical"> Vertical speed.</param>
+        public void Move(double horizontal, double vertical)
+        {
+            double px = this.model.Blocks[(int)this.model.Player.X, (int)this.model.Player.Y].CX;
+            double py = this.model.Blocks[(int)this.model.Player.X, (int)this.model.Player.Y].CY;
+            double dx = 0;
+            double dy = 0;
+
+            if (horizontal != 0)
             {
-                  if (horizontal != 0)
-                  {
-                        // model.Player.DX += horizontal; // talán így kéne majd
-                  }
-
-                  if (vertical != 0)
-                  {
-                        // model.Player.Dy += vertical; // talán így kéne majd
-                  }
-
-                  /*
-                  int newX = (int)(this.model.Player.X + dx);
-                  int newY = (int)(this.model.Player.Y + dy);
-                  if (newX >= 0 && newY >= 0 && newX < this.model.Blocks.GetLength(0)
-                      && this.model.Blocks[newX, newY].GetType().ToString() == "OneAir")
-                  {
-                      this.model.Player = new Point(newX, newY);
-                  }
-                  */
+                // (this.model.Blocks[px, py] as OnePlayer).DX += horizontal;
+                dx += horizontal;
             }
+
+            if (vertical != 0)
+            {
+                // (this.model.Blocks[px, py] as OnePlayer).DY += vertical;
+                dy += vertical;
+            }
+
+            double newX = px + dx;
+            double newY = py + dy;
+            this.UpdatePlayer(newX, newY);
+        }
 
             /// <summary>
             /// Gets the coordinates of where we clicked.
@@ -81,16 +82,15 @@ namespace FiveFeetBelowGame.BL
                   throw new NotImplementedException();
             }
 
-            /// <summary>
-            /// Initmodel method for initialize our model.
-            /// </summary>
-            /// <param name="fname">String type parameter.</param>
-            private void InitModel(string fname)
-            {
-                  // Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
-                  // StreamReader sr = new StreamReader(stream);
-
-                  JsonHandler jh = new JsonHandler();
+        /// <summary>
+        /// Initmodel method for initialize our model.
+        /// </summary>
+        /// <param name="fname">String type parameter.</param>
+        private void InitModel(string fname)
+        {
+            // Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
+            // StreamReader sr = new StreamReader(stream);
+            JsonHandler jh = new JsonHandler();
 
                   // this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
                   this.model.Blocks = jh.LoadMap("testfile.json");
@@ -98,40 +98,47 @@ namespace FiveFeetBelowGame.BL
                   // this.model.TileSize = this.model.GameWidth / 25;
                   this.model.TileSize = model.GameWidth/25;
 
-                  /*
-                  foreach (var item in this.model.Blocks)
-                  {
-                      if (item.GetType() is OnePlayer)
-                      {
-                          this.model.Player = new Point(item.CX, item.CY);
-                      }
-                  }
-                  */
+            IGameObject[,] arr = new IGameObject[this.model.Blocks.GetLength(1), this.model.Blocks.GetLength(0)];
+            for (int i = 0; i < this.model.Blocks.GetLength(0); i++)
+            {
+                for (int j = 0; j < this.model.Blocks.GetLength(1); j++)
+                {
+                    arr[j, i] = this.model.Blocks[i, j];
+                }
             }
 
-            /// <summary>
-            /// Converts from the letters in the txt file to game items.
-            /// </summary>
-            /// <returns>Returns a type of gameitem. </returns>
-            private IGameObject TextToItemConverter(int x, int y, char c)
+            this.model.Blocks = arr;
+
+            foreach (var item in this.model.Blocks)
             {
-                  // need sg for walls
-                  if (c == 'r')
-                  {
-                        return new OneBlock(x, y, BlockType.Rock);
-                  }
-                  else if (c == ' ')
-                  {
-                        return new OneBlock(x, y, BlockType.Air);
-                  }
-                  else if (c == 'B')
-                  {
-                        return new OneBlock(x, y, BlockType.Wall);
-                  }
-                  else
-                  {
-                        return new OneBlock(x, y, BlockType.Iron);
-                  }
+                if ((item as OnePlayer) != null)
+                {
+                    this.model.Player = new Point(item.CX, item.CY);
+                }
             }
-      }
+        }
+
+        /// <summary>
+        /// Updates the player in the blocks array, and the player's point in the model.
+        /// </summary>
+        /// <param name="newX"> New x coordinate of the player. </param>
+        /// <param name="newY"> new y coordinate of the player. </param>
+        private void UpdatePlayer(double newX, double newY)
+        {
+            double oldX = this.model.Player.X;
+            double oldY = this.model.Player.Y;
+            if (newX >= 0 && newX < this.model.Blocks.GetLength(0) &&
+                newY >= 0 && newY < this.model.Blocks.GetLength(1) &&
+                this.model.Blocks[(int)newX, (int)newY] as OneBlock != null &&
+                !(this.model.Blocks[(int)newX, (int)newY] as OneBlock).IsSolid)
+            {
+                this.model.Blocks[(int)newX, (int)newY] =
+                    new OnePlayer(
+                        this.model.Blocks[(int)oldX, (int)oldY] as OnePlayer)
+                        { CX = newX, CY = newY };
+                this.model.Blocks[(int)oldX, (int)oldY] = new OneBlock(oldX, oldY, BlockType.Air);
+                this.model.Player = new Point(newX, newY);
+            }
+        }
+    }
 }
