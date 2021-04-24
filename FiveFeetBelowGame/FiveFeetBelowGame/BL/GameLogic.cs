@@ -64,23 +64,31 @@ namespace FiveFeetBelowGame.BL
             this.UpdatePlayer(newX, newY);
         }
 
-            /// <summary>
-            /// Gets the coordinates of where we clicked.
-            /// </summary>
-            /// <param name="mousePos">The point where the mouse is.</param>
-            /// <returns>The point where we clicked as an object. </returns>
-            public Point GetTilePos(Point mousePos) // Pixel position => Tile position
-            {
-                  return new Point((int)(mousePos.X / this.model.TileSize), (int)(mousePos.Y / this.model.TileSize));
-            }
+        /// <summary>
+        /// Gets the coordinates of where we clicked.
+        /// </summary>
+        /// <param name="mousePos">The point where the mouse is.</param>
+        /// <returns>The point where we clicked as an object. </returns>
+        public Point GetTilePos(Point mousePos) // Pixel position => Tile position
+        {
+            return new Point(mousePos.X / this.model.TileSize, mousePos.Y / this.model.TileSize);
+        }
 
-            /// <summary>
-            /// Gravity to be implemented.
-            /// </summary>
-            public void Gravity()
+        /// <summary>
+        /// Gravity to be implemented.
+        /// </summary>
+        public void Gravity()
+        {
+            int px = (int)this.model.Player.X;
+            int py = (int)this.model.Player.Y;
+
+            // while?
+            if ((this.model.Blocks[px, py - 1] as OneBlock) != null &&
+                !(this.model.Blocks[px, py - 1] as OneBlock).IsSolid)
             {
-                  throw new NotImplementedException();
+                this.Move(0, 1);
             }
+        }
 
         /// <summary>
         /// Initmodel method for initialize our model.

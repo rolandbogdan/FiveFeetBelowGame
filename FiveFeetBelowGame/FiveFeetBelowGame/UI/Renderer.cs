@@ -37,7 +37,9 @@ namespace FiveFeetBelowGame.UI
 
             public Brush RockBrush { get { return Brushes.Brown; } }
 
-            public Brush OreBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false); } }
+        public Brush AirBrush { get { return Brushes.Transparent; } }
+
+        public Brush OreBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false); } }
 
             public Brush Bgbrush { get { return this.GetBrush("FiveFeetBelowGame.Images.back.png", false); } }
 
@@ -86,17 +88,18 @@ namespace FiveFeetBelowGame.UI
                   return this.brushes[fname];
             }
 
-            /// <summary>
-            /// This method fill our drawing context.
-            /// </summary>
-            /// <returns>Returns a Drawing.</returns>
-            public Drawing BuildDrawing()
-            {
-                  DrawingGroup dg = new DrawingGroup();
-                  dg.Children.Add(this.GetBackground());
-                  dg.Children.Add(this.GetMiddle());
-                  dg.Children.Add(this.GetRocks());
-                  dg.Children.Add(this.GetPlayer());
+        /// <summary>
+        /// This method fill our drawing context.
+        /// </summary>
+        /// <returns>Returns a Drawing.</returns>
+        public Drawing BuildDrawing()
+        {
+            this.Reset(); // optimize?
+            DrawingGroup dg = new DrawingGroup();
+            dg.Children.Add(this.GetBackground());
+            dg.Children.Add(this.GetMiddle());
+            dg.Children.Add(this.GetRocks());
+            dg.Children.Add(this.GetPlayer());
 
                   // dg.Children.Add(this.GetOres());
                   // dg.Children.Add(this.GetMonsters());
