@@ -37,7 +37,6 @@ namespace FiveFeetBelowGame
         /// </summary>
         public OneBlock()
         {
-
         }
 
         /// <summary>
@@ -75,10 +74,13 @@ namespace FiveFeetBelowGame
         /// <inheritdoc/>
         public void DamageTaken(int dmg)
         {
-            this.HealthPoints -= dmg;
-            if (this.HealthPoints <= 0)
+            if (this.Breakable)
             {
-                this.IsDestroyed();
+                this.HealthPoints -= dmg;
+                if (this.HealthPoints <= 0)
+                {
+                    this.IsDestroyed();
+                }
             }
         }
 
@@ -151,6 +153,7 @@ namespace FiveFeetBelowGame
                     this.Breakable = true;
                     break;
                 case BlockType.Wall:
+                    this.HealthPoints = 100000;
                     this.IsSolid = true;
                     this.Breakable = false;
                     break;

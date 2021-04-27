@@ -4,36 +4,36 @@
 
 namespace FiveFeetBelowGame.BL
 {
-      using System;
-      using System.Collections.Generic;
-      using System.IO;
-      using System.Linq;
-      using System.Reflection;
-      using System.Text;
-      using System.Threading.Tasks;
-      using System.Windows;
-      using FiveFeetBelowGame.VM;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using FiveFeetBelowGame.VM;
 
-      /// <summary>
-      /// GameLogic class for the logic of our game.
-      /// </summary>
-      public class GameLogic
-      {
-            /// <summary>
-            /// GameModel type model, an instance of the descendant class.
-            /// </summary>
-            private GameModel model;
+    /// <summary>
+    /// GameLogic class for the logic of our game.
+    /// </summary>
+    public class GameLogic
+    {
+        /// <summary>
+        /// GameModel type model, an instance of the descendant class.
+        /// </summary>
+        private GameModel model;
 
-            /// <summary>
-            /// Initializes a new instance of the <see cref="GameLogic"/> class.
-            /// </summary>
-            /// <param name="model">GameModel type parameter.</param>
-            /// <param name="fname">String type parameter.</param>
-            public GameLogic(GameModel model, string fname)
-            {
-                  this.model = model;
-                  this.InitModel(fname);
-            }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameLogic"/> class.
+        /// </summary>
+        /// <param name="model">GameModel type parameter.</param>
+        /// <param name="fname">String type parameter.</param>
+        public GameLogic(GameModel model, string fname)
+        {
+            this.model = model;
+            this.InitModel(fname);
+        }
 
         /// <summary>
         /// Moves the player charecter.
@@ -100,11 +100,11 @@ namespace FiveFeetBelowGame.BL
             // StreamReader sr = new StreamReader(stream);
             JsonHandler jh = new JsonHandler();
 
-                  // this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
-                  this.model.Blocks = jh.LoadMap("testfile.json");
+            // this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
+            this.model.Blocks = jh.LoadMap("testfile.json");
 
-                  // this.model.TileSize = this.model.GameWidth / 25;
-                  this.model.TileSize = model.GameWidth/25;
+            // this.model.TileSize = this.model.GameWidth / 25;
+            this.model.TileSize = model.GameWidth / 25;
 
             IGameObject[,] arr = new IGameObject[this.model.Blocks.GetLength(1), this.model.Blocks.GetLength(0)];
             for (int i = 0; i < this.model.Blocks.GetLength(0); i++)
@@ -143,7 +143,7 @@ namespace FiveFeetBelowGame.BL
                 this.model.Blocks[(int)newX, (int)newY] =
                     new OnePlayer(
                         this.model.Blocks[(int)oldX, (int)oldY] as OnePlayer)
-                        { CX = newX, CY = newY };
+                    { CX = newX, CY = newY };
                 this.model.Blocks[(int)oldX, (int)oldY] = new OneBlock(oldX, oldY, BlockType.Air);
                 this.model.Player = new Point(newX, newY);
             }
