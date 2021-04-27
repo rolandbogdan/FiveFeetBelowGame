@@ -9,79 +9,102 @@ using System.Linq;
 
 namespace Tests
 {
-      [TestFixture]
-      public class Test
-      {
-            private Mock<IStorageRepository<Highscore>> repo;
+    [TestFixture]
+    public class Test
+    {
+        private Mock<IStorageRepository<Highscore>> repo = new Mock<IStorageRepository<Highscore>>();
 
-            [Test]
-            public void TestInsertOne()
-            {
-                  HighscoreLogic hsl = new HighscoreLogic(this.repo.Object);
+        [Test]
+        public void TestInsertOne()
+        {
+            HighscoreLogic hsl = new HighscoreLogic(this.repo.Object);
 
-                  Highscore newHs = new Highscore("Kathi Béla", 150, 3);
+            Highscore newHs = new Highscore("Kathi Béla", 150, 3);
 
-                  this.repo.Setup(x=>x.Insert(It.IsAny<Highscore>()));
-                  hsl.Insert(newHs);
+            this.repo.Setup(x => x.Insert(It.IsAny<Highscore>()));
+            hsl.Insert(newHs);
 
-                  this.repo.Verify(x=>x.Insert(newHs),Times.Once);
-            }
+            this.repo.Verify(x => x.Insert(newHs), Times.Once);
+        }
 
-            [Test]
-            public void TestDeleteOne()
-            {
-                  HighscoreLogic hsl = new HighscoreLogic(this.repo.Object);
+        [Test]
+        public void TestDeleteOne()
+        {
+            HighscoreLogic hsl = new HighscoreLogic(this.repo.Object);
 
-                  Highscore newHs = new Highscore("Kathi Béla", 150, 3);
+            Highscore newHs = new Highscore("Kathi Béla", 150, 3);
 
-                  this.repo.Setup(x => x.Delete(It.IsAny<Highscore>()));
-                  hsl.Delete(newHs);
+            this.repo.Setup(x => x.Delete(It.IsAny<Highscore>()));
+            hsl.Delete(newHs);
 
-                  this.repo.Verify(x => x.Delete(newHs), Times.Once);
-            }
+            this.repo.Verify(x => x.Delete(newHs), Times.Once);
+        }
 
-            [Test]
-            public void TestGetOneHighscore()
-            {
-                  HighscoreLogic hsl = new HighscoreLogic(this.repo.Object);
+        [Test]
+        public void TestGetOneHighscore()
+        {
+            HighscoreLogic hsl = new HighscoreLogic(this.repo.Object);
 
-                  List<Highscore> newHs = new List<Highscore>()
+            List<Highscore> newHs = new List<Highscore>()
                   {
                         new Highscore("Kathi Béla",150,3),
                         new Highscore("Bohos Kornél",150,3),
                   };
 
-                  Highscore expectedout = new Highscore();
-                  expectedout = newHs[0];
+            Highscore expectedout = new Highscore();
+            expectedout = newHs[0];
 
-                  this.repo.Setup(x => x.GetOne(newHs[0].HsID)).Returns(newHs[0]);
+            this.repo.Setup(x => x.GetOne(newHs[0].HsID)).Returns(newHs[0]);
 
-                  var output = hsl.GetOneHighscore(newHs[0].HsID);
-                  Assert.That(output.HsID, Is.EquivalentTo(expectedout.HsID));
-            }
+            var output = hsl.GetOneHighscore(newHs[0].HsID);
+            Assert.That(output.HsID, Is.EquivalentTo(expectedout.HsID));
+        }
 
-            [Test]
-            public void TestGetAllHighscore()
-            {
-                  HighscoreLogic hsl = new HighscoreLogic(this.repo.Object);
+        [Test]
+        public void TestGetAllHighscore()
+        {
+            HighscoreLogic hsl = new HighscoreLogic(this.repo.Object);
 
-                  List<Highscore> newHs = new List<Highscore>()
+            List<Highscore> newHs = new List<Highscore>()
                   {
                         new Highscore("Kathi Béla",150,3),
                         new Highscore("Bohos Kornél",150,3),
                   };
 
-                  List<Highscore> expectedout = new List<Highscore>()
+            List<Highscore> expectedout = new List<Highscore>()
                   {
                         newHs[0], newHs[1],
                   };
 
-                  this.repo.Setup(x=>x.GetAll()).Returns(newHs.AsQueryable());
+            this.repo.Setup(x => x.GetAll()).Returns(newHs.AsQueryable());
 
-                  var output = hsl.GetAllHighscore();
+            var output = hsl.GetAllHighscore();
 
-                  Assert.That(output, Is.EquivalentTo(expectedout));
-                  Assert.That(output.Count, Is.EqualTo(expectedout.Count));
-            }
-      }
+            Assert.That(output, Is.EquivalentTo(expectedout));
+            Assert.That(output.Count, Is.EqualTo(expectedout.Count));
+        }
+
+        [Test]
+        public void TestOrderedHighscore()
+        {
+            List<Highscore> newHs = new List<Highscore>()
+                  {
+                        new Highscore("Bohos Kornél",250,5),
+                        new Highscore("Kathi Béla",500,10),
+                  };
+
+            List<Highscore> expectedout = new List<Highscore>()
+                  {
+                        newHs[1], newHs[0],
+                  };
+
+            this.repo.Setup(x => x.GetAll()).Returns(newHs.AsQueryable());
+            HighscoreOrderingLogic hol = new HighscoreOrderingLogic(this.repo.Object);
+            var output = hol.OrderedByDepth();
+
+            Assert.That(output, Is.EquivalentTo(expectedout));
+            Assert.That(output.Count, Is.EqualTo(expectedout.Count));
+            this.repo.Verify(x => x.GetAll(), Times.AtLeastOnce);
+        }
+    }
 }
