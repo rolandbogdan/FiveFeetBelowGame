@@ -35,7 +35,7 @@ namespace FiveFeetBelowGame.UI
 
         public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false); } }
 
-        public Brush RockBrush { get { return Brushes.Brown; } }
+        public Brush RockBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true); } }
 
         public Brush AirBrush { get { return Brushes.Transparent; } }
 
