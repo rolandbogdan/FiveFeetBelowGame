@@ -12,6 +12,7 @@ namespace FiveFeetBelowGame.UI
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media;
+    using System.Windows.Threading;
     using FiveFeetBelowGame.BL;
     using FiveFeetBelowGame.VM;
 
@@ -36,6 +37,11 @@ namespace FiveFeetBelowGame.UI
         private GameModel model;
 
         /// <summary>
+        /// An instance of the descendant class.
+        /// </summary>
+        private DispatcherTimer tickTimer;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="GameControl"/> class.
         /// </summary>
         public GameControl()
@@ -52,10 +58,21 @@ namespace FiveFeetBelowGame.UI
             Window win = Window.GetWindow(this);
             if (win != null)
             {
+                this.tickTimer = new DispatcherTimer();
+                this.tickTimer.Interval = TimeSpan.FromMilliseconds(20); // fps?
+                this.tickTimer.Tick += this.TickTimer_Tick;
+                this.tickTimer.Start();
+
                 win.KeyDown += this.Win_KeyDown;
                 this.MouseDown += this.GameControl_MouseDown;
             }
 
+            this.InvalidateVisual();
+        }
+
+        private void TickTimer_Tick(object sender, EventArgs e)
+        {
+            this.logic.Gravity();
             this.InvalidateVisual();
         }
 
@@ -88,7 +105,7 @@ namespace FiveFeetBelowGame.UI
                 }
             }
 
-            this.logic.Gravity();
+            // this.logic.Gravity();
             this.InvalidateVisual();
         }
 
@@ -98,19 +115,15 @@ namespace FiveFeetBelowGame.UI
             {
                 case System.Windows.Input.Key.W:
                     this.logic.Move(0, -1);
-                    this.logic.Gravity();
                     break;
                 case System.Windows.Input.Key.S:
                     this.logic.Move(0, 1);
-                    this.logic.Gravity();
                     break;
                 case System.Windows.Input.Key.A:
                     this.logic.Move(-1, 0);
-                    this.logic.Gravity();
                     break;
                 case System.Windows.Input.Key.D:
                     this.logic.Move(1, 0);
-                    this.logic.Gravity();
                     break;
                 default:
                     break;
