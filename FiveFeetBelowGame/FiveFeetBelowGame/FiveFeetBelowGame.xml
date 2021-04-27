@@ -434,6 +434,11 @@
             An instance of the descendant class.
             </summary>
         </member>
+        <member name="F:FiveFeetBelowGame.UI.GameControl.tickTimer">
+            <summary>
+            An instance of the descendant class.
+            </summary>
+        </member>
         <member name="M:FiveFeetBelowGame.UI.GameControl.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.UI.GameControl"/> class.
