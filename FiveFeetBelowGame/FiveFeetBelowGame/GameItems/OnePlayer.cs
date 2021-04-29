@@ -61,7 +61,11 @@ namespace FiveFeetBelowGame
         }
 
         /// <inheritdoc/>
-        public Geometry Area { get; set; }
+        public Geometry Area
+        {
+            // change 25 to tilesize
+            get { return new RectangleGeometry(new Rect(this.CX, this.CY, 25, 25)); }
+        }
 
         /// <inheritdoc/>
         public double CX { get; set; }

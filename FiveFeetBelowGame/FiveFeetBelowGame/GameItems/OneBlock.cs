@@ -9,6 +9,7 @@ namespace FiveFeetBelowGame
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
     using System.Windows.Media;
 
     /// <summary>
@@ -50,7 +51,11 @@ namespace FiveFeetBelowGame
         public int Hardness { get; set; }
 
         /// <inheritdoc/>
-        public Geometry Area { get; set; }
+        public Geometry Area
+        {
+            // change 25 to tilesize
+            get { return new RectangleGeometry(new Rect(this.CX, this.CY, 25, 25)); }
+        }
 
         /// <inheritdoc/>
         public double CX { get; set; }

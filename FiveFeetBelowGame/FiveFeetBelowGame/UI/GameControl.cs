@@ -49,6 +49,14 @@ namespace FiveFeetBelowGame.UI
             this.Loaded += this.GameControl_Loaded;
         }
 
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            if (this.renderer != null)
+            {
+                drawingContext?.DrawDrawing(this.renderer.BuildDrawing());
+            }
+        }
+
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.model = new GameModel(this.ActualWidth, this.ActualHeight);
@@ -72,16 +80,8 @@ namespace FiveFeetBelowGame.UI
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
-            this.logic.Gravity();
+            this.logic.OneTick();
             this.InvalidateVisual();
-        }
-
-        protected override void OnRender(DrawingContext drawingContext)
-        {
-            if (this.renderer != null)
-            {
-                drawingContext?.DrawDrawing(this.renderer.BuildDrawing());
-            }
         }
 
         private void GameControl_MouseDown(object sender, MouseButtonEventArgs e)

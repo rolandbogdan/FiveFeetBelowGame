@@ -36,6 +36,14 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// This method does what happens every tick ingame.
+        /// </summary>
+        public void OneTick()
+        {
+            this.Gravity();
+        }
+
+        /// <summary>
         /// Moves the player charecter.
         /// </summary>
         /// <param name="horizontal"> Horizontal speed. </param>
