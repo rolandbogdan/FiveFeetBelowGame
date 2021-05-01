@@ -17,9 +17,9 @@ namespace FiveFeetBelowGame
     public interface IGameObject
     {
         /// <summary>
-        /// Gets or sets the area of the element.
+        /// Gets the area of the element.
         /// </summary>
-        Geometry Area { get; set; }
+        Geometry Area { get; }
 
         /// <summary>
         /// Gets or sets the central X coordinate of the element.

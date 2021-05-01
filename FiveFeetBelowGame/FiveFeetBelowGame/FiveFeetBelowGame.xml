@@ -39,6 +39,11 @@
             <param name="model">GameModel type parameter.</param>
             <param name="fname">String type parameter.</param>
         </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.OneTick">
+            <summary>
+            This method does what happens every tick ingame.
+            </summary>
+        </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.Move(System.Double,System.Double)">
             <summary>
             Moves the player charecter.
@@ -176,7 +181,7 @@
         </member>
         <member name="P:FiveFeetBelowGame.IGameObject.Area">
             <summary>
-            Gets or sets the area of the element.
+            Gets the area of the element.
             </summary>
         </member>
         <member name="P:FiveFeetBelowGame.IGameObject.CX">
@@ -474,6 +479,26 @@
             </summary>
             <param name="w">Double type parameter, it is the width of the gamearea.</param>
             <param name="h">Double type parameter, it is the height of the gamearea.</param>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.GoUp">
+            <summary>
+            Gets or sets a value indicating whether the character should be movin up or not.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.GoDown">
+            <summary>
+            Gets or sets a value indicating whether the character should be movin down or not.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.GoRight">
+            <summary>
+            Gets or sets a value indicating whether the character should be movin right or not.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.GoLeft">
+            <summary>
+            Gets or sets a value indicating whether the character should be movin left or not.
+            </summary>
         </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.Blocks">
             <summary>
