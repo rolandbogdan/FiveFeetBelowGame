@@ -45,6 +45,11 @@
             </summary>
             <returns>Returns an IQueryable Highscore type.</returns>
         </member>
+        <member name="T:Logic.HighscoreOrderingLogic">
+            <summary>
+            Orders highscores.
+            </summary>
+        </member>
         <member name="T:Logic.IGameLogic`1">
             <summary>
             The interface for the game logic.
