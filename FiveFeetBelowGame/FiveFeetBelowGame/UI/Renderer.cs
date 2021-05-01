@@ -6,6 +6,7 @@ namespace FiveFeetBelowGame.UI
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Reflection;
     using System.Text;
@@ -100,7 +101,7 @@ namespace FiveFeetBelowGame.UI
             dg.Children.Add(this.GetMiddle());
             dg.Children.Add(this.GetRocks());
             dg.Children.Add(this.GetPlayer());
-
+            dg.Children.Add(this.GetText());
             // dg.Children.Add(this.GetOres());
             // dg.Children.Add(this.GetMonsters());
             return dg;
@@ -118,14 +119,33 @@ namespace FiveFeetBelowGame.UI
             throw new NotImplementedException();
         }
 
+        private Drawing GetText()
+        {
+            FormattedText formattedText = new FormattedText(
+            this.model.PlayerBalance.ToString(),
+            CultureInfo.CurrentCulture,
+            FlowDirection.LeftToRight,
+            new Typeface("Arial"),
+            16,
+            Brushes.Black);
+
+            GeometryDrawing text = new GeometryDrawing(
+                null,
+                new Pen(Brushes.Black, 2),
+                formattedText.BuildGeometry(new Point(5, 5)));
+
+            return text;
+
+        }
+
         private Drawing GetPlayer()
         {
-            if (this.oldPlayer == null || this.oldPlayerPosition != this.model.Player)
+            if (this.oldPlayer == null || this.oldPlayerPosition != this.model.PlayerPos)
             {
-                Geometry g = new RectangleGeometry(new Rect(this.model.Player.X * this.model.TileSize, this.model.Player.Y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                Geometry g = new RectangleGeometry(new Rect(this.model.PlayerPos.X * this.model.TileSize, this.model.PlayerPos.Y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                 this.oldPlayer = new GeometryDrawing(this.PlayerBrush, null, g);
 
-                this.oldPlayerPosition = this.model.Player;
+                this.oldPlayerPosition = this.model.PlayerPos;
             }
 
             return this.oldPlayer;

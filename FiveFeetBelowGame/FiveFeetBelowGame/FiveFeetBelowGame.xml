@@ -58,6 +58,12 @@
             Gravity to be implemented.
             </summary>
         </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.PlayerGainedMoney(System.Int32)">
+            <summary>
+            Increases the player's balance.
+            </summary>
+            <param name="amount">By this amount.</param>
+        </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.InitModel(System.String)">
             <summary>
             Initmodel method for initialize our model.
@@ -201,16 +207,18 @@
             <param name="other"> The other element this one might collide with. </param>
             <returns> True if they collide. </returns>
         </member>
-        <member name="M:FiveFeetBelowGame.IGameObject.DamageTaken(System.Int32)">
+        <member name="M:FiveFeetBelowGame.IGameObject.DamageTaken(System.Int32,FiveFeetBelowGame.IGameObject)">
             <summary>
             Subtracts damage from the health.
             </summary>
             <param name="dmg"> The damage the entity takes. </param>
+            <param name="source">The source of the damage that destroyed the object.</param>
         </member>
-        <member name="M:FiveFeetBelowGame.IGameObject.IsDestroyed">
+        <member name="M:FiveFeetBelowGame.IGameObject.IsDestroyed(FiveFeetBelowGame.IGameObject)">
             <summary>
             Kills the entity if hp is 0.
             </summary>
+            <param name="source">The source of the damage that destroyed the object.</param>
         </member>
         <member name="T:FiveFeetBelowGame.OneBlock">
             <summary>
@@ -262,13 +270,18 @@
             Gets or sets a value indicating whether the block is solid or not.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.OneBlock.DamageTaken(System.Int32)">
+        <member name="P:FiveFeetBelowGame.OneBlock.Value">
+            <summary>
+            Gets or sets the value the player gets of the specific block.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneBlock.DamageTaken(System.Int32,FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
         </member>
         <member name="M:FiveFeetBelowGame.OneBlock.IsCollision(FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
         </member>
-        <member name="M:FiveFeetBelowGame.OneBlock.IsDestroyed">
+        <member name="M:FiveFeetBelowGame.OneBlock.IsDestroyed(FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
         </member>
         <member name="M:FiveFeetBelowGame.OneBlock.PropertySetter">
@@ -306,19 +319,24 @@
         <member name="P:FiveFeetBelowGame.OneMonster.HealthPoints">
             <inheritdoc/>
         </member>
+        <member name="P:FiveFeetBelowGame.OneMonster.Value">
+            <summary>
+            Gets or sets the value of killing this monster.
+            </summary>
+        </member>
         <member name="M:FiveFeetBelowGame.OneMonster.InflictDamage">
             <summary>
             Calculates the damage to be inflicted based on the pickaxe level.
             </summary>
             <returns>Returns the damage to be infliced.</returns>
         </member>
-        <member name="M:FiveFeetBelowGame.OneMonster.DamageTaken(System.Int32)">
+        <member name="M:FiveFeetBelowGame.OneMonster.DamageTaken(System.Int32,FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
         </member>
         <member name="M:FiveFeetBelowGame.OneMonster.IsCollision(FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
         </member>
-        <member name="M:FiveFeetBelowGame.OneMonster.IsDestroyed">
+        <member name="M:FiveFeetBelowGame.OneMonster.IsDestroyed(FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
         </member>
         <member name="T:FiveFeetBelowGame.OnePlayer">
@@ -371,11 +389,6 @@
             Gets or sets the lvl of the player's pickaxe.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.OnePlayer.Balance">
-            <summary>
-            Gets or sets the lvl of the player's pickaxe.
-            </summary>
-        </member>
         <member name="P:FiveFeetBelowGame.OnePlayer.DeepestPointReached">
             <summary>
             Gets or sets the lvl of the player's pickaxe.
@@ -387,13 +400,13 @@
             </summary>
             <returns>Returns the damage to be infliced.</returns>
         </member>
-        <member name="M:FiveFeetBelowGame.OnePlayer.DamageTaken(System.Int32)">
+        <member name="M:FiveFeetBelowGame.OnePlayer.DamageTaken(System.Int32,FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
         </member>
         <member name="M:FiveFeetBelowGame.OnePlayer.IsCollision(FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
         </member>
-        <member name="M:FiveFeetBelowGame.OnePlayer.IsDestroyed">
+        <member name="M:FiveFeetBelowGame.OnePlayer.IsDestroyed(FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
         </member>
         <member name="T:FiveFeetBelowGame.MainWindow">
@@ -480,9 +493,19 @@
             Gets or sets Rock prop represent the rocks of the map.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.Player">
+        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerPos">
             <summary>
             Gets or sets Player prop represent our player position.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.Player">
+            <summary>
+            Gets or sets the player of the game.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerBalance">
+            <summary>
+            Gets or sets the player's balance.
             </summary>
         </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.GameWidth">

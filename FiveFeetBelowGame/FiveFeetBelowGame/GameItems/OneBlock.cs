@@ -71,15 +71,20 @@ namespace FiveFeetBelowGame
         /// </summary>
         public bool IsSolid { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value the player gets of the specific block.
+        /// </summary>
+        public int Value { get; set; }
+
         /// <inheritdoc/>
-        public void DamageTaken(int dmg)
+        public void DamageTaken(int dmg, IGameObject source)
         {
             if (this.Breakable)
             {
                 this.HealthPoints -= dmg;
                 if (this.HealthPoints <= 0)
                 {
-                    this.IsDestroyed();
+                    this.IsDestroyed(source);
                 }
             }
         }
@@ -102,11 +107,11 @@ namespace FiveFeetBelowGame
         }
 
         /// <inheritdoc/>
-        public void IsDestroyed()
+        public void IsDestroyed(IGameObject source)
         {
             // this.Type = BlockType.Air;
-
             // drop item, or add balance to player
+
         }
 
         /// <summary>
@@ -114,50 +119,59 @@ namespace FiveFeetBelowGame
         /// </summary>
         private void PropertySetter()
         {
+            Random r = new Random();
             switch (this.Type)
             {
                 case BlockType.Rock:
                     this.Hardness = 1;
                     this.HealthPoints = 3;
+                    this.Value = 0;
                     this.IsSolid = true;
                     this.Breakable = true;
                     break;
                 case BlockType.Iron:
                     this.Hardness = 1;
                     this.HealthPoints = 3;
+                    this.Value = 5;
                     this.IsSolid = true;
                     this.Breakable = true;
                     break;
                 case BlockType.Gold:
                     this.Hardness = 2;
                     this.HealthPoints = 6;
+                    this.Value = 10;
                     this.IsSolid = true;
                     this.Breakable = true;
                     break;
                 case BlockType.Diamond:
                     this.Hardness = 3;
                     this.HealthPoints = 9;
+                    this.Value = 25;
                     this.IsSolid = true;
                     this.Breakable = true;
                     break;
                 case BlockType.Gem:
                     this.Hardness = 4;
                     this.HealthPoints = 21;
+                    this.Value = r.Next(25, 75);
                     this.IsSolid = true;
                     this.Breakable = true;
                     break;
                 case BlockType.RareGem:
                     this.Hardness = 5;
                     this.HealthPoints = 30;
+                    this.Value = (int)this.CY / 50 * r.Next(5, 15);
                     this.IsSolid = true;
                     this.Breakable = true;
                     break;
                 case BlockType.Wall:
                     this.HealthPoints = 100000;
+                    this.Value = 0;
                     this.IsSolid = true;
                     this.Breakable = false;
                     break;
                 case BlockType.Air:
+                    this.Value = 0;
                     this.IsSolid = false;
                     this.Breakable = false;
                     break;
