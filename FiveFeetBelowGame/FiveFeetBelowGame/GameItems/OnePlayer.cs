@@ -28,10 +28,7 @@ namespace FiveFeetBelowGame
             this.CY = cy;
             this.HealthPoints = 3;
             this.PickaxeLvl = 1;
-            this.Balance = 0;
             this.DeepestPointReached = (int)Math.Round(this.CY);
-
-            // this.Area = new Geometry();
         }
 
         /// <summary>
@@ -46,10 +43,7 @@ namespace FiveFeetBelowGame
                 this.CY = other.CY;
                 this.HealthPoints = other.HealthPoints;
                 this.PickaxeLvl = other.PickaxeLvl;
-                this.Balance = other.Balance;
                 this.DeepestPointReached = other.DeepestPointReached;
-
-                // this.Area = other.Area;
             }
         }
 
@@ -90,11 +84,6 @@ namespace FiveFeetBelowGame
         /// <summary>
         /// Gets or sets the lvl of the player's pickaxe.
         /// </summary>
-        public int Balance { get; set; }
-
-        /// <summary>
-        /// Gets or sets the lvl of the player's pickaxe.
-        /// </summary>
         public int DeepestPointReached { get; set; }
 
         /// <summary>
@@ -115,12 +104,12 @@ namespace FiveFeetBelowGame
         }
 
         /// <inheritdoc/>
-        public void DamageTaken(int dmg)
+        public void DamageTaken(int dmg, IGameObject source)
         {
             this.HealthPoints -= dmg;
             if (this.HealthPoints <= 0)
             {
-                this.IsDestroyed();
+                this.IsDestroyed(source);
             }
         }
 
@@ -142,10 +131,8 @@ namespace FiveFeetBelowGame
         }
 
         /// <inheritdoc/>
-        public void IsDestroyed()
+        public void IsDestroyed(IGameObject source)
         {
-            // this.Area = null;
-            // drop item, or add balance to player
         }
     }
 }

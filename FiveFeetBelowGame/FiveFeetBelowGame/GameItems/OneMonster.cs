@@ -25,9 +25,8 @@ namespace FiveFeetBelowGame
         {
             this.CX = cx;
             this.CY = cy;
-            this.HealthPoints = 3;
-
-            // this.Area = new Geometry();
+            this.HealthPoints = ((int)this.CY / 50 + 1) * 3;
+            this.Value = (int)this.CY / 50 * 10;
         }
 
         /// <summary>
@@ -41,8 +40,7 @@ namespace FiveFeetBelowGame
                 this.CX = other.CX;
                 this.CY = other.CY;
                 this.HealthPoints = other.HealthPoints;
-
-                // this.Area = other.Area;
+                this.Value = other.Value;
             }
         }
 
@@ -57,6 +55,11 @@ namespace FiveFeetBelowGame
 
         /// <inheritdoc/>
         public int HealthPoints { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of killing this monster.
+        /// </summary>
+        public int Value { get; set; }
 
         /// <summary>
         /// Calculates the damage to be inflicted based on the pickaxe level.
@@ -79,12 +82,12 @@ namespace FiveFeetBelowGame
         }
 
         /// <inheritdoc/>
-        public void DamageTaken(int dmg)
+        public void DamageTaken(int dmg, IGameObject source)
         {
             this.HealthPoints -= dmg;
             if (this.HealthPoints <= 0)
             {
-                this.IsDestroyed();
+                this.IsDestroyed(source);
             }
         }
 
@@ -106,10 +109,8 @@ namespace FiveFeetBelowGame
         }
 
         /// <inheritdoc/>
-        public void IsDestroyed()
+        public void IsDestroyed(IGameObject source)
         {
-            this.Area = null;
-
             // drop item, or add balance to player
         }
     }

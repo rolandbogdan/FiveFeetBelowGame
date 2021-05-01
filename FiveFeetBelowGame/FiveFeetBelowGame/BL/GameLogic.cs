@@ -42,8 +42,8 @@ namespace FiveFeetBelowGame.BL
         /// <param name="vertical"> Vertical speed.</param>
         public void Move(double horizontal, double vertical)
         {
-            double px = this.model.Blocks[(int)this.model.Player.X, (int)this.model.Player.Y].CX;
-            double py = this.model.Blocks[(int)this.model.Player.X, (int)this.model.Player.Y].CY;
+            double px = this.model.Blocks[(int)this.model.PlayerPos.X, (int)this.model.PlayerPos.Y].CX;
+            double py = this.model.Blocks[(int)this.model.PlayerPos.X, (int)this.model.PlayerPos.Y].CY;
             double dx = 0;
             double dy = 0;
 
@@ -79,8 +79,8 @@ namespace FiveFeetBelowGame.BL
         /// </summary>
         public void Gravity()
         {
-            int px = (int)this.model.Player.X;
-            int py = (int)this.model.Player.Y;
+            int px = (int)this.model.PlayerPos.X;
+            int py = (int)this.model.PlayerPos.Y;
 
             // while?
             if ((this.model.Blocks[px, py - 1] as OneBlock) != null &&
@@ -88,6 +88,15 @@ namespace FiveFeetBelowGame.BL
             {
                 this.Move(0, 1);
             }
+        }
+
+        /// <summary>
+        /// Increases the player's balance.
+        /// </summary>
+        /// <param name="amount">By this amount.</param>
+        public void PlayerGainedMoney(int amount)
+        {
+            this.model.PlayerBalance += amount;
         }
 
         /// <summary>
@@ -104,7 +113,7 @@ namespace FiveFeetBelowGame.BL
             this.model.Blocks = jh.LoadMap("testfile.json");
 
             // this.model.TileSize = this.model.GameWidth / 25;
-            this.model.TileSize = model.GameWidth / 25;
+            this.model.TileSize = this.model.GameWidth / 25;
 
             IGameObject[,] arr = new IGameObject[this.model.Blocks.GetLength(1), this.model.Blocks.GetLength(0)];
             for (int i = 0; i < this.model.Blocks.GetLength(0); i++)
@@ -121,7 +130,8 @@ namespace FiveFeetBelowGame.BL
             {
                 if ((item as OnePlayer) != null)
                 {
-                    this.model.Player = new Point(item.CX, item.CY);
+                    this.model.PlayerPos = new Point(item.CX, item.CY);
+                    this.model.Player = this.model.Blocks[(int)item.CX, (int)item.CY] as OnePlayer;
                 }
             }
         }
@@ -133,8 +143,9 @@ namespace FiveFeetBelowGame.BL
         /// <param name="newY"> new y coordinate of the player. </param>
         private void UpdatePlayer(double newX, double newY)
         {
-            double oldX = this.model.Player.X;
-            double oldY = this.model.Player.Y;
+            // OPTIMIZE!!!!!!!!!!!
+            double oldX = this.model.PlayerPos.X;
+            double oldY = this.model.PlayerPos.Y;
             if (newX >= 0 && newX < this.model.Blocks.GetLength(0) &&
                 newY >= 0 && newY < this.model.Blocks.GetLength(1) &&
                 this.model.Blocks[(int)newX, (int)newY] as OneBlock != null &&
@@ -145,7 +156,8 @@ namespace FiveFeetBelowGame.BL
                         this.model.Blocks[(int)oldX, (int)oldY] as OnePlayer)
                     { CX = newX, CY = newY };
                 this.model.Blocks[(int)oldX, (int)oldY] = new OneBlock(oldX, oldY, BlockType.Air);
-                this.model.Player = new Point(newX, newY);
+                this.model.PlayerPos = new Point(newX, newY);
+                this.model.Player = this.model.Blocks[(int)newX, (int)newY] as OnePlayer;
             }
         }
     }

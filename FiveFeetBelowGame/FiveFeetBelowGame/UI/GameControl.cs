@@ -91,16 +91,26 @@ namespace FiveFeetBelowGame.UI
 
             /* this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] =
                 new OneBlock(tilePos.X, tilePos.Y, BlockType.Air); */
-            int px = (int)this.model.Player.X;
-            int py = (int)this.model.Player.Y;
+            int px = (int)this.model.PlayerPos.X;
+            int py = (int)this.model.PlayerPos.Y;
             if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] != null &&
                 (this.model.Blocks[px, py] as OnePlayer) != null)
             {
                 // Only neighbouring blocks!
                 this.model.Blocks[(int)tilePos.X, (int)tilePos.Y].DamageTaken(
-                (this.model.Blocks[px, py] as OnePlayer).InflictDamage());
+                (this.model.Blocks[px, py] as OnePlayer).InflictDamage(),
+                this.model.Blocks[px, py] as OnePlayer);
                 if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y].HealthPoints <= 0)
                 {
+                    if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneBlock != null)
+                    {
+                        this.logic.PlayerGainedMoney((this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneBlock).Value);
+                    }
+                    else if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneMonster != null)
+                    {
+                        this.logic.PlayerGainedMoney((this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneMonster).Value);
+                    }
+
                     this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] = new OneBlock((int)tilePos.X, (int)tilePos.Y, BlockType.Air);
                 }
             }
