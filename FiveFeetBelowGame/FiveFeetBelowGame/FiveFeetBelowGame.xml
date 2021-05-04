@@ -147,6 +147,19 @@
             </summary>
             <param name="map">The map.</param>
         </member>
+        <member name="T:FiveFeetBelowGame.Game">
+            <summary>
+            Interaction logic for Game.xaml
+            </summary>
+            <summary>
+            Game
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.Game.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:FiveFeetBelowGame.BlockType">
             <summary>
             The ore types.
