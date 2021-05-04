@@ -33,6 +33,11 @@ namespace FiveFeetBelowGame.VM
         public IGameObject[,] Blocks { get; set; }
 
         /// <summary>
+        /// Gets or sets the part of the map thats being rendered.
+        /// </summary>
+        public IGameObject[,] RenderedBlocks { get; set; }
+
+        /// <summary>
         /// Gets or sets Player prop represent our player position.
         /// </summary>
         public Point PlayerPos { get; set; }
@@ -46,6 +51,21 @@ namespace FiveFeetBelowGame.VM
         /// Gets or sets the player's balance.
         /// </summary>
         public int PlayerBalance { get; set; }
+
+        /// <summary>
+        /// Gets or sets the level of the player's pickaxe.
+        /// </summary>
+        public int PlayerPickaxe { get; set; }
+
+        /// <summary>
+        /// Gets or sets the player's health points.
+        /// </summary>
+        public int PlayerHealth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the player's max health.
+        /// </summary>
+        public int PlayerMaxHealth { get; set; }
 
         /// <summary>
         /// Gets Gamewidth represent the width of the map.

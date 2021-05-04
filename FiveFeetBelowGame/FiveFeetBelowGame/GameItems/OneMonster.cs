@@ -44,6 +44,13 @@ namespace FiveFeetBelowGame
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OneMonster"/> class.
+        /// </summary>
+        public OneMonster()
+        {
+        }
+
         /// <inheritdoc/>
         public Geometry Area { get; set; }
 

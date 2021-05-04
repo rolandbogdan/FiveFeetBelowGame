@@ -24,6 +24,7 @@ namespace FiveFeetBelowGame.UI
         private Drawing oldMiddle;
         private Drawing oldRocks;
         private Drawing oldPlayer;
+        private Drawing oldMonsters;
         private Point oldPlayerPosition;
         private Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
@@ -35,6 +36,7 @@ namespace FiveFeetBelowGame.UI
         public Brush PlayerBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false); } }
 
         public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false); } }
+        // public Brush MonsterBrush { get { return Brushes.Red; } }
 
         public Brush RockBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true); } }
 
@@ -55,6 +57,7 @@ namespace FiveFeetBelowGame.UI
             this.oldMiddle = null;
             this.oldRocks = null;
             this.oldPlayer = null;
+            this.oldMonsters = null;
             this.oldPlayerPosition = new Point(-1, -1);
             this.brushes.Clear();
         }
@@ -101,16 +104,36 @@ namespace FiveFeetBelowGame.UI
             dg.Children.Add(this.GetMiddle());
             dg.Children.Add(this.GetRocks());
             dg.Children.Add(this.GetPlayer());
+            dg.Children.Add(this.GetMonsters());
             dg.Children.Add(this.GetText());
+
             // dg.Children.Add(this.GetOres());
-            // dg.Children.Add(this.GetMonsters());
             return dg;
         }
 
         // Maybe monsters should be an array.
         private Drawing GetMonsters()
         {
-            throw new NotImplementedException();
+            if (this.oldMonsters == null)
+            {
+                GeometryGroup g = new GeometryGroup();
+                for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
+                {
+                    for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
+                    {
+                        if (this.model.Blocks[y, x] != null &&
+                            (this.model.Blocks[y, x] as OneMonster) != null)
+                        {
+                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                            g.Children.Add(box);
+                        }
+                    }
+                }
+
+                this.oldMonsters = new GeometryDrawing(this.MonsterBrush, null, g);
+            }
+
+            return this.oldMonsters;
         }
 
         // Maybe ores should be an array.
@@ -161,7 +184,7 @@ namespace FiveFeetBelowGame.UI
                     for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
                     {
                         if (this.model.Blocks[y, x] != null &&
-                            (this.model.Blocks[y, x] as OnePlayer) == null &&
+                            (this.model.Blocks[y, x] as OneBlock) != null &&
                             (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Rock)
                         {
                             Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));

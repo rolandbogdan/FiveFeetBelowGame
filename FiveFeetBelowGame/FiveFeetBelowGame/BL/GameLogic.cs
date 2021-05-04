@@ -100,6 +100,48 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// Decreases the players health.
+        /// </summary>
+        /// <param name="amount">By this amount.</param>
+        public void PlayerLostHealth(int amount)
+        {
+            this.model.PlayerHealth -= amount;
+            if (this.model.PlayerHealth <= 0)
+            {
+                this.model.Blocks[(int)this.model.Player.CX, (int)this.model.Player.CY] = new OneBlock(this.model.Player.CX, this.model.Player.CY, BlockType.Air);
+                this.model.Player.CX = 10;
+                this.model.Player.CY = 10;
+                this.model.PlayerBalance = 0;
+                this.model.Blocks[10, 10] = this.model.Player;
+                this.model.PlayerHealth = this.model.PlayerMaxHealth;
+            }
+        }
+
+        /// <summary>
+        /// Increases the players pickaxe's level by one.
+        /// </summary>
+        public void IncreasePickaxeLevel()
+        {
+            this.model.PlayerPickaxe++;
+        }
+
+        /// <summary>
+        /// Increases the players health.
+        /// </summary>
+        /// <param name="amount">By this amount.</param>
+        public void HealPlayer(int amount)
+        {
+            if (this.model.PlayerHealth + amount > this.model.PlayerMaxHealth)
+            {
+                this.model.PlayerHealth = this.model.PlayerMaxHealth;
+            }
+            else
+            {
+                this.model.PlayerHealth += amount;
+            }
+        }
+
+        /// <summary>
         /// Initmodel method for initialize our model.
         /// </summary>
         /// <param name="fname">String type parameter.</param>
