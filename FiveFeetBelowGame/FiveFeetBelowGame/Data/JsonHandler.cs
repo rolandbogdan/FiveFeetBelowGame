@@ -113,6 +113,7 @@ namespace FiveFeetBelowGame
                 }
             }
 
+            this.AddMonsters(ref items);
             items[10, 10] = new OnePlayer(10, 10);
             return items;
         }
@@ -212,30 +213,25 @@ namespace FiveFeetBelowGame
         }
 
         /// <summary>
-        /// For testing purposes.
+        /// Generates the monsters on the map.
         /// </summary>
-        /// <returns>A 20*25 IGameObject array. </returns>
-        private IGameObject[,] GenerateTestSection()
+        /// <param name="map">The map.</param>
+        private void AddMonsters(ref IGameObject[,] map)
         {
-            IGameObject[,] items = new IGameObject[20, 25];
-            for (int x = 0; x < items.GetLength(0); x++)
+            Random r = new Random();
+            for (int i = 50; i < map.GetLength(0); i++)
             {
-                for (int y = 0; y < items.GetLength(1); y++)
+                for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    if (x < 11)
+                    if (map[i, j] as OneBlock != null && (map[i, j] as OneBlock).Type == BlockType.Air)
                     {
-                        items[x, y] = new OneBlock(x, y, BlockType.Air);
-                    }
-                    else
-                    {
-                        this.RowGenerator(ref items, x);
+                        if (r.Next(100) % 5 == 0)
+                        {
+                            map[i, j] = new OneMonster(i, j);
+                        }
                     }
                 }
             }
-
-            //items[11, 11] = new OnePlayer(11, 11);
-            return items;
         }
-
     }
 }

@@ -48,6 +48,16 @@ namespace FiveFeetBelowGame.VM
         public int PlayerBalance { get; set; }
 
         /// <summary>
+        /// Gets or sets the level of the player's pickaxe.
+        /// </summary>
+        public int PlayerPickaxe { get; set; }
+
+        /// <summary>
+        /// Gets or sets the player's health points.
+        /// </summary>
+        public int PlayerHealth { get; set; }
+
+        /// <summary>
         /// Gets Gamewidth represent the width of the map.
         /// </summary>
         public double GameWidth { get; private set; }
