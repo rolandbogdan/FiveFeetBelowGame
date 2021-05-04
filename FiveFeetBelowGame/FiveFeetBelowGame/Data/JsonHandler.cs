@@ -219,7 +219,7 @@ namespace FiveFeetBelowGame
         private void AddMonsters(ref IGameObject[,] map)
         {
             Random r = new Random();
-            for (int i = 50; i < map.GetLength(0); i++)
+            for (int i = 15; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {

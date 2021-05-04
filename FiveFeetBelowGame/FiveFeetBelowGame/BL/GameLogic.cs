@@ -113,6 +113,7 @@ namespace FiveFeetBelowGame.BL
                 this.model.Player.CY = 10;
                 this.model.PlayerBalance = 0;
                 this.model.Blocks[10, 10] = this.model.Player;
+                this.model.PlayerHealth = this.model.PlayerMaxHealth;
             }
         }
 
@@ -122,6 +123,22 @@ namespace FiveFeetBelowGame.BL
         public void IncreasePickaxeLevel()
         {
             this.model.PlayerPickaxe++;
+        }
+
+        /// <summary>
+        /// Increases the players health.
+        /// </summary>
+        /// <param name="amount">By this amount.</param>
+        public void HealPlayer(int amount)
+        {
+            if (this.model.PlayerHealth + amount > this.model.PlayerMaxHealth)
+            {
+                this.model.PlayerHealth = this.model.PlayerMaxHealth;
+            }
+            else
+            {
+                this.model.PlayerHealth += amount;
+            }
         }
 
         /// <summary>

@@ -64,6 +64,23 @@
             </summary>
             <param name="amount">By this amount.</param>
         </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.PlayerLostHealth(System.Int32)">
+            <summary>
+            Decreases the players health.
+            </summary>
+            <param name="amount">By this amount.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.IncreasePickaxeLevel">
+            <summary>
+            Increases the players pickaxe's level by one.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.HealPlayer(System.Int32)">
+            <summary>
+            Increases the players health.
+            </summary>
+            <param name="amount">By this amount.</param>
+        </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.InitModel(System.String)">
             <summary>
             Initmodel method for initialize our model.
@@ -124,11 +141,11 @@
             <param name="a">A random integer.</param>
             <returns>A letter for the ore.</returns>
         </member>
-        <member name="M:FiveFeetBelowGame.JsonHandler.GenerateTestSection">
+        <member name="M:FiveFeetBelowGame.JsonHandler.AddMonsters(FiveFeetBelowGame.IGameObject[0:,0:]@)">
             <summary>
-            For testing purposes.
+            Generates the monsters on the map.
             </summary>
-            <returns>A 20*25 IGameObject array. </returns>
+            <param name="map">The map.</param>
         </member>
         <member name="T:FiveFeetBelowGame.BlockType">
             <summary>
@@ -306,6 +323,11 @@
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OneMonster"/> class.
             </summary>
             <param name="other">An object from which the properties will be copied.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.OneMonster.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.OneMonster"/> class.
+            </summary>
         </member>
         <member name="P:FiveFeetBelowGame.OneMonster.Area">
             <inheritdoc/>
@@ -493,6 +515,11 @@
             Gets or sets Rock prop represent the rocks of the map.
             </summary>
         </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.RenderedBlocks">
+            <summary>
+            Gets or sets the part of the map thats being rendered.
+            </summary>
+        </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerPos">
             <summary>
             Gets or sets Player prop represent our player position.
@@ -506,6 +533,21 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerBalance">
             <summary>
             Gets or sets the player's balance.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerPickaxe">
+            <summary>
+            Gets or sets the level of the player's pickaxe.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerHealth">
+            <summary>
+            Gets or sets the player's health points.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerMaxHealth">
+            <summary>
+            Gets or sets the player's max health.
             </summary>
         </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.GameWidth">
