@@ -21,8 +21,7 @@
         </Style>
     </Window.Resources>
 
-    <Border Background="#272727"
-            CornerRadius="20">
+    <Border Background="#272727">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

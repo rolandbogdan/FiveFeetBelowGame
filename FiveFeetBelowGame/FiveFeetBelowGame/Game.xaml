@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:FiveFeetBelowGame"
         xmlns:ui="clr-namespace:FiveFeetBelowGame.UI"
         mc:Ignorable="d"
-        Title="Game" Height="1000" Width="600">
-    <ui:GameControl />
+        Title="Game" Height="1000" Width="600"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+
+        <ui:GameControl />
+
 </Window>

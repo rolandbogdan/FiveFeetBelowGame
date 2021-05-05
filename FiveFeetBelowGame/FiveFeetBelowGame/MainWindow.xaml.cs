@@ -42,7 +42,10 @@ namespace FiveFeetBelowGame
 
             private void Highscores(object sender, RoutedEventArgs e)
             {
+                  HighscoresWindow hsWindow = new HighscoresWindow();
 
+                  hsWindow.Show();
+                  this.Close();
             }
 
             private void Quit_Game(object sender, RoutedEventArgs e)
