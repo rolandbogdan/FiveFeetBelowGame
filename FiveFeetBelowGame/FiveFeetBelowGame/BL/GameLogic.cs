@@ -164,6 +164,32 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// Gets the neighboring blocks of a player.
+        /// </summary>
+        /// <returns>A list of the player's neighboring blocks.</returns>
+        public List<IGameObject> PlayerNeighboringBlocks()
+        {
+            List<IGameObject> outp = new List<IGameObject>();
+            int px = (int)this.model.Player.CX;
+            int py = (int)this.model.Player.CY;
+            //if (px - 1 >= 0 && px + 1 <= this.model.Blocks.GetLength(0))
+            if (true)
+            {
+                outp.Add(this.model.Blocks[px - 1, py]);
+                outp.Add(this.model.Blocks[px + 1, py]);
+            }
+
+            //if (py - 1 >= 0 && py + 1 <= this.model.Blocks.GetLength(1))
+            if (true)
+            {
+                outp.Add(this.model.Blocks[px, py - 1]);
+                outp.Add(this.model.Blocks[px, py + 1]);
+            }
+
+            return outp;
+        }
+
+        /// <summary>
         /// Initmodel method for initialize our model.
         /// </summary>
         /// <param name="fname">String type parameter.</param>
@@ -202,7 +228,7 @@ namespace FiveFeetBelowGame.BL
 
             this.model.Player = new OnePlayer(10, 10);
             this.model.PlayerPos = new Point(10, 10);
-
+            this.model.PlayerNeighborBlocks = this.PlayerNeighboringBlocks();
             this.model.RenderedBlocks = this.GetRenderedBlocks();
         }
 
@@ -224,6 +250,7 @@ namespace FiveFeetBelowGame.BL
                 this.model.Player.CX = newX;
                 this.model.Player.CY = newX;
                 this.model.PlayerPos = new Point(newX, newY);
+                this.model.PlayerNeighborBlocks = this.PlayerNeighboringBlocks();
             }
         }
     }

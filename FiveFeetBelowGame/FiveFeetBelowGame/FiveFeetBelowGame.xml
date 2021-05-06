@@ -87,6 +87,12 @@
             </summary>
             <param name="amount">By this amount.</param>
         </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.PlayerNeighboringBlocks">
+            <summary>
+            Gets the neighboring blocks of a player.
+            </summary>
+            <returns>A list of the player's neighboring blocks.</returns>
+        </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.InitModel(System.String)">
             <summary>
             Initmodel method for initialize our model.
@@ -554,6 +560,11 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerMaxHealth">
             <summary>
             Gets or sets the player's max health.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerNeighborBlocks">
+            <summary>
+            Gets or sets the player neighboring blocks.
             </summary>
         </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.GameWidth">

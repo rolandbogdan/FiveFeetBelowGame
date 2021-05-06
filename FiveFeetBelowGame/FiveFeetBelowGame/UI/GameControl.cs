@@ -93,7 +93,8 @@ namespace FiveFeetBelowGame.UI
             int tpy = (int)tilePos.Y;
 
             if (this.model.Blocks[tpx, tpy] != null &&
-                this.model.Player != null)
+                this.model.Player != null &&
+                this.model.PlayerNeighborBlocks.Contains(this.model.Blocks[tpx, tpy]))
             {
                 // Only neighbouring blocks!
                 this.model.Blocks[tpx, tpy].DamageTaken(
