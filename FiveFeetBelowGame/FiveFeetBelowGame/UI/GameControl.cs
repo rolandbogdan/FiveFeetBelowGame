@@ -98,7 +98,7 @@ namespace FiveFeetBelowGame.UI
             {
                 // Only neighbouring blocks!
                 this.model.Blocks[tpx, tpy].DamageTaken(
-                this.model.Player.InflictDamage(),
+                this.model.Player.InflictDamage() + 4,
                 this.model.Player);
                 if (this.model.Blocks[tpx, tpy].HealthPoints <= 0)
                 {
@@ -123,16 +123,16 @@ namespace FiveFeetBelowGame.UI
         {
             switch (e.Key)
             {
-                case System.Windows.Input.Key.W:
+                case Key.W:
                     this.logic.Move(0, -1);
                     break;
-                case System.Windows.Input.Key.S:
+                case Key.S:
                     this.logic.Move(0, 1);
                     break;
-                case System.Windows.Input.Key.A:
+                case Key.A:
                     this.logic.Move(-1, 0);
                     break;
-                case System.Windows.Input.Key.D:
+                case Key.D:
                     this.logic.Move(1, 0);
                     break;
                 default:

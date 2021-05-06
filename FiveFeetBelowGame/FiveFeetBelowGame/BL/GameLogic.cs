@@ -41,11 +41,12 @@ namespace FiveFeetBelowGame.BL
         /// <returns>An array with the blocks.</returns>
         public IGameObject[,] GetRenderedBlocks()
         {
-            IGameObject[,] outp = new IGameObject[25,40];
+            int d = 40;
+            IGameObject[,] outp = new IGameObject[25, d];
 
-            int n = (int)this.model.PlayerPos.X - ((int)this.model.PlayerPos.X % 40);
+            int n = (int)this.model.PlayerPos.X - ((int)this.model.PlayerPos.X % d);
 
-            for (int i = n; i < n + 40; i++)
+            for (int i = n; i < n + d; i++)
             {
                 for (int j = 0; j < outp.GetLength(0); j++)
                 {
@@ -104,7 +105,7 @@ namespace FiveFeetBelowGame.BL
             int py = (int)this.model.PlayerPos.Y;
 
             // while?
-            if (py > 0 && py < this.model.Blocks.GetLength(0))
+            if (py > 0 && py < this.model.Blocks.GetLength(1))
             {
                 if ((this.model.Blocks[px, py - 1] as OneBlock) != null &&
                 !(this.model.Blocks[px, py - 1] as OneBlock).IsSolid)
@@ -226,7 +227,7 @@ namespace FiveFeetBelowGame.BL
 
             if (newX >= 0 && newX < this.model.Blocks.GetLength(0) &&
                 newY >= 0 && newY < this.model.Blocks.GetLength(1) &&
-                this.model.Blocks[(int)newX, (int)newY] != null &&
+                (this.model.Blocks[(int)newX, (int)newY] as OneBlock) != null &&
                 !(this.model.Blocks[(int)newX, (int)newY] as OneBlock).IsSolid)
             {
                 this.model.Player.CX = newX;
