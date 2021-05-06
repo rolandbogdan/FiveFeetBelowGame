@@ -104,13 +104,13 @@ namespace FiveFeetBelowGame.BL
             int px = (int)this.model.PlayerPos.X;
             int py = (int)this.model.PlayerPos.Y;
 
-            // while?
+            // Something so player cant fly?
             if (py > 0 && py < this.model.Blocks.GetLength(1))
             {
-                if ((this.model.Blocks[px, py - 1] as OneBlock) != null &&
-                !(this.model.Blocks[px, py - 1] as OneBlock).IsSolid)
+                if ((this.model.Blocks[px, py + 1] as OneBlock) != null &&
+                !(this.model.Blocks[px, py + 1] as OneBlock).IsSolid)
                 {
-                    this.Move(0, 1);
+                    this.Move(0, 0.5);
                 }
             }
         }
