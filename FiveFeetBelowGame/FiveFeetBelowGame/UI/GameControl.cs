@@ -59,7 +59,7 @@ namespace FiveFeetBelowGame.UI
             if (win != null)
             {
                 this.tickTimer = new DispatcherTimer();
-                this.tickTimer.Interval = TimeSpan.FromMilliseconds(20); // fps?
+                this.tickTimer.Interval = TimeSpan.FromMilliseconds(40); // fps?
                 this.tickTimer.Tick += this.TickTimer_Tick;
                 this.tickTimer.Start();
 
@@ -94,7 +94,7 @@ namespace FiveFeetBelowGame.UI
 
             if (this.model.Blocks[tpx, tpy] != null &&
                 this.model.Player != null &&
-                this.model.PlayerNeighborBlocks.Contains(this.model.Blocks[tpx, tpy]))
+                this.logic.IsNeighboring(tpx, tpy))
             {
                 // Only neighbouring blocks!
                 this.model.Blocks[tpx, tpy].DamageTaken(
@@ -115,7 +115,6 @@ namespace FiveFeetBelowGame.UI
                 }
             }
 
-            // this.logic.Gravity();
             this.InvalidateVisual();
         }
 

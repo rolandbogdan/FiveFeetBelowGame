@@ -164,29 +164,21 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
-        /// Gets the neighboring blocks of a player.
+        /// Determines if a certain block is neighboring the player or not.
         /// </summary>
-        /// <returns>A list of the player's neighboring blocks.</returns>
-        public List<IGameObject> PlayerNeighboringBlocks()
+        /// <param name="bx">The block's x coordinate.</param>
+        /// <param name="by">The block's y coordinate. </param>
+        /// <returns>True if its a neighboring block.</returns>
+        public bool IsNeighboring(double bx, double by)
         {
-            List<IGameObject> outp = new List<IGameObject>();
-            int px = (int)this.model.Player.CX;
-            int py = (int)this.model.Player.CY;
-            //if (px - 1 >= 0 && px + 1 <= this.model.Blocks.GetLength(0))
-            if (true)
+            double xdiff = this.model.PlayerPos.X - bx;
+            double ydiff = this.model.PlayerPos.Y - by;
+            if (Math.Abs(xdiff) <= 1 && Math.Abs(ydiff) <= 1)
             {
-                outp.Add(this.model.Blocks[px - 1, py]);
-                outp.Add(this.model.Blocks[px + 1, py]);
+                return true;
             }
 
-            //if (py - 1 >= 0 && py + 1 <= this.model.Blocks.GetLength(1))
-            if (true)
-            {
-                outp.Add(this.model.Blocks[px, py - 1]);
-                outp.Add(this.model.Blocks[px, py + 1]);
-            }
-
-            return outp;
+            return false;
         }
 
         /// <summary>
@@ -202,7 +194,6 @@ namespace FiveFeetBelowGame.BL
             // this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
             this.model.Blocks = jh.LoadMap("testfile.json");
 
-            // this.model.TileSize = this.model.GameWidth / 25;
             this.model.TileSize = this.model.GameWidth / 25;
 
             IGameObject[,] arr = new IGameObject[this.model.Blocks.GetLength(1), this.model.Blocks.GetLength(0)];
@@ -215,20 +206,8 @@ namespace FiveFeetBelowGame.BL
             }
 
             this.model.Blocks = arr;
-
-            /*
-            foreach (var item in this.model.Blocks)
-            {
-                if ((item as OnePlayer) != null)
-                {
-                    this.model.PlayerPos = new Point(item.CX, item.CY);
-                    this.model.Player = this.model.Blocks[(int)item.CX, (int)item.CY] as OnePlayer;
-                }
-            }*/
-
             this.model.Player = new OnePlayer(10, 10);
             this.model.PlayerPos = new Point(10, 10);
-            this.model.PlayerNeighborBlocks = this.PlayerNeighboringBlocks();
             this.model.RenderedBlocks = this.GetRenderedBlocks();
         }
 
@@ -239,7 +218,7 @@ namespace FiveFeetBelowGame.BL
         /// <param name="newY"> new y coordinate of the player. </param>
         private void UpdatePlayer(double newX, double newY)
         {
-            // OPTIMIZE!!!!!!!!!!!
+            // OPTIMIZE!!
             double oldX = this.model.PlayerPos.X;
             double oldY = this.model.PlayerPos.Y;
 
@@ -250,7 +229,6 @@ namespace FiveFeetBelowGame.BL
                 this.model.Player.CX = newX;
                 this.model.Player.CY = newX;
                 this.model.PlayerPos = new Point(newX, newY);
-                this.model.PlayerNeighborBlocks = this.PlayerNeighboringBlocks();
             }
         }
     }

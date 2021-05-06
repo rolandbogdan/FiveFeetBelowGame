@@ -87,11 +87,13 @@
             </summary>
             <param name="amount">By this amount.</param>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.PlayerNeighboringBlocks">
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.IsNeighboring(System.Double,System.Double)">
             <summary>
-            Gets the neighboring blocks of a player.
+            Determines if a certain block is neighboring the player or not.
             </summary>
-            <returns>A list of the player's neighboring blocks.</returns>
+            <param name="bx">The block's x coordinate.</param>
+            <param name="by">The block's y coordinate. </param>
+            <returns>True if its a neighboring block.</returns>
         </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.InitModel(System.String)">
             <summary>
