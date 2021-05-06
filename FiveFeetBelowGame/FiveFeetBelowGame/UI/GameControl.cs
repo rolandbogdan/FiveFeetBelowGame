@@ -89,29 +89,28 @@ namespace FiveFeetBelowGame.UI
             Point mousePos = e.GetPosition(this);
             Point tilePos = this.logic.GetTilePos(mousePos);
 
-            /* this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] =
-                new OneBlock(tilePos.X, tilePos.Y, BlockType.Air); */
-            int px = (int)this.model.PlayerPos.X;
-            int py = (int)this.model.PlayerPos.Y;
-            if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] != null &&
-                (this.model.Blocks[px, py] as OnePlayer) != null)
+            int tpx = (int)tilePos.X;
+            int tpy = (int)tilePos.Y;
+
+            if (this.model.Blocks[tpx, tpy] != null &&
+                this.model.Player != null)
             {
                 // Only neighbouring blocks!
-                this.model.Blocks[(int)tilePos.X, (int)tilePos.Y].DamageTaken(
-                (this.model.Blocks[px, py] as OnePlayer).InflictDamage(),
-                this.model.Blocks[px, py] as OnePlayer);
-                if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y].HealthPoints <= 0)
+                this.model.Blocks[tpx, tpy].DamageTaken(
+                this.model.Player.InflictDamage(),
+                this.model.Player);
+                if (this.model.Blocks[tpx, tpy].HealthPoints <= 0)
                 {
-                    if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneBlock != null)
+                    if (this.model.Blocks[tpx, tpy] as OneBlock != null)
                     {
-                        this.logic.PlayerGainedMoney((this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneBlock).Value);
+                        this.logic.PlayerGainedMoney((this.model.Blocks[tpx, tpy] as OneBlock).Value);
                     }
-                    else if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneMonster != null)
+                    else if (this.model.Blocks[tpx, tpy] as OneMonster != null)
                     {
-                        this.logic.PlayerGainedMoney((this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneMonster).Value);
+                        this.logic.PlayerGainedMoney((this.model.Blocks[tpx, tpy] as OneMonster).Value);
                     }
 
-                    this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] = new OneBlock((int)tilePos.X, (int)tilePos.Y, BlockType.Air);
+                    this.model.Blocks[tpx, tpy] = new OneBlock(tpx, tpy, BlockType.Air);
                 }
             }
 

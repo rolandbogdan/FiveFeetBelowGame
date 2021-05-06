@@ -36,14 +36,33 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// Determines the blocks that are rendered.
+        /// </summary>
+        /// <returns>An array with the blocks.</returns>
+        public IGameObject[,] GetRenderedBlocks()
+        {
+            IGameObject[,] outp = new IGameObject[40,25];
+            int n = (int)this.model.Player.CX - ((int)this.model.Player.CX % 40);
+            for (int i = n; i < Math.Min(n + 40, this.model.Blocks.GetLength(0)); i++)
+            {
+                for (int j = 0; j < this.model.Blocks.GetLength(0); j++)
+                {
+                    outp[i, j] = this.model.Blocks[i, j]; // only if updated?
+                }
+            }
+
+            return outp;
+        }
+
+        /// <summary>
         /// Moves the player charecter.
         /// </summary>
         /// <param name="horizontal"> Horizontal speed. </param>
         /// <param name="vertical"> Vertical speed.</param>
         public void Move(double horizontal, double vertical)
         {
-            double px = this.model.Blocks[(int)this.model.PlayerPos.X, (int)this.model.PlayerPos.Y].CX;
-            double py = this.model.Blocks[(int)this.model.PlayerPos.X, (int)this.model.PlayerPos.Y].CY;
+            double px = this.model.PlayerPos.X;
+            double py = this.model.PlayerPos.Y;
             double dx = 0;
             double dy = 0;
 
@@ -83,10 +102,13 @@ namespace FiveFeetBelowGame.BL
             int py = (int)this.model.PlayerPos.Y;
 
             // while?
-            if ((this.model.Blocks[px, py - 1] as OneBlock) != null &&
-                !(this.model.Blocks[px, py - 1] as OneBlock).IsSolid)
+            if (py > 0 && py < this.model.Blocks.GetLength(0))
             {
-                this.Move(0, 1);
+                if ((this.model.Blocks[px, py - 1] as OneBlock) != null &&
+                !(this.model.Blocks[px, py - 1] as OneBlock).IsSolid)
+                {
+                    this.Move(0, 1);
+                }
             }
         }
 
@@ -168,6 +190,7 @@ namespace FiveFeetBelowGame.BL
 
             this.model.Blocks = arr;
 
+            /*
             foreach (var item in this.model.Blocks)
             {
                 if ((item as OnePlayer) != null)
@@ -175,7 +198,12 @@ namespace FiveFeetBelowGame.BL
                     this.model.PlayerPos = new Point(item.CX, item.CY);
                     this.model.Player = this.model.Blocks[(int)item.CX, (int)item.CY] as OnePlayer;
                 }
-            }
+            }*/
+
+            this.model.Player = new OnePlayer(10, 10);
+            this.model.PlayerPos = new Point(10, 10);
+
+            this.model.RenderedBlocks = this.GetRenderedBlocks();
         }
 
         /// <summary>
@@ -188,18 +216,14 @@ namespace FiveFeetBelowGame.BL
             // OPTIMIZE!!!!!!!!!!!
             double oldX = this.model.PlayerPos.X;
             double oldY = this.model.PlayerPos.Y;
+
             if (newX >= 0 && newX < this.model.Blocks.GetLength(0) &&
                 newY >= 0 && newY < this.model.Blocks.GetLength(1) &&
-                this.model.Blocks[(int)newX, (int)newY] as OneBlock != null &&
                 !(this.model.Blocks[(int)newX, (int)newY] as OneBlock).IsSolid)
             {
-                this.model.Blocks[(int)newX, (int)newY] =
-                    new OnePlayer(
-                        this.model.Blocks[(int)oldX, (int)oldY] as OnePlayer)
-                    { CX = newX, CY = newY };
-                this.model.Blocks[(int)oldX, (int)oldY] = new OneBlock(oldX, oldY, BlockType.Air);
+                this.model.Player.CX = newX;
+                this.model.Player.CY = newX;
                 this.model.PlayerPos = new Point(newX, newY);
-                this.model.Player = this.model.Blocks[(int)newX, (int)newY] as OnePlayer;
             }
         }
     }
