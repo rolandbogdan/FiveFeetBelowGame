@@ -36,7 +36,6 @@ namespace FiveFeetBelowGame.UI
         public Brush PlayerBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false); } }
 
         public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false); } }
-        // public Brush MonsterBrush { get { return Brushes.Red; } }
 
         public Brush RockBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true); } }
 
@@ -179,13 +178,13 @@ namespace FiveFeetBelowGame.UI
             if (this.oldRocks == null)
             {
                 GeometryGroup g = new GeometryGroup();
-                for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
+                for (int x = 0; x < this.model.RenderedBlocks.GetLength(1); x++)
                 {
-                    for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
+                    for (int y = 0; y < this.model.RenderedBlocks.GetLength(0); y++)
                     {
-                        if (this.model.Blocks[y, x] != null &&
-                            (this.model.Blocks[y, x] as OneBlock) != null &&
-                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Rock)
+                        if (this.model.RenderedBlocks[y, x] != null &&
+                            (this.model.RenderedBlocks[y, x] as OneBlock) != null &&
+                            (this.model.RenderedBlocks[y, x] as OneBlock).Type == BlockType.Rock)
                         {
                             Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                             g.Children.Add(box);

@@ -112,6 +112,7 @@ namespace FiveFeetBelowGame.UI
                     }
 
                     this.model.Blocks[tpx, tpy] = new OneBlock(tpx, tpy, BlockType.Air);
+                    this.model.RenderedBlocks = this.logic.GetRenderedBlocks();
                 }
             }
 
