@@ -28,16 +28,23 @@ namespace FiveFeetBelowGame.UI
         private Point oldPlayerPosition;
         private Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Renderer"/> class.
+        /// </summary>
+        /// <param name="model">The gamemodel. </param>
         public Renderer(GameModel model)
         {
             this.model = model;
         }
 
+        /// <summary>
+        /// Gets the brush for the player.
+        /// </summary>
         public Brush PlayerBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false); } }
 
         public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false); } }
-        // public Brush MonsterBrush { get { return Brushes.Red; } }
 
+        // public Brush MonsterBrush { get { return Brushes.Red; } }
         public Brush RockBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true); } }
 
         public Brush AirBrush { get { return Brushes.Transparent; } }

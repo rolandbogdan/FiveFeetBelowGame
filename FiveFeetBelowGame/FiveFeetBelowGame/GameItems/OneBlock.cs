@@ -111,7 +111,6 @@ namespace FiveFeetBelowGame
         {
             // this.Type = BlockType.Air;
             // drop item, or add balance to player
-
         }
 
         /// <summary>
