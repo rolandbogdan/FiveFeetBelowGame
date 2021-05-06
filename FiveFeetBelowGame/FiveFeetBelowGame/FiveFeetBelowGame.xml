@@ -147,6 +147,19 @@
             </summary>
             <param name="map">The map.</param>
         </member>
+        <member name="T:FiveFeetBelowGame.Game">
+            <summary>
+            Interaction logic for Game.xaml
+            </summary>
+            <summary>
+            Game
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.Game.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:FiveFeetBelowGame.BlockType">
             <summary>
             The ore types.
@@ -430,6 +443,24 @@
         </member>
         <member name="M:FiveFeetBelowGame.OnePlayer.IsDestroyed(FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
+        </member>
+        <member name="T:FiveFeetBelowGame.HighscoresWindow">
+            <summary>
+            Interaction logic for HighscoresWindow.xaml.
+            </summary>
+            <summary>
+            HighscoresWindow
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.HighscoresWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.HighscoresWindow"/> class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.HighscoresWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
         </member>
         <member name="T:FiveFeetBelowGame.MainWindow">
             <summary>
