@@ -6,6 +6,7 @@ namespace FiveFeetBelowGame.UI
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Reflection;
     using System.Text;
@@ -23,19 +24,30 @@ namespace FiveFeetBelowGame.UI
         private Drawing oldMiddle;
         private Drawing oldRocks;
         private Drawing oldPlayer;
+        private Drawing oldMonsters;
         private Point oldPlayerPosition;
         private Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Renderer"/> class.
+        /// </summary>
+        /// <param name="model">The gamemodel. </param>
         public Renderer(GameModel model)
         {
             this.model = model;
         }
 
+        /// <summary>
+        /// Gets the brush for the player.
+        /// </summary>
         public Brush PlayerBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false); } }
 
         public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false); } }
 
-        public Brush RockBrush { get { return Brushes.Brown; } }
+        // public Brush MonsterBrush { get { return Brushes.Red; } }
+        public Brush RockBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true); } }
+
+        public Brush AirBrush { get { return Brushes.Transparent; } }
 
         public Brush OreBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false); } }
 
@@ -52,6 +64,7 @@ namespace FiveFeetBelowGame.UI
             this.oldMiddle = null;
             this.oldRocks = null;
             this.oldPlayer = null;
+            this.oldMonsters = null;
             this.oldPlayerPosition = new Point(-1, -1);
             this.brushes.Clear();
         }
@@ -92,21 +105,42 @@ namespace FiveFeetBelowGame.UI
         /// <returns>Returns a Drawing.</returns>
         public Drawing BuildDrawing()
         {
+            this.Reset(); // optimize?
             DrawingGroup dg = new DrawingGroup();
             dg.Children.Add(this.GetBackground());
             dg.Children.Add(this.GetMiddle());
             dg.Children.Add(this.GetRocks());
             dg.Children.Add(this.GetPlayer());
+            dg.Children.Add(this.GetMonsters());
+            dg.Children.Add(this.GetText());
 
             // dg.Children.Add(this.GetOres());
-            // dg.Children.Add(this.GetMonsters());
             return dg;
         }
 
         // Maybe monsters should be an array.
         private Drawing GetMonsters()
         {
-            throw new NotImplementedException();
+            if (this.oldMonsters == null)
+            {
+                GeometryGroup g = new GeometryGroup();
+                for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
+                {
+                    for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
+                    {
+                        if (this.model.Blocks[y, x] != null &&
+                            (this.model.Blocks[y, x] as OneMonster) != null)
+                        {
+                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                            g.Children.Add(box);
+                        }
+                    }
+                }
+
+                this.oldMonsters = new GeometryDrawing(this.MonsterBrush, null, g);
+            }
+
+            return this.oldMonsters;
         }
 
         // Maybe ores should be an array.
@@ -115,13 +149,33 @@ namespace FiveFeetBelowGame.UI
             throw new NotImplementedException();
         }
 
+        private Drawing GetText()
+        {
+            FormattedText formattedText = new FormattedText(
+            this.model.PlayerBalance.ToString(),
+            CultureInfo.CurrentCulture,
+            FlowDirection.LeftToRight,
+            new Typeface("Arial"),
+            16,
+            Brushes.Black);
+
+            GeometryDrawing text = new GeometryDrawing(
+                null,
+                new Pen(Brushes.Black, 2),
+                formattedText.BuildGeometry(new Point(5, 5)));
+
+            return text;
+
+        }
+
         private Drawing GetPlayer()
         {
-            if (this.oldPlayer == null || this.oldPlayerPosition != this.model.Player)
+            if (this.oldPlayer == null || this.oldPlayerPosition != this.model.PlayerPos)
             {
-                Geometry g = new RectangleGeometry(new Rect(this.model.Player.X * this.model.TileSize, this.model.Player.Y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                Geometry g = new RectangleGeometry(new Rect(this.model.PlayerPos.X * this.model.TileSize, this.model.PlayerPos.Y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                 this.oldPlayer = new GeometryDrawing(this.PlayerBrush, null, g);
-                this.oldPlayerPosition = this.model.Player;
+
+                this.oldPlayerPosition = this.model.PlayerPos;
             }
 
             return this.oldPlayer;
@@ -132,15 +186,15 @@ namespace FiveFeetBelowGame.UI
             if (this.oldRocks == null)
             {
                 GeometryGroup g = new GeometryGroup();
-                for (int x = 0; x < this.model.Blocks.GetLength(0); x++)
+                for (int x = 0; x < this.model.RenderedBlocks.GetLength(1); x++)
                 {
-                    for (int y = 0; y < this.model.Blocks.GetLength(1); y++)
+                    for (int y = 0; y < this.model.RenderedBlocks.GetLength(0); y++)
                     {
-                        if (this.model.Blocks[x, y] != null &&
-                            (this.model.Blocks[x, y] as OnePlayer) == null &&
-                            (this.model.Blocks[x, y] as OneBlock).Type == BlockType.Rock)
+                        if (this.model.RenderedBlocks[y, x] != null &&
+                            (this.model.RenderedBlocks[y, x] as OneBlock) != null &&
+                            (this.model.RenderedBlocks[y, x] as OneBlock).Type == BlockType.Rock)
                         {
-                            Geometry box = new RectangleGeometry(new Rect(x * this.model.TileSize, y * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                             g.Children.Add(box);
                         }
                     }

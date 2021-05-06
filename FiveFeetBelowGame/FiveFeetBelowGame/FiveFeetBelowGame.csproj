@@ -22,6 +22,7 @@
     <None Remove="Images\player-idle-1.png" />
     <None Remove="Images\player.bmp" />
     <None Remove="Images\props.png" />
+    <None Remove="Images\tile.png" />
     <None Remove="Images\tileset.png" />
     <None Remove="Images\wall.bmp" />
     <None Remove="Levels\L00.lvl" />
@@ -40,6 +41,7 @@
     <EmbeddedResource Include="Images\player-idle-1.png" />
     <EmbeddedResource Include="Images\player.bmp" />
     <EmbeddedResource Include="Images\props.png" />
+    <EmbeddedResource Include="Images\tile.png" />
     <EmbeddedResource Include="Images\tileset.png" />
     <EmbeddedResource Include="Images\wall.bmp" />
     <EmbeddedResource Include="Levels\L00.lvl" />

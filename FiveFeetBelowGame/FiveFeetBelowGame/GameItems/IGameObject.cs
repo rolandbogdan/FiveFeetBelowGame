@@ -47,11 +47,13 @@ namespace FiveFeetBelowGame
         /// Subtracts damage from the health.
         /// </summary>
         /// <param name="dmg"> The damage the entity takes. </param>
-        public void DamageTaken(int dmg);
+        /// <param name="source">The source of the damage that destroyed the object.</param>
+        public void DamageTaken(int dmg, IGameObject source);
 
         /// <summary>
         /// Kills the entity if hp is 0.
         /// </summary>
-        void IsDestroyed();
+        /// <param name="source">The source of the damage that destroyed the object.</param>
+        void IsDestroyed(IGameObject source);
     }
 }
