@@ -114,7 +114,7 @@ namespace FiveFeetBelowGame
             }
 
             this.AddMonsters(ref items);
-            items[10, 10] = new OnePlayer(10, 10);
+            // items[10, 10] = new OnePlayer(10, 10);
             return items;
         }
 

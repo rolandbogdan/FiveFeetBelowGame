@@ -39,6 +39,12 @@
             <param name="model">GameModel type parameter.</param>
             <param name="fname">String type parameter.</param>
         </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.GetRenderedBlocks">
+            <summary>
+            Determines the blocks that are rendered.
+            </summary>
+            <returns>An array with the blocks.</returns>
+        </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.Move(System.Double,System.Double)">
             <summary>
             Moves the player charecter.
@@ -80,6 +86,14 @@
             Increases the players health.
             </summary>
             <param name="amount">By this amount.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.IsNeighboring(System.Double,System.Double)">
+            <summary>
+            Determines if a certain block is neighboring the player or not.
+            </summary>
+            <param name="bx">The block's x coordinate.</param>
+            <param name="by">The block's y coordinate. </param>
+            <returns>True if its a neighboring block.</returns>
         </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.InitModel(System.String)">
             <summary>
@@ -579,6 +593,11 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerMaxHealth">
             <summary>
             Gets or sets the player's max health.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerNeighborBlocks">
+            <summary>
+            Gets or sets the player neighboring blocks.
             </summary>
         </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.GameWidth">

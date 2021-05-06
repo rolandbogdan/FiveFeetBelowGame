@@ -68,6 +68,11 @@ namespace FiveFeetBelowGame.VM
         public int PlayerMaxHealth { get; set; }
 
         /// <summary>
+        /// Gets or sets the player neighboring blocks.
+        /// </summary>
+        public List<IGameObject> PlayerNeighborBlocks { get; set; }
+
+        /// <summary>
         /// Gets Gamewidth represent the width of the map.
         /// </summary>
         public double GameWidth { get; private set; }
