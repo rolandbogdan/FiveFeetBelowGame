@@ -25,7 +25,12 @@ namespace FiveFeetBelowGame.UI
             private Drawing oldRocks;
             private Drawing oldPlayer;
             private Drawing oldMonsters;
-            private Drawing oldOres;
+            private Drawing oldIrons;
+            private Drawing oldDiamonds;
+            private Drawing oldGolds;
+            private Drawing oldGems;
+            private Drawing oldRareGems;
+
             private Point oldPlayerPosition;
             private Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
@@ -37,7 +42,7 @@ namespace FiveFeetBelowGame.UI
             public Brush PlayerBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false); } }
 
             // public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false); } }
-             public Brush MonsterBrush { get { return Brushes.Blue; } }
+            public Brush MonsterBrush { get { return Brushes.Blue; } }
 
             public Brush RockBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true); } }
 
@@ -47,7 +52,7 @@ namespace FiveFeetBelowGame.UI
 
             public Brush IronBrush { get { return Brushes.Gray; } }
 
-            public Brush DiaBrush { get { return Brushes.Aqua; } }
+            public Brush DiamondsBrush { get { return Brushes.Aqua; } }
 
             public Brush GoldBrush { get { return Brushes.Gold; } }
 
@@ -69,7 +74,12 @@ namespace FiveFeetBelowGame.UI
                   this.oldRocks = null;
                   this.oldPlayer = null;
                   this.oldMonsters = null;
-                  this.oldOres = null;
+                  this.oldIrons = null;
+                  this.oldDiamonds = null;
+                  this.oldGolds = null;
+                  this.oldGems = null;
+                  this.oldRareGems = null;
+
                   this.oldPlayerPosition = new Point(-1, -1);
                   this.brushes.Clear();
             }
@@ -118,7 +128,11 @@ namespace FiveFeetBelowGame.UI
                   dg.Children.Add(this.GetPlayer());
                   dg.Children.Add(this.GetMonsters());
 
-                  dg.Children.Add(this.GetOres());
+                  dg.Children.Add(this.GetIrons());
+                  dg.Children.Add(this.GetDiamonds());
+                  dg.Children.Add(this.GetGolds());
+                  dg.Children.Add(this.GetGems());
+                  dg.Children.Add(this.GetRareGems());
 
                   dg.Children.Add(this.GetText());
 
@@ -152,15 +166,11 @@ namespace FiveFeetBelowGame.UI
             }
 
             // Maybe ores should be an array.
-            private Drawing GetOres()
+            private Drawing GetIrons()
             {
-                  if (this.oldOres == null)
+                  if (this.oldIrons == null)
                   {
                         GeometryGroup i = new GeometryGroup();
-                        GeometryGroup d = new GeometryGroup();
-                        GeometryGroup g = new GeometryGroup();
-                        GeometryGroup gold = new GeometryGroup();
-                        GeometryGroup rg = new GeometryGroup();
 
                         for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
                         {
@@ -173,7 +183,25 @@ namespace FiveFeetBelowGame.UI
                                           Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                                           i.Children.Add(box);
                                     }
+                              }
+                        }
 
+                        this.oldIrons = new GeometryDrawing(this.IronBrush, null, i);
+                  }
+
+                  return this.oldIrons;
+            }
+
+            private Drawing GetDiamonds()
+            {
+                  if (this.oldDiamonds == null)
+                  {
+                        GeometryGroup d = new GeometryGroup();
+
+                        for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
+                        {
+                              for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
+                              {
                                     if (this.model.Blocks[y, x] != null &&
                                         (this.model.Blocks[y, x] as OneBlock) != null &&
                                         (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Diamond)
@@ -181,7 +209,51 @@ namespace FiveFeetBelowGame.UI
                                           Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                                           d.Children.Add(box);
                                     }
+                              }
+                        }
 
+                        this.oldDiamonds = new GeometryDrawing(this.DiamondsBrush, null, d);
+                  }
+
+                  return this.oldDiamonds;
+            }
+
+            private Drawing GetGolds()
+            {
+                  if (this.oldGolds == null)
+                  {
+                        GeometryGroup g = new GeometryGroup();
+
+                        for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
+                        {
+                              for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
+                              {
+                                    if (this.model.Blocks[y, x] != null &&
+                                        (this.model.Blocks[y, x] as OneBlock) != null &&
+                                        (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Gold)
+                                    {
+                                          Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                                          g.Children.Add(box);
+                                    }
+                              }
+                        }
+
+                        this.oldGolds = new GeometryDrawing(this.GoldBrush, null, g);
+                  }
+
+                  return this.oldGolds;
+            }
+
+            private Drawing GetGems()
+            {
+                  if (this.oldGems == null)
+                  {
+                        GeometryGroup g = new GeometryGroup();
+
+                        for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
+                        {
+                              for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
+                              {
                                     if (this.model.Blocks[y, x] != null &&
                                         (this.model.Blocks[y, x] as OneBlock) != null &&
                                         (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Gem)
@@ -189,33 +261,39 @@ namespace FiveFeetBelowGame.UI
                                           Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                                           g.Children.Add(box);
                                     }
+                              }
+                        }
 
+                        this.oldGems = new GeometryDrawing(this.GemBrush, null, g);
+                  }
+
+                  return this.oldGems;
+            }
+
+            private Drawing GetRareGems()
+            {
+                  if (this.oldRareGems == null)
+                  {
+                        GeometryGroup g = new GeometryGroup();
+
+                        for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
+                        {
+                              for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
+                              {
                                     if (this.model.Blocks[y, x] != null &&
                                         (this.model.Blocks[y, x] as OneBlock) != null &&
-                                        (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Gold)
+                                        (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Gem)
                                     {
                                           Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
-                                          gold.Children.Add(box);
-                                    }
-
-                                    if (this.model.Blocks[y, x] != null &&
-                                        (this.model.Blocks[y, x] as OneBlock) != null &&
-                                        (this.model.Blocks[y, x] as OneBlock).Type == BlockType.RareGem)
-                                    {
-                                          Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
-                                          rg.Children.Add(box);
+                                          g.Children.Add(box);
                                     }
                               }
                         }
 
-                        this.oldOres = new GeometryDrawing(this.IronBrush, null, i);
-                        this.oldOres = new GeometryDrawing(this.DiaBrush, null, d);
-                        this.oldOres = new GeometryDrawing(this.GemBrush, null, g);
-                        this.oldOres = new GeometryDrawing(this.GoldBrush, null, gold);
-                        this.oldOres = new GeometryDrawing(this.RareGemBrush, null, rg);
+                        this.oldRareGems = new GeometryDrawing(this.RareGemBrush, null, g);
                   }
 
-                  return this.oldOres;
+                  return this.oldRareGems;
             }
 
             private Drawing GetText()
