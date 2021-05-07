@@ -19,10 +19,13 @@ namespace FiveFeetBelowGame
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for Game.xaml
+    /// Interaction logic for Game.xaml.
     /// </summary>
     public partial class Game : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Game"/> class.
+        /// </summary>
         public Game()
         {
             this.InitializeComponent();

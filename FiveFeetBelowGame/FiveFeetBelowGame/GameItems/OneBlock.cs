@@ -1,4 +1,4 @@
-﻿// <copyright file="OneOre.cs" company="PlaceholderCompany">
+﻿// <copyright file="OneBlock.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 

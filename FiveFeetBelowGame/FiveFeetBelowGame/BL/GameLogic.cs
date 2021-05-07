@@ -190,7 +190,9 @@ namespace FiveFeetBelowGame.BL
         /// <param name="fname">String type parameter.</param>
         private void InitModel(string fname)
         {
-            // Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
+            JsonHandler js = new JsonHandler("testfile.json");
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
+
             // StreamReader sr = new StreamReader(stream);
             JsonHandler jh = new JsonHandler();
 

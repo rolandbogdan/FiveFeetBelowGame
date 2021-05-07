@@ -16,10 +16,12 @@ namespace FiveFeetBelowGame.UI
     using System.Windows.Media.Imaging;
     using FiveFeetBelowGame.VM;
 
-    class Renderer
+    /// <summary>
+    /// This class is responsible for rendering the game.
+    /// </summary>
+    public class Renderer
     {
         private GameModel model;
-
         private Drawing oldBackground;
         private Drawing oldMiddle;
         private Drawing oldRocks;
@@ -40,20 +42,79 @@ namespace FiveFeetBelowGame.UI
         /// <summary>
         /// Gets the brush for the player.
         /// </summary>
-        public Brush PlayerBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false); } }
+        public Brush PlayerBrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false);
+            }
+        }
 
-        public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false); } }
+        /// <summary>
+        /// Gets the brush for the monsters.
+        /// </summary>
+        public Brush MonsterBrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false);
+            }
+        }
 
-        // public Brush MonsterBrush { get { return Brushes.Red; } }
-        public Brush RockBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true); } }
+        /// <summary>
+        /// Gets the brush for the rocks.
+        /// </summary>
+        public Brush RockBrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true);
+            }
+        }
 
-        public Brush AirBrush { get { return Brushes.Transparent; } }
+        /// <summary>
+        /// Gets the brush for the air blocks.
+        /// </summary>
+        public Brush AirBrush
+        {
+            get
+            {
+                return Brushes.Transparent;
+            }
+        }
 
-        public Brush OreBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false); } }
+        /// <summary>
+        /// Gets the brush for the ores.
+        /// </summary>
+        public Brush OreBrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false);
+            }
+        }
 
-        public Brush Bgbrush { get { return this.GetBrush("FiveFeetBelowGame.Images.back.png", false); } }
+        /// <summary>
+        /// Gets the brush for the background.
+        /// </summary>
+        public Brush Bgbrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.back.png", false);
+            }
+        }
 
-        public Brush Middlebrush { get { return this.GetBrush("FiveFeetBelowGame.Images.middle.png", false); } }
+        /// <summary>
+        /// Gets the brush for the middle.
+        /// </summary>
+        public Brush Middlebrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.middle.png", false);
+            }
+        }
 
         /// <summary>
         /// This method help us to start new game or reset our game.
@@ -165,7 +226,6 @@ namespace FiveFeetBelowGame.UI
                 formattedText.BuildGeometry(new Point(5, 5)));
 
             return text;
-
         }
 
         private Drawing GetPlayer()

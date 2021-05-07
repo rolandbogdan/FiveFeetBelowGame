@@ -1,19 +1,30 @@
-﻿using Logic;
-using Model;
-using Moq;
-using NUnit.Framework;
-using Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿// <copyright file="Test.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+[assembly: System.CLSCompliant(false)]
 
 namespace Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Logic;
+    using Model;
+    using Moq;
+    using NUnit.Framework;
+    using Repository;
+
+    /// <summary>
+    /// The unit testing class.
+    /// </summary>
     [TestFixture]
     public class Test
     {
         private Mock<IStorageRepository<Highscore>> repo = new Mock<IStorageRepository<Highscore>>();
 
+        /// <summary>
+        /// This function tests inserting a single object into the repo.
+        /// </summary>
         [Test]
         public void TestInsertOne()
         {
@@ -27,6 +38,9 @@ namespace Tests
             this.repo.Verify(x => x.Insert(newHs), Times.Once);
         }
 
+        /// <summary>
+        /// This function tests deleting a single object from the repo.
+        /// </summary>
         [Test]
         public void TestDeleteOne()
         {
@@ -40,6 +54,9 @@ namespace Tests
             this.repo.Verify(x => x.Delete(newHs), Times.Once);
         }
 
+        /// <summary>
+        /// This function tests reading a single object from the repo.
+        /// </summary>
         [Test]
         public void TestGetOneHighscore()
         {
@@ -47,8 +64,8 @@ namespace Tests
 
             List<Highscore> newHs = new List<Highscore>()
                   {
-                        new Highscore("Kathi Béla",150,3),
-                        new Highscore("Bohos Kornél",150,3),
+                        new Highscore("Kathi Béla", 150, 3),
+                        new Highscore("Bohos Kornél", 150, 3),
                   };
 
             Highscore expectedout = new Highscore();
@@ -60,6 +77,9 @@ namespace Tests
             Assert.That(output.HsID, Is.EquivalentTo(expectedout.HsID));
         }
 
+        /// <summary>
+        /// This function tests reading all objects from the repo.
+        /// </summary>
         [Test]
         public void TestGetAllHighscore()
         {
@@ -67,8 +87,8 @@ namespace Tests
 
             List<Highscore> newHs = new List<Highscore>()
                   {
-                        new Highscore("Kathi Béla",150,3),
-                        new Highscore("Bohos Kornél",150,3),
+                        new Highscore("Kathi Béla", 150, 3),
+                        new Highscore("Bohos Kornél", 150, 3),
                   };
 
             List<Highscore> expectedout = new List<Highscore>()
@@ -84,13 +104,16 @@ namespace Tests
             Assert.That(output.Count, Is.EqualTo(expectedout.Count));
         }
 
+        /// <summary>
+        /// This function tests the ordering of objects in the repo.
+        /// </summary>
         [Test]
         public void TestOrderedHighscore()
         {
             List<Highscore> newHs = new List<Highscore>()
                   {
-                        new Highscore("Bohos Kornél",250,5),
-                        new Highscore("Kathi Béla",500,10),
+                        new Highscore("Bohos Kornél", 250, 5),
+                        new Highscore("Kathi Béla", 500, 10),
                   };
 
             List<Highscore> expectedout = new List<Highscore>()
