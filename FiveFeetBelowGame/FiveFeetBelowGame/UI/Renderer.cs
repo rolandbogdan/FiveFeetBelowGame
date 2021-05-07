@@ -106,9 +106,7 @@ namespace FiveFeetBelowGame.UI
 
             public Brush RareGemBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.rare-gem.png", true); } }
 
-            
             public Brush IronBrush { get { return Brushes.Gray; } }
-
 
             /*
             public Brush DiamondsBrush { get { return Brushes.Aqua; } }

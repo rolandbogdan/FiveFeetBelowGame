@@ -6,6 +6,7 @@ namespace Model
 {
       using System;
       using System.Collections.Generic;
+      using System.ComponentModel.DataAnnotations;
       using System.Linq;
       using System.Text;
       using System.Threading.Tasks;
@@ -39,6 +40,7 @@ namespace Model
             /// <summary>
             /// Gets or sets the id of the highscore save.
             /// </summary>
+            [Key]
             public string HsID { get; set; }
 
             /// <summary>
