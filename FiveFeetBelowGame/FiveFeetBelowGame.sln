@@ -13,11 +13,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Re
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{CEA0D33A-50F8-40EE-936C-44727CE1A288}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{8018CF88-AED4-4E8A-ABD0-E25D06ABC67E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{8018CF88-AED4-4E8A-ABD0-E25D06ABC67E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CEA0D33A-50F8-40EE-936C-44727CE1A288} = {CEA0D33A-50F8-40EE-936C-44727CE1A288}
 		{3EF031D8-8BA0-4B76-855C-AF883243F8EF} = {3EF031D8-8BA0-4B76-855C-AF883243F8EF}
 		{8BBE85E2-D2A6-4FBB-98FF-0C56E07B3729} = {8BBE85E2-D2A6-4FBB-98FF-0C56E07B3729}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F56DF30B-7C41-430E-BD27-F2A8AC9F567C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
 Global

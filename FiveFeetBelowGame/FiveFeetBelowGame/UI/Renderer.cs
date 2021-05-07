@@ -34,22 +34,69 @@ namespace FiveFeetBelowGame.UI
             private Point oldPlayerPosition;
             private Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
-            public Renderer(GameModel model)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Renderer"/> class.
+        /// </summary>
+        /// <param name="model">The gamemodel. </param>
+        public Renderer(GameModel model)
+        {
+            this.model = model;
+        }
+
+        /// <summary>
+        /// Gets the brush for the player.
+        /// </summary>
+        public Brush PlayerBrush
+        {
+            get
             {
-                  this.model = model;
+                return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false);
             }
+        }
 
-            public Brush PlayerBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false); } }
+        /// <summary>
+        /// Gets the brush for the monsters.
+        /// </summary>
+        public Brush MonsterBrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false);
+            }
+        }
 
-            // public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.spider.png", false); } }
+        /// <summary>
+        /// Gets the brush for the rocks.
+        /// </summary>
+        public Brush RockBrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true);
+            }
+        }
 
-            public Brush MonsterBrush { get { return Brushes.Blue; } }
+        /// <summary>
+        /// Gets the brush for the air blocks.
+        /// </summary>
+        public Brush AirBrush
+        {
+            get
+            {
+                return Brushes.Transparent;
+            }
+        }
 
-            public Brush RockBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true); } }
-
-            public Brush AirBrush { get { return Brushes.Transparent; } }
-
-            public Brush IronBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.Iron-Ore-Block-600x600.png", true); } }
+        /// <summary>
+        /// Gets the brush for the ores.
+        /// </summary>
+        public Brush OreBrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false);
+            }
+        }
 
             public Brush DiamondsBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.diamond-ore.png", true); } }
 
@@ -59,9 +106,11 @@ namespace FiveFeetBelowGame.UI
 
             public Brush RareGemBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.rare-gem.png", true); } }
 
-            /*
+            
             public Brush IronBrush { get { return Brushes.Gray; } }
 
+
+            /*
             public Brush DiamondsBrush { get { return Brushes.Aqua; } }
 
             public Brush GoldBrush { get { return Brushes.Gold; } }
@@ -73,7 +122,16 @@ namespace FiveFeetBelowGame.UI
 
             public Brush Bgbrush { get { return this.GetBrush("FiveFeetBelowGame.Images.back.png", false); } }
 
-            public Brush Middlebrush { get { return this.GetBrush("FiveFeetBelowGame.Images.middle.png", false); } }
+        /// <summary>
+        /// Gets the brush for the middle.
+        /// </summary>
+        public Brush Middlebrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.middle.png", false);
+            }
+        }
 
             /// <summary>
             /// This method help us to start new game or reset our game.
@@ -322,9 +380,9 @@ namespace FiveFeetBelowGame.UI
                       new Pen(Brushes.Black, 2),
                       formattedText.BuildGeometry(new Point(5, 5)));
 
-                  return text;
+            return text;
 
-            }
+        }
 
             private Drawing GetPlayer()
             {
@@ -339,24 +397,24 @@ namespace FiveFeetBelowGame.UI
                   return this.oldPlayer;
             }
 
-            private Drawing GetRocks()
+        private Drawing GetRocks()
+        {
+            if (this.oldRocks == null)
             {
-                  if (this.oldRocks == null)
-                  {
-                        GeometryGroup g = new GeometryGroup();
-                        for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
+                GeometryGroup g = new GeometryGroup();
+                for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
+                {
+                    for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
+                    {
+                        if (this.model.Blocks[y, x] != null &&
+                            (this.model.Blocks[y, x] as OneBlock) != null &&
+                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Rock)
                         {
-                              for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
-                              {
-                                    if (this.model.Blocks[y, x] != null &&
-                                        (this.model.Blocks[y, x] as OneBlock) != null &&
-                                        (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Rock)
-                                    {
-                                          Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
-                                          g.Children.Add(box);
-                                    }
-                              }
+                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                            g.Children.Add(box);
                         }
+                    }
+                }
 
                         this.oldRocks = new GeometryDrawing(this.RockBrush, null, g);
                   }

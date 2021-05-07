@@ -1,4 +1,4 @@
-﻿// <copyright file="OneOre.cs" company="PlaceholderCompany">
+﻿// <copyright file="OneBlock.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -111,7 +111,6 @@ namespace FiveFeetBelowGame
         {
             // this.Type = BlockType.Air;
             // drop item, or add balance to player
-
         }
 
         /// <summary>

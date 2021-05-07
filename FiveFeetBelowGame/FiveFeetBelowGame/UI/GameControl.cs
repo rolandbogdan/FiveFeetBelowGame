@@ -49,6 +49,15 @@ namespace FiveFeetBelowGame.UI
             this.Loaded += this.GameControl_Loaded;
         }
 
+        /// <inheritdoc/>
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            if (this.renderer != null)
+            {
+                drawingContext?.DrawDrawing(this.renderer.BuildDrawing());
+            }
+        }
+
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.model = new GameModel(this.ActualWidth, this.ActualHeight);
@@ -59,7 +68,7 @@ namespace FiveFeetBelowGame.UI
             if (win != null)
             {
                 this.tickTimer = new DispatcherTimer();
-                this.tickTimer.Interval = TimeSpan.FromMilliseconds(20); // fps?
+                this.tickTimer.Interval = TimeSpan.FromMilliseconds(40); // fps?
                 this.tickTimer.Tick += this.TickTimer_Tick;
                 this.tickTimer.Start();
 
@@ -75,29 +84,30 @@ namespace FiveFeetBelowGame.UI
             Point mousePos = e.GetPosition(this);
             Point tilePos = this.logic.GetTilePos(mousePos);
 
-            /* this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] =
-                new OneBlock(tilePos.X, tilePos.Y, BlockType.Air); */
-            int px = (int)this.model.PlayerPos.X;
-            int py = (int)this.model.PlayerPos.Y;
-            if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] != null &&
-                (this.model.Blocks[px, py] as OnePlayer) != null)
+            int tpx = (int)tilePos.X;
+            int tpy = (int)tilePos.Y;
+
+            if (this.model.Blocks[tpx, tpy] != null &&
+                this.model.Player != null &&
+                this.logic.IsNeighboring(tpx, tpy))
             {
                 // Only neighbouring blocks!
-                this.model.Blocks[(int)tilePos.X, (int)tilePos.Y].DamageTaken(
-                (this.model.Blocks[px, py] as OnePlayer).InflictDamage(),
-                this.model.Blocks[px, py] as OnePlayer);
-                if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y].HealthPoints <= 0)
+                this.model.Blocks[tpx, tpy].DamageTaken(
+                this.model.Player.InflictDamage() + 4,
+                this.model.Player);
+                if (this.model.Blocks[tpx, tpy].HealthPoints <= 0)
                 {
-                    if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneBlock != null)
+                    if (this.model.Blocks[tpx, tpy] as OneBlock != null)
                     {
-                        this.logic.PlayerGainedMoney((this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneBlock).Value);
+                        this.logic.PlayerGainedMoney((this.model.Blocks[tpx, tpy] as OneBlock).Value);
                     }
-                    else if (this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneMonster != null)
+                    else if (this.model.Blocks[tpx, tpy] as OneMonster != null)
                     {
-                        this.logic.PlayerGainedMoney((this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] as OneMonster).Value);
+                        this.logic.PlayerGainedMoney((this.model.Blocks[tpx, tpy] as OneMonster).Value);
                     }
 
-                    this.model.Blocks[(int)tilePos.X, (int)tilePos.Y] = new OneBlock((int)tilePos.X, (int)tilePos.Y, BlockType.Air);
+                    this.model.Blocks[tpx, tpy] = new OneBlock(tpx, tpy, BlockType.Air);
+                    this.model.RenderedBlocks = this.logic.GetRenderedBlocks();
                 }
             }
         }
@@ -106,14 +116,6 @@ namespace FiveFeetBelowGame.UI
         {
             this.logic.Gravity();
             this.InvalidateVisual();
-        }
-
-        protected override void OnRender(DrawingContext drawingContext)
-        {
-            if (this.renderer != null)
-            {
-                drawingContext?.DrawDrawing(this.renderer.BuildDrawing());
-            }
         }
 
         private void Win_KeyDown(object sender, KeyEventArgs e)

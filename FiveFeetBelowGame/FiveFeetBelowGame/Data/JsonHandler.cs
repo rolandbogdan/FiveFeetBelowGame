@@ -54,8 +54,10 @@ namespace FiveFeetBelowGame
         }
 
         /// <summary>
-        /// Saves the game state to a json file.
+        /// Saves the game to a json file.
         /// </summary>
+        /// <param name="map">The map thats being saved.</param>
+        /// <param name="saveName">The filename.</param>
         public void SaveMap(IGameObject[,] map, string saveName)
         {
             string save = JsonConvert.SerializeObject(map);
@@ -114,14 +116,12 @@ namespace FiveFeetBelowGame
             }
 
             this.AddMonsters(ref items);
-            items[10, 10] = new OnePlayer(10, 10);
             return items;
         }
 
         /// <summary>
         /// Generates one row on the map.
         /// </summary>
-        /// <returns>returns the certain row.</returns>
         private void RowGenerator(ref IGameObject[,] items, int row)
         {
             this.depth++;

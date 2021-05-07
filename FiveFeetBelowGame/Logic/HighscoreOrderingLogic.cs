@@ -19,11 +19,19 @@ namespace Logic
     {
         private IStorageRepository<Highscore> highscoreRepo;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HighscoreOrderingLogic"/> class.
+        /// </summary>
+        /// <param name="hsRepo">The repository.</param>
         public HighscoreOrderingLogic(IStorageRepository<Highscore> hsRepo)
         {
             this.highscoreRepo = hsRepo;
         }
 
+        /// <summary>
+        /// Orders the highscores by deepest poitn reached.
+        /// </summary>
+        /// <returns>The ordered list of highscores.</returns>
         public IEnumerable<Highscore> OrderedByDepth()
         {
             var ordered = from highscore in this.highscoreRepo.GetAll().ToList()

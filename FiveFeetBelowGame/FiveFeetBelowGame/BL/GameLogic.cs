@@ -36,14 +36,36 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// Determines the blocks that are rendered.
+        /// </summary>
+        /// <returns>An array with the blocks.</returns>
+        public IGameObject[,] GetRenderedBlocks()
+        {
+            int d = 40;
+            IGameObject[,] outp = new IGameObject[25, d];
+
+            int n = (int)this.model.PlayerPos.X - ((int)this.model.PlayerPos.X % d);
+
+            for (int i = n; i < n + d; i++)
+            {
+                for (int j = 0; j < outp.GetLength(0); j++)
+                {
+                    outp[j, i] = this.model.Blocks[j, i];
+                }
+            }
+
+            return outp;
+        }
+
+        /// <summary>
         /// Moves the player charecter.
         /// </summary>
         /// <param name="horizontal"> Horizontal speed. </param>
         /// <param name="vertical"> Vertical speed.</param>
         public void Move(double horizontal, double vertical)
         {
-            double px = this.model.Blocks[(int)this.model.PlayerPos.X, (int)this.model.PlayerPos.Y].CX;
-            double py = this.model.Blocks[(int)this.model.PlayerPos.X, (int)this.model.PlayerPos.Y].CY;
+            double px = this.model.PlayerPos.X;
+            double py = this.model.PlayerPos.Y;
             double dx = 0;
             double dy = 0;
 
@@ -82,11 +104,14 @@ namespace FiveFeetBelowGame.BL
             int px = (int)this.model.PlayerPos.X;
             int py = (int)this.model.PlayerPos.Y;
 
-            // while?
-            if ((this.model.Blocks[px, py - 1] as OneBlock) != null &&
-                !(this.model.Blocks[px, py - 1] as OneBlock).IsSolid)
+            // Something so player cant fly?
+            if (py > 0 && py < this.model.Blocks.GetLength(1))
             {
-                this.Move(0, 1);
+                if ((this.model.Blocks[px, py + 1] as OneBlock) != null &&
+                !(this.model.Blocks[px, py + 1] as OneBlock).IsSolid)
+                {
+                    this.Move(0, 0.5);
+                }
             }
         }
 
@@ -142,19 +167,38 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// Determines if a certain block is neighboring the player or not.
+        /// </summary>
+        /// <param name="bx">The block's x coordinate.</param>
+        /// <param name="by">The block's y coordinate. </param>
+        /// <returns>True if its a neighboring block.</returns>
+        public bool IsNeighboring(double bx, double by)
+        {
+            double xdiff = this.model.PlayerPos.X - bx;
+            double ydiff = this.model.PlayerPos.Y - by;
+            if (Math.Abs(xdiff) <= 1 && Math.Abs(ydiff) <= 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Initmodel method for initialize our model.
         /// </summary>
         /// <param name="fname">String type parameter.</param>
         private void InitModel(string fname)
         {
-            // Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
+            JsonHandler js = new JsonHandler("testfile.json");
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
+
             // StreamReader sr = new StreamReader(stream);
             JsonHandler jh = new JsonHandler();
 
             // this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
             this.model.Blocks = jh.LoadMap("testfile.json");
 
-            // this.model.TileSize = this.model.GameWidth / 25;
             this.model.TileSize = this.model.GameWidth / 25;
 
             IGameObject[,] arr = new IGameObject[this.model.Blocks.GetLength(1), this.model.Blocks.GetLength(0)];
@@ -167,15 +211,9 @@ namespace FiveFeetBelowGame.BL
             }
 
             this.model.Blocks = arr;
-
-            foreach (var item in this.model.Blocks)
-            {
-                if ((item as OnePlayer) != null)
-                {
-                    this.model.PlayerPos = new Point(item.CX, item.CY);
-                    this.model.Player = this.model.Blocks[(int)item.CX, (int)item.CY] as OnePlayer;
-                }
-            }
+            this.model.Player = new OnePlayer(10, 10);
+            this.model.PlayerPos = new Point(10, 10);
+            this.model.RenderedBlocks = this.GetRenderedBlocks();
         }
 
         /// <summary>
@@ -185,21 +223,18 @@ namespace FiveFeetBelowGame.BL
         /// <param name="newY"> new y coordinate of the player. </param>
         private void UpdatePlayer(double newX, double newY)
         {
-            // OPTIMIZE!!!!!!!!!!!
+            // OPTIMIZE!!
             double oldX = this.model.PlayerPos.X;
             double oldY = this.model.PlayerPos.Y;
+
             if (newX >= 0 && newX < this.model.Blocks.GetLength(0) &&
                 newY >= 0 && newY < this.model.Blocks.GetLength(1) &&
-                this.model.Blocks[(int)newX, (int)newY] as OneBlock != null &&
+                (this.model.Blocks[(int)newX, (int)newY] as OneBlock) != null &&
                 !(this.model.Blocks[(int)newX, (int)newY] as OneBlock).IsSolid)
             {
-                this.model.Blocks[(int)newX, (int)newY] =
-                    new OnePlayer(
-                        this.model.Blocks[(int)oldX, (int)oldY] as OnePlayer)
-                    { CX = newX, CY = newY };
-                this.model.Blocks[(int)oldX, (int)oldY] = new OneBlock(oldX, oldY, BlockType.Air);
+                this.model.Player.CX = newX;
+                this.model.Player.CY = newX;
                 this.model.PlayerPos = new Point(newX, newY);
-                this.model.Player = this.model.Blocks[(int)newX, (int)newY] as OnePlayer;
             }
         }
     }
