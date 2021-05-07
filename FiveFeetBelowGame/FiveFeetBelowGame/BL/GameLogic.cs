@@ -44,7 +44,7 @@ namespace FiveFeetBelowGame.BL
         public IGameObject[,] GetRenderedBlocks()
         {
             int y = this.model.PlayerDepth;
-            int d = (int)(this.model.GameHeight / this.model.TileSize) + 1;
+            int d = this.model.BlockNum;
             int n = y - (y % d);
             int k = 0;
             IGameObject[,] outp = new IGameObject[25, d];
@@ -75,7 +75,7 @@ namespace FiveFeetBelowGame.BL
 
                 for (int i = 0; i < outp.GetLength(0); i++)
                 {
-                    // this.model.Blocks[i, this.model.PlayerDepth - 1] = new OneBlock(i, this.model.PlayerDepth, BlockType.Air);
+                    this.model.Blocks[i, this.model.PlayerDepth - 1] = new OneBlock(i, this.model.PlayerDepth, BlockType.Air);
                     this.model.Blocks[i, this.model.PlayerDepth] = new OneBlock(i, this.model.PlayerDepth, BlockType.Air);
                 }
 

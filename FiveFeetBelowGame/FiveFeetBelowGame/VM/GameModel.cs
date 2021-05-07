@@ -90,11 +90,19 @@ namespace FiveFeetBelowGame.VM
 
         public int SectionNumber { get; set; }
 
+        public int BlockNum
+        {
+            get
+            {
+                return (int)(this.GameHeight / this.TileSize) + 1;
+            }
+        }
+
         public int PlayerDepth
         {
             get
             {
-                return (this.SectionNumber * (int)(this.GameHeight / this.TileSize) + 1) + (int)this.PlayerPos.Y;
+                return (this.SectionNumber * this.BlockNum) + (int)this.PlayerPos.Y;
             }
         }
     }
