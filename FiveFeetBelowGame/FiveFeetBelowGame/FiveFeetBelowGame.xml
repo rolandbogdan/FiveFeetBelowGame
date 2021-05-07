@@ -186,11 +186,10 @@
             Generates one row on the map.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.JsonHandler.OreChooser(System.Int32)">
+        <member name="M:FiveFeetBelowGame.JsonHandler.OreChooser">
             <summary>
             Decides what ore to insert depending on the depth.
             </summary>
-            <param name="a">A random integer.</param>
             <returns>A letter for the ore.</returns>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.AddMonsters(FiveFeetBelowGame.IGameObject[0:,0:]@)">
