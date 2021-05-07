@@ -218,6 +218,7 @@ namespace FiveFeetBelowGame.UI
             dg.Children.Add(this.GetMiddle());
             dg.Children.Add(this.GetRocks());
             dg.Children.Add(this.GetPlayer());
+
             foreach (Drawing item in this.GetMonsters())
             {
                 dg.Children.Add(item);
@@ -228,13 +229,11 @@ namespace FiveFeetBelowGame.UI
                 dg.Children.Add(item);
             }
 
-            dg.Children.Add(this.GetText());
+            dg.Children.Add(this.GetPlayerBalance());
 
-            // dg.Children.Add(this.GetOres());
             return dg;
         }
 
-        // Maybe monsters should be an array.
         private List<Drawing> GetMonsters()
         {
             if (this.oldMonsters == null)
@@ -257,7 +256,6 @@ namespace FiveFeetBelowGame.UI
             return this.oldMonsters;
         }
 
-        // Maybe ores should be an array.
         private List<Drawing> GetOres()
         {
             if (this.oldOres == null)
@@ -303,18 +301,19 @@ namespace FiveFeetBelowGame.UI
             return this.oldOres;
         }
 
-        private Drawing GetText()
+        private Drawing GetPlayerBalance()
         {
+            string disp = $"Pickaxe lvl: {this.model.PlayerPickaxe}\n$: {this.model.PlayerBalance}\nDeepest point: {this.model.PlayerDepth}";
             FormattedText formattedText = new FormattedText(
-            this.model.PlayerBalance.ToString(),
+            disp,
             CultureInfo.CurrentCulture,
             FlowDirection.LeftToRight,
             new Typeface("Arial"),
-            16,
+            24,
             Brushes.Black);
 
             GeometryDrawing text = new GeometryDrawing(
-                null,
+                Brushes.White,
                 new Pen(Brushes.Black, 2),
                 formattedText.BuildGeometry(new Point(5, 5)));
 
