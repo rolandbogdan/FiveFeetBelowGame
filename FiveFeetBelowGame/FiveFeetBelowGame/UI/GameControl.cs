@@ -107,14 +107,14 @@ namespace FiveFeetBelowGame.UI
                     }
 
                     this.model.Blocks[tpx, tpy] = new OneBlock(tpx, tpy, BlockType.Air);
-                    this.model.RenderedBlocks = this.logic.GetRenderedBlocks((int)this.model.PlayerPos.X, (int)this.model.PlayerPos.Y);
+                    // this.model.RenderedBlocks = this.logic.GetRenderedBlocks((int)this.model.PlayerPos.X, (int)this.model.PlayerPos.Y);
                 }
             }
         }
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
-            this.model.RenderedBlocks = this.logic.GetRenderedBlocks((int)this.model.PlayerPos.X, (int)this.model.PlayerPos.Y);
+            this.model.RenderedBlocks = this.logic.GetRenderedBlocks(this.model.PlayerDepth);
             this.logic.Gravity();
             this.InvalidateVisual();
         }

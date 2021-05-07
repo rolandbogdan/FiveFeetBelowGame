@@ -39,7 +39,7 @@
             <param name="model">GameModel type parameter.</param>
             <param name="fname">String type parameter.</param>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.GetRenderedBlocks(System.Int32,System.Int32)">
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.GetRenderedBlocks(System.Int32)">
             <summary>
             Determines the blocks that are rendered.
             </summary>

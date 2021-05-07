@@ -41,11 +41,27 @@ namespace FiveFeetBelowGame.BL
         /// <param name="x">X coordinate of the player.</param>
         /// <param name="y">Y coordinate of the player.</param>
         /// <returns>An array with the blocks.</returns>
-        public IGameObject[,] GetRenderedBlocks(int x, int y)
+        public IGameObject[,] GetRenderedBlocks(int y)
         {
             int d = 40;
             int n = y - (y % d);
             int k = 0;
+
+            int s = n / 40;
+            if (s != this.model.SectionNumber)
+            {
+                if (s < this.model.SectionNumber)
+                {
+                    this.model.SectionNumber--;
+                    this.UpdatePlayerPosOnly(this.model.PlayerPos.X, d);
+                }
+                else
+                {
+                    this.model.SectionNumber++;
+                    this.UpdatePlayerPosOnly(this.model.PlayerPos.X, 1);
+                }
+            }
+
             IGameObject[,] outp = new IGameObject[25, d];
 
             for (int i = n; i < n + d; i++)
@@ -59,6 +75,11 @@ namespace FiveFeetBelowGame.BL
                 {
                     k++;
                 }
+            }
+
+            if (this.model.Blocks.GetLength(1) - 100 < this.model.PlayerDepth)
+            {
+                // generate new section.
             }
 
             return outp;
@@ -112,10 +133,10 @@ namespace FiveFeetBelowGame.BL
             int py = (int)this.model.PlayerPos.Y;
 
             // Something so player cant fly?
-            if (py > 0 && py < this.model.Blocks.GetLength(1))
+            if (py >= 0 && py < this.model.RenderedBlocks.GetLength(1)-1)
             {
-                if ((this.model.Blocks[px, py + 1] as OneBlock) != null &&
-                !(this.model.Blocks[px, py + 1] as OneBlock).IsSolid)
+                if ((this.model.RenderedBlocks[px, py + 1] as OneBlock) != null &&
+                !(this.model.RenderedBlocks[px, py + 1] as OneBlock).IsSolid)
                 {
                     this.Move(0, 0.5);
                 }
@@ -221,7 +242,7 @@ namespace FiveFeetBelowGame.BL
             this.model.Blocks[10, 10] = new OneBlock(10, 10, BlockType.Air);
             this.model.Player = new OnePlayer(10, 10);
             this.model.PlayerPos = new Point(10, 10);
-            this.model.RenderedBlocks = this.GetRenderedBlocks(10, 10);
+            this.model.RenderedBlocks = this.GetRenderedBlocks(10);
         }
 
         /// <summary>
@@ -244,6 +265,11 @@ namespace FiveFeetBelowGame.BL
                 this.model.Player.CY = newX;
                 this.model.PlayerPos = new Point(newX, newY);
             }
+        }
+
+        private void UpdatePlayerPosOnly(double newX, double newY)
+        {
+            this.model.PlayerPos = new Point(newX, newY);
         }
     }
 }

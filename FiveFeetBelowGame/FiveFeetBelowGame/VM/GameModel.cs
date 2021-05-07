@@ -25,6 +25,7 @@ namespace FiveFeetBelowGame.VM
         {
             this.GameWidth = w;
             this.GameHeight = h;
+            this.SectionNumber = 0;
         }
 
         /// <summary>
@@ -86,5 +87,15 @@ namespace FiveFeetBelowGame.VM
         /// Gets or sets TileSize represent the tile size in pixels.
         /// </summary>
         public double TileSize { get; set; }
+
+        public int SectionNumber { get; set; }
+
+        public int PlayerDepth
+        {
+            get
+            {
+                return (this.SectionNumber * 40) + (int)this.PlayerPos.Y;
+            }
+        }
     }
 }
