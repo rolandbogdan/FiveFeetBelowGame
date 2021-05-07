@@ -38,19 +38,26 @@ namespace FiveFeetBelowGame.BL
         /// <summary>
         /// Determines the blocks that are rendered.
         /// </summary>
+        /// <param name="x">X coordinate of the player.</param>
+        /// <param name="y">Y coordinate of the player.</param>
         /// <returns>An array with the blocks.</returns>
-        public IGameObject[,] GetRenderedBlocks()
+        public IGameObject[,] GetRenderedBlocks(int x, int y)
         {
             int d = 40;
+            int n = y - (y % d);
+            int k = 0;
             IGameObject[,] outp = new IGameObject[25, d];
-
-            int n = (int)this.model.PlayerPos.X - ((int)this.model.PlayerPos.X % d);
 
             for (int i = n; i < n + d; i++)
             {
                 for (int j = 0; j < outp.GetLength(0); j++)
                 {
-                    outp[j, i] = this.model.Blocks[j, i];
+                    outp[j, k] = this.model.Blocks[j, i];
+                }
+
+                if (k < d - 1)
+                {
+                    k++;
                 }
             }
 
@@ -211,9 +218,10 @@ namespace FiveFeetBelowGame.BL
             }
 
             this.model.Blocks = arr;
+            this.model.Blocks[10, 10] = new OneBlock(10, 10, BlockType.Air);
             this.model.Player = new OnePlayer(10, 10);
             this.model.PlayerPos = new Point(10, 10);
-            this.model.RenderedBlocks = this.GetRenderedBlocks();
+            this.model.RenderedBlocks = this.GetRenderedBlocks(10, 10);
         }
 
         /// <summary>
