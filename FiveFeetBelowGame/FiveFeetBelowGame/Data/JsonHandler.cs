@@ -83,6 +83,45 @@ namespace FiveFeetBelowGame
         }
 
         /// <summary>
+        /// Saves the game's state.
+        /// </summary>
+        /// <param name="saveName">The path.</param>
+        public void SaveGame(string saveName)
+        {
+            var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Objects;
+            string save = JsonConvert.SerializeObject(this.model, Formatting.Indented, settings);
+
+            if (saveName.EndsWith(".json"))
+            {
+                StreamWriter sw = new StreamWriter(saveName);
+                sw.Write(save);
+                sw.Close();
+            }
+            else
+            {
+                StreamWriter sw = new StreamWriter(saveName + ".json");
+                sw.Write(save);
+                sw.Close();
+            }
+        }
+
+        /// <summary>
+        /// Loads a game state.
+        /// </summary>
+        /// <param name="saveName">The path.</param>
+        public void LoadGame(string saveName)
+        {
+            StreamReader sr = new StreamReader(saveName);
+            string json = sr.ReadToEnd();
+            sr.Close();
+
+            var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Objects;
+            this.model = JsonConvert.DeserializeObject<GameModel>(json, settings);
+        }
+
+        /// <summary>
         /// Generates a new section to the game.
         /// </summary>
         /// <returns>The new section.</returns>

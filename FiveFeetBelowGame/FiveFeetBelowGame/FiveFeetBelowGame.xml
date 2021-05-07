@@ -39,12 +39,22 @@
             <param name="model">GameModel type parameter.</param>
             <param name="fname">String type parameter.</param>
         </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.SaveGame(System.String)">
+            <summary>
+            Saves the game.
+            </summary>
+            <param name="name">To this path.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.LoadGame(System.String)">
+            <summary>
+            Loads the game.
+            </summary>
+            <param name="name">From this path.</param>
+        </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.GetRenderedBlocks">
             <summary>
             Determines the blocks that are rendered.
             </summary>
-            <param name="x">X coordinate of the player.</param>
-            <param name="y">Y coordinate of the player.</param>
             <returns>An array with the blocks.</returns>
         </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.Move(System.Double,System.Double)">
@@ -146,6 +156,18 @@
             Loads the json save file to a playable array.
             </summary>
             <param name="filePath">The path for the game file.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.SaveGame(System.String)">
+            <summary>
+            Saves the game's state.
+            </summary>
+            <param name="saveName">The path.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.LoadGame(System.String)">
+            <summary>
+            Loads a game state.
+            </summary>
+            <param name="saveName">The path.</param>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.GenerateNewSection">
             <summary>
@@ -678,6 +700,21 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.TileSize">
             <summary>
             Gets or sets TileSize represent the tile size in pixels.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.SectionNumber">
+            <summary>
+            Gets or sets the number of the section the player is on.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.BlockNum">
+            <summary>
+            Gets tumber of vertical blocks.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerDepth">
+            <summary>
+            Gets the depth the player is at.
             </summary>
         </member>
         <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">

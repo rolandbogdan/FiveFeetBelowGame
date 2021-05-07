@@ -38,6 +38,24 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// Saves the game.
+        /// </summary>
+        /// <param name="name">To this path.</param>
+        public void SaveGame(string name)
+        {
+            this.jh.SaveGame(name);
+        }
+
+        /// <summary>
+        /// Loads the game.
+        /// </summary>
+        /// <param name="name">From this path.</param>
+        public void LoadGame(string name)
+        {
+            this.jh.LoadGame(name);
+        }
+
+        /// <summary>
         /// Determines the blocks that are rendered.
         /// </summary>
         /// <returns>An array with the blocks.</returns>
@@ -53,7 +71,7 @@ namespace FiveFeetBelowGame.BL
 
             if (this.model.PlayerPos.Y == 41)
             {
-                MessageBox.Show("OK");
+                MessageBox.Show("You can move forward to the next level!");
                 s++;
             }
 
@@ -62,6 +80,9 @@ namespace FiveFeetBelowGame.BL
                 outp = this.jh.GenerateNewSection();
                 this.model.SectionNumber++;
                 this.UpdatePlayerPosOnly(this.model.PlayerPos.X, 1);
+                string date = DateTime.Now.ToString();
+                date = date.Replace(':', '-');
+                this.SaveGame($"..\\..\\..\\Levels\\autosave-{date}.json");
                 return outp;
             }
 
