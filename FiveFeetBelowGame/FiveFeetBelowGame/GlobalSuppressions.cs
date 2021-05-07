@@ -60,3 +60,8 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Security", "CA2326:Do not use TypeNameHandling values other than None", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.JsonHandler.SaveGame(System.String)")]
 [assembly: SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.JsonHandler.SaveGame(System.String)")]
 [assembly: SuppressMessage("Globalization", "CA1310:Specify StringComparison for correctness", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.JsonHandler.SaveGame(System.String)")]
+[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~P:FiveFeetBelowGame.UI.Renderer.DiaBrush")]
+[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~P:FiveFeetBelowGame.UI.Renderer.GemBrush")]
+[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~P:FiveFeetBelowGame.UI.Renderer.GoldBrush")]
+[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~P:FiveFeetBelowGame.UI.Renderer.IronBrush")]
+[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~P:FiveFeetBelowGame.UI.Renderer.RareGemBrush")]

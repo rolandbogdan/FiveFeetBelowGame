@@ -61,7 +61,7 @@ namespace FiveFeetBelowGame.UI
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.model = new GameModel(this.ActualWidth, this.ActualHeight);
-            this.logic = new GameLogic(this.model, "testfile.json");
+            this.logic = new GameLogic(this.model, "testfile.json"); // !
             this.renderer = new Renderer(this.model);
 
             Window win = Window.GetWindow(this);

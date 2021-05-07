@@ -601,9 +601,29 @@
             Gets the brush for the air blocks.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.OreBrush">
+        <member name="P:FiveFeetBelowGame.UI.Renderer.IronBrush">
             <summary>
-            Gets the brush for the ores.
+            Gets the brush for iron ores.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.UI.Renderer.GoldBrush">
+            <summary>
+            Gets the brush for gold ores.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.UI.Renderer.DiaBrush">
+            <summary>
+            Gets the brush for diamonds.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.UI.Renderer.GemBrush">
+            <summary>
+            Gets the brush for gems.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.UI.Renderer.RareGemBrush">
+            <summary>
+            Gets the brush for rare gems.
             </summary>
         </member>
         <member name="P:FiveFeetBelowGame.UI.Renderer.Bgbrush">
@@ -715,36 +735,6 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerDepth">
             <summary>
             Gets the depth the player is at.
-            </summary>
-        </member>
-        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-            <summary>
-            GeneratedInternalTypeHelper
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            CreateInstance
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            GetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            SetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-            <summary>
-            CreateDelegate
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-            <summary>
-            AddEventHandler
             </summary>
         </member>
     </members>

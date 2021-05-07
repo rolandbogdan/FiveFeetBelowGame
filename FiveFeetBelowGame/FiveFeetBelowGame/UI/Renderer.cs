@@ -84,19 +84,61 @@ namespace FiveFeetBelowGame.UI
             }
         }
 
-        // public Brush OreBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false); } }
+        /// <summary>
+        /// Gets the brush for iron ores.
+        /// </summary>
+        public Brush IronBrush
+        {
+            get
+            {
+                return Brushes.Gray;
+            }
+        }
 
-        public Brush IronBrush { get { return Brushes.Gray; } }
+        /// <summary>
+        /// Gets the brush for gold ores.
+        /// </summary>
+        public Brush GoldBrush
+        {
+            get
+            {
+                return Brushes.Gold;
+            }
+        }
 
-        public Brush DiaBrush { get { return Brushes.Aqua; } }
+        /// <summary>
+        /// Gets the brush for diamonds.
+        /// </summary>
+        public Brush DiaBrush
+        {
+            get
+            {
+                return Brushes.Aqua;
+            }
+        }
 
-        public Brush GoldBrush { get { return Brushes.Gold; } }
+        /// <summary>
+        /// Gets the brush for gems.
+        /// </summary>
+        public Brush GemBrush
+        {
+            get
+            {
+                return Brushes.Purple;
+            }
+        }
 
-        public Brush GemBrush { get { return Brushes.Purple; } }
+        /// <summary>
+        /// Gets the brush for rare gems.
+        /// </summary>
+        public Brush RareGemBrush
+        {
+            get
+            {
+                return Brushes.BlanchedAlmond;
+            }
+        }
 
-        public Brush RareGemBrush { get { return Brushes.BlanchedAlmond; } }
-
-        public Brush Bgbrush { get { return this.GetBrush("FiveFeetBelowGame.Images.back.png", false); } }
         /// <summary>
         /// Gets the brush for the background.
         /// </summary>

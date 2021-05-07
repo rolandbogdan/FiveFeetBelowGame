@@ -8,6 +8,8 @@ namespace Tests
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using FiveFeetBelowGame.BL;
+    using FiveFeetBelowGame.VM;
     using Logic;
     using Model;
     using Moq;
@@ -21,6 +23,17 @@ namespace Tests
     public class Test
     {
         private Mock<IStorageRepository<Highscore>> repo = new Mock<IStorageRepository<Highscore>>();
+        private GameModel model;
+        private GameLogic logic;
+
+        /// <summary>
+        /// Initializes model and logic for this class.
+        /// </summary>
+        public void Init()
+        {
+            this.model = new GameModel(600, 1000);
+            this.logic = new GameLogic(this.model, "testfile.json");
+        }
 
         /// <summary>
         /// This function tests inserting a single object into the repo.
@@ -128,6 +141,72 @@ namespace Tests
             Assert.That(output, Is.EquivalentTo(expectedout));
             Assert.That(output.Count, Is.EqualTo(expectedout.Count));
             this.repo.Verify(x => x.GetAll(), Times.AtLeastOnce);
+        }
+
+        /// <summary>
+        /// This function tests if player gaining money function is working.
+        /// </summary>
+        [Test]
+        public void TestPlayerMoneyGain()
+        {
+            this.Init();
+            this.model.PlayerBalance = 0;
+            this.logic.PlayerGainedMoney(10);
+
+            Assert.That(this.model.PlayerBalance == 10);
+        }
+
+        /// <summary>
+        /// This function tests if player's pickaxe levelup function is working.
+        /// </summary>
+        [Test]
+        public void TestPickaxeLvlup()
+        {
+            this.Init();
+            this.model.PlayerPickaxe = 2;
+            this.logic.IncreasePickaxeLevel();
+
+            Assert.That(this.model.PlayerPickaxe == 3);
+        }
+
+        /// <summary>
+        /// This function tests if player gaining health function is working.
+        /// </summary>
+        [Test]
+        public void HealPlayerTest()
+        {
+            this.Init();
+            this.model.PlayerMaxHealth = 4;
+            this.model.PlayerHealth = 1;
+            this.logic.HealPlayer(5);
+
+            Assert.That(this.model.PlayerHealth == 4);
+        }
+
+        /// <summary>
+        /// This function tests if player losing health function is working.
+        /// </summary>
+        [Test]
+        public void PlayerLostHealthTest()
+        {
+            this.Init();
+            this.model.PlayerMaxHealth = 10;
+            this.model.PlayerHealth = 10;
+            this.logic.PlayerLostHealth(3);
+
+            Assert.That(this.model.PlayerHealth == 7);
+        }
+
+        /// <summary>
+        /// This function tests if neighboring block checking is working.
+        /// </summary>
+        [Test]
+        public void IsNeighboringTest()
+        {
+            this.Init();
+            this.model.PlayerPos = new System.Windows.Point(10, 10);
+
+            Assert.That(this.logic.IsNeighboring(11, 10));
         }
     }
 }
