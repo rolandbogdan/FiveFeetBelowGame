@@ -26,6 +26,9 @@ namespace FiveFeetBelowGame.VM
             this.GameWidth = w;
             this.GameHeight = h;
             this.SectionNumber = 0;
+            this.PlayerHealth = 3;
+            this.PlayerMaxHealth = 3;
+            this.PlayerPickaxe = 1;
         }
 
         /// <summary>

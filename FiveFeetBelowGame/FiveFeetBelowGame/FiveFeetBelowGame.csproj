@@ -25,10 +25,6 @@
     <None Remove="Images\tile.png" />
     <None Remove="Images\tileset.png" />
     <None Remove="Images\wall.bmp" />
-    <None Remove="Levels\L01.lvl" />
-    <None Remove="Levels\L02.lvl" />
-    <None Remove="Levels\L03.lvl" />
-    <None Remove="Levels\L04.lvl" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,6 +55,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Levels\" />
   </ItemGroup>
 
 </Project>
