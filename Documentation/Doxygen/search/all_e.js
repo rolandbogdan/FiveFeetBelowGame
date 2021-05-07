@@ -5,5 +5,5 @@ var searchData=
   ['savemap_123',['SaveMap',['../class_five_feet_below_game_1_1_json_handler.html#af6fb9f43265e0b685bbfe1222c18bb3e',1,'FiveFeetBelowGame::JsonHandler']]],
   ['screenupdate_124',['ScreenUpdate',['../interface_logic_1_1_i_game_logic.html#a384d5cc1a5ae97a2244d2cb7b5462476',1,'Logic::IGameLogic']]],
   ['sectionnumber_125',['SectionNumber',['../class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ab0e233ddf24b1c827beae5b779e3218b',1,'FiveFeetBelowGame::VM::GameModel']]],
-  ['setpropertyvalue_126',['SetPropertyValue',['../class_xaml_generated_namespace_1_1_generated_internal_type_helper.html#ade0f04c0f7b18dd5b170e071d5534d38',1,'XamlGeneratedNamespace::GeneratedInternalTypeHelper']]]
+  ['setpropertyvalue_126',['SetPropertyValue',['../class_xaml_generated_namespace_1_1_generated_internal_type_helper.html#ade0f04c0f7b18dd5b170e071d5534d38',1,'XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture)'],['../class_xaml_generated_namespace_1_1_generated_internal_type_helper.html#ade0f04c0f7b18dd5b170e071d5534d38',1,'XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture)']]]
 ];

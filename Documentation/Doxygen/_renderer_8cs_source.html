@@ -5,14 +5,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Fice Feet Below Game: D:/BitbucketProjects/oenik_prog4_2021_1_bwj4ao_uqh2aw/FiveFeetBelowGame/FiveFeetBelowGame/UI/Renderer.cs Source File</title>
+<title>Five Feet Below Game: D:/BitbucketProjects/oenik_prog4_2021_1_bwj4ao_uqh2aw/FiveFeetBelowGame/FiveFeetBelowGame/UI/Renderer.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -25,10 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Fice Feet Below Game
-   &#160;<span id="projectnumber">1</span>
+   <div id="projectname">Five Feet Below Game
    </div>
-   <div id="projectbrief">A game for the programming 4 subject.</div>
+   <div id="projectbrief">A game for programming 4 project work.</div>
   </td>
  </tr>
  </tbody>
@@ -51,23 +46,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('_renderer_8cs_source.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,6 +60,11 @@ $(document).ready(function(){initNavTree('_renderer_8cs_source.html',''); initRe
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_f4c68756fa2ebb38ceb22798af8d4b38.html">BitbucketProjects</a></li><li class="navelem"><a class="el" href="dir_e94a25a492ec1310d8ac428dc258a8ae.html">oenik_prog4_2021_1_bwj4ao_uqh2aw</a></li><li class="navelem"><a class="el" href="dir_d38b175b8048d6eaa15705b4fa88ec83.html">FiveFeetBelowGame</a></li><li class="navelem"><a class="el" href="dir_103e28771547c60cb0fbf2fa1ef75bad.html">FiveFeetBelowGame</a></li><li class="navelem"><a class="el" href="dir_f52350b6ae012e88703835cc73b63436.html">UI</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Renderer.cs</div>  </div>
@@ -112,8 +95,8 @@ $(document).ready(function(){initNavTree('_renderer_8cs_source.html',''); initRe
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">private</span> Drawing oldMiddle;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">private</span> Drawing oldRocks;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">private</span> Drawing oldPlayer;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">private</span> Drawing oldMonsters;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> Drawing oldOres;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">private</span> List&lt;Drawing&gt; oldMonsters;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> List&lt;Drawing&gt; oldOres;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">private</span> Point oldPlayerPosition;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">private</span> Dictionary&lt;string, Brush&gt; brushes = <span class="keyword">new</span> Dictionary&lt;string, Brush&gt;();</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
@@ -254,179 +237,170 @@ $(document).ready(function(){initNavTree('_renderer_8cs_source.html',''); initRe
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            dg.Children.Add(this.GetMiddle());</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            dg.Children.Add(this.GetRocks());</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            dg.Children.Add(this.GetPlayer());</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            dg.Children.Add(this.GetMonsters());</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            dg.Children.Add(this.GetOres());</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            dg.Children.Add(this.GetText());</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">foreach</span> (Drawing item <span class="keywordflow">in</span> this.GetMonsters())</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                dg.Children.Add(item);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            }</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="comment">// dg.Children.Add(this.GetOres());</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordflow">return</span> dg;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        }</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="comment">// Maybe monsters should be an array.</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <span class="keyword">private</span> Drawing GetMonsters()</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">if</span> (this.oldMonsters == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                GeometryGroup g = <span class="keyword">new</span> GeometryGroup();</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(1); x++)</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(0); y++)</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                    {</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                        <span class="keywordflow">if</span> (this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>[y, x] != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as <a class="code" href="class_five_feet_below_game_1_1_one_monster.html">OneMonster</a>) != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                        {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                            Geometry box = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(y * this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">TileSize</a>, x * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                            g.Children.Add(box);</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                        }</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                    }</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                }</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                this.oldMonsters = <span class="keyword">new</span> GeometryDrawing(this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a39b129203d2b9de602eccbfcd5cb502e">MonsterBrush</a>, <span class="keyword">null</span>, g);</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">return</span> this.oldMonsters;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keywordflow">foreach</span> (Drawing item <span class="keywordflow">in</span> this.GetOres())</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                dg.Children.Add(item);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            dg.Children.Add(this.GetPlayerBalance());</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">return</span> dg;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keyword">private</span> List&lt;Drawing&gt; GetMonsters()</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordflow">if</span> (this.oldMonsters == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                this.oldMonsters = <span class="keyword">new</span> List&lt;Drawing&gt;();</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(1); x++)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(0); y++)</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                    {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                        <span class="keywordflow">if</span> (this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>[y, x] != <span class="keyword">null</span> &amp;&amp;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as <a class="code" href="class_five_feet_below_game_1_1_one_monster.html">OneMonster</a>) != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                        {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                            Geometry box = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(y * this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">TileSize</a>, x * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                            this.oldMonsters.Add(<span class="keyword">new</span> GeometryDrawing(this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a39b129203d2b9de602eccbfcd5cb502e">MonsterBrush</a>, <span class="keyword">null</span>, box));</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                        }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                    }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            }</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="comment">// Maybe ores should be an array.</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keyword">private</span> Drawing GetOres()</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="keywordflow">if</span> (this.oldOres == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                GeometryGroup g = <span class="keyword">new</span> GeometryGroup();</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(1); x++)</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(0); y++)</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    {</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                        <span class="keywordflow">if</span> (this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>[y, x] != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock) != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock).Type == <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.Iron)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="keywordflow">return</span> this.oldMonsters;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keyword">private</span> List&lt;Drawing&gt; GetOres()</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordflow">if</span> (this.oldOres == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                this.oldOres = <span class="keyword">new</span> List&lt;Drawing&gt;();</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(1); x++)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(0); y++)</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                        Brush b = Brushes.Transparent;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                        <span class="keywordflow">if</span> (this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>[y, x] != <span class="keyword">null</span> &amp;&amp; (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock) != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                        {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                            Geometry box = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(y * this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">TileSize</a>, x * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                            g.Children.Add(box);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                        }</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                        <span class="keywordflow">if</span> (this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>[y, x] != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock) != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock).Type == <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.Diamond)</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                        {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                            Geometry box = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(y * this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">TileSize</a>, x * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                            g.Children.Add(box);</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                        }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                        <span class="keywordflow">if</span> (this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>[y, x] != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock) != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock).Type == <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.Gem)</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                        {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                            Geometry box = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(y * this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">TileSize</a>, x * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                            g.Children.Add(box);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                        }</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                        <span class="keywordflow">if</span> (this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>[y, x] != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock) != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock).Type == <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.Gold)</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                        {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                            Geometry box = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(y * this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">TileSize</a>, x * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                            g.Children.Add(box);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                        }</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                        <span class="keywordflow">if</span> (this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>[y, x] != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock) != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock).Type == <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.RareGem)</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                        {</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                            Geometry box = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(y * this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">TileSize</a>, x * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                            g.Children.Add(box);</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                        }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                    }</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                this.oldOres = <span class="keyword">new</span> GeometryDrawing(this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#ac85310712d113c61840eafacec5af0b8">IronBrush</a>, <span class="keyword">null</span>, g);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            }</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="keywordflow">return</span> this.oldOres;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        }</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keyword">private</span> Drawing GetText()</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        {</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            FormattedText formattedText = <span class="keyword">new</span> FormattedText(</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a609567b58f9bf234e4d15c6abd2ff242">PlayerBalance</a>.ToString(),</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            CultureInfo.CurrentCulture,</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            FlowDirection.LeftToRight,</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <span class="keyword">new</span> Typeface(<span class="stringliteral">&quot;Arial&quot;</span>),</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            16,</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            Brushes.Black);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            GeometryDrawing text = <span class="keyword">new</span> GeometryDrawing(</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                <span class="keyword">null</span>,</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                <span class="keyword">new</span> Pen(Brushes.Black, 2),</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                formattedText.BuildGeometry(<span class="keyword">new</span> Point(5, 5)));</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <span class="keywordflow">return</span> text;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        }</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="keyword">private</span> Drawing GetPlayer()</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        {</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            <span class="keywordflow">if</span> (this.oldPlayer == <span class="keyword">null</span> || this.oldPlayerPosition != this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#aa7eae353ea843a2f026e1ad7ec9f16fe">PlayerPos</a>)</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            {</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                Geometry g = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#aa7eae353ea843a2f026e1ad7ec9f16fe">PlayerPos</a>.X * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.PlayerPos.Y * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                this.oldPlayer = <span class="keyword">new</span> GeometryDrawing(this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a762fb6b4ac00b975a997de0a772e7d67">PlayerBrush</a>, <span class="keyword">null</span>, g);</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                this.oldPlayerPosition = this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#aa7eae353ea843a2f026e1ad7ec9f16fe">PlayerPos</a>;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            }</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            <span class="keywordflow">return</span> this.oldPlayer;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <span class="keyword">private</span> Drawing GetRocks()</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">if</span> (this.oldRocks == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                GeometryGroup g = <span class="keyword">new</span> GeometryGroup();</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(1); x++)</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                {</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(0); y++)</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                    {</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                        <span class="keywordflow">if</span> (this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>[y, x] != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock) != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock).Type == <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.Rock)</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                        {</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                            Geometry box = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(y * this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">TileSize</a>, x * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                            g.Children.Add(box);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                        }</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                    }</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                }</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                this.oldRocks = <span class="keyword">new</span> GeometryDrawing(this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a24e7980a842ea7ef8d3256817256805c">RockBrush</a>, <span class="keyword">null</span>, g);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            }</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <span class="keywordflow">return</span> this.oldRocks;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        }</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keyword">private</span> Drawing GetBackground()</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            <span class="keywordflow">if</span> (this.oldBackground == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            {</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                Geometry g = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(0, 0, this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a48cc90453fac1718d6b0537e227fdbd4">GameWidth</a>, <span class="keyword">this</span>.model.GameHeight));</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                this.oldBackground = <span class="keyword">new</span> GeometryDrawing(this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a0d824d94ac3fd45a00827da8835f0b8c">Bgbrush</a>, <span class="keyword">null</span>, g);</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            }</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            <span class="keywordflow">return</span> this.oldBackground;</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        }</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <span class="keyword">private</span> Drawing GetMiddle()</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        {</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            <span class="keywordflow">if</span> (this.oldMiddle == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            {</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                Geometry g = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(0, 0, this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a48cc90453fac1718d6b0537e227fdbd4">GameWidth</a>, <span class="keyword">this</span>.model.GameHeight));</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                this.oldMiddle = <span class="keyword">new</span> GeometryDrawing(this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#ab818e06bae5ae3fd9b7a7365e9b70526">Middlebrush</a>, <span class="keyword">null</span>, g);</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            }</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            <span class="keywordflow">return</span> this.oldMiddle;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    }</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;}</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                            <span class="keywordflow">switch</span> ((this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>[y, x] as OneBlock).Type)</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                            {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                                <span class="keywordflow">case</span> <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.Iron:</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                    b = this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#ac85310712d113c61840eafacec5af0b8">IronBrush</a>;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                <span class="keywordflow">case</span> <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.Gold:</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                    b = this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a6f2eace845c1b2dee9cab63282168770">GoldBrush</a>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                <span class="keywordflow">case</span> <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.Diamond:</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                                    b = this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#aecd95cb1bc89403e1f53a098ac5b085b">DiaBrush</a>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                                <span class="keywordflow">case</span> <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.Gem:</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                                    b = this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a0a1a01fe49b3847cb2496477235c2544">GemBrush</a>;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                <span class="keywordflow">case</span> <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.RareGem:</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                                    b = this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#adb8f4b6358394429d3d48f28dbfa321e">RareGemBrush</a>;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                <span class="keywordflow">case</span> <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.Wall:</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                    b = Brushes.Brown;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                                <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                            }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                        }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        Geometry box = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(y * this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">TileSize</a>, x * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                        this.oldOres.Add(<span class="keyword">new</span> GeometryDrawing(b, <span class="keyword">null</span>, box));</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                    }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <span class="keywordflow">return</span> this.oldOres;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keyword">private</span> Drawing GetPlayerBalance()</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordtype">string</span> disp = $<span class="stringliteral">&quot;Pickaxe lvl: {this.model.PlayerPickaxe}\n$: {this.model.PlayerBalance}\nDeepest point: {this.model.PlayerDepth}&quot;</span>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            FormattedText formattedText = <span class="keyword">new</span> FormattedText(</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            disp,</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            CultureInfo.CurrentCulture,</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            FlowDirection.LeftToRight,</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="keyword">new</span> Typeface(<span class="stringliteral">&quot;Arial&quot;</span>),</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            24,</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            Brushes.Black);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            GeometryDrawing text = <span class="keyword">new</span> GeometryDrawing(</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                Brushes.White,</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                <span class="keyword">new</span> Pen(Brushes.Black, 2),</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                formattedText.BuildGeometry(<span class="keyword">new</span> Point(5, 5)));</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <span class="keywordflow">return</span> text;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keyword">private</span> Drawing GetPlayer()</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="keywordflow">if</span> (this.oldPlayer == <span class="keyword">null</span> || this.oldPlayerPosition != this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#aa7eae353ea843a2f026e1ad7ec9f16fe">PlayerPos</a>)</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                Geometry g = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#aa7eae353ea843a2f026e1ad7ec9f16fe">PlayerPos</a>.X * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.PlayerPos.Y * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                this.oldPlayer = <span class="keyword">new</span> GeometryDrawing(this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a762fb6b4ac00b975a997de0a772e7d67">PlayerBrush</a>, <span class="keyword">null</span>, g);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                this.oldPlayerPosition = this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#aa7eae353ea843a2f026e1ad7ec9f16fe">PlayerPos</a>;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            }</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordflow">return</span> this.oldPlayer;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="keyword">private</span> Drawing GetRocks()</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            <span class="keywordflow">if</span> (this.oldRocks == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                GeometryGroup g = <span class="keyword">new</span> GeometryGroup();</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(1); x++)</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                {</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>.GetLength(0); y++)</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                    {</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                        <span class="keywordflow">if</span> (this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">Blocks</a>[y, x] != <span class="keyword">null</span> &amp;&amp;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock) != <span class="keyword">null</span> &amp;&amp;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                            (<span class="keyword">this</span>.model.Blocks[y, x] as OneBlock).Type == <a class="code" href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">BlockType</a>.Rock)</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                        {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                            Geometry box = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(y * this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">TileSize</a>, x * <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize, <span class="keyword">this</span>.model.TileSize));</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                            g.Children.Add(box);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                        }</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                    }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                }</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                this.oldRocks = <span class="keyword">new</span> GeometryDrawing(this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a24e7980a842ea7ef8d3256817256805c">RockBrush</a>, <span class="keyword">null</span>, g);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            <span class="keywordflow">return</span> this.oldRocks;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        }</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keyword">private</span> Drawing GetBackground()</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            <span class="keywordflow">if</span> (this.oldBackground == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            {</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                Geometry g = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(0, 0, this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a48cc90453fac1718d6b0537e227fdbd4">GameWidth</a>, <span class="keyword">this</span>.model.GameHeight));</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                this.oldBackground = <span class="keyword">new</span> GeometryDrawing(this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a0d824d94ac3fd45a00827da8835f0b8c">Bgbrush</a>, <span class="keyword">null</span>, g);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            }</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <span class="keywordflow">return</span> this.oldBackground;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keyword">private</span> Drawing GetMiddle()</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            <span class="keywordflow">if</span> (this.oldMiddle == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                Geometry g = <span class="keyword">new</span> RectangleGeometry(<span class="keyword">new</span> Rect(0, 0, this.model.<a class="code" href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a48cc90453fac1718d6b0537e227fdbd4">GameWidth</a>, <span class="keyword">this</span>.model.GameHeight));</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                this.oldMiddle = <span class="keyword">new</span> GeometryDrawing(this.<a class="code" href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#ab818e06bae5ae3fd9b7a7365e9b70526">Middlebrush</a>, <span class="keyword">null</span>, g);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            <span class="keywordflow">return</span> this.oldMiddle;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    }</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;}</div>
 <div class="ttc" id="aclass_five_feet_below_game_1_1_one_monster_html"><div class="ttname"><a href="class_five_feet_below_game_1_1_one_monster.html">FiveFeetBelowGame.OneMonster</a></div><div class="ttdoc">A monster element.</div><div class="ttdef"><b>Definition:</b> <a href="_one_monster_8cs_source.html#l00017">OneMonster.cs:18</a></div></div>
 <div class="ttc" id="aclass_five_feet_below_game_1_1_u_i_1_1_renderer_html"><div class="ttname"><a href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html">FiveFeetBelowGame.UI.Renderer</a></div><div class="ttdoc">This class is responsible for rendering the game.</div><div class="ttdef"><b>Definition:</b> <a href="_renderer_8cs_source.html#l00022">Renderer.cs:23</a></div></div>
 <div class="ttc" id="aclass_five_feet_below_game_1_1_u_i_1_1_renderer_html_a0a1a01fe49b3847cb2496477235c2544"><div class="ttname"><a href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a0a1a01fe49b3847cb2496477235c2544">FiveFeetBelowGame.UI.Renderer.GemBrush</a></div><div class="ttdeci">Brush GemBrush</div><div class="ttdoc">Gets the brush for gems.</div><div class="ttdef"><b>Definition:</b> <a href="_renderer_8cs_source.html#l00123">Renderer.cs:124</a></div></div>
@@ -445,24 +419,19 @@ $(document).ready(function(){initNavTree('_renderer_8cs_source.html',''); initRe
 <div class="ttc" id="aclass_five_feet_below_game_1_1_u_i_1_1_renderer_html_aeca302e037e7746f46479ad8f4c23df7"><div class="ttname"><a href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#aeca302e037e7746f46479ad8f4c23df7">FiveFeetBelowGame.UI.Renderer.BuildDrawing</a></div><div class="ttdeci">Drawing BuildDrawing()</div><div class="ttdoc">This method fill our drawing context.</div><div class="ttdef"><b>Definition:</b> <a href="_renderer_8cs_source.html#l00213">Renderer.cs:213</a></div></div>
 <div class="ttc" id="aclass_five_feet_below_game_1_1_u_i_1_1_renderer_html_aecd95cb1bc89403e1f53a098ac5b085b"><div class="ttname"><a href="class_five_feet_below_game_1_1_u_i_1_1_renderer.html#aecd95cb1bc89403e1f53a098ac5b085b">FiveFeetBelowGame.UI.Renderer.DiaBrush</a></div><div class="ttdeci">Brush DiaBrush</div><div class="ttdoc">Gets the brush for diamonds.</div><div class="ttdef"><b>Definition:</b> <a href="_renderer_8cs_source.html#l00112">Renderer.cs:113</a></div></div>
 <div class="ttc" id="aclass_five_feet_below_game_1_1_v_m_1_1_game_model_html"><div class="ttname"><a href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html">FiveFeetBelowGame.VM.GameModel</a></div><div class="ttdoc">Gamemodel class.</div><div class="ttdef"><b>Definition:</b> <a href="_game_model_8cs_source.html#l00017">GameModel.cs:18</a></div></div>
-<div class="ttc" id="aclass_five_feet_below_game_1_1_v_m_1_1_game_model_html_a48cc90453fac1718d6b0537e227fdbd4"><div class="ttname"><a href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a48cc90453fac1718d6b0537e227fdbd4">FiveFeetBelowGame.VM.GameModel.GameWidth</a></div><div class="ttdeci">double GameWidth</div><div class="ttdoc">Gets Gamewidth represent the width of the map.</div><div class="ttdef"><b>Definition:</b> <a href="_game_model_8cs_source.html#l00074">GameModel.cs:74</a></div></div>
-<div class="ttc" id="aclass_five_feet_below_game_1_1_v_m_1_1_game_model_html_a5b1c566a036badcd17d66503462d99c8"><div class="ttname"><a href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">FiveFeetBelowGame.VM.GameModel.TileSize</a></div><div class="ttdeci">double TileSize</div><div class="ttdoc">Gets or sets TileSize represent the tile size in pixels.</div><div class="ttdef"><b>Definition:</b> <a href="_game_model_8cs_source.html#l00084">GameModel.cs:84</a></div></div>
-<div class="ttc" id="aclass_five_feet_below_game_1_1_v_m_1_1_game_model_html_a609567b58f9bf234e4d15c6abd2ff242"><div class="ttname"><a href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a609567b58f9bf234e4d15c6abd2ff242">FiveFeetBelowGame.VM.GameModel.PlayerBalance</a></div><div class="ttdeci">int PlayerBalance</div><div class="ttdoc">Gets or sets the player's balance.</div><div class="ttdef"><b>Definition:</b> <a href="_game_model_8cs_source.html#l00049">GameModel.cs:49</a></div></div>
-<div class="ttc" id="aclass_five_feet_below_game_1_1_v_m_1_1_game_model_html_aa7eae353ea843a2f026e1ad7ec9f16fe"><div class="ttname"><a href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#aa7eae353ea843a2f026e1ad7ec9f16fe">FiveFeetBelowGame.VM.GameModel.PlayerPos</a></div><div class="ttdeci">Point PlayerPos</div><div class="ttdoc">Gets or sets Player prop represent our player position.</div><div class="ttdef"><b>Definition:</b> <a href="_game_model_8cs_source.html#l00039">GameModel.cs:39</a></div></div>
-<div class="ttc" id="aclass_five_feet_below_game_1_1_v_m_1_1_game_model_html_ae8b18f04e93bc3c1dd37b41c6f289bcc"><div class="ttname"><a href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">FiveFeetBelowGame.VM.GameModel.Blocks</a></div><div class="ttdeci">IGameObject[,] Blocks</div><div class="ttdoc">Gets or sets Rock prop represent the rocks of the map.</div><div class="ttdef"><b>Definition:</b> <a href="_game_model_8cs_source.html#l00034">GameModel.cs:34</a></div></div>
+<div class="ttc" id="aclass_five_feet_below_game_1_1_v_m_1_1_game_model_html_a48cc90453fac1718d6b0537e227fdbd4"><div class="ttname"><a href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a48cc90453fac1718d6b0537e227fdbd4">FiveFeetBelowGame.VM.GameModel.GameWidth</a></div><div class="ttdeci">double GameWidth</div><div class="ttdoc">Gets Gamewidth represent the width of the map.</div><div class="ttdef"><b>Definition:</b> <a href="_game_model_8cs_source.html#l00077">GameModel.cs:77</a></div></div>
+<div class="ttc" id="aclass_five_feet_below_game_1_1_v_m_1_1_game_model_html_a5b1c566a036badcd17d66503462d99c8"><div class="ttname"><a href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#a5b1c566a036badcd17d66503462d99c8">FiveFeetBelowGame.VM.GameModel.TileSize</a></div><div class="ttdeci">double TileSize</div><div class="ttdoc">Gets or sets TileSize represent the tile size in pixels.</div><div class="ttdef"><b>Definition:</b> <a href="_game_model_8cs_source.html#l00087">GameModel.cs:87</a></div></div>
+<div class="ttc" id="aclass_five_feet_below_game_1_1_v_m_1_1_game_model_html_aa7eae353ea843a2f026e1ad7ec9f16fe"><div class="ttname"><a href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#aa7eae353ea843a2f026e1ad7ec9f16fe">FiveFeetBelowGame.VM.GameModel.PlayerPos</a></div><div class="ttdeci">Point PlayerPos</div><div class="ttdoc">Gets or sets Player prop represent our player position.</div><div class="ttdef"><b>Definition:</b> <a href="_game_model_8cs_source.html#l00042">GameModel.cs:42</a></div></div>
+<div class="ttc" id="aclass_five_feet_below_game_1_1_v_m_1_1_game_model_html_ae8b18f04e93bc3c1dd37b41c6f289bcc"><div class="ttname"><a href="class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc">FiveFeetBelowGame.VM.GameModel.Blocks</a></div><div class="ttdeci">IGameObject[,] Blocks</div><div class="ttdoc">Gets or sets Rock prop represent the rocks of the map.</div><div class="ttdef"><b>Definition:</b> <a href="_game_model_8cs_source.html#l00037">GameModel.cs:37</a></div></div>
 <div class="ttc" id="anamespace_five_feet_below_game_1_1_u_i_html"><div class="ttname"><a href="namespace_five_feet_below_game_1_1_u_i.html">FiveFeetBelowGame.UI</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_control_8cs_source.html#l00005">GameControl.cs:6</a></div></div>
 <div class="ttc" id="anamespace_five_feet_below_game_1_1_v_m_html"><div class="ttname"><a href="namespace_five_feet_below_game_1_1_v_m.html">FiveFeetBelowGame.VM</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_model_8cs_source.html#l00005">GameModel.cs:6</a></div></div>
 <div class="ttc" id="anamespace_five_feet_below_game_html"><div class="ttname"><a href="namespace_five_feet_below_game.html">FiveFeetBelowGame</a></div><div class="ttdef"><b>Definition:</b> <a href="_app_8xaml_8cs_source.html#l00005">App.xaml.cs:6</a></div></div>
 <div class="ttc" id="anamespace_five_feet_below_game_html_a83e507aadf8535cdc56cbc2e5927aee5"><div class="ttname"><a href="namespace_five_feet_below_game.html#a83e507aadf8535cdc56cbc2e5927aee5">FiveFeetBelowGame.BlockType</a></div><div class="ttdeci">BlockType</div><div class="ttdoc">The ore types.</div><div class="ttdef"><b>Definition:</b> <a href="_block_type_8cs_source.html#l00016">BlockType.cs:17</a></div></div>
 <div class="ttc" id="anamespace_system_1_1_collections_1_1_generic_html"><div class="ttname"><a href="namespace_system_1_1_collections_1_1_generic.html">Generic</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_f4c68756fa2ebb38ceb22798af8d4b38.html">BitbucketProjects</a></li><li class="navelem"><a class="el" href="dir_e94a25a492ec1310d8ac428dc258a8ae.html">oenik_prog4_2021_1_bwj4ao_uqh2aw</a></li><li class="navelem"><a class="el" href="dir_d38b175b8048d6eaa15705b4fa88ec83.html">FiveFeetBelowGame</a></li><li class="navelem"><a class="el" href="dir_103e28771547c60cb0fbf2fa1ef75bad.html">FiveFeetBelowGame</a></li><li class="navelem"><a class="el" href="dir_f52350b6ae012e88703835cc73b63436.html">UI</a></li><li class="navelem"><b>Renderer.cs</b></li>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
 </body>
 </html>
