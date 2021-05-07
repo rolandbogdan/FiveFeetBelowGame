@@ -126,8 +126,10 @@
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.SaveMap(FiveFeetBelowGame.IGameObject[0:,0:],System.String)">
             <summary>
-            Saves the game state to a json file.
+            Saves the game to a json file.
             </summary>
+            <param name="map">The map thats being saved.</param>
+            <param name="saveName">The filename.</param>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.LoadMap(System.String)">
             <summary>
@@ -146,7 +148,6 @@
             <summary>
             Generates one row on the map.
             </summary>
-            <returns>returns the certain row.</returns>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.OreChooser(System.Int32)">
             <summary>
@@ -163,10 +164,15 @@
         </member>
         <member name="T:FiveFeetBelowGame.Game">
             <summary>
-            Interaction logic for Game.xaml
+            Interaction logic for Game.xaml.
             </summary>
             <summary>
             Game
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.Game.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.Game"/> class.
             </summary>
         </member>
         <member name="M:FiveFeetBelowGame.Game.InitializeComponent">
@@ -522,6 +528,55 @@
         <member name="M:FiveFeetBelowGame.UI.GameControl.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.UI.GameControl"/> class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.UI.GameControl.OnRender(System.Windows.Media.DrawingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FiveFeetBelowGame.UI.Renderer">
+            <summary>
+            This class is responsible for rendering the game.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.UI.Renderer.#ctor(FiveFeetBelowGame.VM.GameModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.UI.Renderer"/> class.
+            </summary>
+            <param name="model">The gamemodel. </param>
+        </member>
+        <member name="P:FiveFeetBelowGame.UI.Renderer.PlayerBrush">
+            <summary>
+            Gets the brush for the player.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.UI.Renderer.MonsterBrush">
+            <summary>
+            Gets the brush for the monsters.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.UI.Renderer.RockBrush">
+            <summary>
+            Gets the brush for the rocks.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.UI.Renderer.AirBrush">
+            <summary>
+            Gets the brush for the air blocks.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.UI.Renderer.OreBrush">
+            <summary>
+            Gets the brush for the ores.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.UI.Renderer.Bgbrush">
+            <summary>
+            Gets the brush for the background.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.UI.Renderer.Middlebrush">
+            <summary>
+            Gets the brush for the middle.
             </summary>
         </member>
         <member name="M:FiveFeetBelowGame.UI.Renderer.Reset">

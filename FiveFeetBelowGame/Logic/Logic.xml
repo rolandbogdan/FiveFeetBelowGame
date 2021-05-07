@@ -50,6 +50,18 @@
             Orders highscores.
             </summary>
         </member>
+        <member name="M:Logic.HighscoreOrderingLogic.#ctor(Repository.IStorageRepository{Model.Highscore})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Logic.HighscoreOrderingLogic"/> class.
+            </summary>
+            <param name="hsRepo">The repository.</param>
+        </member>
+        <member name="M:Logic.HighscoreOrderingLogic.OrderedByDepth">
+            <summary>
+            Orders the highscores by deepest poitn reached.
+            </summary>
+            <returns>The ordered list of highscores.</returns>
+        </member>
         <member name="T:Logic.IGameLogic`1">
             <summary>
             The interface for the game logic.

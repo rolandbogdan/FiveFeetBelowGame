@@ -49,6 +49,15 @@ namespace FiveFeetBelowGame.UI
             this.Loaded += this.GameControl_Loaded;
         }
 
+        /// <inheritdoc/>
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            if (this.renderer != null)
+            {
+                drawingContext?.DrawDrawing(this.renderer.BuildDrawing());
+            }
+        }
+
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.model = new GameModel(this.ActualWidth, this.ActualHeight);
@@ -107,14 +116,6 @@ namespace FiveFeetBelowGame.UI
         {
             this.logic.Gravity();
             this.InvalidateVisual();
-        }
-
-        protected override void OnRender(DrawingContext drawingContext)
-        {
-            if (this.renderer != null)
-            {
-                drawingContext?.DrawDrawing(this.renderer.BuildDrawing());
-            }
         }
 
         private void Win_KeyDown(object sender, KeyEventArgs e)
