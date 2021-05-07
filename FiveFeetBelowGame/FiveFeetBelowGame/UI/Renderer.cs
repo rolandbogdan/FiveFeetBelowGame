@@ -209,9 +209,6 @@ namespace FiveFeetBelowGame.UI
                         }
 
                         this.oldOres = new GeometryDrawing(this.IronBrush, null, i);
-
-                        this.oldOres.
-
                         this.oldOres = new GeometryDrawing(this.DiaBrush, null, d);
                         this.oldOres = new GeometryDrawing(this.GemBrush, null, g);
                         this.oldOres = new GeometryDrawing(this.GoldBrush, null, gold);
