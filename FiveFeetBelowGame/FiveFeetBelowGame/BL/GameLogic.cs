@@ -45,50 +45,26 @@ namespace FiveFeetBelowGame.BL
         /// <returns>An array with the blocks.</returns>
         public IGameObject[,] GetRenderedBlocks()
         {
+            /*
             int y = this.model.PlayerDepth;
             int d = this.model.BlockNum;
             int n = y - (y % d);
-            int k = 0;
-            int s = n / d;
-            IGameObject[,] outp = new IGameObject[25, d];
+            int s = n / d; */
+            int s = this.model.SectionNumber;
+            IGameObject[,] outp = this.model.Blocks;
 
-            if (this.model.PlayerDepth == d - 1)
+            if (this.model.PlayerPos.Y == 41)
             {
+                MessageBox.Show("OK");
                 s++;
             }
 
             if (s != this.model.SectionNumber)
             {
-                IGameObject[,] temp = this.model.Blocks;
                 outp = this.jh.GenerateNewSection();
-                this.jh.AppendToArray(ref temp, outp);
-                this.model.Blocks = temp;
-
                 this.model.SectionNumber++;
                 this.UpdatePlayerPosOnly(this.model.PlayerPos.X, 1);
                 return outp;
-                /*
-                for (int i = 0; i < outp.GetLength(0); i++)
-                {
-                    this.model.Blocks[i, this.model.PlayerDepth - 1] = new OneBlock(i, this.model.PlayerDepth, BlockType.Air);
-                    this.model.Blocks[i, this.model.PlayerDepth] = new OneBlock(i, this.model.PlayerDepth, BlockType.Air);
-                } */
-
-                y = this.model.PlayerDepth;
-                n = y - (y % d);
-            }
-
-            for (int i = n; i < n + d; i++)
-            {
-                for (int j = 0; j < outp.GetLength(0); j++)
-                {
-                    outp[j, k] = this.model.Blocks[j, i];
-                }
-
-                if (k < d - 1)
-                {
-                    k++;
-                }
             }
 
             return outp;
@@ -144,10 +120,10 @@ namespace FiveFeetBelowGame.BL
             int py = (int)this.model.PlayerPos.Y;
 
             // Something so player cant fly?
-            if (py >= 0 && py < this.model.RenderedBlocks.GetLength(1) - 1)
+            if (py >= 0 && py < this.model.Blocks.GetLength(1) - 1)
             {
-                if ((this.model.RenderedBlocks[px, py + 1] as OneBlock) != null &&
-                !(this.model.RenderedBlocks[px, py + 1] as OneBlock).IsSolid)
+                if ((this.model.Blocks[px, py + 1] as OneBlock) != null &&
+                !(this.model.Blocks[px, py + 1] as OneBlock).IsSolid)
                 {
                     this.Move(0, 0.5);
                 }
@@ -249,7 +225,7 @@ namespace FiveFeetBelowGame.BL
             this.model.Blocks[10, 10] = new OneBlock(10, 10, BlockType.Air);
             this.model.Player = new OnePlayer(10, 10);
             this.model.PlayerPos = new Point(10, 10);
-            this.model.RenderedBlocks = this.GetRenderedBlocks();
+            // this.model.RenderedBlocks = this.GetRenderedBlocks();
         }
 
         /// <summary>
@@ -263,10 +239,10 @@ namespace FiveFeetBelowGame.BL
             double oldX = this.model.PlayerPos.X;
             double oldY = this.model.PlayerPos.Y;
 
-            if (newX >= 0 && newX < this.model.RenderedBlocks.GetLength(0) &&
-                newY >= 0 && newY < this.model.RenderedBlocks.GetLength(1) &&
-                (this.model.RenderedBlocks[(int)newX, (int)newY] as OneBlock) != null &&
-                !(this.model.RenderedBlocks[(int)newX, (int)newY] as OneBlock).IsSolid)
+            if (newX >= 0 && newX < this.model.Blocks.GetLength(0) &&
+                newY >= 0 && newY < this.model.Blocks.GetLength(1) &&
+                (this.model.Blocks[(int)newX, (int)newY] as OneBlock) != null &&
+                !(this.model.Blocks[(int)newX, (int)newY] as OneBlock).IsSolid)
             {
                 this.model.Player.CX = newX;
                 this.model.Player.CY = newX;
@@ -274,6 +250,11 @@ namespace FiveFeetBelowGame.BL
             }
         }
 
+        /// <summary>
+        /// Updates only the pos of the player.
+        /// </summary>
+        /// <param name="newX">New x coord.</param>
+        /// <param name="newY">New y coord.</param>
         private void UpdatePlayerPosOnly(double newX, double newY)
         {
             this.model.PlayerPos = new Point(newX, newY);

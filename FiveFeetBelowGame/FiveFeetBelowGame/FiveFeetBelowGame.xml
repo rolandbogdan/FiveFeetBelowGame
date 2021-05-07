@@ -110,6 +110,13 @@
             <param name="newX"> New x coordinate of the player. </param>
             <param name="newY"> new y coordinate of the player. </param>
         </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.UpdatePlayerPosOnly(System.Double,System.Double)">
+            <summary>
+            Updates only the pos of the player.
+            </summary>
+            <param name="newX">New x coord.</param>
+            <param name="newY">New y coord.</param>
+        </member>
         <member name="T:FiveFeetBelowGame.JsonHandler">
             <summary>
             This class is responsible for reading and writing json files.
@@ -145,13 +152,6 @@
             Generates a new section to the game.
             </summary>
             <returns>The new section.</returns>
-        </member>
-        <member name="M:FiveFeetBelowGame.JsonHandler.AppendToArray(FiveFeetBelowGame.IGameObject[0:,0:]@,FiveFeetBelowGame.IGameObject[0:,0:])">
-            <summary>
-            Appends a 2d array to an existing one.
-            </summary>
-            <param name="map">The array to which we append.</param>
-            <param name="addition">The array we append.</param>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.GenerateFirstSection">
             <summary>
@@ -628,11 +628,6 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.Blocks">
             <summary>
             Gets or sets Rock prop represent the rocks of the map.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.RenderedBlocks">
-            <summary>
-            Gets or sets the part of the map thats being rendered.
             </summary>
         </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerPos">

@@ -104,33 +104,16 @@ namespace FiveFeetBelowGame
                 }
             }
 
-            return items;
-        }
-
-        /// <summary>
-        /// Appends a 2d array to an existing one.
-        /// </summary>
-        /// <param name="map">The array to which we append.</param>
-        /// <param name="addition">The array we append.</param>
-        public void AppendToArray(ref IGameObject[,] map, IGameObject[,] addition)
-        {
-            IGameObject[,] temp = map;
-            map = new IGameObject[temp.GetLength(0) + addition.GetLength(0), temp.GetLength(1)];
-            int k = 0;
-            for (int i = 0; i < map.GetLength(1); i++)
+            IGameObject[,] arr = new IGameObject[items.GetLength(1), items.GetLength(0)];
+            for (int i = 0; i < items.GetLength(0); i++)
             {
-                for (int j = 0; j < map.GetLength(0); j++)
+                for (int j = 0; j < items.GetLength(1); j++)
                 {
-                    if (i < temp.GetLength(1))
-                    {
-                        map[i, j] = temp[i, j];
-                    }
-                    else
-                    {
-                        map[i, j] = addition[k++, j];
-                    }
+                    arr[j, i] = items[i, j];
                 }
             }
+
+            return arr;
         }
 
         /// <summary>
@@ -139,7 +122,7 @@ namespace FiveFeetBelowGame
         /// <returns>Returns an object array of game items.</returns>
         private IGameObject[,] GenerateFirstSection()
         {
-            IGameObject[,] items = new IGameObject[50, 25];
+            IGameObject[,] items = new IGameObject[42, 25];
             for (int x = 0; x < items.GetLength(0); x++)
             {
                 for (int y = 0; y < items.GetLength(1); y++)

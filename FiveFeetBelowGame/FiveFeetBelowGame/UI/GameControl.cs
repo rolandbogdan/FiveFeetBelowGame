@@ -87,7 +87,9 @@ namespace FiveFeetBelowGame.UI
             int tpx = (int)tilePos.X;
             int tpy = (int)tilePos.Y;
 
-            if (this.model.Blocks[tpx, tpy] != null &&
+            if (tpx < this.model.Blocks.GetLength(0) &&
+                tpy < this.model.Blocks.GetLength(1) &&
+                this.model.Blocks[tpx, tpy] != null &&
                 this.model.Player != null &&
                 this.logic.IsNeighboring(tpx, tpy))
             {
@@ -112,7 +114,7 @@ namespace FiveFeetBelowGame.UI
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
-            this.model.RenderedBlocks = this.logic.GetRenderedBlocks();
+            this.model.Blocks = this.logic.GetRenderedBlocks();
             this.logic.Gravity();
             this.InvalidateVisual();
         }

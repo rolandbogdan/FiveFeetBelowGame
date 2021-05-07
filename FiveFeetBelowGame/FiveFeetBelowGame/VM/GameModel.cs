@@ -34,11 +34,6 @@ namespace FiveFeetBelowGame.VM
         public IGameObject[,] Blocks { get; set; }
 
         /// <summary>
-        /// Gets or sets the part of the map thats being rendered.
-        /// </summary>
-        public IGameObject[,] RenderedBlocks { get; set; }
-
-        /// <summary>
         /// Gets or sets Player prop represent our player position.
         /// </summary>
         public Point PlayerPos { get; set; }
@@ -88,8 +83,14 @@ namespace FiveFeetBelowGame.VM
         /// </summary>
         public double TileSize { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of the section the player is on.
+        /// </summary>
         public int SectionNumber { get; set; }
 
+        /// <summary>
+        /// Gets tumber of vertical blocks.
+        /// </summary>
         public int BlockNum
         {
             get
@@ -98,6 +99,9 @@ namespace FiveFeetBelowGame.VM
             }
         }
 
+        /// <summary>
+        /// Gets the depth the player is at.
+        /// </summary>
         public int PlayerDepth
         {
             get
