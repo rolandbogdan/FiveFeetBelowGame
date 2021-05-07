@@ -41,15 +41,25 @@ namespace FiveFeetBelowGame.UI
 
             public Brush PlayerBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false); } }
 
-            // public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false); } }
+            // public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.spider.png", false); } }
+
             public Brush MonsterBrush { get { return Brushes.Blue; } }
 
             public Brush RockBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true); } }
 
             public Brush AirBrush { get { return Brushes.Transparent; } }
 
-            // public Brush OreBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false); } }
+            public Brush IronBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.Iron-Ore-Block-600x600.png", true); } }
 
+            public Brush DiamondsBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.diamond-ore.png", true); } }
+
+            public Brush GoldBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.Minecraft-Gold-Ore.png", true); } }
+
+            public Brush GemBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.emerald-ore.png", true); } }
+
+            public Brush RareGemBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.rare-gem.png", true); } }
+
+            /*
             public Brush IronBrush { get { return Brushes.Gray; } }
 
             public Brush DiamondsBrush { get { return Brushes.Aqua; } }
@@ -59,6 +69,7 @@ namespace FiveFeetBelowGame.UI
             public Brush GemBrush { get { return Brushes.Purple; } }
 
             public Brush RareGemBrush { get { return Brushes.BlanchedAlmond; } }
+            */
 
             public Brush Bgbrush { get { return this.GetBrush("FiveFeetBelowGame.Images.back.png", false); } }
 
