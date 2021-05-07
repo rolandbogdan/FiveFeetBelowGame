@@ -36,6 +36,7 @@ namespace FiveFeetBelowGame
         /// <param name="model">A gamemodel.</param>
         public JsonHandler(string saveName, GameModel model)
         {
+            this.depth = 0;
             this.model = model;
             this.SaveMap(this.GenerateFirstSection(), saveName);
             this.LoadMap(saveName);
@@ -135,10 +136,12 @@ namespace FiveFeetBelowGame
                     if (x < 2)
                     {
                         items[x, y] = new OneBlock(x, y, BlockType.Air);
+                        this.depth++;
                     }
                     else
                     {
                         this.RowGenerator(ref items, x);
+                        this.depth++;
                     }
                 }
             }
@@ -169,10 +172,12 @@ namespace FiveFeetBelowGame
                     if (x < 11)
                     {
                         items[x, y] = new OneBlock(x, y, BlockType.Air);
+                        this.depth++;
                     }
                     else
                     {
                         this.RowGenerator(ref items, x);
+                        this.depth++;
                     }
                 }
             }
@@ -186,7 +191,6 @@ namespace FiveFeetBelowGame
         /// </summary>
         private void RowGenerator(ref IGameObject[,] items, int row)
         {
-            this.depth++;
             Random r = new Random();
 
             for (int i = 0; i < items.GetLength(1); i++)
@@ -201,7 +205,7 @@ namespace FiveFeetBelowGame
                     }
                     else if (a >= 94 && a <= 96)
                     {
-                        tp = this.OreChooser(a);
+                        tp = this.OreChooser();
                     }
                     else
                     {
@@ -216,57 +220,31 @@ namespace FiveFeetBelowGame
         /// <summary>
         /// Decides what ore to insert depending on the depth.
         /// </summary>
-        /// <param name="a">A random integer.</param>
         /// <returns>A letter for the ore.</returns>
-        private BlockType OreChooser(int a)
+        private BlockType OreChooser()
         {
-            if (this.depth <= 50)
+            Random r = new Random();
+            int b = r.Next(100);
+
+            if (b < 50)
             {
                 return BlockType.Iron;
             }
-            else if (this.depth <= 150)
+            else if (b >= 50 && b < 70)
             {
-                if (a % 2 == 0)
-                {
-                    return BlockType.Iron;
-                }
-                else
-                {
-                    return BlockType.Gold;
-                }
+                return BlockType.Gold;
             }
-            else if (this.depth <= 250)
+            else if (b >= 70 && b < 85)
             {
-                if (a % 2 == 0)
-                {
-                    return BlockType.Gold;
-                }
-                else
-                {
-                    return BlockType.Diamond;
-                }
+                return BlockType.Diamond;
             }
-            else if (this.depth <= 300)
+            else if (b >= 85 && b < 95)
             {
-                if (a % 2 == 0)
-                {
-                    return BlockType.Diamond;
-                }
-                else
-                {
-                    return BlockType.Gem;
-                }
+                return BlockType.Gem;
             }
-            else if (this.depth >= 301)
+            else if (b >= 95)
             {
-                if (a % 2 == 0)
-                {
-                    return BlockType.Gem;
-                }
-                else
-                {
-                    return BlockType.RareGem;
-                }
+                return BlockType.RareGem;
             }
             else
             {

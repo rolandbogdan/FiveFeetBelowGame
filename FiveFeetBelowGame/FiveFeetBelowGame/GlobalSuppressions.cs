@@ -65,3 +65,5 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~P:FiveFeetBelowGame.UI.Renderer.GoldBrush")]
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~P:FiveFeetBelowGame.UI.Renderer.IronBrush")]
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~P:FiveFeetBelowGame.UI.Renderer.RareGemBrush")]
+[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.JsonHandler.OreChooser~FiveFeetBelowGame.BlockType")]
+[assembly: SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.JsonHandler.OreChooser~FiveFeetBelowGame.BlockType")]

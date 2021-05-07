@@ -298,6 +298,7 @@ namespace FiveFeetBelowGame.UI
                     }
                 }
             }
+
             return this.oldOres;
         }
 
