@@ -40,8 +40,6 @@ namespace FiveFeetBelowGame.BL
         /// <summary>
         /// Determines the blocks that are rendered.
         /// </summary>
-        /// <param name="x">X coordinate of the player.</param>
-        /// <param name="y">Y coordinate of the player.</param>
         /// <returns>An array with the blocks.</returns>
         public IGameObject[,] GetRenderedBlocks()
         {
@@ -225,7 +223,6 @@ namespace FiveFeetBelowGame.BL
             this.model.Blocks[10, 10] = new OneBlock(10, 10, BlockType.Air);
             this.model.Player = new OnePlayer(10, 10);
             this.model.PlayerPos = new Point(10, 10);
-            // this.model.RenderedBlocks = this.GetRenderedBlocks();
         }
 
         /// <summary>
