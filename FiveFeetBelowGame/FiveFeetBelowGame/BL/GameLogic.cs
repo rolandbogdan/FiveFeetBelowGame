@@ -24,6 +24,8 @@ namespace FiveFeetBelowGame.BL
         /// </summary>
         private GameModel model;
 
+        private JsonHandler jh;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
@@ -47,37 +49,30 @@ namespace FiveFeetBelowGame.BL
             int d = this.model.BlockNum;
             int n = y - (y % d);
             int k = 0;
+            int s = n / d;
             IGameObject[,] outp = new IGameObject[25, d];
 
-            int s = n / d;
             if (this.model.PlayerDepth == d - 1)
             {
                 s++;
             }
 
-            if (this.model.PlayerPos.X == 0 && this.model.SectionNumber != 0)
-            {
-                s--;
-            }
-
             if (s != this.model.SectionNumber)
             {
-                if (s < this.model.SectionNumber)
-                {
-                    this.model.SectionNumber--;
-                    this.UpdatePlayerPosOnly(this.model.PlayerPos.X, d);
-                }
-                else
-                {
-                    this.model.SectionNumber++;
-                    this.UpdatePlayerPosOnly(this.model.PlayerPos.X, 1);
-                }
+                IGameObject[,] temp = this.model.Blocks;
+                outp = this.jh.GenerateNewSection();
+                this.jh.AppendToArray(ref temp, outp);
+                this.model.Blocks = temp;
 
+                this.model.SectionNumber++;
+                this.UpdatePlayerPosOnly(this.model.PlayerPos.X, 1);
+                return outp;
+                /*
                 for (int i = 0; i < outp.GetLength(0); i++)
                 {
                     this.model.Blocks[i, this.model.PlayerDepth - 1] = new OneBlock(i, this.model.PlayerDepth, BlockType.Air);
                     this.model.Blocks[i, this.model.PlayerDepth] = new OneBlock(i, this.model.PlayerDepth, BlockType.Air);
-                }
+                } */
 
                 y = this.model.PlayerDepth;
                 n = y - (y % d);
@@ -94,11 +89,6 @@ namespace FiveFeetBelowGame.BL
                 {
                     k++;
                 }
-            }
-
-            if (this.model.Blocks.GetLength(1) - 100 < this.model.PlayerDepth)
-            {
-                // generate new section.
             }
 
             return outp;
@@ -140,7 +130,9 @@ namespace FiveFeetBelowGame.BL
         /// <returns>The point where we clicked as an object. </returns>
         public Point GetTilePos(Point mousePos) // Pixel position => Tile position
         {
-            return new Point(mousePos.X / this.model.TileSize, mousePos.Y / this.model.TileSize);
+            return new Point(
+                mousePos.X / this.model.TileSize,
+                mousePos.Y / this.model.TileSize);
         }
 
         /// <summary>
@@ -237,14 +229,10 @@ namespace FiveFeetBelowGame.BL
         /// <param name="fname">String type parameter.</param>
         private void InitModel(string fname)
         {
-            JsonHandler js = new JsonHandler("testfile.json");
+            this.jh = new JsonHandler(fname, this.model);
             Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
-
-            // StreamReader sr = new StreamReader(stream);
-            JsonHandler jh = new JsonHandler();
-
-            // this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
-            this.model.Blocks = jh.LoadMap("testfile.json");
+            /* StreamReader sr = new StreamReader(stream);
+             this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json"); */
 
             this.model.TileSize = this.model.GameWidth / 25;
 

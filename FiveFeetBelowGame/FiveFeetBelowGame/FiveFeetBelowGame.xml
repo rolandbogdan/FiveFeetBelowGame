@@ -120,11 +120,12 @@
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor(System.String)">
+        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor(System.String,FiveFeetBelowGame.VM.GameModel)">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
             <param name="saveName">Filename.</param>
+            <param name="model">A gamemodel.</param>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.SaveMap(FiveFeetBelowGame.IGameObject[0:,0:],System.String)">
             <summary>
@@ -138,7 +139,19 @@
             Loads the json save file to a playable array.
             </summary>
             <param name="filePath">The path for the game file.</param>
-            <returns>A playable IGameObject array, if the file exists. </returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.GenerateNewSection">
+            <summary>
+            Generates a new section to the game.
+            </summary>
+            <returns>The new section.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.AppendToArray(FiveFeetBelowGame.IGameObject[0:,0:]@,FiveFeetBelowGame.IGameObject[0:,0:])">
+            <summary>
+            Appends a 2d array to an existing one.
+            </summary>
+            <param name="map">The array to which we append.</param>
+            <param name="addition">The array we append.</param>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.GenerateFirstSection">
             <summary>
