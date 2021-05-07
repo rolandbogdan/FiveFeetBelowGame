@@ -1,4 +1,4 @@
-﻿// <copyright file="IOneBlock.cs" company="PlaceholderCompany">
+﻿// <copyright file="IGameObject.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 

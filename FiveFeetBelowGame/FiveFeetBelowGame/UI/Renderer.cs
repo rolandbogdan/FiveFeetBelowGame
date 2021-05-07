@@ -16,15 +16,18 @@ namespace FiveFeetBelowGame.UI
     using System.Windows.Media.Imaging;
     using FiveFeetBelowGame.VM;
 
-    class Renderer
+    /// <summary>
+    /// This class is responsible for rendering the game.
+    /// </summary>
+    public class Renderer
     {
         private GameModel model;
-
         private Drawing oldBackground;
         private Drawing oldMiddle;
         private Drawing oldRocks;
         private Drawing oldPlayer;
         private Drawing oldMonsters;
+        private Drawing oldOres;
         private Point oldPlayerPosition;
         private Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
@@ -40,20 +43,123 @@ namespace FiveFeetBelowGame.UI
         /// <summary>
         /// Gets the brush for the player.
         /// </summary>
-        public Brush PlayerBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false); } }
+        public Brush PlayerBrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.player-idle-1.png", false);
+            }
+        }
 
-        public Brush MonsterBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false); } }
+        /// <summary>
+        /// Gets the brush for the monsters.
+        /// </summary>
+        public Brush MonsterBrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.opossum-1.png", false);
+            }
+        }
 
-        // public Brush MonsterBrush { get { return Brushes.Red; } }
-        public Brush RockBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true); } }
+        /// <summary>
+        /// Gets the brush for the rocks.
+        /// </summary>
+        public Brush RockBrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.tile.png", true);
+            }
+        }
 
-        public Brush AirBrush { get { return Brushes.Transparent; } }
+        /// <summary>
+        /// Gets the brush for the air blocks.
+        /// </summary>
+        public Brush AirBrush
+        {
+            get
+            {
+                return Brushes.Transparent;
+            }
+        }
 
-        public Brush OreBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false); } }
+        /// <summary>
+        /// Gets the brush for iron ores.
+        /// </summary>
+        public Brush IronBrush
+        {
+            get
+            {
+                return Brushes.Gray;
+            }
+        }
 
-        public Brush Bgbrush { get { return this.GetBrush("FiveFeetBelowGame.Images.back.png", false); } }
+        /// <summary>
+        /// Gets the brush for gold ores.
+        /// </summary>
+        public Brush GoldBrush
+        {
+            get
+            {
+                return Brushes.Gold;
+            }
+        }
 
-        public Brush Middlebrush { get { return this.GetBrush("FiveFeetBelowGame.Images.middle.png", false); } }
+        /// <summary>
+        /// Gets the brush for diamonds.
+        /// </summary>
+        public Brush DiaBrush
+        {
+            get
+            {
+                return Brushes.Aqua;
+            }
+        }
+
+        /// <summary>
+        /// Gets the brush for gems.
+        /// </summary>
+        public Brush GemBrush
+        {
+            get
+            {
+                return Brushes.Purple;
+            }
+        }
+
+        /// <summary>
+        /// Gets the brush for rare gems.
+        /// </summary>
+        public Brush RareGemBrush
+        {
+            get
+            {
+                return Brushes.BlanchedAlmond;
+            }
+        }
+
+        /// <summary>
+        /// Gets the brush for the background.
+        /// </summary>
+        public Brush Bgbrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.back.png", false);
+            }
+        }
+
+        /// <summary>
+        /// Gets the brush for the middle.
+        /// </summary>
+        public Brush Middlebrush
+        {
+            get
+            {
+                return this.GetBrush("FiveFeetBelowGame.Images.middle.png", false);
+            }
+        }
 
         /// <summary>
         /// This method help us to start new game or reset our game.
@@ -65,6 +171,7 @@ namespace FiveFeetBelowGame.UI
             this.oldRocks = null;
             this.oldPlayer = null;
             this.oldMonsters = null;
+            this.oldOres = null;
             this.oldPlayerPosition = new Point(-1, -1);
             this.brushes.Clear();
         }
@@ -112,6 +219,9 @@ namespace FiveFeetBelowGame.UI
             dg.Children.Add(this.GetRocks());
             dg.Children.Add(this.GetPlayer());
             dg.Children.Add(this.GetMonsters());
+
+            dg.Children.Add(this.GetOres());
+
             dg.Children.Add(this.GetText());
 
             // dg.Children.Add(this.GetOres());
@@ -146,7 +256,60 @@ namespace FiveFeetBelowGame.UI
         // Maybe ores should be an array.
         private Drawing GetOres()
         {
-            throw new NotImplementedException();
+            if (this.oldOres == null)
+            {
+                GeometryGroup g = new GeometryGroup();
+
+                for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
+                {
+                    for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
+                    {
+                        if (this.model.Blocks[y, x] != null &&
+                            (this.model.Blocks[y, x] as OneBlock) != null &&
+                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Iron)
+                        {
+                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                            g.Children.Add(box);
+                        }
+
+                        if (this.model.Blocks[y, x] != null &&
+                            (this.model.Blocks[y, x] as OneBlock) != null &&
+                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Diamond)
+                        {
+                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                            g.Children.Add(box);
+                        }
+
+                        if (this.model.Blocks[y, x] != null &&
+                            (this.model.Blocks[y, x] as OneBlock) != null &&
+                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Gem)
+                        {
+                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                            g.Children.Add(box);
+                        }
+
+                        if (this.model.Blocks[y, x] != null &&
+                            (this.model.Blocks[y, x] as OneBlock) != null &&
+                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Gold)
+                        {
+                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                            g.Children.Add(box);
+                        }
+
+                        if (this.model.Blocks[y, x] != null &&
+                            (this.model.Blocks[y, x] as OneBlock) != null &&
+                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.RareGem)
+                        {
+                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                            g.Children.Add(box);
+                        }
+                    }
+                }
+
+                this.oldOres = new GeometryDrawing(this.IronBrush, null, g);
+            }
+
+            return this.oldOres;
         }
 
         private Drawing GetText()
@@ -165,7 +328,6 @@ namespace FiveFeetBelowGame.UI
                 formattedText.BuildGeometry(new Point(5, 5)));
 
             return text;
-
         }
 
         private Drawing GetPlayer()
@@ -186,13 +348,13 @@ namespace FiveFeetBelowGame.UI
             if (this.oldRocks == null)
             {
                 GeometryGroup g = new GeometryGroup();
-                for (int x = 0; x < this.model.RenderedBlocks.GetLength(1); x++)
+                for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
                 {
-                    for (int y = 0; y < this.model.RenderedBlocks.GetLength(0); y++)
+                    for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
                     {
-                        if (this.model.RenderedBlocks[y, x] != null &&
-                            (this.model.RenderedBlocks[y, x] as OneBlock) != null &&
-                            (this.model.RenderedBlocks[y, x] as OneBlock).Type == BlockType.Rock)
+                        if (this.model.Blocks[y, x] != null &&
+                            (this.model.Blocks[y, x] as OneBlock) != null &&
+                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Rock)
                         {
                             Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
                             g.Children.Add(box);

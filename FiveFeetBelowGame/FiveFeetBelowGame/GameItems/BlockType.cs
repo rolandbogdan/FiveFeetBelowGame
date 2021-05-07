@@ -1,4 +1,4 @@
-﻿// <copyright file="OreType.cs" company="PlaceholderCompany">
+﻿// <copyright file="BlockType.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
