@@ -26,8 +26,8 @@ namespace FiveFeetBelowGame.UI
         private Drawing oldMiddle;
         private Drawing oldRocks;
         private Drawing oldPlayer;
-        private Drawing oldMonsters;
-        private Drawing oldOres;
+        private List<Drawing> oldMonsters;
+        private List<Drawing> oldOres;
         private Point oldPlayerPosition;
         private Dictionary<string, Brush> brushes = new Dictionary<string, Brush>();
 
@@ -218,9 +218,15 @@ namespace FiveFeetBelowGame.UI
             dg.Children.Add(this.GetMiddle());
             dg.Children.Add(this.GetRocks());
             dg.Children.Add(this.GetPlayer());
-            dg.Children.Add(this.GetMonsters());
+            foreach (Drawing item in this.GetMonsters())
+            {
+                dg.Children.Add(item);
+            }
 
-            dg.Children.Add(this.GetOres());
+            foreach (Drawing item in this.GetOres())
+            {
+                dg.Children.Add(item);
+            }
 
             dg.Children.Add(this.GetText());
 
@@ -229,11 +235,11 @@ namespace FiveFeetBelowGame.UI
         }
 
         // Maybe monsters should be an array.
-        private Drawing GetMonsters()
+        private List<Drawing> GetMonsters()
         {
             if (this.oldMonsters == null)
             {
-                GeometryGroup g = new GeometryGroup();
+                this.oldMonsters = new List<Drawing>();
                 for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
                 {
                     for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
@@ -242,73 +248,58 @@ namespace FiveFeetBelowGame.UI
                             (this.model.Blocks[y, x] as OneMonster) != null)
                         {
                             Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
-                            g.Children.Add(box);
+                            this.oldMonsters.Add(new GeometryDrawing(this.MonsterBrush, null, box));
                         }
                     }
                 }
-
-                this.oldMonsters = new GeometryDrawing(this.MonsterBrush, null, g);
             }
 
             return this.oldMonsters;
         }
 
         // Maybe ores should be an array.
-        private Drawing GetOres()
+        private List<Drawing> GetOres()
         {
             if (this.oldOres == null)
             {
-                GeometryGroup g = new GeometryGroup();
-
+                this.oldOres = new List<Drawing>();
                 for (int x = 0; x < this.model.Blocks.GetLength(1); x++)
                 {
                     for (int y = 0; y < this.model.Blocks.GetLength(0); y++)
                     {
-                        if (this.model.Blocks[y, x] != null &&
-                            (this.model.Blocks[y, x] as OneBlock) != null &&
-                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Iron)
+                        Brush b = Brushes.Transparent;
+                        if (this.model.Blocks[y, x] != null && (this.model.Blocks[y, x] as OneBlock) != null)
                         {
-                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
-                            g.Children.Add(box);
+                            switch ((this.model.Blocks[y, x] as OneBlock).Type)
+                            {
+                                case BlockType.Iron:
+                                    b = this.IronBrush;
+                                    break;
+                                case BlockType.Gold:
+                                    b = this.GoldBrush;
+                                    break;
+                                case BlockType.Diamond:
+                                    b = this.DiaBrush;
+                                    break;
+                                case BlockType.Gem:
+                                    b = this.GemBrush;
+                                    break;
+                                case BlockType.RareGem:
+                                    b = this.RareGemBrush;
+                                    break;
+                                case BlockType.Wall:
+                                    b = Brushes.Brown;
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
 
-                        if (this.model.Blocks[y, x] != null &&
-                            (this.model.Blocks[y, x] as OneBlock) != null &&
-                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Diamond)
-                        {
-                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
-                            g.Children.Add(box);
-                        }
-
-                        if (this.model.Blocks[y, x] != null &&
-                            (this.model.Blocks[y, x] as OneBlock) != null &&
-                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Gem)
-                        {
-                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
-                            g.Children.Add(box);
-                        }
-
-                        if (this.model.Blocks[y, x] != null &&
-                            (this.model.Blocks[y, x] as OneBlock) != null &&
-                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.Gold)
-                        {
-                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
-                            g.Children.Add(box);
-                        }
-
-                        if (this.model.Blocks[y, x] != null &&
-                            (this.model.Blocks[y, x] as OneBlock) != null &&
-                            (this.model.Blocks[y, x] as OneBlock).Type == BlockType.RareGem)
-                        {
-                            Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
-                            g.Children.Add(box);
-                        }
+                        Geometry box = new RectangleGeometry(new Rect(y * this.model.TileSize, x * this.model.TileSize, this.model.TileSize, this.model.TileSize));
+                        this.oldOres.Add(new GeometryDrawing(b, null, box));
                     }
                 }
-
-                this.oldOres = new GeometryDrawing(this.IronBrush, null, g);
             }
-
             return this.oldOres;
         }
 
