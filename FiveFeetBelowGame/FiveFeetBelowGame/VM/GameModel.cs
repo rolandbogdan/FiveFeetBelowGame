@@ -94,7 +94,7 @@ namespace FiveFeetBelowGame.VM
         {
             get
             {
-                return (this.SectionNumber * 40) + (int)this.PlayerPos.Y;
+                return (this.SectionNumber * (int)(this.GameHeight / this.TileSize) + 1) + (int)this.PlayerPos.Y;
             }
         }
     }

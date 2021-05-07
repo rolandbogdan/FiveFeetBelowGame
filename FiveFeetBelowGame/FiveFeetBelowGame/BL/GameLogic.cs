@@ -41,13 +41,25 @@ namespace FiveFeetBelowGame.BL
         /// <param name="x">X coordinate of the player.</param>
         /// <param name="y">Y coordinate of the player.</param>
         /// <returns>An array with the blocks.</returns>
-        public IGameObject[,] GetRenderedBlocks(int y)
+        public IGameObject[,] GetRenderedBlocks()
         {
-            int d = 40;
+            int y = this.model.PlayerDepth;
+            int d = (int)(this.model.GameHeight / this.model.TileSize) + 1;
             int n = y - (y % d);
             int k = 0;
+            IGameObject[,] outp = new IGameObject[25, d];
 
-            int s = n / 40;
+            int s = n / d;
+            if (this.model.PlayerDepth == d - 1)
+            {
+                s++;
+            }
+
+            if (this.model.PlayerPos.X == 0 && this.model.SectionNumber != 0)
+            {
+                s--;
+            }
+
             if (s != this.model.SectionNumber)
             {
                 if (s < this.model.SectionNumber)
@@ -60,9 +72,16 @@ namespace FiveFeetBelowGame.BL
                     this.model.SectionNumber++;
                     this.UpdatePlayerPosOnly(this.model.PlayerPos.X, 1);
                 }
-            }
 
-            IGameObject[,] outp = new IGameObject[25, d];
+                for (int i = 0; i < outp.GetLength(0); i++)
+                {
+                    // this.model.Blocks[i, this.model.PlayerDepth - 1] = new OneBlock(i, this.model.PlayerDepth, BlockType.Air);
+                    this.model.Blocks[i, this.model.PlayerDepth] = new OneBlock(i, this.model.PlayerDepth, BlockType.Air);
+                }
+
+                y = this.model.PlayerDepth;
+                n = y - (y % d);
+            }
 
             for (int i = n; i < n + d; i++)
             {
@@ -133,7 +152,7 @@ namespace FiveFeetBelowGame.BL
             int py = (int)this.model.PlayerPos.Y;
 
             // Something so player cant fly?
-            if (py >= 0 && py < this.model.RenderedBlocks.GetLength(1)-1)
+            if (py >= 0 && py < this.model.RenderedBlocks.GetLength(1) - 1)
             {
                 if ((this.model.RenderedBlocks[px, py + 1] as OneBlock) != null &&
                 !(this.model.RenderedBlocks[px, py + 1] as OneBlock).IsSolid)
@@ -242,7 +261,7 @@ namespace FiveFeetBelowGame.BL
             this.model.Blocks[10, 10] = new OneBlock(10, 10, BlockType.Air);
             this.model.Player = new OnePlayer(10, 10);
             this.model.PlayerPos = new Point(10, 10);
-            this.model.RenderedBlocks = this.GetRenderedBlocks(10);
+            this.model.RenderedBlocks = this.GetRenderedBlocks();
         }
 
         /// <summary>
@@ -256,10 +275,10 @@ namespace FiveFeetBelowGame.BL
             double oldX = this.model.PlayerPos.X;
             double oldY = this.model.PlayerPos.Y;
 
-            if (newX >= 0 && newX < this.model.Blocks.GetLength(0) &&
-                newY >= 0 && newY < this.model.Blocks.GetLength(1) &&
-                (this.model.Blocks[(int)newX, (int)newY] as OneBlock) != null &&
-                !(this.model.Blocks[(int)newX, (int)newY] as OneBlock).IsSolid)
+            if (newX >= 0 && newX < this.model.RenderedBlocks.GetLength(0) &&
+                newY >= 0 && newY < this.model.RenderedBlocks.GetLength(1) &&
+                (this.model.RenderedBlocks[(int)newX, (int)newY] as OneBlock) != null &&
+                !(this.model.RenderedBlocks[(int)newX, (int)newY] as OneBlock).IsSolid)
             {
                 this.model.Player.CX = newX;
                 this.model.Player.CY = newX;

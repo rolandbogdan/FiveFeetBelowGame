@@ -114,7 +114,7 @@ namespace FiveFeetBelowGame.UI
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
-            this.model.RenderedBlocks = this.logic.GetRenderedBlocks(this.model.PlayerDepth);
+            this.model.RenderedBlocks = this.logic.GetRenderedBlocks();
             this.logic.Gravity();
             this.InvalidateVisual();
         }
