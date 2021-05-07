@@ -146,6 +146,8 @@ namespace FiveFeetBelowGame
                 }
             }
 
+            this.AddMonsters(ref items);
+
             IGameObject[,] arr = new IGameObject[items.GetLength(1), items.GetLength(0)];
             for (int i = 0; i < items.GetLength(0); i++)
             {

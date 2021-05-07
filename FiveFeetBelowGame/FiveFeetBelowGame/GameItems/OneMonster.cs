@@ -25,8 +25,9 @@ namespace FiveFeetBelowGame
         {
             this.CX = cx;
             this.CY = cy;
-            this.HealthPoints = ((int)this.CY / 50 + 1) * 3;
-            this.Value = (int)this.CY / 50 * 10;
+            Random r = new Random();
+            this.HealthPoints = r.Next(15);
+            this.Value = r.Next(50);
         }
 
         /// <summary>
