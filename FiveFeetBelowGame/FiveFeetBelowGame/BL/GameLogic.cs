@@ -24,6 +24,8 @@ namespace FiveFeetBelowGame.BL
         /// </summary>
         private GameModel model;
 
+        private JsonHandler jh;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GameLogic"/> class.
         /// </summary>
@@ -36,22 +38,52 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// Saves the game.
+        /// </summary>
+        /// <param name="name">To this path.</param>
+        public void SaveGame(string name)
+        {
+            this.jh.SaveGame(name);
+        }
+
+        /// <summary>
+        /// Loads the game.
+        /// </summary>
+        /// <param name="name">From this path.</param>
+        public void LoadGame(string name)
+        {
+            this.jh.LoadGame(name);
+        }
+
+        /// <summary>
         /// Determines the blocks that are rendered.
         /// </summary>
         /// <returns>An array with the blocks.</returns>
         public IGameObject[,] GetRenderedBlocks()
         {
-            int d = 40;
-            IGameObject[,] outp = new IGameObject[25, d];
+            /*
+            int y = this.model.PlayerDepth;
+            int d = this.model.BlockNum;
+            int n = y - (y % d);
+            int s = n / d; */
+            int s = this.model.SectionNumber;
+            IGameObject[,] outp = this.model.Blocks;
 
-            int n = (int)this.model.PlayerPos.X - ((int)this.model.PlayerPos.X % d);
-
-            for (int i = n; i < n + d; i++)
+            if (this.model.PlayerPos.Y == 41)
             {
-                for (int j = 0; j < outp.GetLength(0); j++)
-                {
-                    outp[j, i] = this.model.Blocks[j, i];
-                }
+                MessageBox.Show("You can move forward to the next level!");
+                s++;
+            }
+
+            if (s != this.model.SectionNumber)
+            {
+                outp = this.jh.GenerateNewSection();
+                this.model.SectionNumber++;
+                this.UpdatePlayerPosOnly(this.model.PlayerPos.X, 1);
+                string date = DateTime.Now.ToString();
+                date = date.Replace(':', '-');
+                this.SaveGame($"..\\..\\..\\Levels\\autosave-{date}.json");
+                return outp;
             }
 
             return outp;
@@ -93,7 +125,9 @@ namespace FiveFeetBelowGame.BL
         /// <returns>The point where we clicked as an object. </returns>
         public Point GetTilePos(Point mousePos) // Pixel position => Tile position
         {
-            return new Point(mousePos.X / this.model.TileSize, mousePos.Y / this.model.TileSize);
+            return new Point(
+                mousePos.X / this.model.TileSize,
+                mousePos.Y / this.model.TileSize);
         }
 
         /// <summary>
@@ -105,7 +139,7 @@ namespace FiveFeetBelowGame.BL
             int py = (int)this.model.PlayerPos.Y;
 
             // Something so player cant fly?
-            if (py > 0 && py < this.model.Blocks.GetLength(1))
+            if (py >= 0 && py < this.model.Blocks.GetLength(1) - 1)
             {
                 if ((this.model.Blocks[px, py + 1] as OneBlock) != null &&
                 !(this.model.Blocks[px, py + 1] as OneBlock).IsSolid)
@@ -190,14 +224,10 @@ namespace FiveFeetBelowGame.BL
         /// <param name="fname">String type parameter.</param>
         private void InitModel(string fname)
         {
-            JsonHandler js = new JsonHandler("testfile.json");
+            this.jh = new JsonHandler(fname, this.model);
             Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
-
-            // StreamReader sr = new StreamReader(stream);
-            JsonHandler jh = new JsonHandler();
-
-            // this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json");
-            this.model.Blocks = jh.LoadMap("testfile.json");
+            /* StreamReader sr = new StreamReader(stream);
+             this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json"); */
 
             this.model.TileSize = this.model.GameWidth / 25;
 
@@ -211,9 +241,9 @@ namespace FiveFeetBelowGame.BL
             }
 
             this.model.Blocks = arr;
+            this.model.Blocks[10, 10] = new OneBlock(10, 10, BlockType.Air);
             this.model.Player = new OnePlayer(10, 10);
             this.model.PlayerPos = new Point(10, 10);
-            this.model.RenderedBlocks = this.GetRenderedBlocks();
         }
 
         /// <summary>
@@ -236,6 +266,16 @@ namespace FiveFeetBelowGame.BL
                 this.model.Player.CY = newX;
                 this.model.PlayerPos = new Point(newX, newY);
             }
+        }
+
+        /// <summary>
+        /// Updates only the pos of the player.
+        /// </summary>
+        /// <param name="newX">New x coord.</param>
+        /// <param name="newY">New y coord.</param>
+        private void UpdatePlayerPosOnly(double newX, double newY)
+        {
+            this.model.PlayerPos = new Point(newX, newY);
         }
     }
 }

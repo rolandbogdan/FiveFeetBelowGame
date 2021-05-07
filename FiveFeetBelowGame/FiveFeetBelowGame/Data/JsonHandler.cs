@@ -10,6 +10,7 @@ namespace FiveFeetBelowGame
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using FiveFeetBelowGame.VM;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -18,6 +19,8 @@ namespace FiveFeetBelowGame
     public class JsonHandler
     {
         private int depth;
+
+        private GameModel model;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonHandler"/> class.
@@ -30,27 +33,12 @@ namespace FiveFeetBelowGame
         /// Initializes a new instance of the <see cref="JsonHandler"/> class.
         /// </summary>
         /// <param name="saveName">Filename.</param>
-        public JsonHandler(string saveName)
+        /// <param name="model">A gamemodel.</param>
+        public JsonHandler(string saveName, GameModel model)
         {
-            var settings = new JsonSerializerSettings();
-            settings.TypeNameHandling = TypeNameHandling.Objects;
-
-            string json = JsonConvert.SerializeObject(this.GenerateFirstSection(), Formatting.Indented, settings);
-
-            if (saveName.EndsWith(".json"))
-            {
-                StreamWriter sw = new StreamWriter(saveName);
-                sw.Write(json);
-                sw.Close();
-            }
-            else
-            {
-                StreamWriter sw = new StreamWriter(saveName + ".json");
-                sw.Write(json);
-                sw.Close();
-            }
-
-            // TODO: use Savemap() here
+            this.model = model;
+            this.SaveMap(this.GenerateFirstSection(), saveName);
+            this.LoadMap(saveName);
         }
 
         /// <summary>
@@ -60,7 +48,9 @@ namespace FiveFeetBelowGame
         /// <param name="saveName">The filename.</param>
         public void SaveMap(IGameObject[,] map, string saveName)
         {
-            string save = JsonConvert.SerializeObject(map);
+            var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Objects;
+            string save = JsonConvert.SerializeObject(map, Formatting.Indented, settings);
 
             if (saveName.EndsWith(".json"))
             {
@@ -80,8 +70,7 @@ namespace FiveFeetBelowGame
         /// Loads the json save file to a playable array.
         /// </summary>
         /// <param name="filePath">The path for the game file.</param>
-        /// <returns>A playable IGameObject array, if the file exists. </returns>
-        public IGameObject[,] LoadMap(string filePath)
+        public void LoadMap(string filePath)
         {
             StreamReader sr = new StreamReader(filePath);
             string json = sr.ReadToEnd();
@@ -90,7 +79,80 @@ namespace FiveFeetBelowGame
             var settings = new JsonSerializerSettings();
             settings.TypeNameHandling = TypeNameHandling.Objects;
             IGameObject[,] output = JsonConvert.DeserializeObject<IGameObject[,]>(json, settings);
-            return output;
+            this.model.Blocks = output;
+        }
+
+        /// <summary>
+        /// Saves the game's state.
+        /// </summary>
+        /// <param name="saveName">The path.</param>
+        public void SaveGame(string saveName)
+        {
+            var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Objects;
+            string save = JsonConvert.SerializeObject(this.model, Formatting.Indented, settings);
+
+            if (saveName.EndsWith(".json"))
+            {
+                StreamWriter sw = new StreamWriter(saveName);
+                sw.Write(save);
+                sw.Close();
+            }
+            else
+            {
+                StreamWriter sw = new StreamWriter(saveName + ".json");
+                sw.Write(save);
+                sw.Close();
+            }
+        }
+
+        /// <summary>
+        /// Loads a game state.
+        /// </summary>
+        /// <param name="saveName">The path.</param>
+        public void LoadGame(string saveName)
+        {
+            StreamReader sr = new StreamReader(saveName);
+            string json = sr.ReadToEnd();
+            sr.Close();
+
+            var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Objects;
+            this.model = JsonConvert.DeserializeObject<GameModel>(json, settings);
+        }
+
+        /// <summary>
+        /// Generates a new section to the game.
+        /// </summary>
+        /// <returns>The new section.</returns>
+        public IGameObject[,] GenerateNewSection()
+        {
+            IGameObject[,] items = new IGameObject[this.model.BlockNum, 25];
+            for (int x = 0; x < items.GetLength(0); x++)
+            {
+                for (int y = 0; y < items.GetLength(1); y++)
+                {
+                    if (x < 2)
+                    {
+                        items[x, y] = new OneBlock(x, y, BlockType.Air);
+                    }
+                    else
+                    {
+                        this.RowGenerator(ref items, x);
+                    }
+                }
+            }
+
+            IGameObject[,] arr = new IGameObject[items.GetLength(1), items.GetLength(0)];
+            for (int i = 0; i < items.GetLength(0); i++)
+            {
+                for (int j = 0; j < items.GetLength(1); j++)
+                {
+                    arr[j, i] = items[i, j];
+                }
+            }
+
+            return arr;
         }
 
         /// <summary>
@@ -99,7 +161,7 @@ namespace FiveFeetBelowGame
         /// <returns>Returns an object array of game items.</returns>
         private IGameObject[,] GenerateFirstSection()
         {
-            IGameObject[,] items = new IGameObject[1011, 25];
+            IGameObject[,] items = new IGameObject[42, 25];
             for (int x = 0; x < items.GetLength(0); x++)
             {
                 for (int y = 0; y < items.GetLength(1); y++)

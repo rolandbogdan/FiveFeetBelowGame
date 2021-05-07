@@ -39,6 +39,18 @@
             <param name="model">GameModel type parameter.</param>
             <param name="fname">String type parameter.</param>
         </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.SaveGame(System.String)">
+            <summary>
+            Saves the game.
+            </summary>
+            <param name="name">To this path.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.LoadGame(System.String)">
+            <summary>
+            Loads the game.
+            </summary>
+            <param name="name">From this path.</param>
+        </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.GetRenderedBlocks">
             <summary>
             Determines the blocks that are rendered.
@@ -108,6 +120,13 @@
             <param name="newX"> New x coordinate of the player. </param>
             <param name="newY"> new y coordinate of the player. </param>
         </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.UpdatePlayerPosOnly(System.Double,System.Double)">
+            <summary>
+            Updates only the pos of the player.
+            </summary>
+            <param name="newX">New x coord.</param>
+            <param name="newY">New y coord.</param>
+        </member>
         <member name="T:FiveFeetBelowGame.JsonHandler">
             <summary>
             This class is responsible for reading and writing json files.
@@ -118,11 +137,12 @@
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor(System.String)">
+        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor(System.String,FiveFeetBelowGame.VM.GameModel)">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
             <param name="saveName">Filename.</param>
+            <param name="model">A gamemodel.</param>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.SaveMap(FiveFeetBelowGame.IGameObject[0:,0:],System.String)">
             <summary>
@@ -136,7 +156,24 @@
             Loads the json save file to a playable array.
             </summary>
             <param name="filePath">The path for the game file.</param>
-            <returns>A playable IGameObject array, if the file exists. </returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.SaveGame(System.String)">
+            <summary>
+            Saves the game's state.
+            </summary>
+            <param name="saveName">The path.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.LoadGame(System.String)">
+            <summary>
+            Loads a game state.
+            </summary>
+            <param name="saveName">The path.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.GenerateNewSection">
+            <summary>
+            Generates a new section to the game.
+            </summary>
+            <returns>The new section.</returns>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.GenerateFirstSection">
             <summary>
@@ -615,11 +652,6 @@
             Gets or sets Rock prop represent the rocks of the map.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.RenderedBlocks">
-            <summary>
-            Gets or sets the part of the map thats being rendered.
-            </summary>
-        </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerPos">
             <summary>
             Gets or sets Player prop represent our player position.
@@ -668,6 +700,51 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.TileSize">
             <summary>
             Gets or sets TileSize represent the tile size in pixels.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.SectionNumber">
+            <summary>
+            Gets or sets the number of the section the player is on.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.BlockNum">
+            <summary>
+            Gets tumber of vertical blocks.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerDepth">
+            <summary>
+            Gets the depth the player is at.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

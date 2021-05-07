@@ -61,7 +61,7 @@ namespace FiveFeetBelowGame.UI
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.model = new GameModel(this.ActualWidth, this.ActualHeight);
-            this.logic = new GameLogic(this.model, "FiveFeetBelowGame.Levels.map.lvl");
+            this.logic = new GameLogic(this.model, "testfile.json");
             this.renderer = new Renderer(this.model);
 
             Window win = Window.GetWindow(this);
@@ -87,11 +87,12 @@ namespace FiveFeetBelowGame.UI
             int tpx = (int)tilePos.X;
             int tpy = (int)tilePos.Y;
 
-            if (this.model.Blocks[tpx, tpy] != null &&
+            if (tpx < this.model.Blocks.GetLength(0) &&
+                tpy < this.model.Blocks.GetLength(1) &&
+                this.model.Blocks[tpx, tpy] != null &&
                 this.model.Player != null &&
                 this.logic.IsNeighboring(tpx, tpy))
             {
-                // Only neighbouring blocks!
                 this.model.Blocks[tpx, tpy].DamageTaken(
                 this.model.Player.InflictDamage() + 4,
                 this.model.Player);
@@ -107,13 +108,13 @@ namespace FiveFeetBelowGame.UI
                     }
 
                     this.model.Blocks[tpx, tpy] = new OneBlock(tpx, tpy, BlockType.Air);
-                    this.model.RenderedBlocks = this.logic.GetRenderedBlocks();
                 }
             }
         }
 
         private void TickTimer_Tick(object sender, EventArgs e)
         {
+            this.model.Blocks = this.logic.GetRenderedBlocks();
             this.logic.Gravity();
             this.InvalidateVisual();
         }
