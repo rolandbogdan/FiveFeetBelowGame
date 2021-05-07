@@ -87,17 +87,7 @@ namespace FiveFeetBelowGame.UI
             }
         }
 
-        /// <summary>
-        /// Gets the brush for the ores.
-        /// </summary>
-        public Brush OreBrush
-        {
-            get
-            {
-                return this.GetBrush("FiveFeetBelowGame.Images.gem-1.png", false);
-            }
-        }
-
+            /*
             public Brush DiamondsBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.diamond-ore.png", true); } }
 
             public Brush GoldBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.Minecraft-Gold-Ore.png", true); } }
@@ -107,8 +97,10 @@ namespace FiveFeetBelowGame.UI
             public Brush RareGemBrush { get { return this.GetBrush("FiveFeetBelowGame.Images.rare-gem.png", true); } }
 
             public Brush IronBrush { get { return Brushes.Gray; } }
+            */
 
-            /*
+            public Brush IronBrush { get { return Brushes.Gray; } }
+
             public Brush DiamondsBrush { get { return Brushes.Aqua; } }
 
             public Brush GoldBrush { get { return Brushes.Gold; } }
@@ -116,7 +108,6 @@ namespace FiveFeetBelowGame.UI
             public Brush GemBrush { get { return Brushes.Purple; } }
 
             public Brush RareGemBrush { get { return Brushes.BlanchedAlmond; } }
-            */
 
             public Brush Bgbrush { get { return this.GetBrush("FiveFeetBelowGame.Images.back.png", false); } }
 

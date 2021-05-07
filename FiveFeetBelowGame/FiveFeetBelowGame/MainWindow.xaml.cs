@@ -6,6 +6,7 @@ namespace FiveFeetBelowGame
 {
       using System;
       using System.Collections.Generic;
+      using System.IO;
       using System.Linq;
       using System.Text;
       using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace FiveFeetBelowGame
       using System.Windows.Media.Imaging;
       using System.Windows.Navigation;
       using System.Windows.Shapes;
+      using Microsoft.Win32;
 
       /// <summary>
       /// Interaction logic for MainWindow.xaml.
@@ -54,6 +56,14 @@ namespace FiveFeetBelowGame
                   {
                         this.Close();
                   }
+            }
+
+            private void Load_Game(object sender, RoutedEventArgs e)
+            {
+                  LoadGame lg = new LoadGame();
+
+                  lg.Show();
+                  this.Close();
             }
       }
 }

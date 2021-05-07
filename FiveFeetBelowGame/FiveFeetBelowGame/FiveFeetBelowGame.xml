@@ -482,6 +482,24 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:FiveFeetBelowGame.LoadGame">
+            <summary>
+            Interaction logic for LoadGame.xaml
+            </summary>
+            <summary>
+            LoadGame
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.LoadGame.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.LoadGame"/> class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.LoadGame.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:FiveFeetBelowGame.MainWindow">
             <summary>
             Interaction logic for MainWindow.xaml.
@@ -557,11 +575,6 @@
         <member name="P:FiveFeetBelowGame.UI.Renderer.AirBrush">
             <summary>
             Gets the brush for the air blocks.
-            </summary>
-        </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.OreBrush">
-            <summary>
-            Gets the brush for the ores.
             </summary>
         </member>
         <member name="P:FiveFeetBelowGame.UI.Renderer.Middlebrush">
@@ -658,6 +671,36 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.TileSize">
             <summary>
             Gets or sets TileSize represent the tile size in pixels.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

@@ -6,6 +6,7 @@ namespace FiveFeetBelowGame.UI
 {
       using System;
       using System.Collections.Generic;
+      using System.IO;
       using System.Linq;
       using System.Text;
       using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace FiveFeetBelowGame.UI
       using System.Windows.Threading;
       using FiveFeetBelowGame.BL;
       using FiveFeetBelowGame.VM;
+      using Microsoft.Win32;
 
       /// <summary>
       /// GameControl class for the game.
@@ -153,14 +155,17 @@ namespace FiveFeetBelowGame.UI
 
                               break;
                         case Key.Escape:
+                              /*
                               if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                               {
                                     MainWindow mw = new MainWindow();
                                     Window win = Window.GetWindow(this);
 
+                                    // metodusAmiMent();
                                     win.Close();
                                     mw.Show();
                               }
+                              */
 
                               break;
                         default:
