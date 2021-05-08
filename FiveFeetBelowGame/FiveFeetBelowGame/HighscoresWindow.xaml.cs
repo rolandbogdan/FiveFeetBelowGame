@@ -4,6 +4,8 @@
 
 namespace FiveFeetBelowGame
 {
+      using Model;
+      using Repository;
       using System;
       using System.Collections.Generic;
       using System.Linq;
@@ -23,11 +25,22 @@ namespace FiveFeetBelowGame
       /// </summary>
       public partial class HighscoresWindow : Window
       {
+            public List<Highscore> hRepoList { get; private set; }
+
             /// <summary>
             /// Initializes a new instance of the <see cref="HighscoresWindow"/> class.
             /// </summary>
             public HighscoresWindow()
             {
+                  HighscoreRepo hRepo = new HighscoreRepo();
+
+                  this.hRepoList = hRepo.GetAll().OrderByDescending(x => x.DeepestPoint).ToList();
+
+                  foreach (var item in this.hRepoList)
+                  {
+                        this.listBox.Items.Add($"{item.PlayerName}: {item.DeepestPoint}");
+                  }
+
                   this.InitializeComponent();
             }
 
