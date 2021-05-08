@@ -44,9 +44,9 @@
     <EmbeddedResource Include="Images\Gold-Ore.png" />
     <EmbeddedResource Include="Images\Iron-Ore-Block-600x600.png" />
     <EmbeddedResource Include="Images\iron.png" />
-    <EmbeddedResource Include="Images\logo-menu.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <Resource Include="Images\logo-menu.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <EmbeddedResource Include="Images\middle.png" />
     <EmbeddedResource Include="Images\opossum-1.png" />
     <EmbeddedResource Include="Images\player-idle-1.png" />
