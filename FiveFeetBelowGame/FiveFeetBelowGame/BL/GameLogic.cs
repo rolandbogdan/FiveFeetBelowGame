@@ -86,7 +86,6 @@ namespace FiveFeetBelowGame.BL
                         string date = DateTime.Now.ToString();
                         date = date.Replace(':', '-');
                         date = date.Replace('/', '-');
-                        date = date.Replace('\\', '-');
                         this.SaveGame($"..\\..\\..\\Levels\\autosave-{date}.json");
                         return outp;
                   }

@@ -96,7 +96,6 @@ namespace FiveFeetBelowGame
 
                   saveName = saveName.Replace(':', '-');
                   saveName = saveName.Replace('/', '-');
-                  saveName = saveName.Replace('\\', '-');
 
                   if (saveName.EndsWith(".json"))
                   {
