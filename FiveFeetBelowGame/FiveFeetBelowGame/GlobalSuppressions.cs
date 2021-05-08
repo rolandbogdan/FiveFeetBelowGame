@@ -75,4 +75,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Globalization", "CA1310:Specify StringComparison for correctness", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.JsonHandler.GetHighscores~Repository.HighscoreRepo")]
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.JsonHandler.DeleteAutosaves")]
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.JsonHandler.LoadGame(System.String)~FiveFeetBelowGame.VM.GameModel")]
-[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~P:FiveFeetBelowGame.Renderer.AirBrush")]
+[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~P:FiveFeetBelowGame.Renderer.AirBrush")]
