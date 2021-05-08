@@ -107,7 +107,7 @@
             <param name="by">The block's y coordinate. </param>
             <returns>True if its a neighboring block.</returns>
         </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.GetDeepestPoint">
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.CheckIfHighscore">
             <summary>
             Calculates the deepest point the player has reached.
             </summary>
@@ -679,7 +679,7 @@
         </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.SaveName">
             <summary>
-            Name of this game instance.
+            Gets or sets the name of this game instance.
             </summary>
         </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.Blocks">
@@ -755,36 +755,6 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.Hs">
             <summary>
             Gets or sets the highscore of this save.
-            </summary>
-        </member>
-        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-            <summary>
-            GeneratedInternalTypeHelper
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            CreateInstance
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            GetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            SetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-            <summary>
-            CreateDelegate
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-            <summary>
-            AddEventHandler
             </summary>
         </member>
     </members>

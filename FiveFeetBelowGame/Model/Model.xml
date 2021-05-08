@@ -9,13 +9,14 @@
             The highscores of the game.
             </summary>
         </member>
-        <member name="M:Model.Highscore.#ctor(System.String,System.Int32,System.Int32)">
+        <member name="M:Model.Highscore.#ctor(System.String,System.Int32,System.Int32,System.Int32)">
             <summary>
             Initializes a new instance of the <see cref="T:Model.Highscore"/> class.
             </summary>
             <param name="playername"> The name of the player. </param>
             <param name="deepestpoint"> The deepest point the player has reached. </param>
             <param name="pickaxelvl"> The level of the player's pickaxe. </param>
+            <param name="balance"> The level of the player's balance. </param>
         </member>
         <member name="M:Model.Highscore.#ctor">
             <summary>
@@ -40,6 +41,11 @@
         <member name="P:Model.Highscore.PickaxeLvl">
             <summary>
             Gets or sets the level of the player's pickaxe.
+            </summary>
+        </member>
+        <member name="P:Model.Highscore.Balance">
+            <summary>
+            Gets or sets the highscore balance.
             </summary>
         </member>
         <member name="T:Model.IGameModel">
