@@ -38,6 +38,7 @@ namespace FiveFeetBelowGame.UI
         public Renderer(GameModel model)
         {
             this.model = model;
+            this.Reset();
         }
 
         /// <summary>
