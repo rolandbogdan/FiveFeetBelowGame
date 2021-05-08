@@ -87,37 +87,38 @@ namespace FiveFeetBelowGame.UI
                   int tpx = (int)tilePos.X;
                   int tpy = (int)tilePos.Y;
 
-                  if (tpx < this.model.Blocks.GetLength(0) &&
-                      tpy < this.model.Blocks.GetLength(1) &&
-                      this.model.Blocks[tpx, tpy] != null &&
-                      this.model.Player != null &&
-                      this.logic.IsNeighboring(tpx, tpy))
-                  {
-                        this.model.Blocks[tpx, tpy].DamageTaken(
-                        this.model.Player.InflictDamage() + 2,
-                        this.model.Player);
-                        if (this.model.Blocks[tpx, tpy].HealthPoints <= 0)
-                        {
-                              if (this.model.Blocks[tpx, tpy] as OneBlock != null)
-                              {
-                                    this.logic.PlayerGainedMoney((this.model.Blocks[tpx, tpy] as OneBlock).Value);
-                              }
-                              else if (this.model.Blocks[tpx, tpy] as OneMonster != null)
-                              {
-                                    this.logic.PlayerGainedMoney((this.model.Blocks[tpx, tpy] as OneMonster).Value);
-                              }
+            if (tpx < this.model.Blocks.GetLength(0) &&
+                tpy < this.model.Blocks.GetLength(1) &&
+                this.model.Blocks[tpx, tpy] != null &&
+                this.model.Player != null &&
+                this.logic.IsNeighboring(tpx, tpy))
+            {
+                this.model.Blocks[tpx, tpy].DamageTaken(
+                this.model.Player.InflictDamage(),
+                this.model.Player);
+                if (this.model.Blocks[tpx, tpy].HealthPoints <= 0)
+                {
+                    if (this.model.Blocks[tpx, tpy] as OneBlock != null)
+                    {
+                        this.logic.PlayerGainedMoney((this.model.Blocks[tpx, tpy] as OneBlock).Value);
+                    }
+                    else if (this.model.Blocks[tpx, tpy] as OneMonster != null)
+                    {
+                        this.logic.PlayerGainedMoney((this.model.Blocks[tpx, tpy] as OneMonster).Value);
+                    }
 
                               this.model.Blocks[tpx, tpy] = new OneBlock(tpx, tpy, BlockType.Air);
                         }
                   }
             }
 
-            private void TickTimer_Tick(object sender, EventArgs e)
-            {
-                  this.model.Blocks = this.logic.GetRenderedBlocks();
-                  this.logic.Gravity();
-                  this.InvalidateVisual();
-            }
+        private void TickTimer_Tick(object sender, EventArgs e)
+        {
+            this.model.Blocks = this.logic.GetRenderedBlocks();
+            this.logic.Gravity();
+            this.logic.CheckIfHighscore();
+            this.InvalidateVisual();
+        }
 
             private void Win_KeyDown(object sender, KeyEventArgs e)
             {

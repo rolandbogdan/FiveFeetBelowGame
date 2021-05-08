@@ -229,7 +229,7 @@ namespace FiveFeetBelowGame.UI
                 dg.Children.Add(item);
             }
 
-            dg.Children.Add(this.GetPlayerBalance());
+            dg.Children.Add(this.GetText());
 
             return dg;
         }
@@ -302,20 +302,20 @@ namespace FiveFeetBelowGame.UI
             return this.oldOres;
         }
 
-        private Drawing GetPlayerBalance()
+        private Drawing GetText()
         {
-            string disp = $"Pickaxe lvl: {this.model.PlayerPickaxe}\n$: {this.model.PlayerBalance}\nDeepest point: {this.model.PlayerDepth}";
+            string disp = $"Pickaxe lvl: {this.model.PlayerPickaxe}\t$: {this.model.PlayerBalance}\tDeepest point: {(this.model.Hs.DeepestPoint * 5) - 50} ft.\nHealth: {this.model.PlayerHealth}";
             FormattedText formattedText = new FormattedText(
             disp,
             CultureInfo.CurrentCulture,
             FlowDirection.LeftToRight,
             new Typeface("Arial"),
-            24,
+            28,
             Brushes.Black);
 
             GeometryDrawing text = new GeometryDrawing(
-                Brushes.White,
-                new Pen(Brushes.Black, 2),
+                Brushes.Black,
+                new Pen(Brushes.Black, 1),
                 formattedText.BuildGeometry(new Point(5, 5)));
 
             return text;

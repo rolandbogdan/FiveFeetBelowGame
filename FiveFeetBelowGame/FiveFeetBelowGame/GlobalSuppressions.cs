@@ -68,4 +68,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.JsonHandler.OreChooser~FiveFeetBelowGame.BlockType")]
 [assembly: SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.JsonHandler.OreChooser~FiveFeetBelowGame.BlockType")]
 [assembly: SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "Unnecessary", Scope = "member", Target = "~M:FiveFeetBelowGame.OneMonster.#ctor(System.Double,System.Double)")]
-[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>", Scope = "member", Target = "~M:FiveFeetBelowGame.UI.GameControl.Win_KeyDown(System.Object,System.Windows.Input.KeyEventArgs)")]
+[assembly: SuppressMessage("Design", "CA1024:Use properties where appropriate", Justification = "<Pending>", Scope = "member", Target = "~M:FiveFeetBelowGame.JsonHandler.GetHighscores~System.Collections.Generic.IEnumerable{Model.Highscore}")]

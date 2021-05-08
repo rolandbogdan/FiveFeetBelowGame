@@ -62,6 +62,12 @@
             </summary>
             <returns>The ordered list of highscores.</returns>
         </member>
+        <member name="M:Logic.HighscoreOrderingLogic.OrderedByMoney">
+            <summary>
+            Orders the highscores by deepest poitn reached.
+            </summary>
+            <returns>The ordered list of highscores.</returns>
+        </member>
         <member name="T:Logic.IGameLogic`1">
             <summary>
             The interface for the game logic.
