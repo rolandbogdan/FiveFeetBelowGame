@@ -30,5 +30,12 @@ namespace FiveFeetBelowGame
         {
             this.InitializeComponent();
         }
-    }
+
+        public Game(string loadFilePath) : this()
+        {
+            this.LoadFile = loadFilePath;
+        }
+
+        public string LoadFile { get; set; }
+      }
 }

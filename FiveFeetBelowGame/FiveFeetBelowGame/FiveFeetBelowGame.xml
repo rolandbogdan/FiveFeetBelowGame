@@ -518,6 +518,19 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:FiveFeetBelowGame.LoadGame">
+            <summary>
+            Interaction logic for LoadGame.xaml
+            </summary>
+            <summary>
+            LoadGame
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.LoadGame.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:FiveFeetBelowGame.MainWindow">
             <summary>
             Interaction logic for MainWindow.xaml.
