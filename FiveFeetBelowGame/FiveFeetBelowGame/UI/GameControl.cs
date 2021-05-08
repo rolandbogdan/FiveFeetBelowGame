@@ -71,6 +71,7 @@ namespace FiveFeetBelowGame.UI
             {
                 GlobalVariables.GameLoad = true;
                 this.logic = new GameLogic(this.model, GlobalVariables.GamefilePath);
+                GlobalVariables.GamefilePath = string.Empty;
             }
 
             this.model = this.logic.Model;

@@ -264,7 +264,7 @@ namespace FiveFeetBelowGame.BL
             this.jh = new JsonHandler(fname, ref this.model);
             this.model.TileSize = this.model.GameWidth / 25;
 
-            if (!GlobalVariables.GameLoad)
+            if (string.IsNullOrEmpty(GlobalVariables.GamefilePath))
             {
                 IGameObject[,] arr = new IGameObject[this.model.Blocks.GetLength(1), this.model.Blocks.GetLength(0)];
                 for (int i = 0; i < this.model.Blocks.GetLength(0); i++)
@@ -276,11 +276,10 @@ namespace FiveFeetBelowGame.BL
                 }
 
                 this.model.Blocks = arr;
+                this.model.Blocks[10, 10] = new OneBlock(10, 10, BlockType.Air);
+                this.model.Player = new OnePlayer(10, 10);
+                this.model.PlayerPos = new Point(10, 10);
             }
-
-            this.model.Blocks[10, 10] = new OneBlock(10, 10, BlockType.Air);
-            this.model.Player = new OnePlayer(10, 10);
-            this.model.PlayerPos = new Point(10, 10);
         }
 
         /// <summary>
