@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,7 +27,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Five Feet Below Game
    </div>
-   <div id="projectbrief">A game for programming 4 project work.</div>
+   <div id="projectbrief">Prog4 project work.</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_logic_1_1_highscore_ordering_logic.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespace_logic.html">Logic</a></li><li class="navelem"><a class="el" href="class_logic_1_1_highscore_ordering_logic.html">HighscoreOrderingLogic</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -85,6 +101,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8df239a4729f627cb07b01652a8bf6de"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_model_1_1_highscore.html">Highscore</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_1_1_highscore_ordering_logic.html#a8df239a4729f627cb07b01652a8bf6de">OrderedByDepth</a> ()</td></tr>
 <tr class="memdesc:a8df239a4729f627cb07b01652a8bf6de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Orders the highscores by deepest poitn reached.  <a href="class_logic_1_1_highscore_ordering_logic.html#a8df239a4729f627cb07b01652a8bf6de">More...</a><br /></td></tr>
 <tr class="separator:a8df239a4729f627cb07b01652a8bf6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8625ac4d26079083593e7019e9224f4"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_model_1_1_highscore.html">Highscore</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_1_1_highscore_ordering_logic.html#ac8625ac4d26079083593e7019e9224f4">OrderedByMoney</a> ()</td></tr>
+<tr class="memdesc:ac8625ac4d26079083593e7019e9224f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Orders the highscores by deepest poitn reached.  <a href="class_logic_1_1_highscore_ordering_logic.html#ac8625ac4d26079083593e7019e9224f4">More...</a><br /></td></tr>
+<tr class="separator:ac8625ac4d26079083593e7019e9224f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Orders highscores. </p>
@@ -142,13 +161,39 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ac8625ac4d26079083593e7019e9224f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8625ac4d26079083593e7019e9224f4">&#9670;&nbsp;</a></span>OrderedByMoney()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerable&lt;<a class="el" href="class_model_1_1_highscore.html">Highscore</a>&gt; Logic.HighscoreOrderingLogic.OrderedByMoney </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Orders the highscores by deepest poitn reached. </p>
+<dl class="section return"><dt>Returns</dt><dd>The ordered list of highscores.</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_highscore_ordering_logic_8cs_source.html#l00047">47</a> of file <a class="el" href="_highscore_ordering_logic_8cs_source.html">HighscoreOrderingLogic.cs</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>D:/BitbucketProjects/oenik_prog4_2021_1_bwj4ao_uqh2aw/FiveFeetBelowGame/Logic/<a class="el" href="_highscore_ordering_logic_8cs_source.html">HighscoreOrderingLogic.cs</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_logic.html">Logic</a></li><li class="navelem"><a class="el" href="class_logic_1_1_highscore_ordering_logic.html">HighscoreOrderingLogic</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

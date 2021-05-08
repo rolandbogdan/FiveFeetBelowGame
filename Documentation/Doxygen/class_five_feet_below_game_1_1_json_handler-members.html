@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,7 +27,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Five Feet Below Game
    </div>
-   <div id="projectbrief">A game for programming 4 project work.</div>
+   <div id="projectbrief">Prog4 project work.</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_five_feet_below_game_1_1_json_handler.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespace_five_feet_below_game.html">FiveFeetBelowGame</a></li><li class="navelem"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">JsonHandler</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">FiveFeetBelowGame.JsonHandler Member List</div>  </div>
@@ -73,17 +89,22 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#a41766c200e9a24859f0f3010847cce8a">GenerateNewSection</a>()</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#a73584b1fe8e089c81e73a9fa232384da">DeleteAutosaves</a>()</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#a41766c200e9a24859f0f3010847cce8a">GenerateNewSection</a>()</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#a5cb05a501c9927a7ad2708cfb92acd25">GetHighscores</a>()</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#a1278c4ffb1c58fc2be83ca3c4bd80d12">JsonHandler</a>()</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#af3a3ac01b6f4c431570cf20ca37cba29">JsonHandler</a>(string saveName, GameModel model)</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#a91213a973aa7491c942afbed92c847cb">LoadGame</a>(string saveName)</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#ab29e3861d13fb3744b07374aaec6c7a7">JsonHandler</a>(string saveName, ref GameModel model)</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#a881ff7835358f7105c5f9fe84485dee0">LoadGame</a>(string saveName)</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#aab2479336f74050020fb277893a1a562">LoadMap</a>(string filePath)</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#a7e10fff9f1af03002d1c7c0efbbd1345">SaveGame</a>(string saveName)</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html#af6fb9f43265e0b685bbfe1222c18bb3e">SaveMap</a>(IGameObject[,] map, string saveName)</td><td class="entry"><a class="el" href="class_five_feet_below_game_1_1_json_handler.html">FiveFeetBelowGame.JsonHandler</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

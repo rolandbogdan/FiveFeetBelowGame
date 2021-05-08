@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,7 +27,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Five Feet Below Game
    </div>
-   <div id="projectbrief">A game for programming 4 project work.</div>
+   <div id="projectbrief">Prog4 project work.</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_highscore_logic_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_f4c68756fa2ebb38ceb22798af8d4b38.html">BitbucketProjects</a></li><li class="navelem"><a class="el" href="dir_e94a25a492ec1310d8ac428dc258a8ae.html">oenik_prog4_2021_1_bwj4ao_uqh2aw</a></li><li class="navelem"><a class="el" href="dir_d38b175b8048d6eaa15705b4fa88ec83.html">FiveFeetBelowGame</a></li><li class="navelem"><a class="el" href="dir_af0c393470c57711437a2a003fac0b10.html">Logic</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">HighscoreLogic.cs</div>  </div>
@@ -126,7 +142,7 @@ $(function() {
 <div class="ttc" id="aclass_logic_1_1_highscore_logic_html_acc787e040497659490ab7b336ba4c7ad"><div class="ttname"><a href="class_logic_1_1_highscore_logic.html#acc787e040497659490ab7b336ba4c7ad">Logic.HighscoreLogic.GetOneHighscore</a></div><div class="ttdeci">Highscore GetOneHighscore(string id)</div><div class="ttdoc">GetOneHighscore method to find one highscore by id.</div><div class="ttdef"><b>Definition:</b> <a href="_highscore_logic_8cs_source.html#l00062">HighscoreLogic.cs:62</a></div></div>
 <div class="ttc" id="aclass_logic_1_1_highscore_logic_html_adb224c9d15fded606bbc26639f834533"><div class="ttname"><a href="class_logic_1_1_highscore_logic.html#adb224c9d15fded606bbc26639f834533">Logic.HighscoreLogic.Insert</a></div><div class="ttdeci">void Insert(Highscore hs)</div><div class="ttdoc">Insert method to add a new highscore.</div><div class="ttdef"><b>Definition:</b> <a href="_highscore_logic_8cs_source.html#l00043">HighscoreLogic.cs:43</a></div></div>
 <div class="ttc" id="aclass_logic_1_1_highscore_logic_html_aebde9ffdea8128407e503ff9d39d0902"><div class="ttname"><a href="class_logic_1_1_highscore_logic.html#aebde9ffdea8128407e503ff9d39d0902">Logic.HighscoreLogic.GetAllHighscore</a></div><div class="ttdeci">IQueryable&lt; Highscore &gt; GetAllHighscore()</div><div class="ttdoc">GetAllHighscore to list all of the highscores.</div><div class="ttdef"><b>Definition:</b> <a href="_highscore_logic_8cs_source.html#l00071">HighscoreLogic.cs:71</a></div></div>
-<div class="ttc" id="aclass_model_1_1_highscore_html"><div class="ttname"><a href="class_model_1_1_highscore.html">Model.Highscore</a></div><div class="ttdoc">The highscores of the game.</div><div class="ttdef"><b>Definition:</b> <a href="_highscore_8cs_source.html#l00016">Highscore.cs:17</a></div></div>
+<div class="ttc" id="aclass_model_1_1_highscore_html"><div class="ttname"><a href="class_model_1_1_highscore.html">Model.Highscore</a></div><div class="ttdoc">The highscores of the game.</div><div class="ttdef"><b>Definition:</b> <a href="_highscore_8cs_source.html#l00017">Highscore.cs:18</a></div></div>
 <div class="ttc" id="ainterface_repository_1_1_i_storage_repository_html"><div class="ttname"><a href="interface_repository_1_1_i_storage_repository.html">Repository.IStorageRepository&lt; Highscore &gt;</a></div></div>
 <div class="ttc" id="ainterface_repository_1_1_i_storage_repository_html_a3821f3175b5e5542c84cd88b36b1e399"><div class="ttname"><a href="interface_repository_1_1_i_storage_repository.html#a3821f3175b5e5542c84cd88b36b1e399">Repository.IStorageRepository.GetAll</a></div><div class="ttdeci">IQueryable&lt; T &gt; GetAll()</div><div class="ttdoc">Gets all entities in the repository.</div></div>
 <div class="ttc" id="ainterface_repository_1_1_i_storage_repository_html_a9ef6f63d3a1cc29fe9d19f3ee77a8dba"><div class="ttname"><a href="interface_repository_1_1_i_storage_repository.html#a9ef6f63d3a1cc29fe9d19f3ee77a8dba">Repository.IStorageRepository.Delete</a></div><div class="ttdeci">void Delete(T toDelete)</div><div class="ttdoc">Deletes an entity by reference.</div></div>
@@ -138,9 +154,13 @@ $(function() {
 <div class="ttc" id="anamespace_repository_html"><div class="ttname"><a href="namespace_repository.html">Repository</a></div><div class="ttdef"><b>Definition:</b> <a href="_highscore_repo_8cs_source.html#l00005">HighscoreRepo.cs:6</a></div></div>
 <div class="ttc" id="anamespace_system_1_1_collections_1_1_generic_html"><div class="ttname"><a href="namespace_system_1_1_collections_1_1_generic.html">Generic</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_f4c68756fa2ebb38ceb22798af8d4b38.html">BitbucketProjects</a></li><li class="navelem"><a class="el" href="dir_e94a25a492ec1310d8ac428dc258a8ae.html">oenik_prog4_2021_1_bwj4ao_uqh2aw</a></li><li class="navelem"><a class="el" href="dir_d38b175b8048d6eaa15705b4fa88ec83.html">FiveFeetBelowGame</a></li><li class="navelem"><a class="el" href="dir_af0c393470c57711437a2a003fac0b10.html">Logic</a></li><li class="navelem"><b>HighscoreLogic.cs</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

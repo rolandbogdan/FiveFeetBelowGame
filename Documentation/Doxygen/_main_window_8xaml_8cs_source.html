@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,7 +27,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Five Feet Below Game
    </div>
-   <div id="projectbrief">A game for programming 4 project work.</div>
+   <div id="projectbrief">Prog4 project work.</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_main_window_8xaml_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_f4c68756fa2ebb38ceb22798af8d4b38.html">BitbucketProjects</a></li><li class="navelem"><a class="el" href="dir_e94a25a492ec1310d8ac428dc258a8ae.html">oenik_prog4_2021_1_bwj4ao_uqh2aw</a></li><li class="navelem"><a class="el" href="dir_d38b175b8048d6eaa15705b4fa88ec83.html">FiveFeetBelowGame</a></li><li class="navelem"><a class="el" href="dir_103e28771547c60cb0fbf2fa1ef75bad.html">FiveFeetBelowGame</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">MainWindow.xaml.cs</div>  </div>
@@ -76,63 +92,84 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_five_feet_below_game.html">FiveFeetBelowGame</a></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;      <span class="keyword">using</span> System;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;      <span class="keyword">using</span> System.Collections.<a class="code" href="namespace_system_1_1_collections_1_1_generic.html">Generic</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;      <span class="keyword">using</span> System.Linq;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;      <span class="keyword">using</span> System.Text;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;      <span class="keyword">using</span> System.Threading.Tasks;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;      <span class="keyword">using</span> System.Windows;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;      <span class="keyword">using</span> System.Windows.Controls;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;      <span class="keyword">using</span> System.Windows.Data;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      <span class="keyword">using</span> System.Windows.Documents;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;      <span class="keyword">using</span> System.Windows.Input;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      <span class="keyword">using</span> System.Windows.Media;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;      <span class="keyword">using</span> System.Windows.Media.Imaging;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      <span class="keyword">using</span> System.Windows.Navigation;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      <span class="keyword">using</span> System.Windows.Shapes;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">using</span> System;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">using</span> System.Collections.<a class="code" href="namespace_system_1_1_collections_1_1_generic.html">Generic</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">using</span> System.Linq;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">using</span> System.Text;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">using</span> System.Threading.Tasks;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">using</span> System.Windows;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">using</span> System.Windows.Controls;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">using</span> System.Windows.Data;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">using</span> System.Windows.Documents;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">using</span> System.Windows.Input;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">using</span> System.Windows.Media;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">using</span> System.Windows.Media.Imaging;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">using</span> System.Windows.Navigation;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">using</span> System.Windows.Shapes;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_five_feet_below_game_1_1_main_window.html">   25</a></span>&#160;      <span class="keyword">public</span> <span class="keyword">partial class </span><a class="code" href="class_five_feet_below_game_1_1_main_window.html">MainWindow</a> : Window</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      {</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_five_feet_below_game_1_1_main_window.html#a9b149cf7cdcd87d3d2000f70f5855832">   30</a></span>&#160;            <span class="keyword">public</span> <a class="code" href="class_five_feet_below_game_1_1_main_window.html#a9b149cf7cdcd87d3d2000f70f5855832">MainWindow</a>()</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                  this.<a class="code" href="class_five_feet_below_game_1_1_main_window.html#ac5eb1d338a97d6a8632f0b88a76535c0">InitializeComponent</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            }</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_five_feet_below_game_1_1_main_window.html">   25</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">partial class </span><a class="code" href="class_five_feet_below_game_1_1_main_window.html">MainWindow</a> : Window</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_five_feet_below_game_1_1_main_window.html#a9b149cf7cdcd87d3d2000f70f5855832">   30</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_five_feet_below_game_1_1_main_window.html#a9b149cf7cdcd87d3d2000f70f5855832">MainWindow</a>()</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            this.<a class="code" href="class_five_feet_below_game_1_1_main_window.html#ac5eb1d338a97d6a8632f0b88a76535c0">InitializeComponent</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keyword">private</span> <span class="keywordtype">void</span> New_Game(<span class="keywordtype">object</span> sender, RoutedEventArgs e)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                  <a class="code" href="class_five_feet_below_game_1_1_game.html">Game</a> game = <span class="keyword">new</span> <a class="code" href="class_five_feet_below_game_1_1_game.html">Game</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                  game.Show();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                  this.Close();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> New_Game(<span class="keywordtype">object</span> sender, RoutedEventArgs e)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <a class="code" href="class_five_feet_below_game_1_1_global_variables.html">GlobalVariables</a>.<a class="code" href="class_five_feet_below_game_1_1_global_variables.html#a3a97f9d9b1a13143392f46b238d5f3ca">GameLoad</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <a class="code" href="class_five_feet_below_game_1_1_game.html">Game</a> game = <span class="keyword">new</span> <a class="code" href="class_five_feet_below_game_1_1_game.html">Game</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            game.Show();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            this.Close();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keyword">private</span> <span class="keywordtype">void</span> Highscores(<span class="keywordtype">object</span> sender, RoutedEventArgs e)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                  HighscoresWindow hsWindow = <span class="keyword">new</span> HighscoresWindow();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> Highscores(<span class="keywordtype">object</span> sender, RoutedEventArgs e)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            HighscoresWindow hsWindow = <span class="keyword">new</span> HighscoresWindow();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                  hsWindow.Show();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                  this.Close();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            hsWindow.Show();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            this.Close();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">private</span> <span class="keywordtype">void</span> Quit_Game(<span class="keywordtype">object</span> sender, RoutedEventArgs e)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                  <span class="keywordflow">if</span> (MessageBox.Show(<span class="stringliteral">&quot;Are you sure?&quot;</span>, <span class="stringliteral">&quot;Exit&quot;</span>, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                  {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        this.Close();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                  }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> Quit_Game(<span class="keywordtype">object</span> sender, RoutedEventArgs e)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">if</span> (MessageBox.Show(<span class="stringliteral">&quot;Are you sure?&quot;</span>, <span class="stringliteral">&quot;Exit&quot;</span>, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                JsonHandler jh = <span class="keyword">new</span> JsonHandler();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                jh.DeleteAutosaves();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                this.Close();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> Load_Game(<span class="keywordtype">object</span> sender, RoutedEventArgs e)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            LoadGame lg = <span class="keyword">new</span> LoadGame();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            lg.Show();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            this.Close();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> NameBox_TextChanged(<span class="keywordtype">object</span> sender, TextChangedEventArgs e)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            GlobalVariables.SaveName = this.nameBox.Text;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
 <div class="ttc" id="aclass_five_feet_below_game_1_1_game_html"><div class="ttname"><a href="class_five_feet_below_game_1_1_game.html">FiveFeetBelowGame.Game</a></div><div class="ttdoc">Interaction logic for Game.xaml.</div><div class="ttdef"><b>Definition:</b> <a href="_game_8xaml_8cs_source.html#l00024">Game.xaml.cs:25</a></div></div>
+<div class="ttc" id="aclass_five_feet_below_game_1_1_global_variables_html"><div class="ttname"><a href="class_five_feet_below_game_1_1_global_variables.html">FiveFeetBelowGame.GlobalVariables</a></div><div class="ttdoc">Contains global variables for the game.</div><div class="ttdef"><b>Definition:</b> <a href="_global_variables_8cs_source.html#l00017">GlobalVariables.cs:18</a></div></div>
+<div class="ttc" id="aclass_five_feet_below_game_1_1_global_variables_html_a3a97f9d9b1a13143392f46b238d5f3ca"><div class="ttname"><a href="class_five_feet_below_game_1_1_global_variables.html#a3a97f9d9b1a13143392f46b238d5f3ca">FiveFeetBelowGame.GlobalVariables.GameLoad</a></div><div class="ttdeci">static bool GameLoad</div><div class="ttdoc">Gets or sets a value indicating whether we are loading a game or not.</div><div class="ttdef"><b>Definition:</b> <a href="_global_variables_8cs_source.html#l00027">GlobalVariables.cs:27</a></div></div>
 <div class="ttc" id="aclass_five_feet_below_game_1_1_main_window_html"><div class="ttname"><a href="class_five_feet_below_game_1_1_main_window.html">FiveFeetBelowGame.MainWindow</a></div><div class="ttdoc">Interaction logic for MainWindow.xaml.</div><div class="ttdef"><b>Definition:</b> <a href="_main_window_8xaml_8cs_source.html#l00025">MainWindow.xaml.cs:26</a></div></div>
 <div class="ttc" id="aclass_five_feet_below_game_1_1_main_window_html_a9b149cf7cdcd87d3d2000f70f5855832"><div class="ttname"><a href="class_five_feet_below_game_1_1_main_window.html#a9b149cf7cdcd87d3d2000f70f5855832">FiveFeetBelowGame.MainWindow.MainWindow</a></div><div class="ttdeci">MainWindow()</div><div class="ttdoc">Initializes a new instance of the MainWindow class.</div><div class="ttdef"><b>Definition:</b> <a href="_main_window_8xaml_8cs_source.html#l00030">MainWindow.xaml.cs:30</a></div></div>
-<div class="ttc" id="aclass_five_feet_below_game_1_1_main_window_html_ac5eb1d338a97d6a8632f0b88a76535c0"><div class="ttname"><a href="class_five_feet_below_game_1_1_main_window.html#ac5eb1d338a97d6a8632f0b88a76535c0">FiveFeetBelowGame.MainWindow.InitializeComponent</a></div><div class="ttdeci">void InitializeComponent()</div><div class="ttdoc">InitializeComponent</div><div class="ttdef"><b>Definition:</b> <a href="_main_window_8g_8cs_source.html#l00052">MainWindow.g.cs:52</a></div></div>
+<div class="ttc" id="aclass_five_feet_below_game_1_1_main_window_html_ac5eb1d338a97d6a8632f0b88a76535c0"><div class="ttname"><a href="class_five_feet_below_game_1_1_main_window.html#ac5eb1d338a97d6a8632f0b88a76535c0">FiveFeetBelowGame.MainWindow.InitializeComponent</a></div><div class="ttdeci">void InitializeComponent()</div><div class="ttdoc">InitializeComponent</div><div class="ttdef"><b>Definition:</b> <a href="_main_window_8g_8cs_source.html#l00060">MainWindow.g.cs:60</a></div></div>
 <div class="ttc" id="anamespace_five_feet_below_game_html"><div class="ttname"><a href="namespace_five_feet_below_game.html">FiveFeetBelowGame</a></div><div class="ttdef"><b>Definition:</b> <a href="_app_8xaml_8cs_source.html#l00005">App.xaml.cs:6</a></div></div>
 <div class="ttc" id="anamespace_system_1_1_collections_1_1_generic_html"><div class="ttname"><a href="namespace_system_1_1_collections_1_1_generic.html">Generic</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_f4c68756fa2ebb38ceb22798af8d4b38.html">BitbucketProjects</a></li><li class="navelem"><a class="el" href="dir_e94a25a492ec1310d8ac428dc258a8ae.html">oenik_prog4_2021_1_bwj4ao_uqh2aw</a></li><li class="navelem"><a class="el" href="dir_d38b175b8048d6eaa15705b4fa88ec83.html">FiveFeetBelowGame</a></li><li class="navelem"><a class="el" href="dir_103e28771547c60cb0fbf2fa1ef75bad.html">FiveFeetBelowGame</a></li><li class="navelem"><b>MainWindow.xaml.cs</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

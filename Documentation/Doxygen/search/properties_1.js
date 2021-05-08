@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['bgbrush_252',['Bgbrush',['../class_five_feet_below_game_1_1_u_i_1_1_renderer.html#a0d824d94ac3fd45a00827da8835f0b8c',1,'FiveFeetBelowGame::UI::Renderer']]],
-  ['blocknum_253',['BlockNum',['../class_five_feet_below_game_1_1_v_m_1_1_game_model.html#afde53e9629ceaadcbc1aa4f59f708661',1,'FiveFeetBelowGame::VM::GameModel']]],
-  ['blocks_254',['Blocks',['../class_five_feet_below_game_1_1_v_m_1_1_game_model.html#ae8b18f04e93bc3c1dd37b41c6f289bcc',1,'FiveFeetBelowGame::VM::GameModel']]],
-  ['breakable_255',['Breakable',['../class_five_feet_below_game_1_1_one_block.html#ad2f93c9110b07a420493891b83d82864',1,'FiveFeetBelowGame::OneBlock']]]
+  ['balance_271',['Balance',['../class_model_1_1_highscore.html#a31d838ee3ce27cd80a5f0344fe5fcd56',1,'Model::Highscore']]],
+  ['bgbrush_272',['Bgbrush',['../class_five_feet_below_game_1_1_renderer.html#a1b0f16ceb497d4604fd7137ab498e53f',1,'FiveFeetBelowGame::Renderer']]],
+  ['blocknum_273',['BlockNum',['../class_five_feet_below_game_1_1_game_model.html#a6a2da890fa9b7f6bc376cb54c1f232b6',1,'FiveFeetBelowGame::GameModel']]],
+  ['blocks_274',['Blocks',['../class_five_feet_below_game_1_1_game_model.html#acfb72d07136095705228b09a3865eba4',1,'FiveFeetBelowGame::GameModel']]],
+  ['breakable_275',['Breakable',['../class_five_feet_below_game_1_1_one_block.html#ad2f93c9110b07a420493891b83d82864',1,'FiveFeetBelowGame::OneBlock']]]
 ];

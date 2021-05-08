@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['loadgame_213',['LoadGame',['../class_five_feet_below_game_1_1_b_l_1_1_game_logic.html#a6b8886f09cb560f92ff7f46e0d2b9d2d',1,'FiveFeetBelowGame.BL.GameLogic.LoadGame()'],['../class_five_feet_below_game_1_1_json_handler.html#a91213a973aa7491c942afbed92c847cb',1,'FiveFeetBelowGame.JsonHandler.LoadGame(string saveName)']]],
-  ['loadmap_214',['LoadMap',['../class_five_feet_below_game_1_1_json_handler.html#aab2479336f74050020fb277893a1a562',1,'FiveFeetBelowGame::JsonHandler']]]
+  ['loadgame_231',['LoadGame',['../class_five_feet_below_game_1_1_json_handler.html#a881ff7835358f7105c5f9fe84485dee0',1,'FiveFeetBelowGame.JsonHandler.LoadGame()'],['../class_five_feet_below_game_1_1_game_logic.html#a23cba15fa46c01073cdd450b08dfd79b',1,'FiveFeetBelowGame.GameLogic.LoadGame()'],['../class_five_feet_below_game_1_1_load_game.html#ae622f886b12bf57cc9acf1d8a1e36880',1,'FiveFeetBelowGame.LoadGame.LoadGame()']]],
+  ['loadmap_232',['LoadMap',['../class_five_feet_below_game_1_1_json_handler.html#aab2479336f74050020fb277893a1a562',1,'FiveFeetBelowGame::JsonHandler']]]
 ];

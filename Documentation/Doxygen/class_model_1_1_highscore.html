@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,7 +27,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Five Feet Below Game
    </div>
-   <div id="projectbrief">A game for programming 4 project work.</div>
+   <div id="projectbrief">Prog4 project work.</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_model_1_1_highscore.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespace_model.html">Model</a></li><li class="navelem"><a class="el" href="class_model_1_1_highscore.html">Highscore</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -80,9 +96,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae1e3c04442c44ee10703ba5a4ddaa7a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_highscore.html#ae1e3c04442c44ee10703ba5a4ddaa7a2">Highscore</a> (string playername, int deepestpoint, int pickaxelvl)</td></tr>
-<tr class="memdesc:ae1e3c04442c44ee10703ba5a4ddaa7a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="class_model_1_1_highscore.html" title="The highscores of the game.">Highscore</a> class.  <a href="class_model_1_1_highscore.html#ae1e3c04442c44ee10703ba5a4ddaa7a2">More...</a><br /></td></tr>
-<tr class="separator:ae1e3c04442c44ee10703ba5a4ddaa7a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f7fb0b978ec4e6e41c5f1707e7bcfb0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_highscore.html#a8f7fb0b978ec4e6e41c5f1707e7bcfb0">Highscore</a> (string playername, int deepestpoint, int pickaxelvl, int balance)</td></tr>
+<tr class="memdesc:a8f7fb0b978ec4e6e41c5f1707e7bcfb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="class_model_1_1_highscore.html" title="The highscores of the game.">Highscore</a> class.  <a href="class_model_1_1_highscore.html#a8f7fb0b978ec4e6e41c5f1707e7bcfb0">More...</a><br /></td></tr>
+<tr class="separator:a8f7fb0b978ec4e6e41c5f1707e7bcfb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11ac51f54951604bae655ba385cd8bff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_highscore.html#a11ac51f54951604bae655ba385cd8bff">Highscore</a> ()</td></tr>
 <tr class="memdesc:a11ac51f54951604bae655ba385cd8bff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="class_model_1_1_highscore.html" title="The highscores of the game.">Highscore</a> class.  <a href="class_model_1_1_highscore.html#a11ac51f54951604bae655ba385cd8bff">More...</a><br /></td></tr>
 <tr class="separator:a11ac51f54951604bae655ba385cd8bff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -101,14 +117,17 @@ Properties</h2></td></tr>
 <tr class="memitem:a042b49449773163ede6e3b81d6ec271f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_highscore.html#a042b49449773163ede6e3b81d6ec271f">PickaxeLvl</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a042b49449773163ede6e3b81d6ec271f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the level of the player's pickaxe.  <a href="class_model_1_1_highscore.html#a042b49449773163ede6e3b81d6ec271f">More...</a><br /></td></tr>
 <tr class="separator:a042b49449773163ede6e3b81d6ec271f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31d838ee3ce27cd80a5f0344fe5fcd56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_highscore.html#a31d838ee3ce27cd80a5f0344fe5fcd56">Balance</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a31d838ee3ce27cd80a5f0344fe5fcd56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the highscore balance.  <a href="class_model_1_1_highscore.html#a31d838ee3ce27cd80a5f0344fe5fcd56">More...</a><br /></td></tr>
+<tr class="separator:a31d838ee3ce27cd80a5f0344fe5fcd56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The highscores of the game. </p>
 
-<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00016">16</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00017">17</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ae1e3c04442c44ee10703ba5a4ddaa7a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1e3c04442c44ee10703ba5a4ddaa7a2">&#9670;&nbsp;</a></span>Highscore() <span class="overload">[1/2]</span></h2>
+<a id="a8f7fb0b978ec4e6e41c5f1707e7bcfb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f7fb0b978ec4e6e41c5f1707e7bcfb0">&#9670;&nbsp;</a></span>Highscore() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,7 +148,13 @@ Properties</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pickaxelvl</em>&#160;</td>
+          <td class="paramname"><em>pickaxelvl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>balance</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -145,11 +170,12 @@ Properties</h2></td></tr>
     <tr><td class="paramname">playername</td><td>The name of the player. </td></tr>
     <tr><td class="paramname">deepestpoint</td><td>The deepest point the player has reached. </td></tr>
     <tr><td class="paramname">pickaxelvl</td><td>The level of the player's pickaxe. </td></tr>
+    <tr><td class="paramname">balance</td><td>The level of the player's balance. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00024">24</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00026">26</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
 
 </div>
 </div>
@@ -170,11 +196,37 @@ Properties</h2></td></tr>
 
 <p>Initializes a new instance of the <a class="el" href="class_model_1_1_highscore.html" title="The highscores of the game.">Highscore</a> class. </p>
 
-<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00035">35</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00038">38</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
+<a id="a31d838ee3ce27cd80a5f0344fe5fcd56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31d838ee3ce27cd80a5f0344fe5fcd56">&#9670;&nbsp;</a></span>Balance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Model.Highscore.Balance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the highscore balance. </p>
+
+<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00066">66</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
+
+</div>
+</div>
 <a id="a15ad7579d1feaa1f698d74dfa35bad58"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15ad7579d1feaa1f698d74dfa35bad58">&#9670;&nbsp;</a></span>DeepestPoint</h2>
 
@@ -197,7 +249,7 @@ Properties</h2></td></tr>
 
 <p>Gets or sets the deepest point the player has reached. </p>
 
-<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00052">52</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00056">56</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
 
 </div>
 </div>
@@ -223,7 +275,7 @@ Properties</h2></td></tr>
 
 <p>Gets or sets the id of the highscore save. </p>
 
-<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00042">42</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00046">46</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
 
 </div>
 </div>
@@ -249,7 +301,7 @@ Properties</h2></td></tr>
 
 <p>Gets or sets the level of the player's pickaxe. </p>
 
-<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00057">57</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00061">61</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
 
 </div>
 </div>
@@ -275,7 +327,7 @@ Properties</h2></td></tr>
 
 <p>Gets or sets the name of the player. </p>
 
-<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00047">47</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_highscore_8cs_source.html#l00051">51</a> of file <a class="el" href="_highscore_8cs_source.html">Highscore.cs</a>.</p>
 
 </div>
 </div>
@@ -283,9 +335,13 @@ Properties</h2></td></tr>
 <li>D:/BitbucketProjects/oenik_prog4_2021_1_bwj4ao_uqh2aw/FiveFeetBelowGame/Model/<a class="el" href="_highscore_8cs_source.html">Highscore.cs</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_model.html">Model</a></li><li class="navelem"><a class="el" href="class_model_1_1_highscore.html">Highscore</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>
