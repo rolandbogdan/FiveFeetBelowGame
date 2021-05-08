@@ -175,17 +175,21 @@ namespace FiveFeetBelowGame.UI
 
                               break;
                         case Key.Escape:
-                              if (MessageBox.Show("Save and exit", "Cancel", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                              if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                               {
                                     MainWindow mw = new MainWindow();
                                     Window win = Window.GetWindow(this);
-                                    if (string.IsNullOrEmpty(GlobalVariables.SaveName))
+
+                                    if (MessageBox.Show("Would you like to save?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                                     {
-                                          this.logic.SaveGame($"{GlobalVariables.SaveName}.json");
-                                    }
-                                    else
-                                    {
-                                          this.logic.AutoSave();
+                                          if (!string.IsNullOrEmpty(GlobalVariables.SaveName))
+                                          {
+                                                this.logic.SaveGame($"..\\..\\..\\Levels\\{GlobalVariables.SaveName}.json");
+                                          }
+                                          else
+                                          {
+                                                this.logic.AutoSave();
+                                          }
                                     }
 
                                     win.Close();
