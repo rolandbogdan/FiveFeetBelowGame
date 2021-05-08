@@ -79,6 +79,7 @@ namespace FiveFeetBelowGame.BL
             {
                 outp = this.jh.GenerateNewSection();
                 this.model.SectionNumber++;
+                this.IncreasePickaxeLevel();
                 this.UpdatePlayerPosOnly(this.model.PlayerPos.X, 1);
                 string date = DateTime.Now.ToString();
                 date = date.Replace(':', '-');
@@ -216,6 +217,21 @@ namespace FiveFeetBelowGame.BL
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Calculates the deepest point the player has reached.
+        /// </summary>
+        public void GetDeepestPoint()
+        {
+            if (this.model.Hs.DeepestPoint == 0)
+            {
+                this.model.Hs.DeepestPoint = this.model.PlayerDepth;
+            }
+            else
+            {
+                this.model.Hs.DeepestPoint = Math.Max(this.model.Hs.DeepestPoint, this.model.PlayerDepth);
+            }
         }
 
         /// <summary>
