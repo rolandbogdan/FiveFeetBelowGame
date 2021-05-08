@@ -4,6 +4,7 @@
 
 namespace FiveFeetBelowGame.VM
 {
+    using Model;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -29,7 +30,13 @@ namespace FiveFeetBelowGame.VM
             this.PlayerHealth = 3;
             this.PlayerMaxHealth = 3;
             this.PlayerPickaxe = 1;
+            this.Hs = new Highscore(this.SaveName, 0, this.PlayerPickaxe);
         }
+
+        /// <summary>
+        /// Name of this game instance.
+        /// </summary>
+        public string SaveName { get; set; }
 
         /// <summary>
         /// Gets or sets Rock prop represent the rocks of the map.
@@ -112,5 +119,10 @@ namespace FiveFeetBelowGame.VM
                 return (this.SectionNumber * this.BlockNum) + (int)this.PlayerPos.Y;
             }
         }
+
+        /// <summary>
+        /// Gets or sets the highscore of this save.
+        /// </summary>
+        public Highscore Hs { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace FiveFeetBelowGame
     using System.Text;
     using System.Threading.Tasks;
     using FiveFeetBelowGame.VM;
+    using Model;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -158,6 +159,15 @@ namespace FiveFeetBelowGame
             }
 
             return arr;
+        }
+
+        /// <summary>
+        /// Gets the highscores from the saves folder.
+        /// </summary>
+        /// <returns>A list of the highscores.</returns>
+        public List<Highscore> GetHighscores()
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
