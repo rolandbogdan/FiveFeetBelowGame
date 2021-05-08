@@ -196,6 +196,18 @@ namespace FiveFeetBelowGame
             return hRepo;
         }
 
+        public void DeleteAutosaves()
+        {
+            string[] filenames = Directory.GetFiles($"..\\..\\..\\Levels\\");
+            foreach (string fname in filenames)
+            {
+                if (fname.StartsWith("..\\..\\..\\Levels\\autosave"))
+                {
+                    File.Delete(fname);
+                }
+            }
+        }
+
         /// <summary>
         /// Generates the first section of the map for the json converter.
         /// </summary>
