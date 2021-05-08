@@ -25,17 +25,16 @@ namespace FiveFeetBelowGame.VM
         {
             this.GameWidth = w;
             this.GameHeight = h;
+            this.SectionNumber = 0;
+            this.PlayerHealth = 3;
+            this.PlayerMaxHealth = 3;
+            this.PlayerPickaxe = 1;
         }
 
         /// <summary>
         /// Gets or sets Rock prop represent the rocks of the map.
         /// </summary>
         public IGameObject[,] Blocks { get; set; }
-
-        /// <summary>
-        /// Gets or sets the part of the map thats being rendered.
-        /// </summary>
-        public IGameObject[,] RenderedBlocks { get; set; }
 
         /// <summary>
         /// Gets or sets Player prop represent our player position.
@@ -86,5 +85,32 @@ namespace FiveFeetBelowGame.VM
         /// Gets or sets TileSize represent the tile size in pixels.
         /// </summary>
         public double TileSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of the section the player is on.
+        /// </summary>
+        public int SectionNumber { get; set; }
+
+        /// <summary>
+        /// Gets tumber of vertical blocks.
+        /// </summary>
+        public int BlockNum
+        {
+            get
+            {
+                return (int)(this.GameHeight / this.TileSize) + 1;
+            }
+        }
+
+        /// <summary>
+        /// Gets the depth the player is at.
+        /// </summary>
+        public int PlayerDepth
+        {
+            get
+            {
+                return (this.SectionNumber * this.BlockNum) + (int)this.PlayerPos.Y;
+            }
+        }
     }
 }

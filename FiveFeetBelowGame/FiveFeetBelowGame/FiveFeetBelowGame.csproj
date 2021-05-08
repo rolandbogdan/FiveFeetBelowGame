@@ -31,11 +31,6 @@
     <None Remove="Images\tile.png" />
     <None Remove="Images\tileset.png" />
     <None Remove="Images\wall.bmp" />
-    <None Remove="Levels\L00.lvl" />
-    <None Remove="Levels\L01.lvl" />
-    <None Remove="Levels\L02.lvl" />
-    <None Remove="Levels\L03.lvl" />
-    <None Remove="Levels\L04.lvl" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,7 +51,6 @@
     <EmbeddedResource Include="Images\tile.png" />
     <EmbeddedResource Include="Images\tileset.png" />
     <EmbeddedResource Include="Images\wall.bmp" />
-    <EmbeddedResource Include="Levels\L00.lvl" />
   </ItemGroup>
 
   <ItemGroup>
@@ -78,6 +72,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Levels\" />
   </ItemGroup>
 
 </Project>

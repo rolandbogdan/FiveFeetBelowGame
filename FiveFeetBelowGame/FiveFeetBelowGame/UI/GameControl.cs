@@ -51,8 +51,19 @@ namespace FiveFeetBelowGame.UI
                   this.Loaded += this.GameControl_Loaded;
             }
 
+<<<<<<< HEAD
             /// <inheritdoc/>
             protected override void OnRender(DrawingContext drawingContext)
+=======
+        private void GameControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.model = new GameModel(this.ActualWidth, this.ActualHeight);
+            this.logic = new GameLogic(this.model, "testfile.json"); // !
+            this.renderer = new Renderer(this.model);
+
+            Window win = Window.GetWindow(this);
+            if (win != null)
+>>>>>>> db137d6b33b605bc82c4adf233147b8a3ba23743
             {
                   if (this.renderer != null)
                   {
@@ -60,6 +71,7 @@ namespace FiveFeetBelowGame.UI
                   }
             }
 
+<<<<<<< HEAD
             private void GameControl_Loaded(object sender, RoutedEventArgs e)
             {
                   this.model = new GameModel(this.ActualWidth, this.ActualHeight);
@@ -79,8 +91,44 @@ namespace FiveFeetBelowGame.UI
                   }
 
                   this.InvalidateVisual();
+=======
+            this.InvalidateVisual();
+        }
+
+        private void GameControl_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Point mousePos = e.GetPosition(this);
+            Point tilePos = this.logic.GetTilePos(mousePos);
+
+            int tpx = (int)tilePos.X;
+            int tpy = (int)tilePos.Y;
+
+            if (tpx < this.model.Blocks.GetLength(0) &&
+                tpy < this.model.Blocks.GetLength(1) &&
+                this.model.Blocks[tpx, tpy] != null &&
+                this.model.Player != null &&
+                this.logic.IsNeighboring(tpx, tpy))
+            {
+                this.model.Blocks[tpx, tpy].DamageTaken(
+                this.model.Player.InflictDamage() + 2,
+                this.model.Player);
+                if (this.model.Blocks[tpx, tpy].HealthPoints <= 0)
+                {
+                    if (this.model.Blocks[tpx, tpy] as OneBlock != null)
+                    {
+                        this.logic.PlayerGainedMoney((this.model.Blocks[tpx, tpy] as OneBlock).Value);
+                    }
+                    else if (this.model.Blocks[tpx, tpy] as OneMonster != null)
+                    {
+                        this.logic.PlayerGainedMoney((this.model.Blocks[tpx, tpy] as OneMonster).Value);
+                    }
+
+                    this.model.Blocks[tpx, tpy] = new OneBlock(tpx, tpy, BlockType.Air);
+                }
+>>>>>>> db137d6b33b605bc82c4adf233147b8a3ba23743
             }
 
+<<<<<<< HEAD
             private void GameControl_MouseDown(object sender, MouseButtonEventArgs e)
             {
                   Point mousePos = e.GetPosition(this);
@@ -113,6 +161,18 @@ namespace FiveFeetBelowGame.UI
                         }
                   }
             }
+=======
+        private void TickTimer_Tick(object sender, EventArgs e)
+        {
+            this.model.Blocks = this.logic.GetRenderedBlocks();
+            this.logic.Gravity();
+            this.InvalidateVisual();
+        }
+
+        private void Win_KeyDown(object sender, KeyEventArgs e)
+        {
+            bool isPaused = false;
+>>>>>>> db137d6b33b605bc82c4adf233147b8a3ba23743
 
             private void TickTimer_Tick(object sender, EventArgs e)
             {

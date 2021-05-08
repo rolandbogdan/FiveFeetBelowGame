@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tests</name>
+    </assembly>
+    <members>
+        <member name="T:Tests.Test">
+            <summary>
+            The unit testing class.
+            </summary>
+        </member>
+        <member name="M:Tests.Test.Init">
+            <summary>
+            Initializes model and logic for this class.
+            </summary>
+        </member>
+        <member name="M:Tests.Test.TestInsertOne">
+            <summary>
+            This function tests inserting a single object into the repo.
+            </summary>
+        </member>
+        <member name="M:Tests.Test.TestDeleteOne">
+            <summary>
+            This function tests deleting a single object from the repo.
+            </summary>
+        </member>
+        <member name="M:Tests.Test.TestGetOneHighscore">
+            <summary>
+            This function tests reading a single object from the repo.
+            </summary>
+        </member>
+        <member name="M:Tests.Test.TestGetAllHighscore">
+            <summary>
+            This function tests reading all objects from the repo.
+            </summary>
+        </member>
+        <member name="M:Tests.Test.TestOrderedHighscore">
+            <summary>
+            This function tests the ordering of objects in the repo.
+            </summary>
+        </member>
+        <member name="M:Tests.Test.TestPlayerMoneyGain">
+            <summary>
+            This function tests if player gaining money function is working.
+            </summary>
+        </member>
+        <member name="M:Tests.Test.TestPickaxeLvlup">
+            <summary>
+            This function tests if player's pickaxe levelup function is working.
+            </summary>
+        </member>
+        <member name="M:Tests.Test.HealPlayerTest">
+            <summary>
+            This function tests if player gaining health function is working.
+            </summary>
+        </member>
+        <member name="M:Tests.Test.PlayerLostHealthTest">
+            <summary>
+            This function tests if player losing health function is working.
+            </summary>
+        </member>
+        <member name="M:Tests.Test.IsNeighboringTest">
+            <summary>
+            This function tests if neighboring block checking is working.
+            </summary>
+        </member>
+    </members>
+</doc>
