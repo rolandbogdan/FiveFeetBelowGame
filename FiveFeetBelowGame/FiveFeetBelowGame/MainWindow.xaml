@@ -55,7 +55,8 @@
                      VerticalAlignment="Center"
                      Width="500"
                      FontSize="48"
-                     TextAlignment="Center" TextChanged="nameBox_TextChanged"/>
+                     TextAlignment="Center"
+                     TextChanged="NameBox_TextChanged"/>
 
             <Border Grid.Column="0"
                     Grid.Row="2"

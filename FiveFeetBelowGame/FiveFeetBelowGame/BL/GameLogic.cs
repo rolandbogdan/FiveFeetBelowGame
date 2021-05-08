@@ -37,6 +37,9 @@ namespace FiveFeetBelowGame.BL
             this.InitModel(fname);
         }
 
+        /// <summary>
+        /// Gets the gamemodel of the gamelogic.
+        /// </summary>
         public GameModel Model
         {
             get { return this.model; }

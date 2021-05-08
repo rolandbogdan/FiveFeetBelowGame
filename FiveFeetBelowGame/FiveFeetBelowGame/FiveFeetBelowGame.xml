@@ -39,6 +39,11 @@
             <param name="model">GameModel type parameter.</param>
             <param name="fname">String type parameter.</param>
         </member>
+        <member name="P:FiveFeetBelowGame.BL.GameLogic.Model">
+            <summary>
+            Gets the gamemodel of the gamelogic.
+            </summary>
+        </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.SaveGame(System.String)">
             <summary>
             Saves the game.
@@ -541,6 +546,11 @@
             Gets or sets the name of the save.
             </summary>
         </member>
+        <member name="P:FiveFeetBelowGame.GlobalVariables.HsRepo">
+            <summary>
+            Gets or sets the highscore repository.
+            </summary>
+        </member>
         <member name="T:FiveFeetBelowGame.HighscoresWindow">
             <summary>
             Interaction logic for HighscoresWindow.xaml.
@@ -552,6 +562,11 @@
         <member name="M:FiveFeetBelowGame.HighscoresWindow.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.HighscoresWindow"/> class.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.HighscoresWindow.HRepoList">
+            <summary>
+            Gets the highscore repository.
             </summary>
         </member>
         <member name="M:FiveFeetBelowGame.HighscoresWindow.InitializeComponent">
@@ -798,6 +813,36 @@
         <member name="P:FiveFeetBelowGame.VM.GameModel.Hs">
             <summary>
             Gets or sets the highscore of this save.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

@@ -64,7 +64,7 @@ namespace FiveFeetBelowGame
             this.Close();
         }
 
-        private void nameBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             GlobalVariables.SaveName = this.nameBox.Text;
         }
