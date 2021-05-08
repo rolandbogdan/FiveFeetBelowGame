@@ -13,6 +13,7 @@ namespace FiveFeetBelowGame
     using FiveFeetBelowGame.VM;
     using Model;
     using Newtonsoft.Json;
+    using Repository;
 
     /// <summary>
     /// This class is responsible for reading and writing json files.
@@ -177,9 +178,34 @@ namespace FiveFeetBelowGame
         /// Gets the highscores from the saves folder.
         /// </summary>
         /// <returns>A list of the highscores.</returns>
-        public IEnumerable<Highscore> GetHighscores()
+        public HighscoreRepo GetHighscores()
         {
-            throw new NotImplementedException();
+            HighscoreRepo hRepo = new HighscoreRepo();
+            string[] filenames = Directory.GetFiles($"..\\..\\..\\Levels\\");
+            foreach (string fname in filenames)
+            {
+                if (fname.EndsWith(".json") && !fname.StartsWith("..\\..\\..\\Levels\\autosave"))
+                {
+                    GameModel temp = this.LoadGame(fname);
+                    temp.Hs.PlayerName = fname.Remove(0, 16);
+                    temp.Hs.PlayerName = temp.Hs.PlayerName.Remove(temp.Hs.PlayerName.Length - 5, 5);
+                    hRepo.Insert(new Highscore(temp.Hs.PlayerName, temp.Hs.DeepestPoint, temp.Hs.PickaxeLvl, temp.Hs.Balance));
+                }
+            }
+
+            return hRepo;
+        }
+
+        public void DeleteAutosaves()
+        {
+            string[] filenames = Directory.GetFiles($"..\\..\\..\\Levels\\");
+            foreach (string fname in filenames)
+            {
+                if (fname.StartsWith("..\\..\\..\\Levels\\autosave"))
+                {
+                    File.Delete(fname);
+                }
+            }
         }
 
         /// <summary>

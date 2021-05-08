@@ -180,7 +180,17 @@ namespace FiveFeetBelowGame.UI
                         MainWindow mw = new MainWindow();
                         Window win = Window.GetWindow(this);
 
-                        this.logic.SaveGame($"{DateTime.Now.ToString()}.json");
+                        if (MessageBox.Show("Would you like to save?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                        {
+                            if (!string.IsNullOrEmpty(GlobalVariables.SaveName))
+                            {
+                                this.logic.SaveGame($"..\\..\\..\\Levels\\{GlobalVariables.SaveName}.json");
+                            }
+                            else
+                            {
+                                this.logic.AutoSave();
+                            }
+                        }
 
                         win.Close();
                         mw.Show();

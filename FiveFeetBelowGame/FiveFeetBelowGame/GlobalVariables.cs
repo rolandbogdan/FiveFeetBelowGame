@@ -9,6 +9,7 @@ namespace FiveFeetBelowGame
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Repository;
 
     /// <summary>
     /// Contains global variables for the game.
@@ -29,5 +30,16 @@ namespace FiveFeetBelowGame
         /// Gets or sets a value indicating whether we can autosave or not.
         /// </summary>
         public static bool CanAutosave { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the save.
+        /// </summary>
+        public static string SaveName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the highscore repository.
+        /// </summary>
+        public static HighscoreRepo HsRepo { get; set; }
+
     }
 }

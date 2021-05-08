@@ -52,6 +52,8 @@ namespace FiveFeetBelowGame
         {
             if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
+                JsonHandler jh = new JsonHandler();
+                jh.DeleteAutosaves();
                 this.Close();
             }
         }
@@ -62,6 +64,11 @@ namespace FiveFeetBelowGame
 
             lg.Show();
             this.Close();
+        }
+
+        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            GlobalVariables.SaveName = this.nameBox.Text;
         }
     }
 }

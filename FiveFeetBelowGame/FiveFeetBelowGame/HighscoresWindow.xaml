@@ -33,7 +33,8 @@
                    Source="pack://application:,,,/Images/logo-menu.png"
                    Grid.ColumnSpan="2" />
 
-            <ListBox HorizontalAlignment="Left"
+            <ListBox x:Name="listBox"
+                     HorizontalAlignment="Left"
                      Height="258"
                      Margin="50,36,0,0"
                      Grid.Row="1"

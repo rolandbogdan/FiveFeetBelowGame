@@ -33,6 +33,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
 
@@ -44,8 +45,21 @@
                    Source="pack://application:,,,/Images/logo-menu.png"
                    Grid.ColumnSpan="2" />
 
+            <TextBox x:Name="nameBox"
+                     Grid.ColumnSpan="2"
+                     HorizontalAlignment="Left"
+                     Height="68"
+                     Margin="50,0,0,0"
+                     Grid.Row="1"
+                     TextWrapping="Wrap"
+                     VerticalAlignment="Center"
+                     Width="500"
+                     FontSize="48"
+                     TextAlignment="Center"
+                     TextChanged="NameBox_TextChanged"/>
+
             <Border Grid.Column="0"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Width="500"
                     Height="80"
                     RenderTransformOrigin="0.844,0.439"
@@ -61,7 +75,7 @@
                 <Border BorderThickness="0,0,1,1" BorderBrush="#565656">
                     <Border BorderThickness="1,1,0,0" BorderBrush="#aaaaaa">
                         <Button Click="New_Game"
-                        Content="Singleplayer"
+                        Content="New Game"
                         Cursor="Hand"
                         FontSize="48"
                         FontWeight="ExtraLight"
@@ -88,7 +102,7 @@
 
 
             <Border Grid.Column="0"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Width="500"
                     Height="80"
                     RenderTransformOrigin="0.844,0.439"
@@ -133,7 +147,7 @@
 
 
             <Border Grid.Column="0"
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Width="230"
                     Height="80"
                     RenderTransformOrigin="0.844,0.439"
@@ -174,7 +188,7 @@
 
 
             <Border Grid.Column="1"
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Width="230"
                     Height="80"
                     RenderTransformOrigin="0.844,0.439"
@@ -211,7 +225,6 @@
                     </Border>
                 </Border>
             </Border>
-
         </Grid>
     </Border>
 </Window>
