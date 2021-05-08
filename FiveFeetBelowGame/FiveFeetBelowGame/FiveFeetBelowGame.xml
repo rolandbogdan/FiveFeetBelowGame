@@ -142,7 +142,7 @@
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor(System.String,FiveFeetBelowGame.VM.GameModel)">
+        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor(System.String,FiveFeetBelowGame.VM.GameModel@)">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
@@ -510,6 +510,21 @@
         </member>
         <member name="M:FiveFeetBelowGame.OnePlayer.IsDestroyed(FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
+        </member>
+        <member name="T:FiveFeetBelowGame.GlobalVariables">
+            <summary>
+            Contains global variables for the game.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GlobalVariables.GamefilePath">
+            <summary>
+            Gets or sets the game file path.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GlobalVariables.GameLoad">
+            <summary>
+            Gets or sets a value indicating whether we are loading a game or not.
+            </summary>
         </member>
         <member name="T:FiveFeetBelowGame.HighscoresWindow">
             <summary>

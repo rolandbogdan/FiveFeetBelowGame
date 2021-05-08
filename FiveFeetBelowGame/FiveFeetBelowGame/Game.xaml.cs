@@ -34,6 +34,7 @@ namespace FiveFeetBelowGame
         public Game(string loadFilePath) : this()
         {
             this.LoadFile = loadFilePath;
+            GlobalVariables.GamefilePath = this.LoadFile;
         }
 
         public string LoadFile { get; set; }
