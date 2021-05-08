@@ -10,7 +10,6 @@ namespace FiveFeetBelowGame
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using FiveFeetBelowGame.VM;
     using Model;
     using Newtonsoft.Json;
     using Repository;

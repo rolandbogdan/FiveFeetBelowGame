@@ -13,8 +13,6 @@ namespace FiveFeetBelowGame.UI
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Threading;
-    using FiveFeetBelowGame.BL;
-    using FiveFeetBelowGame.VM;
 
     /// <summary>
     /// GameControl class for the game.

@@ -11,7 +11,6 @@ namespace FiveFeetBelowGame
     using System.Linq;
     using System.Threading.Tasks;
     using System.Windows;
-    using FiveFeetBelowGame.BL;
 
     /// <summary>
     /// Interaction logic for App.xaml.

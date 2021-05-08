@@ -8,8 +8,7 @@ namespace Tests
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using FiveFeetBelowGame.BL;
-    using FiveFeetBelowGame.VM;
+    using FiveFeetBelowGame;
     using Logic;
     using Model;
     using Moq;

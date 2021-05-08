@@ -30,19 +30,13 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Images\back.png" />
-    <EmbeddedResource Include="Images\exit.bmp" />
-    <EmbeddedResource Include="Images\gem-1.png" />
     <EmbeddedResource Include="Images\logo-menu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\middle.png" />
     <EmbeddedResource Include="Images\opossum-1.png" />
     <EmbeddedResource Include="Images\player-idle-1.png" />
-    <EmbeddedResource Include="Images\player.bmp" />
-    <EmbeddedResource Include="Images\props.png" />
     <EmbeddedResource Include="Images\tile.png" />
-    <EmbeddedResource Include="Images\tileset.png" />
-    <EmbeddedResource Include="Images\wall.bmp" />
   </ItemGroup>
 
   <ItemGroup>

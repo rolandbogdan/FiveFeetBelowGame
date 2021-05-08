@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace FiveFeetBelowGame.BL
+namespace FiveFeetBelowGame
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace FiveFeetBelowGame.BL
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
-    using FiveFeetBelowGame.VM;
+    using FiveFeetBelowGame;
 
     /// <summary>
     /// GameLogic class for the logic of our game.

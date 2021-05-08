@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace FiveFeetBelowGame.UI
+namespace FiveFeetBelowGame
 {
     using System;
     using System.Collections.Generic;
@@ -14,7 +14,6 @@ namespace FiveFeetBelowGame.UI
     using System.Windows;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
-    using FiveFeetBelowGame.VM;
 
     /// <summary>
     /// This class is responsible for rendering the game.

@@ -46,7 +46,7 @@ namespace FiveFeetBelowGame
                 this.listBox.Items.Add("Save name\t Money\t\t Deepest point");
                 foreach (var item in this.HRepoList)
                 {
-                    this.listBox.Items.Add($"{item.PlayerName}\t\t {item.Balance}\t\t {item.DeepestPoint}");
+                    this.listBox.Items.Add($"{item.PlayerName}\t\t {item.Balance}\t\t {(item.DeepestPoint - 10) * 5} ft.");
                 }
             }
         }
