@@ -175,7 +175,7 @@ namespace FiveFeetBelowGame.UI
 
                               break;
                         case Key.Escape:
-                              if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                              if (MessageBox.Show("Save and exit", "Cancel", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
                               {
                                     MainWindow mw = new MainWindow();
                                     Window win = Window.GetWindow(this);
