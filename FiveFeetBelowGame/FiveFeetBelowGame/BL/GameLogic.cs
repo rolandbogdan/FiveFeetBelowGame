@@ -226,7 +226,7 @@ namespace FiveFeetBelowGame.BL
         /// <summary>
         /// Calculates the deepest point the player has reached.
         /// </summary>
-        public void GetDeepestPoint()
+        public void CheckIfHighscore()
         {
             if (this.model.Hs.DeepestPoint == 0)
             {
@@ -236,6 +236,9 @@ namespace FiveFeetBelowGame.BL
             {
                 this.model.Hs.DeepestPoint = Math.Max(this.model.Hs.DeepestPoint, this.model.PlayerDepth);
             }
+
+            this.model.Hs.PickaxeLvl = Math.Max(this.model.Hs.PickaxeLvl, this.model.PlayerPickaxe);
+            this.model.Hs.Balance = Math.Max(this.model.Hs.Balance, this.model.PlayerBalance);
         }
 
         /// <summary>

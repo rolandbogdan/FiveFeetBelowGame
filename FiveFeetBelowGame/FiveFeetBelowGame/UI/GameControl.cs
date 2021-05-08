@@ -116,7 +116,7 @@ namespace FiveFeetBelowGame.UI
         {
             this.model.Blocks = this.logic.GetRenderedBlocks();
             this.logic.Gravity();
-            this.logic.GetDeepestPoint();
+            this.logic.CheckIfHighscore();
             this.InvalidateVisual();
         }
 
