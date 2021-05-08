@@ -13,8 +13,6 @@ namespace FiveFeetBelowGame.UI
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Threading;
-    using FiveFeetBelowGame.BL;
-    using FiveFeetBelowGame.VM;
 
     /// <summary>
     /// GameControl class for the game.
@@ -61,9 +59,23 @@ namespace FiveFeetBelowGame.UI
         private void GameControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.model = new GameModel(this.ActualWidth, this.ActualHeight);
-            this.logic = new GameLogic(this.model, "testfile.json"); // !
-            this.renderer = new Renderer(this.model);
 
+            if (string.IsNullOrEmpty(GlobalVariables.GamefilePath))
+            {
+                GlobalVariables.GameLoad = false;
+                this.logic = new GameLogic(this.model, "testfile.json");
+            }
+            else
+            {
+                GlobalVariables.GameLoad = true;
+                this.logic = new GameLogic(this.model, GlobalVariables.GamefilePath);
+                GlobalVariables.GamefilePath = string.Empty;
+            }
+
+            this.model = this.logic.Model;
+            this.model.GameHeight = this.ActualHeight;
+            this.model.GameWidth = this.ActualWidth;
+            this.renderer = new Renderer(this.model);
             Window win = Window.GetWindow(this);
             if (win != null)
             {
@@ -94,7 +106,7 @@ namespace FiveFeetBelowGame.UI
                 this.logic.IsNeighboring(tpx, tpy))
             {
                 this.model.Blocks[tpx, tpy].DamageTaken(
-                this.model.Player.InflictDamage() + 2,
+                this.model.Player.InflictDamage(),
                 this.model.Player);
                 if (this.model.Blocks[tpx, tpy].HealthPoints <= 0)
                 {
@@ -116,6 +128,13 @@ namespace FiveFeetBelowGame.UI
         {
             this.model.Blocks = this.logic.GetRenderedBlocks();
             this.logic.Gravity();
+            this.logic.CheckIfHighscore();
+            if (GlobalVariables.CanAutosave)
+            {
+                this.logic.AutoSave();
+                GlobalVariables.CanAutosave = false;
+            }
+
             this.InvalidateVisual();
         }
 
@@ -157,6 +176,21 @@ namespace FiveFeetBelowGame.UI
                     if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
                         MainWindow mw = new MainWindow();
+                        Window win = Window.GetWindow(this);
+
+                        if (MessageBox.Show("Would you like to save?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                        {
+                            if (!string.IsNullOrEmpty(GlobalVariables.SaveName))
+                            {
+                                this.logic.SaveGame($"..\\..\\..\\Levels\\{GlobalVariables.SaveName}.json");
+                            }
+                            else
+                            {
+                                this.logic.AutoSave();
+                            }
+                        }
+
+                        win.Close();
                         mw.Show();
                     }
 

@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace FiveFeetBelowGame.BL
+namespace FiveFeetBelowGame
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace FiveFeetBelowGame.BL
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
-    using FiveFeetBelowGame.VM;
+    using FiveFeetBelowGame;
 
     /// <summary>
     /// GameLogic class for the logic of our game.
@@ -38,12 +38,31 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// Gets the gamemodel of the gamelogic.
+        /// </summary>
+        public GameModel Model
+        {
+            get { return this.model; }
+        }
+
+        /// <summary>
         /// Saves the game.
         /// </summary>
         /// <param name="name">To this path.</param>
         public void SaveGame(string name)
         {
             this.jh.SaveGame(name);
+        }
+
+        /// <summary>
+        /// Autosaves the game.
+        /// </summary>
+        public void AutoSave()
+        {
+            string date = DateTime.Now.ToString();
+            date = date.Replace(':', '-');
+            date = date.Replace('/', '-');
+            this.SaveGame($"..\\..\\..\\Levels\\autosave-{date}.json");
         }
 
         /// <summary>
@@ -79,10 +98,11 @@ namespace FiveFeetBelowGame.BL
             {
                 outp = this.jh.GenerateNewSection();
                 this.model.SectionNumber++;
+                this.IncreasePickaxeLevel();
+                this.model.PlayerMaxHealth++;
+                this.HealPlayer(2);
                 this.UpdatePlayerPosOnly(this.model.PlayerPos.X, 1);
-                string date = DateTime.Now.ToString();
-                date = date.Replace(':', '-');
-                this.SaveGame($"..\\..\\..\\Levels\\autosave-{date}.json");
+                GlobalVariables.CanAutosave = true;
                 return outp;
             }
 
@@ -172,6 +192,7 @@ namespace FiveFeetBelowGame.BL
                 this.model.Player.CY = 10;
                 this.model.PlayerBalance = 0;
                 this.model.Blocks[10, 10] = this.model.Player;
+                this.UpdatePlayerPosOnly(10, 10);
                 this.model.PlayerHealth = this.model.PlayerMaxHealth;
             }
         }
@@ -182,6 +203,7 @@ namespace FiveFeetBelowGame.BL
         public void IncreasePickaxeLevel()
         {
             this.model.PlayerPickaxe++;
+            this.model.Player.PickaxeLvl = this.model.PlayerPickaxe;
         }
 
         /// <summary>
@@ -219,31 +241,48 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// Calculates the deepest point the player has reached.
+        /// </summary>
+        public void CheckIfHighscore()
+        {
+            if (this.model.Hs.DeepestPoint == 0)
+            {
+                this.model.Hs.DeepestPoint = this.model.PlayerDepth;
+            }
+            else
+            {
+                this.model.Hs.DeepestPoint = Math.Max(this.model.Hs.DeepestPoint, this.model.PlayerDepth);
+            }
+
+            this.model.Hs.PickaxeLvl = Math.Max(this.model.Hs.PickaxeLvl, this.model.PlayerPickaxe);
+            this.model.Hs.Balance = Math.Max(this.model.Hs.Balance, this.model.PlayerBalance);
+        }
+
+        /// <summary>
         /// Initmodel method for initialize our model.
         /// </summary>
         /// <param name="fname">String type parameter.</param>
         private void InitModel(string fname)
         {
-            this.jh = new JsonHandler(fname, this.model);
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fname);
-            /* StreamReader sr = new StreamReader(stream);
-             this.model.Blocks = jh.LoadMap("..\\..\\..\\Levels\\testingmap.json"); */
-
+            this.jh = new JsonHandler(fname, ref this.model);
             this.model.TileSize = this.model.GameWidth / 25;
 
-            IGameObject[,] arr = new IGameObject[this.model.Blocks.GetLength(1), this.model.Blocks.GetLength(0)];
-            for (int i = 0; i < this.model.Blocks.GetLength(0); i++)
+            if (string.IsNullOrEmpty(GlobalVariables.GamefilePath))
             {
-                for (int j = 0; j < this.model.Blocks.GetLength(1); j++)
+                IGameObject[,] arr = new IGameObject[this.model.Blocks.GetLength(1), this.model.Blocks.GetLength(0)];
+                for (int i = 0; i < this.model.Blocks.GetLength(0); i++)
                 {
-                    arr[j, i] = this.model.Blocks[i, j];
+                    for (int j = 0; j < this.model.Blocks.GetLength(1); j++)
+                    {
+                        arr[j, i] = this.model.Blocks[i, j];
+                    }
                 }
-            }
 
-            this.model.Blocks = arr;
-            this.model.Blocks[10, 10] = new OneBlock(10, 10, BlockType.Air);
-            this.model.Player = new OnePlayer(10, 10);
-            this.model.PlayerPos = new Point(10, 10);
+                this.model.Blocks = arr;
+                this.model.Blocks[10, 10] = new OneBlock(10, 10, BlockType.Air);
+                this.model.Player = new OnePlayer(10, 10);
+                this.model.PlayerPos = new Point(10, 10);
+            }
         }
 
         /// <summary>
@@ -259,12 +298,17 @@ namespace FiveFeetBelowGame.BL
 
             if (newX >= 0 && newX < this.model.Blocks.GetLength(0) &&
                 newY >= 0 && newY < this.model.Blocks.GetLength(1) &&
-                (this.model.Blocks[(int)newX, (int)newY] as OneBlock) != null &&
-                !(this.model.Blocks[(int)newX, (int)newY] as OneBlock).IsSolid)
+                (((this.model.Blocks[(int)newX, (int)newY] as OneBlock) != null &&
+                !(this.model.Blocks[(int)newX, (int)newY] as OneBlock).IsSolid) ||
+                ((this.model.Blocks[(int)newX, (int)newY] as OneMonster) != null)))
             {
                 this.model.Player.CX = newX;
                 this.model.Player.CY = newX;
                 this.model.PlayerPos = new Point(newX, newY);
+                if ((this.model.Blocks[(int)newX, (int)newY] as OneMonster) != null)
+                {
+                    this.PlayerLostHealth((this.model.Blocks[(int)newX, (int)newY] as OneMonster).InflictDamage());
+                }
             }
         }
 

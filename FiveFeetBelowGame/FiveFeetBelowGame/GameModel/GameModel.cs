@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace FiveFeetBelowGame.VM
+namespace FiveFeetBelowGame
 {
     using System;
     using System.Collections.Generic;
@@ -10,6 +10,7 @@ namespace FiveFeetBelowGame.VM
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
+    using Model;
 
     /// <summary>
     /// Gamemodel class.
@@ -29,7 +30,13 @@ namespace FiveFeetBelowGame.VM
             this.PlayerHealth = 3;
             this.PlayerMaxHealth = 3;
             this.PlayerPickaxe = 1;
+            this.Hs = new Highscore(this.SaveName, 0, this.PlayerPickaxe, this.PlayerBalance);
         }
+
+        /// <summary>
+        /// Gets or sets the name of this game instance.
+        /// </summary>
+        public string SaveName { get; set; }
 
         /// <summary>
         /// Gets or sets Rock prop represent the rocks of the map.
@@ -72,14 +79,14 @@ namespace FiveFeetBelowGame.VM
         public List<IGameObject> PlayerNeighborBlocks { get; set; }
 
         /// <summary>
-        /// Gets Gamewidth represent the width of the map.
+        /// Gets or sets Gamewidth represent the width of the map.
         /// </summary>
-        public double GameWidth { get; private set; }
+        public double GameWidth { get; set; }
 
         /// <summary>
-        /// Gets GameHeight represent the height of the map.
+        /// Gets or sets GameHeight represent the height of the map.
         /// </summary>
-        public double GameHeight { get; private set; }
+        public double GameHeight { get; set; }
 
         /// <summary>
         /// Gets or sets TileSize represent the tile size in pixels.
@@ -112,5 +119,10 @@ namespace FiveFeetBelowGame.VM
                 return (this.SectionNumber * this.BlockNum) + (int)this.PlayerPos.Y;
             }
         }
+
+        /// <summary>
+        /// Gets or sets the highscore of this save.
+        /// </summary>
+        public Highscore Hs { get; set; }
     }
 }

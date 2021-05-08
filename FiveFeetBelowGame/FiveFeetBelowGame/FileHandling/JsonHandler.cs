@@ -10,8 +10,9 @@ namespace FiveFeetBelowGame
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using FiveFeetBelowGame.VM;
+    using Model;
     using Newtonsoft.Json;
+    using Repository;
 
     /// <summary>
     /// This class is responsible for reading and writing json files.
@@ -34,12 +35,21 @@ namespace FiveFeetBelowGame
         /// </summary>
         /// <param name="saveName">Filename.</param>
         /// <param name="model">A gamemodel.</param>
-        public JsonHandler(string saveName, GameModel model)
+        public JsonHandler(string saveName, ref GameModel model)
         {
-            this.depth = 0;
-            this.model = model;
-            this.SaveMap(this.GenerateFirstSection(), saveName);
-            this.LoadMap(saveName);
+            if (GlobalVariables.GameLoad)
+            {
+                model = this.LoadGame(saveName);
+                this.model = model;
+                GlobalVariables.GameLoad = false;
+            }
+            else
+            {
+                this.depth = 0;
+                this.model = model;
+                this.SaveMap(this.GenerateFirstSection(), saveName);
+                this.LoadMap(saveName);
+            }
         }
 
         /// <summary>
@@ -93,6 +103,9 @@ namespace FiveFeetBelowGame
             settings.TypeNameHandling = TypeNameHandling.Objects;
             string save = JsonConvert.SerializeObject(this.model, Formatting.Indented, settings);
 
+            saveName = saveName.Replace(':', '-');
+            saveName = saveName.Replace('/', '-');
+
             if (saveName.EndsWith(".json"))
             {
                 StreamWriter sw = new StreamWriter(saveName);
@@ -111,7 +124,8 @@ namespace FiveFeetBelowGame
         /// Loads a game state.
         /// </summary>
         /// <param name="saveName">The path.</param>
-        public void LoadGame(string saveName)
+        /// <returns>The loaded game state.</returns>
+        public GameModel LoadGame(string saveName)
         {
             StreamReader sr = new StreamReader(saveName);
             string json = sr.ReadToEnd();
@@ -119,7 +133,7 @@ namespace FiveFeetBelowGame
 
             var settings = new JsonSerializerSettings();
             settings.TypeNameHandling = TypeNameHandling.Objects;
-            this.model = JsonConvert.DeserializeObject<GameModel>(json, settings);
+            return JsonConvert.DeserializeObject<GameModel>(json, settings);
         }
 
         /// <summary>
@@ -158,6 +172,43 @@ namespace FiveFeetBelowGame
             }
 
             return arr;
+        }
+
+        /// <summary>
+        /// Gets the highscores from the saves folder.
+        /// </summary>
+        /// <returns>A list of the highscores.</returns>
+        public HighscoreRepo GetHighscores()
+        {
+            HighscoreRepo hRepo = new HighscoreRepo();
+            string[] filenames = Directory.GetFiles($"..\\..\\..\\Levels\\");
+            foreach (string fname in filenames)
+            {
+                if (fname.EndsWith(".json") && !fname.StartsWith("..\\..\\..\\Levels\\autosave"))
+                {
+                    GameModel temp = this.LoadGame(fname);
+                    temp.Hs.PlayerName = fname.Remove(0, 16);
+                    temp.Hs.PlayerName = temp.Hs.PlayerName.Remove(temp.Hs.PlayerName.Length - 5, 5);
+                    hRepo.Insert(new Highscore(temp.Hs.PlayerName, temp.Hs.DeepestPoint, temp.Hs.PickaxeLvl, temp.Hs.Balance));
+                }
+            }
+
+            return hRepo;
+        }
+
+        /// <summary>
+        /// Deletes all autosave json files.
+        /// </summary>
+        public void DeleteAutosaves()
+        {
+            string[] filenames = Directory.GetFiles($"..\\..\\..\\Levels\\");
+            foreach (string fname in filenames)
+            {
+                if (fname.StartsWith("..\\..\\..\\Levels\\autosave"))
+                {
+                    File.Delete(fname);
+                }
+            }
         }
 
         /// <summary>

@@ -22,111 +22,6 @@
             Application Entry Point.
             </summary>
         </member>
-        <member name="T:FiveFeetBelowGame.BL.GameLogic">
-            <summary>
-            GameLogic class for the logic of our game.
-            </summary>
-        </member>
-        <member name="F:FiveFeetBelowGame.BL.GameLogic.model">
-            <summary>
-            GameModel type model, an instance of the descendant class.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.#ctor(FiveFeetBelowGame.VM.GameModel,System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.BL.GameLogic"/> class.
-            </summary>
-            <param name="model">GameModel type parameter.</param>
-            <param name="fname">String type parameter.</param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.SaveGame(System.String)">
-            <summary>
-            Saves the game.
-            </summary>
-            <param name="name">To this path.</param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.LoadGame(System.String)">
-            <summary>
-            Loads the game.
-            </summary>
-            <param name="name">From this path.</param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.GetRenderedBlocks">
-            <summary>
-            Determines the blocks that are rendered.
-            </summary>
-            <returns>An array with the blocks.</returns>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.Move(System.Double,System.Double)">
-            <summary>
-            Moves the player charecter.
-            </summary>
-            <param name="horizontal"> Horizontal speed. </param>
-            <param name="vertical"> Vertical speed.</param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.GetTilePos(System.Windows.Point)">
-            <summary>
-            Gets the coordinates of where we clicked.
-            </summary>
-            <param name="mousePos">The point where the mouse is.</param>
-            <returns>The point where we clicked as an object. </returns>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.Gravity">
-            <summary>
-            Gravity to be implemented.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.PlayerGainedMoney(System.Int32)">
-            <summary>
-            Increases the player's balance.
-            </summary>
-            <param name="amount">By this amount.</param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.PlayerLostHealth(System.Int32)">
-            <summary>
-            Decreases the players health.
-            </summary>
-            <param name="amount">By this amount.</param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.IncreasePickaxeLevel">
-            <summary>
-            Increases the players pickaxe's level by one.
-            </summary>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.HealPlayer(System.Int32)">
-            <summary>
-            Increases the players health.
-            </summary>
-            <param name="amount">By this amount.</param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.IsNeighboring(System.Double,System.Double)">
-            <summary>
-            Determines if a certain block is neighboring the player or not.
-            </summary>
-            <param name="bx">The block's x coordinate.</param>
-            <param name="by">The block's y coordinate. </param>
-            <returns>True if its a neighboring block.</returns>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.InitModel(System.String)">
-            <summary>
-            Initmodel method for initialize our model.
-            </summary>
-            <param name="fname">String type parameter.</param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.UpdatePlayer(System.Double,System.Double)">
-            <summary>
-            Updates the player in the blocks array, and the player's point in the model.
-            </summary>
-            <param name="newX"> New x coordinate of the player. </param>
-            <param name="newY"> new y coordinate of the player. </param>
-        </member>
-        <member name="M:FiveFeetBelowGame.BL.GameLogic.UpdatePlayerPosOnly(System.Double,System.Double)">
-            <summary>
-            Updates only the pos of the player.
-            </summary>
-            <param name="newX">New x coord.</param>
-            <param name="newY">New y coord.</param>
-        </member>
         <member name="T:FiveFeetBelowGame.JsonHandler">
             <summary>
             This class is responsible for reading and writing json files.
@@ -137,7 +32,7 @@
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor(System.String,FiveFeetBelowGame.VM.GameModel)">
+        <member name="M:FiveFeetBelowGame.JsonHandler.#ctor(System.String,FiveFeetBelowGame.GameModel@)">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.JsonHandler"/> class.
             </summary>
@@ -168,12 +63,24 @@
             Loads a game state.
             </summary>
             <param name="saveName">The path.</param>
+            <returns>The loaded game state.</returns>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.GenerateNewSection">
             <summary>
             Generates a new section to the game.
             </summary>
             <returns>The new section.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.GetHighscores">
+            <summary>
+            Gets the highscores from the saves folder.
+            </summary>
+            <returns>A list of the highscores.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.DeleteAutosaves">
+            <summary>
+            Deletes all autosave json files.
+            </summary>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.GenerateFirstSection">
             <summary>
@@ -209,6 +116,17 @@
         <member name="M:FiveFeetBelowGame.Game.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.Game"/> class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.Game.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.Game"/> class.
+            </summary>
+            <param name="loadFilePath">The path to the loaded file.</param>
+        </member>
+        <member name="P:FiveFeetBelowGame.Game.LoadFile">
+            <summary>
+            Gets or sets the path for file we load in.
             </summary>
         </member>
         <member name="M:FiveFeetBelowGame.Game.InitializeComponent">
@@ -500,40 +418,216 @@
         <member name="M:FiveFeetBelowGame.OnePlayer.IsDestroyed(FiveFeetBelowGame.IGameObject)">
             <inheritdoc/>
         </member>
-        <member name="T:FiveFeetBelowGame.HighscoresWindow">
+        <member name="T:FiveFeetBelowGame.GameLogic">
             <summary>
-            Interaction logic for HighscoresWindow.xaml.
-            </summary>
-            <summary>
-            HighscoresWindow
+            GameLogic class for the logic of our game.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.HighscoresWindow.#ctor">
+        <member name="F:FiveFeetBelowGame.GameLogic.model">
             <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.HighscoresWindow"/> class.
+            GameModel type model, an instance of the descendant class.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.HighscoresWindow.InitializeComponent">
+        <member name="M:FiveFeetBelowGame.GameLogic.#ctor(FiveFeetBelowGame.GameModel,System.String)">
             <summary>
-            InitializeComponent
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.GameLogic"/> class.
+            </summary>
+            <param name="model">GameModel type parameter.</param>
+            <param name="fname">String type parameter.</param>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameLogic.Model">
+            <summary>
+            Gets the gamemodel of the gamelogic.
             </summary>
         </member>
-        <member name="T:FiveFeetBelowGame.MainWindow">
+        <member name="M:FiveFeetBelowGame.GameLogic.SaveGame(System.String)">
             <summary>
-            Interaction logic for MainWindow.xaml.
+            Saves the game.
             </summary>
+            <param name="name">To this path.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.AutoSave">
             <summary>
-            MainWindow
+            Autosaves the game.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.MainWindow.#ctor">
+        <member name="M:FiveFeetBelowGame.GameLogic.LoadGame(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.MainWindow"/> class.
+            Loads the game.
+            </summary>
+            <param name="name">From this path.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.GetRenderedBlocks">
+            <summary>
+            Determines the blocks that are rendered.
+            </summary>
+            <returns>An array with the blocks.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.Move(System.Double,System.Double)">
+            <summary>
+            Moves the player charecter.
+            </summary>
+            <param name="horizontal"> Horizontal speed. </param>
+            <param name="vertical"> Vertical speed.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.GetTilePos(System.Windows.Point)">
+            <summary>
+            Gets the coordinates of where we clicked.
+            </summary>
+            <param name="mousePos">The point where the mouse is.</param>
+            <returns>The point where we clicked as an object. </returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.Gravity">
+            <summary>
+            Gravity to be implemented.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.MainWindow.InitializeComponent">
+        <member name="M:FiveFeetBelowGame.GameLogic.PlayerGainedMoney(System.Int32)">
             <summary>
-            InitializeComponent
+            Increases the player's balance.
+            </summary>
+            <param name="amount">By this amount.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.PlayerLostHealth(System.Int32)">
+            <summary>
+            Decreases the players health.
+            </summary>
+            <param name="amount">By this amount.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.IncreasePickaxeLevel">
+            <summary>
+            Increases the players pickaxe's level by one.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.HealPlayer(System.Int32)">
+            <summary>
+            Increases the players health.
+            </summary>
+            <param name="amount">By this amount.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.IsNeighboring(System.Double,System.Double)">
+            <summary>
+            Determines if a certain block is neighboring the player or not.
+            </summary>
+            <param name="bx">The block's x coordinate.</param>
+            <param name="by">The block's y coordinate. </param>
+            <returns>True if its a neighboring block.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.CheckIfHighscore">
+            <summary>
+            Calculates the deepest point the player has reached.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.InitModel(System.String)">
+            <summary>
+            Initmodel method for initialize our model.
+            </summary>
+            <param name="fname">String type parameter.</param>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.UpdatePlayer(System.Double,System.Double)">
+            <summary>
+            Updates the player in the blocks array, and the player's point in the model.
+            </summary>
+            <param name="newX"> New x coordinate of the player. </param>
+            <param name="newY"> new y coordinate of the player. </param>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameLogic.UpdatePlayerPosOnly(System.Double,System.Double)">
+            <summary>
+            Updates only the pos of the player.
+            </summary>
+            <param name="newX">New x coord.</param>
+            <param name="newY">New y coord.</param>
+        </member>
+        <member name="T:FiveFeetBelowGame.GameModel">
+            <summary>
+            Gamemodel class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.GameModel.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.GameModel"/> class.
+            </summary>
+            <param name="w">Double type parameter, it is the width of the gamearea.</param>
+            <param name="h">Double type parameter, it is the height of the gamearea.</param>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.SaveName">
+            <summary>
+            Gets or sets the name of this game instance.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.Blocks">
+            <summary>
+            Gets or sets Rock prop represent the rocks of the map.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.PlayerPos">
+            <summary>
+            Gets or sets Player prop represent our player position.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.Player">
+            <summary>
+            Gets or sets the player of the game.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.PlayerBalance">
+            <summary>
+            Gets or sets the player's balance.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.PlayerPickaxe">
+            <summary>
+            Gets or sets the level of the player's pickaxe.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.PlayerHealth">
+            <summary>
+            Gets or sets the player's health points.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.PlayerMaxHealth">
+            <summary>
+            Gets or sets the player's max health.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.PlayerNeighborBlocks">
+            <summary>
+            Gets or sets the player neighboring blocks.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.GameWidth">
+            <summary>
+            Gets or sets Gamewidth represent the width of the map.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.GameHeight">
+            <summary>
+            Gets or sets GameHeight represent the height of the map.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.TileSize">
+            <summary>
+            Gets or sets TileSize represent the tile size in pixels.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.SectionNumber">
+            <summary>
+            Gets or sets the number of the section the player is on.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.BlockNum">
+            <summary>
+            Gets tumber of vertical blocks.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.PlayerDepth">
+            <summary>
+            Gets the depth the player is at.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.GameModel.Hs">
+            <summary>
+            Gets or sets the highscore of this save.
             </summary>
         </member>
         <member name="T:FiveFeetBelowGame.UI.GameControl">
@@ -569,78 +663,83 @@
         <member name="M:FiveFeetBelowGame.UI.GameControl.OnRender(System.Windows.Media.DrawingContext)">
             <inheritdoc/>
         </member>
-        <member name="T:FiveFeetBelowGame.UI.Renderer">
+        <member name="T:FiveFeetBelowGame.Renderer">
             <summary>
             This class is responsible for rendering the game.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.UI.Renderer.#ctor(FiveFeetBelowGame.VM.GameModel)">
+        <member name="M:FiveFeetBelowGame.Renderer.#ctor(FiveFeetBelowGame.GameModel)">
             <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.UI.Renderer"/> class.
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.Renderer"/> class.
             </summary>
             <param name="model">The gamemodel. </param>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.PlayerBrush">
+        <member name="P:FiveFeetBelowGame.Renderer.PlayerBrush">
             <summary>
             Gets the brush for the player.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.MonsterBrush">
+        <member name="P:FiveFeetBelowGame.Renderer.MonsterBrush">
             <summary>
             Gets the brush for the monsters.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.RockBrush">
+        <member name="P:FiveFeetBelowGame.Renderer.RockBrush">
             <summary>
             Gets the brush for the rocks.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.AirBrush">
+        <member name="P:FiveFeetBelowGame.Renderer.WallBrush">
+            <summary>
+            Gets the brush for the walls.
+            </summary>
+        </member>
+        <member name="P:FiveFeetBelowGame.Renderer.AirBrush">
             <summary>
             Gets the brush for the air blocks.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.IronBrush">
+        <member name="P:FiveFeetBelowGame.Renderer.IronBrush">
             <summary>
             Gets the brush for iron ores.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.GoldBrush">
+        <member name="P:FiveFeetBelowGame.Renderer.GoldBrush">
             <summary>
             Gets the brush for gold ores.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.DiaBrush">
+        <member name="P:FiveFeetBelowGame.Renderer.DiaBrush">
             <summary>
             Gets the brush for diamonds.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.GemBrush">
+        <member name="P:FiveFeetBelowGame.Renderer.GemBrush">
             <summary>
             Gets the brush for gems.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.RareGemBrush">
+        <member name="P:FiveFeetBelowGame.Renderer.RareGemBrush">
             <summary>
             Gets the brush for rare gems.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.Bgbrush">
+        <member name="P:FiveFeetBelowGame.Renderer.Bgbrush">
             <summary>
             Gets the brush for the background.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.UI.Renderer.Middlebrush">
+        <member name="P:FiveFeetBelowGame.Renderer.Middlebrush">
             <summary>
             Gets the brush for the middle.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.UI.Renderer.Reset">
+        <member name="M:FiveFeetBelowGame.Renderer.Reset">
             <summary>
             This method help us to start new game or reset our game.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.UI.Renderer.GetBrush(System.String,System.Boolean)">
+        <member name="M:FiveFeetBelowGame.Renderer.GetBrush(System.String,System.Boolean)">
             <summary>
             This method draws our items.
             </summary>
@@ -648,92 +747,99 @@
             <param name="isTiled">True if we have to use tiled brush.</param>
             <returns>Return a Brush.</returns>
         </member>
-        <member name="M:FiveFeetBelowGame.UI.Renderer.BuildDrawing">
+        <member name="M:FiveFeetBelowGame.Renderer.BuildDrawing">
             <summary>
             This method fill our drawing context.
             </summary>
             <returns>Returns a Drawing.</returns>
         </member>
-        <member name="T:FiveFeetBelowGame.VM.GameModel">
+        <member name="T:FiveFeetBelowGame.GlobalVariables">
             <summary>
-            Gamemodel class.
+            Contains global variables for the game.
             </summary>
         </member>
-        <member name="M:FiveFeetBelowGame.VM.GameModel.#ctor(System.Double,System.Double)">
+        <member name="P:FiveFeetBelowGame.GlobalVariables.GamefilePath">
             <summary>
-            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.VM.GameModel"/> class.
-            </summary>
-            <param name="w">Double type parameter, it is the width of the gamearea.</param>
-            <param name="h">Double type parameter, it is the height of the gamearea.</param>
-        </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.Blocks">
-            <summary>
-            Gets or sets Rock prop represent the rocks of the map.
+            Gets or sets the game file path.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerPos">
+        <member name="P:FiveFeetBelowGame.GlobalVariables.GameLoad">
             <summary>
-            Gets or sets Player prop represent our player position.
+            Gets or sets a value indicating whether we are loading a game or not.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.Player">
+        <member name="P:FiveFeetBelowGame.GlobalVariables.CanAutosave">
             <summary>
-            Gets or sets the player of the game.
+            Gets or sets a value indicating whether we can autosave or not.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerBalance">
+        <member name="P:FiveFeetBelowGame.GlobalVariables.SaveName">
             <summary>
-            Gets or sets the player's balance.
+            Gets or sets the name of the save.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerPickaxe">
+        <member name="P:FiveFeetBelowGame.GlobalVariables.HsRepo">
             <summary>
-            Gets or sets the level of the player's pickaxe.
+            Gets or sets the highscore repository.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerHealth">
+        <member name="T:FiveFeetBelowGame.HighscoresWindow">
             <summary>
-            Gets or sets the player's health points.
+            Interaction logic for HighscoresWindow.xaml.
+            </summary>
+            <summary>
+            HighscoresWindow
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerMaxHealth">
+        <member name="M:FiveFeetBelowGame.HighscoresWindow.#ctor">
             <summary>
-            Gets or sets the player's max health.
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.HighscoresWindow"/> class.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerNeighborBlocks">
+        <member name="P:FiveFeetBelowGame.HighscoresWindow.HRepoList">
             <summary>
-            Gets or sets the player neighboring blocks.
+            Gets the highscore repository.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.GameWidth">
+        <member name="M:FiveFeetBelowGame.HighscoresWindow.InitializeComponent">
             <summary>
-            Gets Gamewidth represent the width of the map.
+            InitializeComponent
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.GameHeight">
+        <member name="T:FiveFeetBelowGame.LoadGame">
             <summary>
-            Gets GameHeight represent the height of the map.
+            Interaction logic for LoadGame.xaml .
+            </summary>
+            <summary>
+            LoadGame
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.TileSize">
+        <member name="M:FiveFeetBelowGame.LoadGame.#ctor">
             <summary>
-            Gets or sets TileSize represent the tile size in pixels.
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.LoadGame"/> class.
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.SectionNumber">
+        <member name="M:FiveFeetBelowGame.LoadGame.InitializeComponent">
             <summary>
-            Gets or sets the number of the section the player is on.
+            InitializeComponent
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.BlockNum">
+        <member name="T:FiveFeetBelowGame.MainWindow">
             <summary>
-            Gets tumber of vertical blocks.
+            Interaction logic for MainWindow.xaml.
+            </summary>
+            <summary>
+            MainWindow
             </summary>
         </member>
-        <member name="P:FiveFeetBelowGame.VM.GameModel.PlayerDepth">
+        <member name="M:FiveFeetBelowGame.MainWindow.#ctor">
             <summary>
-            Gets the depth the player is at.
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.MainWindow"/> class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
             </summary>
         </member>
         <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">

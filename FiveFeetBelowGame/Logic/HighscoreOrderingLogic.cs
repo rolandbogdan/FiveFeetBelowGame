@@ -39,5 +39,17 @@ namespace Logic
                           select highscore;
             return ordered;
         }
+
+        /// <summary>
+        /// Orders the highscores by deepest poitn reached.
+        /// </summary>
+        /// <returns>The ordered list of highscores.</returns>
+        public IEnumerable<Highscore> OrderedByMoney()
+        {
+            var ordered = from highscore in this.highscoreRepo.GetAll().ToList()
+                          orderby highscore.DeepestPoint descending
+                          select highscore;
+            return ordered;
+        }
     }
 }

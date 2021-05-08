@@ -159,7 +159,7 @@ namespace FiveFeetBelowGame
                 case BlockType.RareGem:
                     this.Hardness = 5;
                     this.HealthPoints = 30;
-                    this.Value = (int)this.CY / 50 * r.Next(5, 15);
+                    this.Value = r.Next(100, 150);
                     this.IsSolid = true;
                     this.Breakable = true;
                     break;
