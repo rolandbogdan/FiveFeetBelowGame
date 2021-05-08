@@ -165,7 +165,7 @@ namespace FiveFeetBelowGame
         /// Gets the highscores from the saves folder.
         /// </summary>
         /// <returns>A list of the highscores.</returns>
-        public List<Highscore> GetHighscores()
+        public IEnumerable<Highscore> GetHighscores()
         {
             throw new NotImplementedException();
         }

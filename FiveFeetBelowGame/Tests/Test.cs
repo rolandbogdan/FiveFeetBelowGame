@@ -43,7 +43,7 @@ namespace Tests
         {
             HighscoreLogic hsl = new HighscoreLogic(this.repo.Object);
 
-            Highscore newHs = new Highscore("Kathi Béla", 150, 3);
+            Highscore newHs = new Highscore("Kathi Béla", 150, 3, 10);
 
             this.repo.Setup(x => x.Insert(It.IsAny<Highscore>()));
             hsl.Insert(newHs);
@@ -59,7 +59,7 @@ namespace Tests
         {
             HighscoreLogic hsl = new HighscoreLogic(this.repo.Object);
 
-            Highscore newHs = new Highscore("Kathi Béla", 150, 3);
+            Highscore newHs = new Highscore("Kathi Béla", 150, 3, 10);
 
             this.repo.Setup(x => x.Delete(It.IsAny<Highscore>()));
             hsl.Delete(newHs);
@@ -77,8 +77,8 @@ namespace Tests
 
             List<Highscore> newHs = new List<Highscore>()
                   {
-                        new Highscore("Kathi Béla", 150, 3),
-                        new Highscore("Bohos Kornél", 150, 3),
+                        new Highscore("Kathi Béla", 150, 3, 15),
+                        new Highscore("Bohos Kornél", 150, 3, 15),
                   };
 
             Highscore expectedout = new Highscore();
@@ -100,8 +100,8 @@ namespace Tests
 
             List<Highscore> newHs = new List<Highscore>()
                   {
-                        new Highscore("Kathi Béla", 150, 3),
-                        new Highscore("Bohos Kornél", 150, 3),
+                        new Highscore("Kathi Béla", 150, 3, 20),
+                        new Highscore("Bohos Kornél", 150, 3, 25),
                   };
 
             List<Highscore> expectedout = new List<Highscore>()
@@ -125,8 +125,8 @@ namespace Tests
         {
             List<Highscore> newHs = new List<Highscore>()
                   {
-                        new Highscore("Bohos Kornél", 250, 5),
-                        new Highscore("Kathi Béla", 500, 10),
+                        new Highscore("Bohos Kornél", 250, 5, 50),
+                        new Highscore("Kathi Béla", 500, 10, 200),
                   };
 
             List<Highscore> expectedout = new List<Highscore>()

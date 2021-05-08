@@ -304,7 +304,7 @@ namespace FiveFeetBelowGame.UI
 
         private Drawing GetText()
         {
-            string disp = $"Pickaxe lvl: {this.model.PlayerPickaxe}\t$: {this.model.PlayerBalance}\tDeepest point: {(this.model.Hs.DeepestPoint * 5) - 50} ft.";
+            string disp = $"Pickaxe lvl: {this.model.PlayerPickaxe}\t$: {this.model.PlayerBalance}\tDeepest point: {(this.model.Hs.DeepestPoint * 5) - 50} ft.\nHealth: {this.model.PlayerHealth}";
             FormattedText formattedText = new FormattedText(
             disp,
             CultureInfo.CurrentCulture,

@@ -21,12 +21,14 @@ namespace Model
         /// <param name="playername"> The name of the player. </param>
         /// <param name="deepestpoint"> The deepest point the player has reached. </param>
         /// <param name="pickaxelvl"> The level of the player's pickaxe. </param>
-        public Highscore(string playername, int deepestpoint, int pickaxelvl)
+        /// <param name="balance"> The level of the player's balance. </param>
+        public Highscore(string playername, int deepestpoint, int pickaxelvl, int balance)
         {
             this.HsID = Guid.NewGuid().ToString();
             this.PlayerName = playername;
             this.DeepestPoint = deepestpoint;
             this.PickaxeLvl = pickaxelvl;
+            this.Balance = balance;
         }
 
         /// <summary>
@@ -55,5 +57,10 @@ namespace Model
         /// Gets or sets the level of the player's pickaxe.
         /// </summary>
         public int PickaxeLvl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the highscore balance.
+        /// </summary>
+        public int Balance { get; set; }
     }
 }

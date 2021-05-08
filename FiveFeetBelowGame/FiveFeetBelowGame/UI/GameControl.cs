@@ -94,7 +94,7 @@ namespace FiveFeetBelowGame.UI
                 this.logic.IsNeighboring(tpx, tpy))
             {
                 this.model.Blocks[tpx, tpy].DamageTaken(
-                this.model.Player.InflictDamage() + 2,
+                this.model.Player.InflictDamage(),
                 this.model.Player);
                 if (this.model.Blocks[tpx, tpy].HealthPoints <= 0)
                 {
@@ -116,7 +116,7 @@ namespace FiveFeetBelowGame.UI
         {
             this.model.Blocks = this.logic.GetRenderedBlocks();
             this.logic.Gravity();
-            this.logic.GetDeepestPoint();
+            this.logic.CheckIfHighscore();
             this.InvalidateVisual();
         }
 

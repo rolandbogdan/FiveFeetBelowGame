@@ -80,6 +80,8 @@ namespace FiveFeetBelowGame.BL
                 outp = this.jh.GenerateNewSection();
                 this.model.SectionNumber++;
                 this.IncreasePickaxeLevel();
+                this.model.PlayerMaxHealth++;
+                this.HealPlayer(2);
                 this.UpdatePlayerPosOnly(this.model.PlayerPos.X, 1);
                 string date = DateTime.Now.ToString();
                 date = date.Replace(':', '-');
@@ -173,6 +175,7 @@ namespace FiveFeetBelowGame.BL
                 this.model.Player.CY = 10;
                 this.model.PlayerBalance = 0;
                 this.model.Blocks[10, 10] = this.model.Player;
+                this.UpdatePlayerPosOnly(10, 10);
                 this.model.PlayerHealth = this.model.PlayerMaxHealth;
             }
         }
@@ -183,6 +186,7 @@ namespace FiveFeetBelowGame.BL
         public void IncreasePickaxeLevel()
         {
             this.model.PlayerPickaxe++;
+            this.model.Player.PickaxeLvl = this.model.PlayerPickaxe;
         }
 
         /// <summary>
@@ -222,7 +226,7 @@ namespace FiveFeetBelowGame.BL
         /// <summary>
         /// Calculates the deepest point the player has reached.
         /// </summary>
-        public void GetDeepestPoint()
+        public void CheckIfHighscore()
         {
             if (this.model.Hs.DeepestPoint == 0)
             {
@@ -232,6 +236,9 @@ namespace FiveFeetBelowGame.BL
             {
                 this.model.Hs.DeepestPoint = Math.Max(this.model.Hs.DeepestPoint, this.model.PlayerDepth);
             }
+
+            this.model.Hs.PickaxeLvl = Math.Max(this.model.Hs.PickaxeLvl, this.model.PlayerPickaxe);
+            this.model.Hs.Balance = Math.Max(this.model.Hs.Balance, this.model.PlayerBalance);
         }
 
         /// <summary>
@@ -275,12 +282,17 @@ namespace FiveFeetBelowGame.BL
 
             if (newX >= 0 && newX < this.model.Blocks.GetLength(0) &&
                 newY >= 0 && newY < this.model.Blocks.GetLength(1) &&
-                (this.model.Blocks[(int)newX, (int)newY] as OneBlock) != null &&
-                !(this.model.Blocks[(int)newX, (int)newY] as OneBlock).IsSolid)
+                (((this.model.Blocks[(int)newX, (int)newY] as OneBlock) != null &&
+                !(this.model.Blocks[(int)newX, (int)newY] as OneBlock).IsSolid) ||
+                ((this.model.Blocks[(int)newX, (int)newY] as OneMonster) != null)))
             {
                 this.model.Player.CX = newX;
                 this.model.Player.CY = newX;
                 this.model.PlayerPos = new Point(newX, newY);
+                if ((this.model.Blocks[(int)newX, (int)newY] as OneMonster) != null)
+                {
+                    this.PlayerLostHealth((this.model.Blocks[(int)newX, (int)newY] as OneMonster).InflictDamage());
+                }
             }
         }
 

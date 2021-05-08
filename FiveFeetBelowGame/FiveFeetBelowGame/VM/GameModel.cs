@@ -4,13 +4,13 @@
 
 namespace FiveFeetBelowGame.VM
 {
-    using Model;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
+    using Model;
 
     /// <summary>
     /// Gamemodel class.
@@ -30,11 +30,11 @@ namespace FiveFeetBelowGame.VM
             this.PlayerHealth = 3;
             this.PlayerMaxHealth = 3;
             this.PlayerPickaxe = 1;
-            this.Hs = new Highscore(this.SaveName, 0, this.PlayerPickaxe);
+            this.Hs = new Highscore(this.SaveName, 0, this.PlayerPickaxe, this.PlayerBalance);
         }
 
         /// <summary>
-        /// Name of this game instance.
+        /// Gets or sets the name of this game instance.
         /// </summary>
         public string SaveName { get; set; }
 
