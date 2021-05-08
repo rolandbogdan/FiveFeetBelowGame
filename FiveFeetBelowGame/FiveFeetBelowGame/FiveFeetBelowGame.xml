@@ -536,6 +536,11 @@
             Gets or sets a value indicating whether we can autosave or not.
             </summary>
         </member>
+        <member name="P:FiveFeetBelowGame.GlobalVariables.SaveName">
+            <summary>
+            Gets or sets the name of the save.
+            </summary>
+        </member>
         <member name="T:FiveFeetBelowGame.HighscoresWindow">
             <summary>
             Interaction logic for HighscoresWindow.xaml.

@@ -45,7 +45,7 @@
                    Source="pack://application:,,,/Images/logo-menu.png"
                    Grid.ColumnSpan="2" />
 
-            <TextBox x:Name="textBox"
+            <TextBox x:Name="nameBox"
                      Grid.ColumnSpan="2"
                      HorizontalAlignment="Left"
                      Height="68"
@@ -55,7 +55,7 @@
                      VerticalAlignment="Center"
                      Width="500"
                      FontSize="48"
-                     TextAlignment="Center"/>
+                     TextAlignment="Center" TextChanged="nameBox_TextChanged"/>
 
             <Border Grid.Column="0"
                     Grid.Row="2"
