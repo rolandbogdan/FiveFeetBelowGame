@@ -183,6 +183,7 @@
             Loads a game state.
             </summary>
             <param name="saveName">The path.</param>
+            <returns>The loaded game state.</returns>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.GenerateNewSection">
             <summary>
@@ -195,6 +196,11 @@
             Gets the highscores from the saves folder.
             </summary>
             <returns>A list of the highscores.</returns>
+        </member>
+        <member name="M:FiveFeetBelowGame.JsonHandler.DeleteAutosaves">
+            <summary>
+            Deletes all autosave json files.
+            </summary>
         </member>
         <member name="M:FiveFeetBelowGame.JsonHandler.GenerateFirstSection">
             <summary>
@@ -230,6 +236,17 @@
         <member name="M:FiveFeetBelowGame.Game.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:FiveFeetBelowGame.Game"/> class.
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.Game.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.Game"/> class.
+            </summary>
+            <param name="loadFilePath">The path to the loaded file.</param>
+        </member>
+        <member name="P:FiveFeetBelowGame.Game.LoadFile">
+            <summary>
+            Gets or sets the path for file we load in.
             </summary>
         </member>
         <member name="M:FiveFeetBelowGame.Game.InitializeComponent">
@@ -576,10 +593,15 @@
         </member>
         <member name="T:FiveFeetBelowGame.LoadGame">
             <summary>
-            Interaction logic for LoadGame.xaml
+            Interaction logic for LoadGame.xaml .
             </summary>
             <summary>
             LoadGame
+            </summary>
+        </member>
+        <member name="M:FiveFeetBelowGame.LoadGame.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FiveFeetBelowGame.LoadGame"/> class.
             </summary>
         </member>
         <member name="M:FiveFeetBelowGame.LoadGame.InitializeComponent">

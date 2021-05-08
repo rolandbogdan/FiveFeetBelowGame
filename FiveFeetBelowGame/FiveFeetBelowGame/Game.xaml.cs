@@ -31,12 +31,20 @@ namespace FiveFeetBelowGame
             this.InitializeComponent();
         }
 
-        public Game(string loadFilePath) : this()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Game"/> class.
+        /// </summary>
+        /// <param name="loadFilePath">The path to the loaded file.</param>
+        public Game(string loadFilePath)
+            : this()
         {
             this.LoadFile = loadFilePath;
             GlobalVariables.GamefilePath = this.LoadFile;
         }
 
+        /// <summary>
+        /// Gets or sets the path for file we load in.
+        /// </summary>
         public string LoadFile { get; set; }
       }
 }

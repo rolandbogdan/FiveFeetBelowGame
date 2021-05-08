@@ -125,6 +125,7 @@ namespace FiveFeetBelowGame
         /// Loads a game state.
         /// </summary>
         /// <param name="saveName">The path.</param>
+        /// <returns>The loaded game state.</returns>
         public GameModel LoadGame(string saveName)
         {
             StreamReader sr = new StreamReader(saveName);
@@ -196,6 +197,9 @@ namespace FiveFeetBelowGame
             return hRepo;
         }
 
+        /// <summary>
+        /// Deletes all autosave json files.
+        /// </summary>
         public void DeleteAutosaves()
         {
             string[] filenames = Directory.GetFiles($"..\\..\\..\\Levels\\");

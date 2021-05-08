@@ -40,6 +40,5 @@ namespace FiveFeetBelowGame
         /// Gets or sets the highscore repository.
         /// </summary>
         public static HighscoreRepo HsRepo { get; set; }
-
     }
 }
