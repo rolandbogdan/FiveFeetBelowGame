@@ -74,9 +74,9 @@ namespace FiveFeetBelowGame.UI
             }
 
             this.model = this.logic.Model;
-            ;
+            this.model.GameHeight = this.ActualHeight;
+            this.model.GameWidth = this.ActualWidth;
             this.renderer = new Renderer(this.model);
-            ;
             Window win = Window.GetWindow(this);
             if (win != null)
             {
@@ -130,6 +130,12 @@ namespace FiveFeetBelowGame.UI
             this.model.Blocks = this.logic.GetRenderedBlocks();
             this.logic.Gravity();
             this.logic.CheckIfHighscore();
+            if (GlobalVariables.CanAutosave)
+            {
+                this.logic.AutoSave();
+                GlobalVariables.CanAutosave = false;
+            }
+
             this.InvalidateVisual();
         }
 

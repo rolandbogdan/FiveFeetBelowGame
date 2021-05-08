@@ -52,6 +52,17 @@ namespace FiveFeetBelowGame.BL
         }
 
         /// <summary>
+        /// Autosaves the game.
+        /// </summary>
+        public void AutoSave()
+        {
+            string date = DateTime.Now.ToString();
+            date = date.Replace(':', '-');
+            date = date.Replace('/', '-');
+            this.SaveGame($"..\\..\\..\\Levels\\autosave-{date}.json");
+        }
+
+        /// <summary>
         /// Loads the game.
         /// </summary>
         /// <param name="name">From this path.</param>
@@ -88,10 +99,7 @@ namespace FiveFeetBelowGame.BL
                 this.model.PlayerMaxHealth++;
                 this.HealPlayer(2);
                 this.UpdatePlayerPosOnly(this.model.PlayerPos.X, 1);
-                string date = DateTime.Now.ToString();
-                date = date.Replace(':', '-');
-                date = date.Replace('/', '-');
-                this.SaveGame($"..\\..\\..\\Levels\\autosave-{date}.json");
+                GlobalVariables.CanAutosave = true;
                 return outp;
             }
 
@@ -256,16 +264,20 @@ namespace FiveFeetBelowGame.BL
             this.jh = new JsonHandler(fname, ref this.model);
             this.model.TileSize = this.model.GameWidth / 25;
 
-            IGameObject[,] arr = new IGameObject[this.model.Blocks.GetLength(1), this.model.Blocks.GetLength(0)];
-            for (int i = 0; i < this.model.Blocks.GetLength(0); i++)
+            if (!GlobalVariables.GameLoad)
             {
-                for (int j = 0; j < this.model.Blocks.GetLength(1); j++)
+                IGameObject[,] arr = new IGameObject[this.model.Blocks.GetLength(1), this.model.Blocks.GetLength(0)];
+                for (int i = 0; i < this.model.Blocks.GetLength(0); i++)
                 {
-                    arr[j, i] = this.model.Blocks[i, j];
+                    for (int j = 0; j < this.model.Blocks.GetLength(1); j++)
+                    {
+                        arr[j, i] = this.model.Blocks[i, j];
+                    }
                 }
+
+                this.model.Blocks = arr;
             }
 
-            this.model.Blocks = arr;
             this.model.Blocks[10, 10] = new OneBlock(10, 10, BlockType.Air);
             this.model.Player = new OnePlayer(10, 10);
             this.model.PlayerPos = new Point(10, 10);

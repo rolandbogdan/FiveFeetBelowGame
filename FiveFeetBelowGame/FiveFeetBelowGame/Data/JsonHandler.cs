@@ -41,8 +41,7 @@ namespace FiveFeetBelowGame
             {
                 model = this.LoadGame(saveName);
                 this.model = model;
-                this.SaveMap(this.model.Blocks, "loadedgame.json");
-                this.LoadMap("loadedgame.json");
+                GlobalVariables.GameLoad = false;
             }
             else
             {

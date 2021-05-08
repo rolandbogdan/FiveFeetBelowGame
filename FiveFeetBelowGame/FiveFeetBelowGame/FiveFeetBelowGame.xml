@@ -45,6 +45,11 @@
             </summary>
             <param name="name">To this path.</param>
         </member>
+        <member name="M:FiveFeetBelowGame.BL.GameLogic.AutoSave">
+            <summary>
+            Autosaves the game.
+            </summary>
+        </member>
         <member name="M:FiveFeetBelowGame.BL.GameLogic.LoadGame(System.String)">
             <summary>
             Loads the game.
@@ -526,6 +531,11 @@
             Gets or sets a value indicating whether we are loading a game or not.
             </summary>
         </member>
+        <member name="P:FiveFeetBelowGame.GlobalVariables.CanAutosave">
+            <summary>
+            Gets or sets a value indicating whether we can autosave or not.
+            </summary>
+        </member>
         <member name="T:FiveFeetBelowGame.HighscoresWindow">
             <summary>
             Interaction logic for HighscoresWindow.xaml.
@@ -752,12 +762,12 @@
         </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.GameWidth">
             <summary>
-            Gets Gamewidth represent the width of the map.
+            Gets or sets Gamewidth represent the width of the map.
             </summary>
         </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.GameHeight">
             <summary>
-            Gets GameHeight represent the height of the map.
+            Gets or sets GameHeight represent the height of the map.
             </summary>
         </member>
         <member name="P:FiveFeetBelowGame.VM.GameModel.TileSize">

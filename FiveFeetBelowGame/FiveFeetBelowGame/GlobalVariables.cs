@@ -24,5 +24,10 @@ namespace FiveFeetBelowGame
         /// Gets or sets a value indicating whether we are loading a game or not.
         /// </summary>
         public static bool GameLoad { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether we can autosave or not.
+        /// </summary>
+        public static bool CanAutosave { get; set; }
     }
 }

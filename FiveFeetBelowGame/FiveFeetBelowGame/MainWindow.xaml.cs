@@ -35,7 +35,7 @@ namespace FiveFeetBelowGame
         private void New_Game(object sender, RoutedEventArgs e)
         {
             Game game = new Game();
-
+            GlobalVariables.GameLoad = false;
             game.Show();
             this.Close();
         }

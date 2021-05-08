@@ -79,14 +79,14 @@ namespace FiveFeetBelowGame.VM
         public List<IGameObject> PlayerNeighborBlocks { get; set; }
 
         /// <summary>
-        /// Gets Gamewidth represent the width of the map.
+        /// Gets or sets Gamewidth represent the width of the map.
         /// </summary>
-        public double GameWidth { get; private set; }
+        public double GameWidth { get; set; }
 
         /// <summary>
-        /// Gets GameHeight represent the height of the map.
+        /// Gets or sets GameHeight represent the height of the map.
         /// </summary>
-        public double GameHeight { get; private set; }
+        public double GameHeight { get; set; }
 
         /// <summary>
         /// Gets or sets TileSize represent the tile size in pixels.
