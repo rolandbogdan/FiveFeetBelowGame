@@ -55,5 +55,13 @@ namespace FiveFeetBelowGame
                         this.Close();
                   }
             }
+
+            private void Load_Game(object sender, RoutedEventArgs e)
+            {
+                  LoadGame lg = new LoadGame();
+
+                  lg.Show();
+                  this.Close();
+            }
       }
 }
