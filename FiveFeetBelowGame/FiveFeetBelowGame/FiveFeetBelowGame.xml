@@ -689,6 +689,11 @@
             Gets the brush for the rocks.
             </summary>
         </member>
+        <member name="P:FiveFeetBelowGame.Renderer.WallBrush">
+            <summary>
+            Gets the brush for the walls.
+            </summary>
+        </member>
         <member name="P:FiveFeetBelowGame.Renderer.AirBrush">
             <summary>
             Gets the brush for the air blocks.
