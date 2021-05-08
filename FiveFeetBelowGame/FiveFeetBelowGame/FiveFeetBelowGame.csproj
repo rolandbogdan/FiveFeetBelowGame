@@ -17,6 +17,7 @@
     <None Remove="Images\back.png" />
     <None Remove="Images\exit.bmp" />
     <None Remove="Images\gem-1.png" />
+    <None Remove="Images\logo-menu.png" />
     <None Remove="Images\middle.png" />
     <None Remove="Images\opossum-1.png" />
     <None Remove="Images\player-idle-1.png" />
@@ -31,6 +32,9 @@
     <EmbeddedResource Include="Images\back.png" />
     <EmbeddedResource Include="Images\exit.bmp" />
     <EmbeddedResource Include="Images\gem-1.png" />
+    <EmbeddedResource Include="Images\logo-menu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Images\middle.png" />
     <EmbeddedResource Include="Images\opossum-1.png" />
     <EmbeddedResource Include="Images\player-idle-1.png" />
